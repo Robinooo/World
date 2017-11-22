@@ -337,11 +337,11 @@ public class World
          //player1.move("up");               
                
         //test diningroom
-        // player1.move("down");
+        player1.move("down");
          //player1.move("down");
 
 
-
+        //testajout
 
     }   
         
