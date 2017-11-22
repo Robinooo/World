@@ -16,8 +16,5 @@ public class WorldMain {
     
     public static void main(String[] args) {
         World w = new World();
-        
-        
     }
- 
 }
