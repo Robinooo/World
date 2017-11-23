@@ -17,7 +17,6 @@ public class Door {
     private CodeLock codeLock; // CodeLock of the door
     private String name; //Name of the door
     private boolean openable; //state is either "is openable" or "not openable"
-    private static HashMap<String, String> doorLock = new HashMap<String, String>(); // A hash to put as a key the door name and as a vaue the key or code associate.
 
     /**
      * Constructor for objects of class Door At first, the door is close and
@@ -38,17 +37,13 @@ public class Door {
             if (ifKeyLock) {
                 String foo = "Key" + name; //create a specif name for the key
                 keyLock = new KeyLock(foo); //create the KeyLock object
-                doorLock.put(name, foo); //put into the hash: the Door'name as a Key and the key's name as a Value
                 openable = false;
-                // Item key = new Item(foo); //create the key associate to the keyLock
             }
 
             if (ifCodeLock) {
                 String foo = "Code" + name; //create a specif name for the code
                 codeLock = new CodeLock(foo); //create the CodeLock object
-                doorLock.put(name, foo); //put into the hash: the Door'name as a Key and the code's name as a Value
                 openable = false;
-                // Item code = new Item(foo); //create the Code associate to the CodeLock
             }
         }
     }
@@ -115,11 +110,10 @@ public class Door {
     public boolean openDoorKey(String keyName) {
         System.out.println(keyLock.getNameKey());
         System.out.println(keyName);
-        
-        if(keyLock.getNameKey().equals(keyName)){
+
+        if (keyLock.getNameKey().equals(keyName)) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
@@ -132,10 +126,9 @@ public class Door {
      */
     public boolean openDoorPass(String password) {
 
-        if(codeLock.getPasswd().equals(password)){
+        if (codeLock.getPasswd().equals(password)) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
