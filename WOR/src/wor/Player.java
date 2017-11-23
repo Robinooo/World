@@ -10,7 +10,7 @@ package wor;
 public class Player extends Character
 {
     private NoteBook note; // the player's notebook
-    public Room currentRoom; // the room where the player is currently
+    private Room currentRoom; // the room where the player is currently
     private Inventory inv; // the player's inventory
     private int persuasion; // the number of persuasion points of the player
     private int pointsoflife; // the player's number of points of life
