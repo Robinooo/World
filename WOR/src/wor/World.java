@@ -50,7 +50,7 @@ public class World
 
 
      
-     private Item rope, dagger, ironBar, revolver,candlestick, wrench, poison, axe, keyLibrary, keyVeranda, keyLivingRoom, keyDiningRoom, codeOffice, codeKitchen, irgGlasses, gasMask;
+     private Item tissuImbibe, scarf,footPrints, rope, dagger, ironBar, revolver,candlestick, wrench, poison, axe, keyLibrary, keyVeranda, keyLivingRoom, keyDiningRoom, codeOffice, codeKitchen, irgGlasses, gasMask;
      private Inventory inventory;
      private NoteBook notebook;
      public Player player1;
@@ -285,7 +285,7 @@ public class World
      countOrange = new Talking ("Speach1","Speach2", "Compte Orange");
      countnessOrange = new Talking ("Speach1","Speach2", "Comptesse Orange");
       
-        drViolet = new Killer("Docteur Violet");
+     drViolet = new Killer("Docteur Violet");
 
      missPrunelle = new Follower ("Speach", "miss Prunelle");
 
@@ -329,7 +329,12 @@ public class World
         
         notebook = new NoteBook();
         inventory = new Inventory();
-
+        
+        // Creation of clues
+        footPrints = new Item ("Foot prints");
+        scarf = new Item ("Scarf");
+        tissuImbibe = new Item ("Tissu imbibé");
+        
     // Add the items into the rooms  
         barn3.addItem(rope);
         veranda.addItem(dagger);
@@ -347,13 +352,17 @@ public class World
         poolRoom.addItem(keyDiningRoom);
         library.addItem(codeOffice);
         office.addItem(codeKitchen);
+        kiosk.addItem(footPrints);
+        garden.addItem(scarf);
+        smallHall.addItem(tissuImbibe);
 
-        
+    // test    
         inventory.addItems(rope);
         inventory.addItems(dagger);
         inventory.addItems(keyDiningRoom);
 
-
+    
+        
         // System.out.println("test 2 , a droite de hall , ca doit etre c10 ");
         // System.out.println((hall.getRoom("right")).getRoomName());
 
