@@ -2,7 +2,7 @@ package wor;
 
 import java.util.*;
 import java.util.HashMap;
-import javax.swing.Icon;
+import javax.swing.*;
 
 /**
  * A "Room" represents one location in the scenery of the game. It is 
@@ -26,15 +26,13 @@ public class Room
     private boolean director;
     private HashMap<String,Room> myHashRoom;
 
-
-    
     /**
      * Create a room
      *
-     * @param String    proomName The room's name.
-     * @param String    pdescription The room's description.
-     * @param Door   pdoor The door of the room
-     * @param String    pimg The name of the image
+     * @param proomName The room's name.
+     * @param pdescription The room's description.
+     * @param pdoor The door of the room
+     * @param pimg The name of the image
      */
 
     
