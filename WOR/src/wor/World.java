@@ -50,7 +50,7 @@ public class World
 
 
      
-     private Item clothSoaked, scarf,footPrints, rope, dagger, ironBar, revolver,candlestick, wrench, poison, axe, keyLibrary, keyVeranda, keyLivingRoom, keyDiningRoom, codeOffice, codeKitchen, irGlasses, gasMask;
+     private Item hippocraticOath, clothSoaked, scarf,footPrints, rope, dagger, ironBar, revolver,candlestick, wrench, poison, axe, keyLibrary, keyVeranda, keyLivingRoom, keyDiningRoom, codeOffice, codeKitchen, irGlasses, gasMask;
      private Inventory inventory;
      private NoteBook notebook;
      public Player player1;
@@ -59,7 +59,8 @@ public class World
         imagegarden, imagehall, imagesmallHall, imagekiosk, imagelivingRoom, imagediningRoom, imagekitchen, imagecorridor1, imagecorridor2,
         imagecorridor3, imagecorridor4, imagecorridor5, imagecorridor6, imagecorridor7, imagecorridor8, imagecorridor9, imagecorridor10, imagecorridor11,
         imagecorridor12, imagecorridor13, imagecorridor14, imagecorridor15, imagecorridor16, imagecorridor17, imagecorridor18,carte;
-     /**
+    
+    /**
      * Constructor for objects of class World
      */
     public World()
@@ -69,11 +70,7 @@ public class World
     }
 
     private void Game() {
-        // Room Fontaine, Bibliotheque, SalleDeBillard, Bureau, veranda, Grange1, Grange2, Grange3,
-        // Jardin, hall, PetitSalon, Kiosque, GrandSalon, SalleAManger, Cuisine, Couloir1, Couloir2,
-        // Couloir3, Couloir4, Couloir5, Couloir6, Couloir7, Couloir8, Couloir9, Couloir10, Couloir11,
-        // Couloir12, Couloir13, Couloir14, Couloir15, Couloir16, Couloir17, Couloir18;
-        
+       
         //imagehall = new ImageIcon (getClass().getResource("/pictures/c1.jpg")) ;
         
        libraryDoor = new Door ("library",true,false);
@@ -349,7 +346,9 @@ public class World
         // Creation of clues
         footPrints = new Item ("Foot prints","You noticed footprints on the ground, from two people. It seems that they were walking towards the garden...");
         scarf = new Item ("Scarf","A soft cashmere scarf, color periwinkle, does not fool anyone on the identity of its owner. How did Ms Pervenche lose it ...?");
-        clothSoaked = new Item ("Tissu imbibé","You found a cloth soaked in red wine. This reminds you arguing with your wife on Valentine’s Day…");
+        clothSoaked = new Item ("Soaked cloth","You found a cloth soaked in red wine. This reminds you arguing with your wife on Valentine’s Day…");
+        hippocraticOath = new Item("Hippocatric Oath","You found a piece of the Hippocratic Oath. That is strange...");
+        hippocraticOath.setHidden(true);
         
     // Add the items into the rooms  
         barn3.addItem(rope);
@@ -373,6 +372,7 @@ public class World
         kiosk.addItem(footPrints);
         garden.addItem(scarf);
         smallHall.addItem(clothSoaked);
+        smallHall.addItem(hippocraticOath);
 
         
 
