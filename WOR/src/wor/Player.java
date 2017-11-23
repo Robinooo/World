@@ -85,7 +85,7 @@ public class Player extends Character
      *  @param ptime : an integer representing the number of minutes to add to the player. This integer can be positive or negative.
      */
     public void setTime(Integer ptime){
-        this.time = this.time + ptime;
+        this.time = this.time - ptime;
         if (this.time <= 0) {
             //perdu
         }
@@ -99,8 +99,9 @@ public class Player extends Character
             for (int i = 0; i < currentRoom.listItem.size(); i++) {
                 //inv.addObject(currentRoom.listItem.get(i));
                  inv.addItems(currentRoom.getItem(i));
-
+                 setPersuasion(currentRoom.getItem(i).getPersupoints()); // add the persuasion points associated with the item to the player
             }
+            inv.displayItems(inv.ItemsList);
         }
     }
     
@@ -186,11 +187,6 @@ public class Player extends Character
         currentRoom = nextRoom;
         System.out.println(currentRoom.getRoomName());
 
-        
-        // public void move (Exit pexit){
-        // if(currentRoom.checkExitInRoomExits(pexit){
-        // setCurrentRoom(pexit.getNextRoom());
-        // }
        
     }
 
@@ -199,38 +195,31 @@ public class Player extends Character
     }
      
      public void explore(){
-         if (currentRoom.getItemsInTheRoom() == null)  
-         {
-             setTime(5);
-         } 
          
-         else if(currentRoom.listItem.size() > 0 ){
+         
+         if(currentRoom.listItem.size() > 0 ){
                 for(int i=0; i < currentRoom.listItem.size(); i++) 
                 {
                     if (currentRoom.listItem.get(i).getHidden()) {
                     setTime(10);
+                        System.out.println(getTime());
                     }
                     else {
                     setTime(5);
+                        System.out.println(getTime());
                     }
                 }
  
                 }
+         
+         else 
+         {
+             setTime(5);
+             System.out.println(getTime());
+
+         } 
      }
      
-     
-     
-     
-        
-     
-     
-     
-         
-         
-         
-         // on perd 5 minutes de temps des qu'on explore si il y pas d'item ou si un item n'est pas caché 
-         
-         // on perds 10 minutes si un item est caché
-         
+    
      }
      
