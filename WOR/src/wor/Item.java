@@ -67,4 +67,10 @@ public class Item {
     public void setUse(boolean b) {
         use = b;
     }
+
+    public int getPersupoints() {
+        return persupoints;
+    }
+    
+    
 }
