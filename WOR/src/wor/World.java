@@ -276,18 +276,18 @@ public class World
 
 
      // Creation of the characters   
-     clnMoutarde = new Talking ("Speach1","Speach2", "Colonel Moutarde");
-     missRose = new Talking ("Speach1","Speach2", "miss Rose");
-     prOlive = new Talking ("Speach1","Speach2", "Professeur Olive");
-     missLeblanc = new Talking ("Speach1","Speach2", "miss Leblanc");
-     generalLegris = new Talking ("Speach1","Speach2", "general Legris");
-     misterRouge = new Talking ("Speach1","Speach2", "Mister Rouge");
-     countOrange = new Talking ("Speach1","Speach2", "Compte Orange");
-     countnessOrange = new Talking ("Speach1","Speach2", "Comptesse Orange");
+     clnMoutarde = new Talking ("Yesterday I went to have dinner early and saw the Dr. Violet with a bottle of wine in his hand ..","On the one hand, it didn’t shock me: he's a lover of good wine…  Looking back, when I hailed him he looked restless, as if something had happened... ", "Colonel Moutarde");
+     missRose = new Talking ("I just came here to have a quiet weekend. I never thought that something so dramatic could happened …","When I think about it, Madam Pervenche seemed to be dating someone in the mansion, I never knew who it was…", "miss Rose");
+     prOlive = new Talking ("What happened really cut my appetite ... Too bad.. they served lobster this afternoon!","Mrs. Pervenche? Yes it's true she was cute but unfortunately for her not my style at all..", "Professeur Olive");
+     missLeblanc = new Talking ("I wasn’t feeling good yesterday after dinner. I went upstairs in my room and I spent the evening and night there. I needed some rest.. and that’s why I’m having a walk in the garden now.","Mme Pervenche? A good old friend ! I know she wasn’t having a good feeling with Reverend Olive for few days.. too bad he is such a magnificent man...", "miss Leblanc");
+     generalLegris = new Talking ("I talked a little bit with Dr. Violet. A great scientist, this man!  Not like that idiot of \"Professor\" Olive …","I saw someone entering the living room, unfortunately lighting is defective in this room, I could not identify who was coming in. Surely this stupid Professor Olive.", "general Legris");
+     misterRouge = new Talking ("Mrs. Pervenche was a good friend. We used to have good times together.","She was supposed to spend the evening with me last night, but she never came ... ", "Mister Rouge");
+     countOrange = new Talking ("Hello inspector, what do you want?  Yes …  I learned for Mrs. Pervench ... It's very unfortunate. Did you find the murderer ?","I heard Mrs. Pervenche speak to a man when I was in the living room last night, I think they were in the kiosk at this moment.", "Compte Orange");
+     countnessOrange = new Talking ("Me and my husband the Count Orange have been the owner of this hotel for over 20 years and this is the first time such a horrible thing happens! I am taking a deep breath of fresh air in the kiosk to recover from all these emotions.","Mrs. Pervenche seemed so friendly, resourceful, and early in life! What a pity..", "Comptesse Orange");
       
      drViolet = new Killer("Docteur Violet");
 
-     missPrunelle = new Follower ("Speach", "miss Prunelle");
+     missPrunelle = new Follower ("I am only the cleaning lady, but I can help you another way in your investigation.", "miss Prunelle");
 
     // Add the character into rooms
         fountain.addCharacter(missRose);
