@@ -10,7 +10,7 @@ package wor;
 public class Player extends Character
 {
     private NoteBook note; // the player's notebook
-    public Room currentRoom; // the room where the player is currently
+    private Room currentRoom; // the room where the player is currently
     private Inventory inv; // the player's inventory
     private int persuasion; // the number of persuasion points of the player
     private int pointsoflife; // the player's number of points of life
@@ -28,11 +28,6 @@ public class Player extends Character
         pointsoflife = 100;
         time = 120;
     }
-
-
-    
-    
-    
     
     /**
      * This methods allows the user to get the inventory of the player
@@ -108,62 +103,65 @@ public class Player extends Character
             }
         }
     }
+    
     /**
      * This method represents the movements of the player in the map : the player can change of room when it is possible.
      * @param direction : north, east... Represents the direction of the movement of the player
      */
     public void move(String direction){
+
         Room nextRoom = null;
-        Room testRoom = null;
+        Room testRoom = null; // Room to try the door of a room 
+
         if(currentRoom.containsDirection(direction)) 
         {
-            System.out.println("test1");
             testRoom = currentRoom.getRoom(direction);
-
-            // System.out.println(testRoom.getDoor());
-            //System.out.println(testRoom.getRoomName());
             if(testRoom.getDoor() != null)
-            
             { //if there is a door
-                System.out.println("test2");
+                System.out.println("There is a door in the Room");
                 if(testRoom.getDoor().isOpenable() == true)
                 { //if isOpenable -> true if is openable
                     nextRoom = currentRoom.getRoom(direction);
-                    System.out.println("test3bis");
+                    System.out.println("The door is openable");
                 }
                 else 
                 { //if openable is false... Try a Key or a Code
+                    System.out.println("The door is not openable. There is a key or a code to use");
                     if(testRoom.getDoor().getHaveCodeLock())
                     { //if it's a code lock
-                        System.out.println("test3");
+                        System.out.println("It's a code lock");
                         for(int i=0; i < inv.ItemsList.size(); i++)
                         {
-                            if(testRoom.getDoor().openDoorPass(inv.ItemsList.get(i).getName()))
+                            boolean test = testRoom.getDoor().openDoorPass(inv.ItemsList.get(i).getName());
+                            System.out.println("\nThe boolean of codeLock:" + test + "\n");
+                            if(test)
                             { // Try each object from the inventory -> return true if the door is unlock
                                 testRoom.getDoor().setOpenable(true);
                                 nextRoom = currentRoom.getRoom(direction);
+                                System.out.println("On est rentré dans la room");
                             }
                             else {
                                 nextRoom = currentRoom;
+                                System.out.println("We don't have the Code -> We can't enter into the room");
                             }
                         }
                     }
-                    
-                    
-                  
                     else
-                    { System.out.println("test5");
+                    { 
+                        System.out.println("It's a keyLock");
                         for(int i=0; i < inv.ItemsList.size(); i++)
-                       {         System.out.println("test6");                  
-                            if(testRoom.getDoor().openDoorKey(inv.ItemsList.get(i).getName()))
+                       {         
+                            boolean test = testRoom.getDoor().openDoorKey(inv.ItemsList.get(i).getName());
+                            System.out.println("\nThe boolean of keyLock:" + test + "\n");                  
+                            if(test)
                             { // Try each object from the inventory -> return true if the door is unlock
-                                System.out.println("test7");
+                                System.out.println("The door is unlock. We can enter into the room");
                                 testRoom.getDoor().setOpenable(true);
                                 nextRoom = currentRoom.getRoom(direction);
                             }
                              else {
                                 nextRoom = currentRoom;
-                                System.out.println("test8");
+                                System.out.println("We don't have the key to enter into the room");
                             }
                         }
                     }
@@ -171,13 +169,13 @@ public class Player extends Character
             }
             else // there is no door
             {
-                System.out.println("test4");
+                System.out.println("There is no door in this room");
                 nextRoom = currentRoom.getRoom(direction);
             }
-
         }
         else {
             nextRoom = currentRoom;
+            System.out.println("This direction doesn't exist...");
         }
         // System.out.println("You are " + currentRoom.getDescription());
         // System.out.print("Exits: ");

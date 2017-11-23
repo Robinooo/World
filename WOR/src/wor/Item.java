@@ -15,13 +15,14 @@ package wor;
 public class Item {
 
     private String name;
+    private String description;
     private boolean use;
     private boolean hidden;
 
     /**
      * Constructor for objects of class Item
      */
-    public Item(String name) {
+    public Item(String name, String description) {
         this.name = name;
         this.use = true;
         this.hidden = false;
