@@ -14,8 +14,8 @@ import javax.swing.JLabel;
 /**
  * Write a description of class World here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Group2)
+ * @version (11/23/17)
  */
 public class World
 {
