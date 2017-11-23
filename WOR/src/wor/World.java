@@ -123,7 +123,7 @@ public class World
        fountain = new Room ("fountain","A beautiful fountain",null,imagefountain);
        library = new Room ("library","The library, where you can read quietly",libraryDoor,imagelibrary);
        poolRoom = new Room ("pool","a small game of pool ?",poolRoomDoor,imagepoolRoom);
-       office = new Room ("office","the ideal place to work in peace",null,imageoffice);
+       office = new Room ("office","the ideal place to work in peace",officeDoor,imageoffice);
        veranda = new Room ("veranda","a warm place to watch the garden during winter",verandaDoor,imageveranda);
        barn1 = new Room ("barn 1","the first barn of the house",null,imagebarn1);
        barn2 = new Room ("barn 2","the second barn of the house",null,imagebarn2);
@@ -328,9 +328,9 @@ public class World
         keyLibrary.setHidden(true);
         keyVeranda = new Item ("Keyveranda","You found the key of the veranda. People always hide strange things in there. Try your luck…",0);
         keyVeranda.setHidden(true);
-        keyLivingRoom = new Item ("Key living room","You found the key of the living room. This is the right occasion to interrogate new suspects. ",0);
+        keyLivingRoom = new Item ("Keyliving","You found the key of the living room. This is the right occasion to interrogate new suspects. ", 0);
         keyLivingRoom.setHidden(true);
-        keyDiningRoom = new Item ("Key dining room","You found the dining room’s key. Stroke of luck, the dining room and the living room are communicating rooms !",0);
+        keyDiningRoom = new Item ("Keydining","You found the dining room’s key. Stroke of luck, the dining room and the living room are communicating rooms !",0);
         keyDiningRoom.setHidden(true);
         
         codeOffice = new Item ("Codeoffice","You found a 4 digits code (4 4 4 4). It looks like they does not bother that much about security here.",1);

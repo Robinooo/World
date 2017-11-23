@@ -153,6 +153,7 @@ public class Player extends Character
                         System.out.println("It's a keyLock");
                         for(int i=0; i < inv.ItemsList.size(); i++)
                        {         
+                           
                             boolean test = testRoom.getDoor().openDoorKey(inv.ItemsList.get(i).getName());
                             System.out.println("\nThe boolean of keyLock:" + test + "\n");                  
                             if(test)
