@@ -18,11 +18,12 @@ public class Item {
     private String description;
     private boolean use;
     private boolean hidden;
+    private int persupoints;
 
     /**
      * Constructor for objects of class Item
      */
-    public Item(String name, String description) {
+    public Item(String name, String description, int persupoints) {
         this.name = name;
         this.use = true;
         this.hidden = false;
@@ -66,4 +67,10 @@ public class Item {
     public void setUse(boolean b) {
         use = b;
     }
+
+    public int getPersupoints() {
+        return persupoints;
+    }
+    
+    
 }

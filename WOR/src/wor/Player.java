@@ -102,14 +102,16 @@ public class Player extends Character {
     }
 
     /**
-     * This method allows the player to take an item that is present in a room.
+     * This method allows the player to take an item that is present in a room, add it to his 
+     * inventory and update his number of persuasion points by adding the points associated to 
+     * the item he is picking up
      */
     public void takeItem() {
         if (currentRoom.listItem.size() > 0) {
             for (int i = 0; i < currentRoom.listItem.size(); i++) {
                 //inv.addObject(currentRoom.listItem.get(i));
-                inv.addItems(currentRoom.getItem(i));
-
+                 inv.addItems(currentRoom.getItem(i));
+                 setPersuasion(currentRoom.getItem(i).getPersupoints()); // add the persuasion points associated with the item to the player
             }
         }
     }

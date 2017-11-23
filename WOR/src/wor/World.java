@@ -123,7 +123,7 @@ public class World
        fountain = new Room ("fountain","A beautiful fountain",null,imagefountain);
        library = new Room ("library","The library, where you can read quietly",libraryDoor,imagelibrary);
        poolRoom = new Room ("pool","a small game of pool ?",poolRoomDoor,imagepoolRoom);
-       office = new Room ("office","the ideal place to work in peace",null,imageoffice);
+       office = new Room ("office","the ideal place to work in peace",officeDoor,imageoffice);
        veranda = new Room ("veranda","a warm place to watch the garden during winter",verandaDoor,imageveranda);
        barn1 = new Room ("barn 1","the first barn of the house",null,imagebarn1);
        barn2 = new Room ("barn 2","the second barn of the house",null,imagebarn2);
@@ -304,51 +304,51 @@ public class World
 
      
         //Creation of weapons
-        rope = new Item("rope","You found a rope on a stool. This is clearly not the murder weapon. However, someone might have thought about suicide, remorse maybe …");
+        rope = new Item("rope","You found a rope on a stool. This is clearly not the murder weapon. However, someone might have thought about suicide, remorse maybe …",2);
         rope.setUse(false); // this item is not usable by the player
-        dagger = new Item("dagger","You found a nicely decorated dagger. You question yourself on its presence inside the veranda. But you remind that there were no cutoff marks on the victim. There may be other crimes to come...");
+        dagger = new Item("dagger","You found a nicely decorated dagger. You question yourself on its presence inside the veranda. But you remind that there were no cutoff marks on the victim. There may be other crimes to come...",2);
         dagger.setUse(false);
         dagger.setHidden(true);
-        ironBar = new Item("ironBar","You found a quite impressive iron bare. Exactly the kind of thing that can knock out someone. Or worst. ");
+        ironBar = new Item("ironBar","You found a quite impressive iron bare. Exactly the kind of thing that can knock out someone. Or worst. ",2);
         ironBar.setUse(false);
-        revolver = new Item("revolver","Hidden into a desk drawer, you found a Revolver with only one bullet in the chamber. Maybe the one that you will keep for Ms Pervenche murderer.");
+        revolver = new Item("revolver","Hidden into a desk drawer, you found a Revolver with only one bullet in the chamber. Maybe the one that you will keep for Ms Pervenche murderer.",2);
         revolver.setHidden(true); // the revovler is hidden in the room
         revolver.setUse(false);
-        candlestick = new Item("candlestick","You found a dusty candlestick. Perfect for a candlelit dinner with Miss Prunelle once this case solved. The duty before everything !");
+        candlestick = new Item("candlestick","You found a dusty candlestick. Perfect for a candlelit dinner with Miss Prunelle once this case solved. The duty before everything !",2);
         candlestick.setUse(false);
-        wrench = new Item("wrench","You found a wrench. Its implication into the murder seems unlikely. However, you have a sink that has a leakage back home, this might help you to fix it.");
+        wrench = new Item("wrench","You found a wrench. Its implication into the murder seems unlikely. However, you have a sink that has a leakage back home, this might help you to fix it.",2);
         wrench.setUse(false);
-        poison = new Item("poison","You found an half empty flask that contains a suspicious liquid. POISON ! This might be the murder weapon, but who would be perfidious enough to use it …");
+        poison = new Item("poison","You found an half empty flask that contains a suspicious liquid. POISON ! This might be the murder weapon, but who would be perfidious enough to use it …",5);
         poison.setUse(false);
-        axe = new Item("axe","You found an axe. It reminds you your childhood with your father, who was a lumberjack. You focus and notice that there is no blood on it. On one hand, it would be very barbaric to kill someone with an axe...");
+        axe = new Item("axe","You found an axe. It reminds you your childhood with your father, who was a lumberjack. You focus and notice that there is no blood on it. On one hand, it would be very barbaric to kill someone with an axe...",2);
         axe.setUse(false);
         
         // Creation of key - code
-        keyLibrary = new Item ("Keylibrary","You found the library’s key. Who knows, maybe this key will allow you to open other doors ...");
+        keyLibrary = new Item ("Keylibrary","You found the library’s key. Who knows, maybe this key will allow you to open other doors ...",0);
         keyLibrary.setHidden(true);
-        keyVeranda = new Item ("Keyveranda","You found the key of the veranda. People always hide strange things in there. Try your luck…");
+        keyVeranda = new Item ("Keyveranda","You found the key of the veranda. People always hide strange things in there. Try your luck…",0);
         keyVeranda.setHidden(true);
-        keyLivingRoom = new Item ("Key living room","You found the key of the living room. This is the right occasion to interrogate new suspects. ");
+        keyLivingRoom = new Item ("Keyliving","You found the key of the living room. This is the right occasion to interrogate new suspects. ", 0);
         keyLivingRoom.setHidden(true);
-        keyDiningRoom = new Item ("Key dining room","You found the dining room’s key. Stroke of luck, the dining room and the living room are communicating rooms !");
+        keyDiningRoom = new Item ("Keydining","You found the dining room’s key. Stroke of luck, the dining room and the living room are communicating rooms !",0);
         keyDiningRoom.setHidden(true);
         
-        codeOffice = new Item ("Codeoffice","You found a 4 digits code (4 4 4 4). It looks like they does not bother that much about security here.");
+        codeOffice = new Item ("Codeoffice","You found a 4 digits code (4 4 4 4). It looks like they does not bother that much about security here.",1);
         codeOffice.setHidden(true);
-        codeKitchen = new Item ("Codekitchen", "You found a 17 digits code. Yes, that is possible. Good luck to memorise the combination of the kitchen’s door.");
+        codeKitchen = new Item ("Codekitchen", "You found a 17 digits code. Yes, that is possible. Good luck to memorise the combination of the kitchen’s door.",0);
         codeKitchen.setHidden(true);
         
         //Creation of utilities 
 
-        irGlasses = new Item ("Glasses Infrared","Your extraordinary observation capabilities allow you to discover infrared glasses hidden inside a bush. This might look useless but with it, you will have style !");
+        irGlasses = new Item ("Glasses Infrared","Your extraordinary observation capabilities allow you to discover infrared glasses hidden inside a bush. This might look useless but with it, you will have style !",0);
         irGlasses.setHidden(true);
-        gasMask = new Item ("Gas Mask","You found a gas mask from the second world war. Why it is here ? Nevermind, it can be useful at some point.");
+        gasMask = new Item ("Gas Mask","You found a gas mask from the second world war. Why it is here ? Nevermind, it can be useful at some point.",0);
             
         // Creation of clues
-        footPrints = new Item ("Foot prints","You noticed footprints on the ground, from two people. It seems that they were walking towards the garden...");
-        scarf = new Item ("Scarf","A soft cashmere scarf, color periwinkle, does not fool anyone on the identity of its owner. How did Ms Pervenche lose it ...?");
-        clothSoaked = new Item ("Soaked cloth","You found a cloth soaked in red wine. This reminds you arguing with your wife on Valentine’s Day…");
-        hippocraticOath = new Item("Hippocatric Oath","You found a piece of the Hippocratic Oath. That is strange...");
+        footPrints = new Item ("Foot prints","You noticed footprints on the ground, from two people. It seems that they were walking towards the garden...",1);
+        scarf = new Item ("Scarf","A soft cashmere scarf, color periwinkle, does not fool anyone on the identity of its owner. How did Ms Pervenche lose it ...?",1);
+        clothSoaked = new Item ("Soaked cloth","You found a cloth soaked in red wine. This reminds you arguing with your wife on Valentine’s Day…",5);
+        hippocraticOath = new Item("Hippocatric Oath","You found a piece of the Hippocratic Oath. That is strange...",5);
         hippocraticOath.setHidden(true);
         
     // Add the items into the rooms  
