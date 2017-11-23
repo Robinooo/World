@@ -29,11 +29,6 @@ public class Player extends Character
         time = 120;
     }
 
-
-    
-    
-    
-    
     /**
      * This methods allows the user to get the inventory of the player
      * @return the player's inventory
@@ -106,6 +101,7 @@ public class Player extends Character
             }
         }
     }
+    
     /**
      * This method represents the movements of the player in the map : the player can change of room when it is possible.
      * @param direction : north, east... Represents the direction of the movement of the player

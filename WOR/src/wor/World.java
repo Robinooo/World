@@ -50,7 +50,7 @@ public class World
 
 
      
-     private Item tissuImbibe, scarf,footPrints, rope, dagger, ironBar, revolver,candlestick, wrench, poison, axe, keyLibrary, keyVeranda, keyLivingRoom, keyDiningRoom, codeOffice, codeKitchen, irgGlasses, gasMask;
+     private Item clothSoaked, scarf,footPrints, rope, dagger, ironBar, revolver,candlestick, wrench, poison, axe, keyLibrary, keyVeranda, keyLivingRoom, keyDiningRoom, codeOffice, codeKitchen, irGlasses, gasMask;
      private Inventory inventory;
      private NoteBook notebook;
      public Player player1;
@@ -303,37 +303,50 @@ public class World
 
      
         //Creation of weapons
-        rope = new Item("rope");
-        dagger = new Item("dagger");
-        ironBar = new Item("ironBar");
-        revolver = new Item("revolver");
-        candlestick = new Item("candlestick");
-        wrench = new Item("wrench");
-        poison = new Item("poison");
-        axe = new Item("axe");
-
+        rope = new Item("rope","You found a rope on a stool. This is clearly not the murder weapon. However, someone might have thought about suicide, remorse maybe …");
+        rope.setUse(false); // this item is not usable by the player
+        dagger = new Item("dagger","You found a nicely decorated dagger. You question yourself on its presence inside the veranda. But you remind that there were no cutoff marks on the victim. There may be other crimes to come...");
+        dagger.setUse(false);
+        dagger.setHidden(true);
+        ironBar = new Item("ironBar","You found a quite impressive iron bare. Exactly the kind of thing that can knock out someone. Or worst. ");
+        ironBar.setUse(false);
+        revolver = new Item("revolver","Hidden into a desk drawer, you found a Revolver with only one bullet in the chamber. Maybe the one that you will keep for Ms Pervenche murderer.");
+        revolver.setHidden(true); // the revovler is hidden in the room
+        revolver.setUse(false);
+        candlestick = new Item("candlestick","You found a dusty candlestick. Perfect for a candlelit dinner with Miss Prunelle once this case solved. The duty before everything !");
+        candlestick.setUse(false);
+        wrench = new Item("wrench","You found a wrench. Its implication into the murder seems unlikely. However, you have a sink that has a leakage back home, this might help you to fix it.");
+        wrench.setUse(false);
+        poison = new Item("poison","You found an half empty flask that contains a suspicious liquid. POISON ! This might be the murder weapon, but who would be perfidious enough to use it …");
+        poison.setUse(false);
+        axe = new Item("axe","You found an axe. It reminds you your childhood with your father, who was a lumberjack. You focus and notice that there is no blood on it. On one hand, it would be very barbaric to kill someone with an axe...");
+        axe.setUse(false);
+        
         // Creation of key - code
-        keyLibrary = new Item ("Keylibrary");
-        keyVeranda = new Item ("Keyveranda");
-        keyLivingRoom = new Item ("Keyliving");
-        keyDiningRoom = new Item ("Keydining");
-
-        codeOffice = new Item ("Codeoffice");
-        codeKitchen = new Item ("Codekitchen");
-
+        keyLibrary = new Item ("Keylibrary","You found the library’s key. Who knows, maybe this key will allow you to open other doors ...");
+        keyLibrary.setHidden(true);
+        keyVeranda = new Item ("Keyveranda","You found the key of the veranda. People always hide strange things in there. Try your luck…");
+        keyVeranda.setHidden(true);
+        keyLivingRoom = new Item ("Key living room","You found the key of the living room. This is the right occasion to interrogate new suspects. ");
+        keyLivingRoom.setHidden(true);
+        keyDiningRoom = new Item ("Key dining room","You found the dining room’s key. Stroke of luck, the dining room and the living room are communicating rooms !");
+        keyDiningRoom.setHidden(true);
+        
+        codeOffice = new Item ("Codeoffice","You found a 4 digits code (4 4 4 4). It looks like they does not bother that much about security here.");
+        codeOffice.setHidden(true);
+        codeKitchen = new Item ("Codekitchen", "You found a 17 digits code. Yes, that is possible. Good luck to memorise the combination of the kitchen’s door.");
+        codeKitchen.setHidden(true);
         
         //Creation of utilities 
 
-        irgGlasses = new Item ("Glasses Infrared");
-        gasMask = new Item ("Gas Mask");
-        
-        notebook = new NoteBook();
-        inventory = new Inventory();
-        
+        irGlasses = new Item ("Glasses Infrared","Your extraordinary observation capabilities allow you to discover infrared glasses hidden inside a bush. This might look useless but with it, you will have style !");
+        irGlasses.setHidden(true);
+        gasMask = new Item ("Gas Mask","You found a gas mask from the second world war. Why it is here ? Nevermind, it can be useful at some point.");
+            
         // Creation of clues
-        footPrints = new Item ("Foot prints");
-        scarf = new Item ("Scarf");
-        tissuImbibe = new Item ("Tissu imbibé");
+        footPrints = new Item ("Foot prints","You noticed footprints on the ground, from two people. It seems that they were walking towards the garden...");
+        scarf = new Item ("Scarf","A soft cashmere scarf, color periwinkle, does not fool anyone on the identity of its owner. How did Ms Pervenche lose it ...?");
+        clothSoaked = new Item ("Tissu imbibé","You found a cloth soaked in red wine. This reminds you arguing with your wife on Valentine’s Day…");
         
     // Add the items into the rooms  
         barn3.addItem(rope);
@@ -344,7 +357,7 @@ public class World
         fountain.addItem(wrench);
         kitchen.addItem(poison);
         barn2.addItem(axe);
-        garden.addItem(irgGlasses);
+        garden.addItem(irGlasses);
         veranda.addItem(gasMask);
         kiosk.addItem(keyLibrary);
         barn3.addItem(keyVeranda);
@@ -352,16 +365,19 @@ public class World
         poolRoom.addItem(keyDiningRoom);
         library.addItem(codeOffice);
         office.addItem(codeKitchen);
+        
+        // Creation of clues
         kiosk.addItem(footPrints);
         garden.addItem(scarf);
-        smallHall.addItem(tissuImbibe);
+        smallHall.addItem(clothSoaked);
 
     // test    
         inventory.addItems(rope);
         inventory.addItems(dagger);
         inventory.addItems(keyDiningRoom);
 
-    
+        notebook = new NoteBook();
+        inventory = new Inventory();
         
         // System.out.println("test 2 , a droite de hall , ca doit etre c10 ");
         // System.out.println((hall.getRoom("right")).getRoomName());
@@ -527,22 +543,11 @@ public class World
        
     }   
         
-
-    private void play(){
-    }
-
-    
     private void printWelcome() {
 
     }
 
     public Player getPlayer(){
         return player1;
-    }
-
-    
-    
-    
-   
-    
+    }  
 }
