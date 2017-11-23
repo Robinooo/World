@@ -156,124 +156,124 @@ public class World
         
        
     // Creation of the exits in the rooms
-        fountain.setExit("right",corridor1);
-        fountain.setExit("down",corridor2);
+ fountain.setExit("down",corridor1);
+        fountain.setExit("left",corridor2);
         
-        corridor1.setExit("left",fountain);
-        corridor1.setExit("down",corridor3);
+        corridor1.setExit("up",fountain);
+        corridor1.setExit("left",corridor3);
         
-        library.setExit("down",corridor4);
+        library.setExit("left",corridor4);
         
-        poolRoom.setExit("down",corridor5);
+        poolRoom.setExit("left",corridor5);
         
-        office.setExit("down",corridor6);
+        office.setExit("left",corridor6);
         
-        veranda.setExit("down",corridor7);
+        veranda.setExit("left",corridor7);
         
-        corridor2.setExit("up",fountain);
-        corridor2.setExit("right",corridor3);
-        corridor2.setExit("down",corridor8);
+        corridor2.setExit("right",fountain);
+        corridor2.setExit("down",corridor3);
+        corridor2.setExit("left",corridor8);
         
-        corridor3.setExit("up",corridor1);
-        corridor3.setExit("right",corridor4);
-        corridor3.setExit("down",garden);
-        corridor3.setExit("left",corridor2);
+        corridor3.setExit("right",corridor1);
+        corridor3.setExit("down",corridor4);
+        corridor3.setExit("left",garden);
+        corridor3.setExit("up",corridor2);
         
-        corridor4.setExit("up",library);
-        corridor4.setExit("right",corridor5);
-        corridor4.setExit("down",corridor9);
-        corridor4.setExit("left",corridor3);
+        corridor4.setExit("right",library);
+        corridor4.setExit("down",corridor5);
+        corridor4.setExit("left",corridor9);
+        corridor4.setExit("up",corridor3);
         
-        corridor5.setExit("left",corridor4);
-        corridor5.setExit("up",poolRoom);
-        corridor5.setExit("right",corridor6);
-        corridor5.setExit("down",hall);
+        corridor5.setExit("up",corridor4);
+        corridor5.setExit("right",poolRoom);
+        corridor5.setExit("down",corridor6);
+        corridor5.setExit("left",hall);
         
-        corridor6.setExit("up",office);
-        corridor6.setExit("right",corridor7);
-        corridor6.setExit("down",corridor10);
-        corridor6.setExit("left",corridor5);
+        corridor6.setExit("right",office);
+        corridor6.setExit("down",corridor7);
+        corridor6.setExit("left",corridor10);
+        corridor6.setExit("up",corridor5);
         
-        corridor7.setExit("up",veranda);
-        corridor7.setExit("left",corridor6);
+        corridor7.setExit("right",veranda);
+        corridor7.setExit("up",corridor6);
         
-        barn1.setExit("down",barn2);
+        barn1.setExit("left",barn2);
         
-        corridor8.setExit("up",corridor2);
-        corridor8.setExit("right",garden);
-        corridor8.setExit("down",corridor11);
+        corridor8.setExit("right",corridor2);
+        corridor8.setExit("down",garden);
+        corridor8.setExit("left",corridor11);
         
-        garden.setExit("up",corridor3);
-        garden.setExit("right",corridor9);
-        garden.setExit("down",corridor12);
-        garden.setExit("left",corridor8);
+        garden.setExit("right",corridor3);
+        garden.setExit("down",corridor9);
+        garden.setExit("left",corridor12);
+        garden.setExit("up",corridor8);
         
-        corridor9.setExit("up",corridor4);
-        corridor9.setExit("right",hall);
-        corridor9.setExit("down",corridor13);
-        corridor9.setExit("left",garden);
+        corridor9.setExit("right",corridor4);
+        corridor9.setExit("down",hall);
+        corridor9.setExit("left",corridor13);
+        corridor9.setExit("up",garden);
     
-        hall.setExit("up", corridor5);
-        hall.setExit("right", corridor10);
-        hall.setExit("down", corridor14);
-        hall.setExit("left",corridor9);
+        hall.setExit("right", corridor5);
+        hall.setExit("down", corridor10);
+        hall.setExit("left", corridor14);
+        hall.setExit("up",corridor9);
 
-        corridor10.setExit("up",corridor6);
-        corridor10.setExit("right",smallHall);
-        corridor10.setExit("down",corridor15);
-        corridor10.setExit("left",hall);
+        corridor10.setExit("right",corridor6);
+        corridor10.setExit("down",smallHall);
+        corridor10.setExit("left",corridor15);
+        corridor10.setExit("up",hall);
         
-        smallHall.setExit("left", corridor10);
+        smallHall.setExit("up", corridor10);
 
-        barn2.setExit("up", barn1);
-        barn2.setExit("down", barn3);
+        barn2.setExit("right", barn1);
+        barn2.setExit("left", barn3);
 
-        barn3.setExit("left", corridor16);
-        barn3.setExit("up", barn2);
+        barn3.setExit("up", corridor16);
+        barn3.setExit("right", barn2);
 
-        corridor11.setExit("up", corridor8);
-        corridor11.setExit("right", corridor12);
-        corridor11.setExit("down", kiosk);
+        corridor11.setExit("right", corridor8);
+        corridor11.setExit("down", corridor12);
+        corridor11.setExit("left", kiosk);
 
-        corridor12.setExit("up", garden);
-        corridor12.setExit("right", corridor13);
-        corridor12.setExit("down", corridor17);
-        corridor12.setExit("left", corridor11);
+        corridor12.setExit("right", garden);
+        corridor12.setExit("down", corridor13);
+        corridor12.setExit("left", corridor17);
+        corridor12.setExit("up", corridor11);
 
-        corridor13.setExit("up", corridor9);
-        corridor13.setExit("right", corridor14);
-        corridor13.setExit("down", livingRoom);
-        corridor13.setExit("left", corridor12);
+        corridor13.setExit("right", corridor9);
+        corridor13.setExit("down", corridor14);
+        corridor13.setExit("left", livingRoom);
+        corridor13.setExit("up", corridor12);
 
-        corridor14.setExit("up", hall);
-        corridor14.setExit("right", corridor15);
-        corridor14.setExit("down", diningRoom);
-        corridor14.setExit("left", corridor13);
+        corridor14.setExit("right", hall);
+        corridor14.setExit("down", corridor15);
+        corridor14.setExit("left", diningRoom);
+        corridor14.setExit("up", corridor13);
 
-        corridor15.setExit("up", corridor10);
-        corridor15.setExit("right", corridor16);
-        corridor15.setExit("down", corridor18);
-        corridor15.setExit("left", corridor14);
+        corridor15.setExit("right", corridor10);
+        corridor15.setExit("down", corridor16);
+        corridor15.setExit("left", corridor18);
+        corridor15.setExit("up", corridor14);
 
-        corridor16.setExit("right", barn3);
-        corridor16.setExit("left", corridor15);
+        corridor16.setExit("down", barn3);
+        corridor16.setExit("up", corridor15);
 
-        kiosk.setExit("up", corridor11);
-        kiosk.setExit("right", corridor17);
+        kiosk.setExit("right", corridor11);
+        kiosk.setExit("down", corridor17);
 
-        corridor17.setExit("up", corridor12);
-        corridor17.setExit("left", kiosk);
+        corridor17.setExit("right", corridor12);
+        corridor17.setExit("up", kiosk);
 
-        livingRoom.setExit("up", corridor13);
-        livingRoom.setExit("right", diningRoom);
+        livingRoom.setExit("right", corridor13);
+        livingRoom.setExit("down", diningRoom);
 
-        diningRoom.setExit("up", corridor14);
-        diningRoom.setExit("left", livingRoom);
+        diningRoom.setExit("right", corridor14);
+        diningRoom.setExit("up", livingRoom);
 
-        corridor18.setExit("up", corridor15);
-        corridor18.setExit("right", kitchen);
+        corridor18.setExit("right", corridor15);
+        corridor18.setExit("down", kitchen);
 
-        kitchen.setExit("left", corridor18);
+        kitchen.setExit("up", corridor18);
 
 
      // Creation of the characters   
