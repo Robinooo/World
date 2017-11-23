@@ -16,6 +16,7 @@ public class Room
     // instance variables - replace the example below with your own
     private String roomName;
     private Character chara;
+    private Talking talking;
     protected ArrayList<Item> listItem;
     private Door door;
     private String description;
@@ -121,6 +122,10 @@ public class Room
      */
     public Character getCharaInTheRoom(){
         return  chara;
+    }
+    
+        public Talking getTalkingInTheRoom(){
+        return talking ;
     }
 
     

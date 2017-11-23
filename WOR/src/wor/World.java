@@ -25,7 +25,7 @@ public class World
     private JButton btUp, btDown, btLeft, btRight, btSpeak, btExplore, btTake;
     private JPanel bBar,lMap,rActions;
     public JLabel map, cPicture, text;
-    private JTextArea zoneTexte = new JTextArea(1,10);
+    JTextArea zoneTexte = new JTextArea(1,10);
     private String lastTeam;
     private String lastAction;
     private Player thePlayer;
@@ -540,6 +540,8 @@ public class World
                                                
                                 player1.getTime();
                                 });
+        
+        btSpeak.addActionListener(ae -> {player1.speak(); player1.getTime();});
           
         
        

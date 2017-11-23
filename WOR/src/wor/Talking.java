@@ -13,6 +13,7 @@ public class Talking extends Character {
     // instance variables - replace the example below with your own
     protected String speach1; // taux de persuasion bas 
     protected String speach2; // taux de persuasion haut
+    private Player player;
 
     /**
      * Constructor for objects of class Talking Create a person talking
@@ -66,10 +67,13 @@ public class Talking extends Character {
     }
 
     /**
-     * Display the 2 speach of the talking
+     * Display the 2 speaches of the talking
      */
-    public void talk() {
-        System.out.println(getspeach1()); // Depending of the cararism points
-        System.out.println(getspeach2()); // Depending of the cararism points
+    public void talk(int persuasion) {
+        if (persuasion > 16){
+            System.out.println(getspeach2()); // Depending of the persuasion points
+        } else {
+            System.out.println(getspeach1()); // Depending of the persuasion points
+        }
     }
 }
