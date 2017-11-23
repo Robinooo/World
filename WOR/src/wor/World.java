@@ -23,8 +23,8 @@ public class World
     
     private JFrame frame;
     private JButton btUp, btDown, btLeft, btRight, btSpeak, btExplore, btTake;
-    private JPanel bBar,lMap,cPicture,rActions;
-    public JLabel map, picture, text;
+    private JPanel bBar,lMap,rActions;
+    public JLabel map, cPicture, text;
     private JTextArea zoneTexte = new JTextArea(1,10);
     private String lastTeam;
     private String lastAction;
@@ -58,7 +58,7 @@ public class World
         private Icon imagefountain, imagelibrary, imagepoolRoom, imageoffice, imageveranda, imagebarn1, imagebarn2, imagebarn3,
         imagegarden, imagehall, imagesmallHall, imagekiosk, imagelivingRoom, imagediningRoom, imagekitchen, imagecorridor1, imagecorridor2,
         imagecorridor3, imagecorridor4, imagecorridor5, imagecorridor6, imagecorridor7, imagecorridor8, imagecorridor9, imagecorridor10, imagecorridor11,
-        imagecorridor12, imagecorridor13, imagecorridor14, imagecorridor15, imagecorridor16, imagecorridor17, imagecorridor18;
+        imagecorridor12, imagecorridor13, imagecorridor14, imagecorridor15, imagecorridor16, imagecorridor17, imagecorridor18,carte;
      /**
      * Constructor for objects of class World
      */
@@ -69,10 +69,13 @@ public class World
     }
 
     private void Game() {
-
-        //imagehall = new ImageIcon (getClass().getResource("/pictures/c1.jpg")) ;       
+        // Room Fontaine, Bibliotheque, SalleDeBillard, Bureau, veranda, Grange1, Grange2, Grange3,
+        // Jardin, hall, PetitSalon, Kiosque, GrandSalon, SalleAManger, Cuisine, Couloir1, Couloir2,
+        // Couloir3, Couloir4, Couloir5, Couloir6, Couloir7, Couloir8, Couloir9, Couloir10, Couloir11,
+        // Couloir12, Couloir13, Couloir14, Couloir15, Couloir16, Couloir17, Couloir18;
         
-    // Creation of all the doors    
+        //imagehall = new ImageIcon (getClass().getResource("/pictures/c1.jpg")) ;
+        
        libraryDoor = new Door ("library",true,false);
        officeDoor = new Door ("office",false,true);
        verandaDoor = new Door ("veranda",true, false);
@@ -89,11 +92,11 @@ public class World
        imagepoolRoom = new ImageIcon (getClass().getResource("/pictures/billard1.jpg")) ;
        imageoffice = new ImageIcon (getClass().getResource("/pictures/bureau.jpg")) ;
        imageveranda = new ImageIcon (getClass().getResource("/pictures/veranda5.jpg")) ;
-       imagebarn1 = new ImageIcon (getClass().getResource("/pictures/grange.jpeg")) ;
+       imagebarn1 = new ImageIcon (getClass().getResource("/pictures/grange.jpg")) ;
        imagebarn2 = new ImageIcon (getClass().getResource("/pictures/grange2.jpg")) ;
        imagebarn3 = new ImageIcon (getClass().getResource("/pictures/grange3.jpg")) ;
        imagegarden = new ImageIcon (getClass().getResource("/pictures/jardin3.jpg")) ;
-       imagehall = new ImageIcon (getClass().getResource("/pictures/DSC05443.jpg")) ;
+       imagehall = new ImageIcon (getClass().getResource("/pictures/Hall.jpg")) ;
        imagesmallHall = new ImageIcon (getClass().getResource("/pictures/petitsalon2.jpg")) ;
        imagekiosk = new ImageIcon (getClass().getResource("/pictures/kiosque.jpg")) ;
        imagelivingRoom = new ImageIcon (getClass().getResource("/pictures/grandsalon.jpg")) ;
@@ -444,9 +447,8 @@ public class World
         menuBar.add(menuItems);
         
         lMap = new JPanel();
-        map = new JLabel(new ImageIcon("/pictures/c1.jpg"));
-        lMap.add(map);        
-        
+        map = new JLabel(carte);
+        lMap.add(map);     
 //         cPicture = new JPanel();
 //        picture = new JLabel(new ImageIcon("/pictures/c1.jpg"));
 //                cPicture.add(picture);   
@@ -454,9 +456,6 @@ public class World
 //         Icon feuVert = new ImageIcon("green.jpg");
 //                JLabel feuGreen = new JLabel();
 //                feuGreen.setIcon(feuVert);
-// 
-//               fenetre.add(feuGreen); // Ajout à la JFrame
-//               fenetre.setVisible(true); //On peut enfin afficher le tout
 
                 
                 
@@ -464,11 +463,8 @@ public class World
          
        
        
-       
-                JLabel feuGreen = new JLabel();
-                //feuGreen.setIcon(imagehall);
-                feuGreen.setIcon(player1.getCurrentRoom().getImage());
-
+                cPicture = new JLabel();
+                cPicture.setIcon(player1.getCurrentRoom().getImage());
                 
                 //System.out.println((player1.getCurrentRoom()).getImage());
                 //System.out.println((player1.getCurrentRoom()).getImage());
@@ -503,38 +499,35 @@ public class World
         bBar.add(moveBt);
         
         frame = new JFrame("TestWoZ");
-        frame.setSize(500,300);
+        frame.setSize(1000,700);
+        frame.setResizable(false);
         frame.setAlwaysOnTop(true);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         //frame.setUndecorated(true);
         frame.setLayout(new BorderLayout());
-        frame.add(feuGreen, BorderLayout.CENTER);
+        frame.add(cPicture, BorderLayout.CENTER);
         frame.add(bBar, BorderLayout.SOUTH);
         frame.add(rActions, BorderLayout.EAST);
         frame.add(lMap, BorderLayout.WEST);
         frame.setJMenuBar(menuBar);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
         frame.setVisible(true);
      
         
-        btRight.addActionListener(
-				ae -> {player1.move("right");  
-                                feuGreen.setIcon(player1.getCurrentRoom().getImage());
-                                });
-        btLeft.addActionListener(
-				ae -> {player1.move("left");   
-                                feuGreen.setIcon(player1.getCurrentRoom().getImage());
+        btRight.addActionListener(ae -> {player1.move("right");  
+                                cPicture.setIcon(player1.getCurrentRoom().getImage());
 
                                 });
-        btUp.addActionListener(
-				ae -> {player1.move("up");  
-                                                feuGreen.setIcon(player1.getCurrentRoom().getImage());
+        btLeft.addActionListener(ae -> {player1.move("left");   
+                                cPicture.setIcon(player1.getCurrentRoom().getImage());
 
                                 });
-        btDown.addActionListener(
-				ae -> {player1.move("down");
-                                                feuGreen.setIcon(player1.getCurrentRoom().getImage());
+        btUp.addActionListener(ae -> {player1.move("up");  
+                                                cPicture.setIcon(player1.getCurrentRoom().getImage());
+
+                                });
+        btDown.addActionListener(ae -> {player1.move("down");
+                                                cPicture.setIcon(player1.getCurrentRoom().getImage());
 
                                 });
         
