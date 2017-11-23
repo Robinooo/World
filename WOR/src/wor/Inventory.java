@@ -51,7 +51,7 @@ public class Inventory {
         } else {
             System.out.println("Items dans l'inventaire : ");
             for (int i = 0; i < ItemsList.size(); i++) {
-                System.out.println(ItemsList.get(i));
+                System.out.println(ItemsList.get(i).getName());
             }
             return true;
 
