@@ -371,13 +371,14 @@ public class World
         garden.addItem(scarf);
         smallHall.addItem(clothSoaked);
 
-    // test    
-        inventory.addItems(rope);
-        inventory.addItems(dagger);
-        inventory.addItems(keyDiningRoom);
+        
 
         notebook = new NoteBook();
         inventory = new Inventory();
+        // test    
+        inventory.addItems(rope);
+        inventory.addItems(dagger);
+        inventory.addItems(keyDiningRoom);
         
         // System.out.println("test 2 , a droite de hall , ca doit etre c10 ");
         // System.out.println((hall.getRoom("right")).getRoomName());
@@ -520,7 +521,6 @@ public class World
         btRight.addActionListener(
 				ae -> {player1.move("right");  
                                 feuGreen.setIcon(player1.getCurrentRoom().getImage());
-
                                 });
         btLeft.addActionListener(
 				ae -> {player1.move("left");   
@@ -538,7 +538,14 @@ public class World
 
                                 });
         
-        
+        btExplore.addActionListener(ae -> {player1.explore();
+                                               
+                                player1.getTime();
+                                });
+        btTake.addActionListener(ae -> {player1.takeItem();
+                                               
+                                player1.getTime();
+                                });
           
         
        
