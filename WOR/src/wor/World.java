@@ -54,12 +54,9 @@ public class World {
     /**
      * Constructor for objects of class World
      */
-    public World() {
+    public World(String playerClass, String playerName) {
 
-        Game();
-    }
-
-    private void Game() {
+      
 
         //imagehall = new ImageIcon (getClass().getResource("/pictures/c1.jpg")) ;
         libraryDoor = new Door("library", true, false);
@@ -367,7 +364,13 @@ public class World {
         inventory.addItems(dagger);
         inventory.addItems(keyDiningRoom);
 
-        player1 = new Player("NomPlayer", hall, notebook, inventory);
+        
+        if  (playerClass == "Gadget"){
+        player1 = new Player(playerName, hall, notebook, inventory,0,100,500);}
+        else if (playerClass == "Colombo"){
+        player1 = new Player(playerName, hall, notebook, inventory,0,100,400);}
+        else{
+        player1 = new Player(playerName, hall, notebook, inventory,0,100,300);}
 
         System.out.println((player1.getCurrentRoom()).getRoomName());
 

@@ -19,14 +19,14 @@ public class Player extends Character {
     /**
      * Constructor for objects of class Player
      */
-    public Player(String pname, Room pcurrentRoom, NoteBook pnote, Inventory pinv) {
+    public Player(String pname, Room pcurrentRoom, NoteBook pnote, Inventory pinv, int pper, int ppoints, int ptime) {
         name = pname;
         note = pnote;
         currentRoom = pcurrentRoom;
         inv = pinv;
-        persuasion = 0;
-        pointsoflife = 100;
-        time = 120;
+        persuasion = pper;
+        pointsoflife = ppoints;
+        time = ptime;
     }
 
     /**
