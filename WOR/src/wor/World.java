@@ -69,24 +69,10 @@ public class World
     }
 
     private void Game() {
-        // Room Fontaine, Bibliotheque, SalleDeBillard, Bureau, veranda, Grange1, Grange2, Grange3,
-        // Jardin, hall, PetitSalon, Kiosque, GrandSalon, SalleAManger, Cuisine, Couloir1, Couloir2,
-        // Couloir3, Couloir4, Couloir5, Couloir6, Couloir7, Couloir8, Couloir9, Couloir10, Couloir11,
-        // Couloir12, Couloir13, Couloir14, Couloir15, Couloir16, Couloir17, Couloir18;
-        
-        
-       
-    
-        
-       
-        
-        
+
         //imagehall = new ImageIcon (getClass().getResource("/pictures/c1.jpg")) ;       
         
-    
-        
-        
-        
+    // Creation of all the doors    
        libraryDoor = new Door ("library",true,false);
        officeDoor = new Door ("office",false,true);
        verandaDoor = new Door ("veranda",true, false);
@@ -97,7 +83,7 @@ public class World
        diningRoomDoor = new Door ("dining",true,false);
        livingRoomDoor = new Door ("living",true,false);
        
-       
+    // Creation of the images associated with the rooms   
        imagefountain = new ImageIcon (getClass().getResource("/pictures/fontaine.jpg")) ;   
        imagelibrary = new ImageIcon (getClass().getResource("/pictures/bibliothèque2.jpg")) ;   
        imagepoolRoom = new ImageIcon (getClass().getResource("/pictures/billard1.jpg")) ;
@@ -132,10 +118,7 @@ public class World
        imagecorridor17 = new ImageIcon (getClass().getResource("/pictures/c17.jpg")) ;   
        imagecorridor18 = new ImageIcon (getClass().getResource("/pictures/c18.jpg")) ;   
 
-       
-       
-       
-       
+    // Creation of all the rooms
        fountain = new Room ("fountain","A beautiful fountain",null,imagefountain);
        library = new Room ("library","The library, where you can read quietly",libraryDoor,imagelibrary);
        poolRoom = new Room ("pool","a small game of pool ?",poolRoomDoor,imagepoolRoom);
@@ -171,7 +154,7 @@ public class World
        corridor18 = new Room ("corridor 18","A simple corridor",null,imagecorridor18);
         
        
-      
+    // Creation of the exits in the rooms
         fountain.setExit("right",corridor1);
         fountain.setExit("down",corridor2);
         
@@ -234,9 +217,6 @@ public class World
         hall.setExit("down", corridor14);
         hall.setExit("left",corridor9);
 
-
-      
-
         corridor10.setExit("up",corridor6);
         corridor10.setExit("right",smallHall);
         corridor10.setExit("down",corridor15);
@@ -295,7 +275,7 @@ public class World
         kitchen.setExit("left", corridor18);
 
 
-        
+     // Creation of the characters   
      clnMoutarde = new Talking ("Speach1","Speach2", "Colonel Moutarde");
      missRose = new Talking ("Speach1","Speach2", "miss Rose");
      prOlive = new Talking ("Speach1","Speach2", "Professeur Olive");
@@ -309,7 +289,7 @@ public class World
 
      missPrunelle = new Follower ("Speach", "miss Prunelle");
 
-     
+    // Add the character into rooms
         fountain.addCharacter(missRose);
         library.addCharacter(clnMoutarde);
         poolRoom.addCharacter(missPrunelle);
@@ -322,7 +302,7 @@ public class World
         kitchen.addCharacter(generalLegris);
 
      
-        // weapons
+        //Creation of weapons
         rope = new Item("rope");
         dagger = new Item("dagger");
         ironBar = new Item("ironBar");
@@ -332,7 +312,7 @@ public class World
         poison = new Item("poison");
         axe = new Item("axe");
 
-        // key - code
+        // Creation of key - code
         keyLibrary = new Item ("Keylibrary");
         keyVeranda = new Item ("Keyveranda");
         keyLivingRoom = new Item ("Keyliving");
@@ -342,7 +322,7 @@ public class World
         codeKitchen = new Item ("Codekitchen");
 
         
-        //utilities 
+        //Creation of utilities 
 
         irgGlasses = new Item ("Glasses Infrared");
         gasMask = new Item ("Gas Mask");
@@ -350,7 +330,7 @@ public class World
         notebook = new NoteBook();
         inventory = new Inventory();
 
-      
+    // Add the items into the rooms  
         barn3.addItem(rope);
         veranda.addItem(dagger);
         barn2.addItem(ironBar);
@@ -373,10 +353,7 @@ public class World
         inventory.addItems(dagger);
         inventory.addItems(keyDiningRoom);
 
-        
 
-        
-        
         // System.out.println("test 2 , a droite de hall , ca doit etre c10 ");
         // System.out.println((hall.getRoom("right")).getRoomName());
 
