@@ -266,6 +266,10 @@ public class Room
     public void setRoomDescription(String s){
         description = s;
     }
+    
+    public Item getItem(int indice){
+        return listItem.get(indice);
+    }
 
     // public boolean checkExitInRoomExits(Exit pexit) {
     // for(Exit e : exitRooms) {

@@ -100,9 +100,11 @@ public class Player extends Character
      * This method allows the player to take an item that is present in a room.
      */
     public void takeItem() {
-        if (currentRoom.listItem.size() < 0) {
+        if (currentRoom.listItem.size() > 0) {
             for (int i = 0; i < currentRoom.listItem.size(); i++) {
-                //Inventory.addItem(currentRoom.listItem.get(i));
+                //inv.addObject(currentRoom.listItem.get(i));
+                 inv.addItems(currentRoom.getItem(i));
+
             }
         }
     }
@@ -185,10 +187,6 @@ public class Player extends Character
         currentRoom = nextRoom;
         System.out.println(currentRoom.getRoomName());
 
-
-
-        
-        
         
         // public void move (Exit pexit){
         // if(currentRoom.checkExitInRoomExits(pexit){
@@ -200,4 +198,40 @@ public class Player extends Character
      public Room getCurrentRoom(){
         return currentRoom;
     }
-}
+     
+     public void explore(){
+         if (currentRoom.getItemsInTheRoom() == null)  
+         {
+             setTime(5);
+         } 
+         
+         else if(currentRoom.listItem.size() > 0 ){
+                for(int i=0; i < currentRoom.listItem.size(); i++) 
+                {
+                    if (currentRoom.listItem.get(i).getHidden()) {
+                    setTime(10);
+                    }
+                    else {
+                    setTime(5);
+                    }
+                }
+ 
+                }
+     }
+     
+     
+     
+     
+        
+     
+     
+     
+         
+         
+         
+         // on perd 5 minutes de temps des qu'on explore si il y pas d'item ou si un item n'est pas caché 
+         
+         // on perds 10 minutes si un item est caché
+         
+     }
+     
