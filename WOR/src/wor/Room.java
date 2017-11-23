@@ -2,6 +2,7 @@ package wor;
 
 import java.util.*;
 import java.util.HashMap;
+import javax.swing.Icon;
 
 /**
  * A "Room" represents one location in the scenery of the game. It is 
@@ -19,7 +20,7 @@ public class Room
     private Door door; 
     private String description;
     //private ArrayList<Exit> exitRooms; 
-    private String img;
+    private Icon img;
     private boolean noir;
     private boolean gaz;
     private boolean director;
@@ -37,7 +38,7 @@ public class Room
      */
     
     
-    public Room(String proomName, String pdescription, Door pdoor,String pimg)
+    public Room(String proomName, String pdescription, Door pdoor,Icon pimg)
     {
         roomName = proomName;
         description = pdescription;
@@ -70,7 +71,7 @@ public class Room
      /**
      * @return The description of the image.
      */
-    public String getImage() {
+    public Icon getImage() {
         return img;
     }
     
