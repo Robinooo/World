@@ -16,8 +16,8 @@ public class Room
     // instance variables - replace the example below with your own
     private String roomName;
     private Character chara;
-    protected ArrayList<Item> listItem; 
-    private Door door; 
+    protected ArrayList<Item> listItem;
+    private Door door;
     private String description;
     //private ArrayList<Exit> exitRooms; 
     private Icon img;
@@ -29,14 +29,14 @@ public class Room
 
     
     /**
-     * Create a room 
-     * 
+     * Create a room
+     *
      * @param String    proomName The room's name.
      * @param String    pdescription The room's description.
      * @param Door   pdoor The door of the room
      * @param String    pimg The name of the image
      */
-    
+
     
     public Room(String proomName, String pdescription, Door pdoor,Icon pimg)
     {
@@ -49,119 +49,120 @@ public class Room
         listItem= new ArrayList<Item>();
         gaz = false;
         noir = false;
-        director = false; 
+        director = false;
         myHashRoom = new HashMap<String,Room>();
 
     }
 
-      /** 
-   * @return the roomName
-   */
+    /**
+     * @return the roomName
+     */
     public String getRoomName() {
-    return roomName;
+        return roomName;
     }
-    
+
     /**
      * @return The description of the room.
      */
     public String getDescription() {
         return description;
     }
-    
-     /**
+
+    /**
      * @return The description of the image.
      */
     public Icon getImage() {
         return img;
     }
-    
-      /**
+
+    /**
      * @return if the room is in the black
      */
     public boolean getNoir()
     {
-       return noir;
-         }
-    
+        return noir;
+    }
+
          
-      /**
+    /**
      * @return boolean if there is gaz in the room
-     */     
+     */
     public boolean getGaz()
     {
-       return gaz;
-         }
-         
-     /**
+        return gaz;
+    }
+
+    /**
      * @return boolean if there is the director in the room
      */
       
     public boolean getDirector()
     {
-       return director;
-         }  
-         
-     /**
+        return director;
+    }
+
+    /**
      * @return the door of the room.
      */
     public Door getDoor() {
         return  door;
-       }
-    
-        /**
+    }
+
+    /**
      * Returns the list of items situated in the current room.
      * @return  ArrayList<Item> getItems    
      */
     public ArrayList<Item> getItemsInTheRoom(){
         return listItem;
     }
+
     
-    
-        /**
+    /**
      * Returns the list of items situated in the current room.
      * @return  ArrayList<Item> getItems    
      */
     public Character getCharaInTheRoom(){
         return  chara;
     }
-        
+
     
     // /**
-     // * @return the exitRoom
-     // */
+    // * @return the exitRoom
+    // */
     // public ArrayList<Exit> getExitRoom() {
-        // return exitRooms;
+    // return exitRooms;
     // }
 
     // /**
-     // * Adds an exit to the room
-       // */
+    // * Adds an exit to the room
+    // */
     // public void addExitRoom(Exit pexitRoom) {
-        // exitRooms.add(pexitRoom);
+    // exitRooms.add(pexitRoom);
     // }
         
         
     
     /**
-       * Adds an item to the item list of the current room.
-    * @param pitem Item to be added
+     * Adds an item to the item list of the current room.
+     *
+     * @param pitem Item to be added
      */
     public void addItem(Item pitem) {
         listItem.add(pitem);
     }
-    
+
     
     
     // /**
-     // * @param exitRoom the exitRoom to set
-     // */
+    // * @param exitRoom the exitRoom to set
+    // */
     // public void setExitRoom(ArrayList<Exit> pExitRoom) {
-        // exitRooms =pExitRoom;
+    // exitRooms =pExitRoom;
            
     // }
     
     
-     /**
+    /**
      * Set the exit into the HashMap "myHashRoom"
      * @param direction The direction given by the user
      * @param proom The curent room of the user
@@ -172,7 +173,7 @@ public class Room
     }
 
     
-     /**
+    /**
      * A method to know if the direction given by the user
      * is present into the HashMap "myHashRoom"
      * return false if not present
@@ -183,9 +184,9 @@ public class Room
     {
         return  myHashRoom.containsKey(direction);
     }
+
     
-    
-     /**
+    /**
      * A method to get the name of the room thanks to the direction.
      * @param key The direction given by the user
      * @return The name of the room
@@ -194,7 +195,7 @@ public class Room
     {
         return myHashRoom.get(key);
     }
-    
+
     
     
     /**
@@ -204,75 +205,75 @@ public class Room
     public void setRoomName(String proomName) {
         roomName = proomName;
     }
-     /**
-       * Set the type of the room, the room is a black room
-       * @param pnoir if the boolean is true -> black , false : not black
-       * 
-     */ 
-    
+    /**
+     * Set the type of the room, the room is a black room
+     * @param pnoir if the boolean is true -> black , false : not black
+     *
+     */
+
     public void setNoir(boolean pNoir)
     {
         noir = pNoir;
 
-         }
-         
-         /**
-       * Set the type of the room, the room is gaz room
-       * @param pnoir if the boolean is true -> black , false : not black
-     */ 
+    }
+
+    /**
+     * Set the type of the room, the room is gaz room
+     * @param pnoir if the boolean is true -> black , false : not black
+     */
     public void setGaz(boolean pGaz)
     {
         gaz = pGaz;
-         }
-         
-       /**
-       * Set the type of the room, the room is the room of the director 
+    }
+
+    /**
+     * Set the type of the room, the room is the room of the director
        * @param pDirector if the boolean is true -> there is the director, false : not the director;
-     */  
+     */
          public void setDirector(boolean pDirector)
         {
-            director = pDirector;
-         }
-    
-         /**
-       * Add a character to the room
-       * @param pcharacter The character added to the room; 
-     */   
+        director = pDirector;
+    }
+
+    /**
+     * Add a character to the room
+     * @param pcharacter The character added to the room;
+     */
          public void addCharacter (Character pcharacter) 
          {
            chara=pcharacter;
-            }
-    
+    }
+
     /**
-       * Displays the room description 
-       * @return the all the informations of a room
+     * Displays the room description
+     * @return the all the informations of a room
      */
     public void displayRoomInformations() {
-      System.out.println("Current location : " + roomName);
-      System.out.println(description);
-      System.out.println(myHashRoom.keySet());
+        System.out.println("Current location : " + roomName);
+        System.out.println(description);
+        System.out.println(myHashRoom.keySet());
         // System.out.println("Available exits are : ");
         // for(Exit r: exitRooms) {
-            // System.out.println(r.getNextRoom().getRoomName());
+        // System.out.println(r.getNextRoom().getRoomName());
         // }
-    }   
-    
+    }
+
     /**
-       * Set the room description 
-       * @param s The new description of the room
+     * Set the room description
+     * @param s The new description of the room
      */
    
     public void setRoomDescription(String s){
         description = s;
     }
-    
-     // public boolean checkExitInRoomExits(Exit pexit) {
-        // for(Exit e : exitRooms) {
-            // if(e == pexit) {
-                // return true;
-            // }
-        // }
-        // return false;
+
+    // public boolean checkExitInRoomExits(Exit pexit) {
+    // for(Exit e : exitRooms) {
+    // if(e == pexit) {
+    // return true;
+    // }
+    // }
+    // return false;
     // }
     
 }

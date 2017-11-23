@@ -20,15 +20,15 @@ public class Player extends Character
      */
     public Player(String pname, Room pcurrentRoom, NoteBook pnote, Inventory pinv)
     {
-       name = pname;
-       note = pnote;
-       currentRoom = pcurrentRoom;
-       inv = pinv;
-       persuasion = 0;
-       pointsoflife = 100;
-       time = 120;
+        name = pname;
+        note = pnote;
+        currentRoom = pcurrentRoom;
+        inv = pinv;
+        persuasion = 0;
+        pointsoflife = 100;
+        time = 120;
     }
-    
+
 
     
     
@@ -39,17 +39,17 @@ public class Player extends Character
      * @return the player's inventory
      */
     public Inventory getInventory (){
-    return this.inv;
+        return this.inv;
     }
-    
-     /**
+
+    /**
      * This method allows the user to get the persuasion points of the player
      * @return the player's persuasion points
      */
     public int getPersuasion(){
         return this.persuasion;
     }
-    
+
     /**
      * This method allows the user to get the player's points of life
      * @return the player's points of life
@@ -57,8 +57,8 @@ public class Player extends Character
     public int getPointsOfLife(){
         return this.pointsoflife;
     }
-    
-    /** 
+
+    /**
      * This method allows the user to get the time that remains to the player
      * @return the player's time remaining (number of minutes)
      */
@@ -71,31 +71,31 @@ public class Player extends Character
      * @param ppersua : an integer representing the number of persuasion points to add to the player
      */
     public void setPersuasion(Integer ppersua){
-         this.persuasion = this.persuasion + ppersua;
+        this.persuasion = this.persuasion + ppersua;
     }
-    
+
     /**
-     * This method allows the game to add some points of life to the player 
+     * This method allows the game to add some points of life to the player
      * @param ppoints : an integer representing the number of points of life to add to the player. This integer can be positive or negative.
      */
     public void setPointsOfLife(Integer ppoints){
-         this.pointsoflife = this.pointsoflife + ppoints;
+        this.pointsoflife = this.pointsoflife + ppoints;
          if (this.pointsoflife<= 0) {
-             //mort
-            }
+            //mort
+        }
     }
-    
+
     /**
      *  This method allows the game to add some points of time to the player
      *  @param ptime : an integer representing the number of minutes to add to the player. This integer can be positive or negative.
      */
     public void setTime(Integer ptime){
-         this.time = this.time + ptime;
-         if (this.time <= 0) {
+        this.time = this.time + ptime;
+        if (this.time <= 0) {
             //perdu
-            }
+        }
     }
-     
+
     /**
      * This method allows the player to take an item that is present in a room.
      */
@@ -105,25 +105,25 @@ public class Player extends Character
                 //Inventory.addItem(currentRoom.listItem.get(i));
             }
         }
-     }
+    }
     /**
      * This method represents the movements of the player in the map : the player can change of room when it is possible.
      * @param direction : north, east... Represents the direction of the movement of the player
      */
     public void move(String direction){
-       Room nextRoom = null;
-       Room testRoom = null;
+        Room nextRoom = null;
+        Room testRoom = null;
         if(currentRoom.containsDirection(direction)) 
         {
-                                                    System.out.println("test1");
+            System.out.println("test1");
             testRoom = currentRoom.getRoom(direction);
-            
-           // System.out.println(testRoom.getDoor());
-                        //System.out.println(testRoom.getRoomName());
+
+            // System.out.println(testRoom.getDoor());
+            //System.out.println(testRoom.getRoomName());
             if(testRoom.getDoor() != null)
             
             { //if there is a door
-                                                    System.out.println("test2");
+                System.out.println("test2");
                 if(testRoom.getDoor().isOpenable() == true)
                 { //if isOpenable -> true if is openable
                     nextRoom = currentRoom.getRoom(direction);
@@ -133,7 +133,7 @@ public class Player extends Character
                 { //if openable is false... Try a Key or a Code
                     if(testRoom.getDoor().getHaveCodeLock())
                     { //if it's a code lock
-                            System.out.println("test3");
+                        System.out.println("test3");
                         for(int i=0; i < inv.ItemsList.size(); i++)
                         {
                             if(testRoom.getDoor().openDoorPass(inv.ItemsList.get(i).getName()))
@@ -172,7 +172,7 @@ public class Player extends Character
                 System.out.println("test4");
                 nextRoom = currentRoom.getRoom(direction);
             }
-            
+
         }
         else {
             nextRoom = currentRoom;
@@ -181,9 +181,9 @@ public class Player extends Character
         // System.out.print("Exits: ");
         // currentRoom.displayRoomInformations(); 
         // System.out.println();
-           //System.out.println(nextRoom.getRoomName());
+        //System.out.println(nextRoom.getRoomName());
         currentRoom = nextRoom;
-           System.out.println(currentRoom.getRoomName());
+        System.out.println(currentRoom.getRoomName());
 
 
 
@@ -191,13 +191,13 @@ public class Player extends Character
         
         
         // public void move (Exit pexit){
-            // if(currentRoom.checkExitInRoomExits(pexit){
-                // setCurrentRoom(pexit.getNextRoom());
-            // }
+        // if(currentRoom.checkExitInRoomExits(pexit){
+        // setCurrentRoom(pexit.getNextRoom());
+        // }
        
     }
-     
+
      public Room getCurrentRoom(){
-         return currentRoom;
-        }
+        return currentRoom;
+    }
 }

@@ -1,30 +1,29 @@
 package wor;
 
 /**
- * This class represents characters that are talking to the player. 
+ * This class represents characters that are talking to the player.
  *
  * @author (Group2)
  * @version (20th of November 2017)
  */
+public class Follower extends Character {
 
-public class Follower extends Character
-{
     private String speach1;
+
     /**
      * Constructor for objects of class Follower
      */
-      public Follower(String Speach, String n)
-    {
+    public Follower(String Speach, String n) {
         name = n;
-        speach1=Speach;
+        speach1 = Speach;
     }
-    
-    /** 
-     * This method represents if the character is following the player in the map.
+
+    /**
+     * This method represents if the character is following the player in the
+     * map.
      */
-    public boolean follow()
-    {  
+    public boolean follow() {
         return false; // the talking characters are not following the player
     }
-    
+
 }

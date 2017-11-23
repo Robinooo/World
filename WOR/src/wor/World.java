@@ -67,7 +67,7 @@ public class World
 
     Game(); 
     }
-    
+
     private void Game() {
         // Room Fontaine, Bibliotheque, SalleDeBillard, Bureau, veranda, Grange1, Grange2, Grange3,
         // Jardin, hall, PetitSalon, Kiosque, GrandSalon, SalleAManger, Cuisine, Couloir1, Couloir2,
@@ -231,10 +231,10 @@ public class World
     
         hall.setExit("up", corridor5);
         hall.setExit("right", corridor10);
-        hall.setExit("down", corridor14);       
+        hall.setExit("down", corridor14);
         hall.setExit("left",corridor9);
-        
-        
+
+
       
 
         corridor10.setExit("up",corridor6);
@@ -243,55 +243,55 @@ public class World
         corridor10.setExit("left",hall);
         
         smallHall.setExit("left", corridor10);
-        
+
         barn2.setExit("up", barn1);
         barn2.setExit("down", barn3);
-        
+
         barn3.setExit("left", corridor16);
         barn3.setExit("up", barn2);
-        
+
         corridor11.setExit("up", corridor8);
         corridor11.setExit("right", corridor12);
         corridor11.setExit("down", kiosk);
-        
+
         corridor12.setExit("up", garden);
         corridor12.setExit("right", corridor13);
         corridor12.setExit("down", corridor17);
         corridor12.setExit("left", corridor11);
-        
+
         corridor13.setExit("up", corridor9);
         corridor13.setExit("right", corridor14);
         corridor13.setExit("down", livingRoom);
         corridor13.setExit("left", corridor12);
-        
+
         corridor14.setExit("up", hall);
         corridor14.setExit("right", corridor15);
         corridor14.setExit("down", diningRoom);
         corridor14.setExit("left", corridor13);
-        
+
         corridor15.setExit("up", corridor10);
         corridor15.setExit("right", corridor16);
         corridor15.setExit("down", corridor18);
         corridor15.setExit("left", corridor14);
-        
+
         corridor16.setExit("right", barn3);
         corridor16.setExit("left", corridor15);
-                
+
         kiosk.setExit("up", corridor11);
         kiosk.setExit("right", corridor17);
 
         corridor17.setExit("up", corridor12);
         corridor17.setExit("left", kiosk);
-        
+
         livingRoom.setExit("up", corridor13);
         livingRoom.setExit("right", diningRoom);
-        
+
         diningRoom.setExit("up", corridor14);
         diningRoom.setExit("left", livingRoom);
-        
+
         corridor18.setExit("up", corridor15);
         corridor18.setExit("right", kitchen);
-       
+
         kitchen.setExit("left", corridor18);
 
 
@@ -305,24 +305,24 @@ public class World
      countOrange = new Talking ("Speach1","Speach2", "Compte Orange");
      countnessOrange = new Talking ("Speach1","Speach2", "Comptesse Orange");
       
-     drViolet = new Killer("Docteur Violet");
-     
+        drViolet = new Killer("Docteur Violet");
+
      missPrunelle = new Follower ("Speach", "miss Prunelle");
+
      
+        fountain.addCharacter(missRose);
+        library.addCharacter(clnMoutarde);
+        poolRoom.addCharacter(missPrunelle);
+        veranda.addCharacter(misterRouge);
+        barn1.addCharacter(drViolet);
+        garden.addCharacter(missLeblanc);
+        corridor11.addCharacter(countOrange);
+        kiosk.addCharacter(countnessOrange);
+        livingRoom.addCharacter(prOlive);
+        kitchen.addCharacter(generalLegris);
+
      
-     fountain.addCharacter(missRose);
-     library.addCharacter(clnMoutarde);
-     poolRoom.addCharacter(missPrunelle);
-     veranda.addCharacter(misterRouge);
-     barn1.addCharacter(drViolet);
-     garden.addCharacter(missLeblanc);
-     corridor11.addCharacter(countOrange);
-     kiosk.addCharacter(countnessOrange);
-     livingRoom.addCharacter(prOlive);
-     kitchen.addCharacter(generalLegris);
-     
-     
-     // weapons
+        // weapons
         rope = new Item("rope");
         dagger = new Item("dagger");
         ironBar = new Item("ironBar");
@@ -331,25 +331,25 @@ public class World
         wrench = new Item("wrench");
         poison = new Item("poison");
         axe = new Item("axe");
-       
-    // key - code
+
+        // key - code
         keyLibrary = new Item ("Keylibrary");
         keyVeranda = new Item ("Keyveranda");
         keyLivingRoom = new Item ("Keyliving");
         keyDiningRoom = new Item ("Keydining");
-        
+
         codeOffice = new Item ("Codeoffice");
         codeKitchen = new Item ("Codekitchen");
+
         
-        
-    //utilities 
-    
+        //utilities 
+
         irgGlasses = new Item ("Glasses Infrared");
         gasMask = new Item ("Gas Mask");
         
         notebook = new NoteBook();
         inventory = new Inventory();
-        
+
       
         barn3.addItem(rope);
         veranda.addItem(dagger);
@@ -366,23 +366,23 @@ public class World
         smallHall.addItem(keyLivingRoom);
         poolRoom.addItem(keyDiningRoom);
         library.addItem(codeOffice);
-        office.addItem(codeKitchen);    
-    
+        office.addItem(codeKitchen);
+
         
         inventory.addItems(rope);
         inventory.addItems(dagger);
         inventory.addItems(keyDiningRoom);
-        
+
         
 
         
         
-         // System.out.println("test 2 , a droite de hall , ca doit etre c10 ");
+        // System.out.println("test 2 , a droite de hall , ca doit etre c10 ");
         // System.out.println((hall.getRoom("right")).getRoomName());
 
         player1 = new Player("NomPlayer",hall,notebook,inventory);
         
-         // System.out.println("test 3 , ca doit etre hall");
+        // System.out.println("test 3 , ca doit etre hall");
         // System.out.println((player1.getCurrentRoom()).getRoomName());
         
         // System.out.println("test 4 , a droite de hall , ca doit etre c10 ");
@@ -399,7 +399,7 @@ public class World
 
        
        
-       
+  
         //player1.move("right");
         //player1.move("right");
         //player1.move("left");
@@ -409,11 +409,11 @@ public class World
         
         
         // test office
-         //player1.move("down");
-         //player1.move("right");
-         //player1.move("up"); 
-         //player1.move("up");
-         //player1.move("up");               
+        //player1.move("down");
+        //player1.move("right");
+        //player1.move("up"); 
+        //player1.move("up");
+        //player1.move("up");               
                
         //test diningroom
         //player1.move("down");
@@ -544,16 +544,16 @@ public class World
 
     private void play(){
     }
-    
+
     
     private void printWelcome() {
 
-     }
-     
+    }
+
     public Player getPlayer(){
         return player1;
     }
-    
+
     
     
     
