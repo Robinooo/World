@@ -30,7 +30,7 @@ public class Door {
      * @param ifCodeLock To know if a door have a codeLock
      */
     public Door(String name, boolean ifKeyLock, boolean ifCodeLock) {
-        openable = false; // door is close
+        openable = true; // door is open
         this.name = name + "Door";
         if (ifKeyLock && ifCodeLock) {
             System.out.println("\nYou can't have a code and a key lock\nYou have to chose\n");
@@ -39,6 +39,7 @@ public class Door {
                 String foo = "Key" + name; //create a specif name for the key
                 keyLock = new KeyLock(foo); //create the KeyLock object
                 doorLock.put(name, foo); //put into the hash: the Door'name as a Key and the key's name as a Value
+                openable = false;
                 // Item key = new Item(foo); //create the key associate to the keyLock
             }
 
@@ -46,6 +47,7 @@ public class Door {
                 String foo = "Code" + name; //create a specif name for the code
                 codeLock = new CodeLock(foo); //create the CodeLock object
                 doorLock.put(name, foo); //put into the hash: the Door'name as a Key and the code's name as a Value
+                openable = false;
                 // Item code = new Item(foo); //create the Code associate to the CodeLock
             }
         }
@@ -111,7 +113,15 @@ public class Door {
      * @return Returns true if the door is unlock
      */
     public boolean openDoorKey(String keyName) {
-        return doorLock.containsValue(keyName); // return true if the door is unlock
+        System.out.println(keyLock.getNameKey());
+        System.out.println(keyName);
+        
+        if(keyLock.getNameKey().equals(keyName)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     /**
@@ -121,7 +131,13 @@ public class Door {
      * @return Returns true if the door is unlock
      */
     public boolean openDoorPass(String password) {
-        return doorLock.containsValue(password); // return true if the door is unlock
+
+        if(codeLock.getPasswd().equals(password)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     /**
