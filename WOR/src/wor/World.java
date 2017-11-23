@@ -86,7 +86,8 @@ public class World
        diningRoomDoor = new Door ("dining",true,false);
        livingRoomDoor = new Door ("living",true,false);
        
-    // Creation of the images associated with the rooms   
+    // Creation of the images associated with the rooms 
+       carte = new ImageIcon (getClass().getResource("/pictures/Map_code.jpg")) ;
        imagefountain = new ImageIcon (getClass().getResource("/pictures/fontaine.jpg")) ;   
        imagelibrary = new ImageIcon (getClass().getResource("/pictures/bibliothèque2.jpg")) ;   
        imagepoolRoom = new ImageIcon (getClass().getResource("/pictures/billard1.jpg")) ;
