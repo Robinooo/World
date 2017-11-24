@@ -21,7 +21,8 @@ public class Room
     private Door door;
     private String description;
     //private ArrayList<Exit> exitRooms; 
-    private Icon img;
+    private Icon img, imgplan;
+
     private boolean noir;
     private boolean gaz;
     private boolean director;
@@ -37,13 +38,14 @@ public class Room
      */
 
     
-    public Room(String proomName, String pdescription, Door pdoor,Icon pimg)
+    public Room(String proomName, String pdescription, Door pdoor,Icon pimg, Icon pimgplan)
     {
         roomName = proomName;
         description = pdescription;
         chara = null;
         door = pdoor;
         img = pimg;
+        imgplan =pimgplan;
         //exitRooms = new ArrayList<Exit>();
         listItem= new ArrayList<Item>();
         gaz = false;
@@ -68,10 +70,17 @@ public class Room
     }
 
     /**
-     * @return The description of the image.
+     * @return The image of the room
      */
     public Icon getImage() {
         return img;
+    }
+
+     /**
+     * @return The location of the player in the room
+     */
+       public Icon getImagePlan() {
+        return imgplan;
     }
 
     /**

@@ -18,8 +18,8 @@ public class World {
 
     private JFrame frame;
     private JButton btUp, btDown, btLeft, btRight, btSpeak, btExplore, btTake;
-    private JPanel bBar, lMap, rActions;
-    public JLabel map, cPicture, text;
+    private JPanel bBar, rActions; //lMap
+    public JLabel map, cPicture, text, lMap;
     JTextArea zoneTexte = new JTextArea(1,10);
     private String lastTeam;
     private String lastAction;
@@ -50,7 +50,12 @@ public class World {
             imagegarden, imagehall, imagesmallHall, imagekiosk, imagelivingRoom, imagediningRoom, imagekitchen, imagecorridor1, imagecorridor2,
             imagecorridor3, imagecorridor4, imagecorridor5, imagecorridor6, imagecorridor7, imagecorridor8, imagecorridor9, imagecorridor10, imagecorridor11,
             imagecorridor12, imagecorridor13, imagecorridor14, imagecorridor15, imagecorridor16, imagecorridor17, imagecorridor18, carte;
-
+    
+    
+    private Icon mapimagefountain, mapimagelibrary, mapimagepoolRoom, mapimageoffice, mapimageveranda, mapimagebarn1, mapimagebarn2, mapimagebarn3,
+            mapimagegarden, mapimagehall, mapimagesmallHall, mapimagekiosk, mapimagelivingRoom, mapimagediningRoom, mapimagekitchen, mapimagecorridor1, mapimagecorridor2,
+            mapimagecorridor3, mapimagecorridor4, mapimagecorridor5, mapimagecorridor6, mapimagecorridor7, mapimagecorridor8, mapimagecorridor9, mapimagecorridor10, mapimagecorridor11,
+            mapimagecorridor12, mapimagecorridor13, mapimagecorridor14, mapimagecorridor15, mapimagecorridor16, mapimagecorridor17, mapimagecorridor18;
     /**
      * Constructor for objects of class World
      */
@@ -104,41 +109,79 @@ public class World {
         imagecorridor16 = new ImageIcon(getClass().getResource("/pictures/c16.jpg"));
         imagecorridor17 = new ImageIcon(getClass().getResource("/pictures/c17.jpg"));
         imagecorridor18 = new ImageIcon(getClass().getResource("/pictures/c18.jpg"));
+        
+        
+        // Creation of the image (plan) associated with the rooms 
+        mapimagefountain = new ImageIcon(getClass().getResource("/picturesplan/Map_code_fountain.jpg"));
+        mapimagelibrary = new ImageIcon(getClass().getResource("/picturesplan/Map_code_library.jpg"));
+        mapimagepoolRoom = new ImageIcon(getClass().getResource("/picturesplan/Map_code_pool.jpg"));
+        mapimageoffice = new ImageIcon(getClass().getResource("/picturesplan/Map_code_office.jpg"));
+        mapimageveranda = new ImageIcon(getClass().getResource("/picturesplan/Map_code_veranda.jpg"));
+        mapimagebarn1 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_barn1.jpg"));
+        mapimagebarn2 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_barn2.jpg"));
+        mapimagebarn3 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_barn3.jpg"));
+        mapimagegarden = new ImageIcon(getClass().getResource("/picturesplan/Map_code_garden.jpg"));
+        mapimagehall = new ImageIcon(getClass().getResource("/picturesplan/Map_code_hall.jpg"));
+        mapimagesmallHall = new ImageIcon(getClass().getResource("/picturesplan/Map_code_smallhall.jpg"));
+        mapimagekiosk = new ImageIcon(getClass().getResource("/picturesplan/Map_code_kiosk.jpg"));
+        mapimagelivingRoom = new ImageIcon(getClass().getResource("/picturesplan/Map_code_living.jpg"));
+        mapimagediningRoom = new ImageIcon(getClass().getResource("/picturesplan/Map_code_dining.jpg"));
+        mapimagekitchen = new ImageIcon(getClass().getResource("/picturesplan/Map_code_kitchen.jpg"));
+        mapimagecorridor1 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c1.jpg"));
+        mapimagecorridor2 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c2.jpg"));
+        mapimagecorridor3 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c3.jpg"));
+        mapimagecorridor4 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c4.jpg"));
+        mapimagecorridor5 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c5.jpg"));
+        mapimagecorridor6 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c6.jpg"));
+        mapimagecorridor7 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c7.jpg"));
+        mapimagecorridor8 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c8.jpg"));
+        mapimagecorridor9 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c9.jpg"));
+        mapimagecorridor10 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c10.jpg"));
+        mapimagecorridor11 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c11.jpg"));
+        mapimagecorridor12 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c12.jpg"));
+        mapimagecorridor13 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c13.jpg"));
+        mapimagecorridor14 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c14.jpg"));
+        mapimagecorridor15 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c15.jpg"));
+        mapimagecorridor16 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c16.jpg"));
+        mapimagecorridor17 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c17.jpg"));
+        mapimagecorridor18 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c18.jpg"));
+        
+        
 
         // Creation of all the rooms
-        fountain = new Room("fountain", "A beautiful fountain", null, imagefountain);
-        library = new Room("library", "The library, where you can read quietly", libraryDoor, imagelibrary);
-        poolRoom = new Room("pool", "a small game of pool ?", poolRoomDoor, imagepoolRoom);
-        office = new Room("office", "the ideal place to work in peace", officeDoor, imageoffice);
-        veranda = new Room("veranda", "a warm place to watch the garden during winter", verandaDoor, imageveranda);
-        barn1 = new Room("barn 1", "the first barn of the house", null, imagebarn1);
-        barn2 = new Room("barn 2", "the second barn of the house", null, imagebarn2);
-        barn3 = new Room("barn 3", "a third small barn", barn3Door, imagebarn3);
-        garden = new Room("garden", "a big beautiful garden", null, imagegarden);
-        hall = new Room("hall", "the hall of the house, to welcome visitors", null, imagehall);
-        smallHall = new Room("small hall", "a second small hall", smallHallDoor, imagesmallHall);
-        kiosk = new Room("kiosk", "A quiet kiosk to rest", null, imagekiosk);
-        livingRoom = new Room("living", "the most cosy living room you have ever seen", livingRoomDoor, imagelivingRoom);
-        diningRoom = new Room("dining", "a large, friendly room", diningRoomDoor, imagediningRoom);
-        kitchen = new Room("kitchen", "the heart of the house : the kitchen", kitchenDoor, imagekitchen);
-        corridor1 = new Room("corridor 1", "A simple corridor", null, imagecorridor1);
-        corridor2 = new Room("corridor 2", "A simple corridor", null, imagecorridor2);
-        corridor3 = new Room("corridor 3", "A simple corridor", null, imagecorridor3);
-        corridor4 = new Room("corridor 4", "A simple corridor", null, imagecorridor4);
-        corridor5 = new Room("corridor 5", "A simple corridor", null, imagecorridor5);
-        corridor6 = new Room("corridor 6", "A simple corridor", null, imagecorridor6);
-        corridor7 = new Room("corridor 7", "A simple corridor", null, imagecorridor7);
-        corridor8 = new Room("corridor 8", "A simple corridor", null, imagecorridor8);
-        corridor9 = new Room("corridor 9", "A simple corridor", null, imagecorridor9);
-        corridor10 = new Room("corridor 10", "A simple corridor", null, imagecorridor10);
-        corridor11 = new Room("corridor 11", "A simple corridor", null, imagecorridor11);
-        corridor12 = new Room("corridor 12", "A simple corridor", null, imagecorridor12);
-        corridor13 = new Room("corridor 13", "A simple corridor", null, imagecorridor13);
-        corridor14 = new Room("corridor 14", "A simple corridor", null, imagecorridor14);
-        corridor15 = new Room("corridor 15", "A simple corridor", null, imagecorridor15);
-        corridor16 = new Room("corridor 16", "A simple corridor", null, imagecorridor16);
-        corridor17 = new Room("corridor 17", "A simple corridor", null, imagecorridor17);
-        corridor18 = new Room("corridor 18", "A simple corridor", null, imagecorridor18);
+        fountain = new Room("fountain", "A beautiful fountain", null, imagefountain, mapimagefountain);
+        library = new Room("library", "The library, where you can read quietly", libraryDoor, imagelibrary,mapimagelibrary);
+        poolRoom = new Room("pool", "a small game of pool ?", poolRoomDoor, imagepoolRoom, mapimagepoolRoom);
+        office = new Room("office", "the ideal place to work in peace", officeDoor, imageoffice,mapimageoffice);
+        veranda = new Room("veranda", "a warm place to watch the garden during winter", verandaDoor, imageveranda,mapimageveranda);
+        barn1 = new Room("barn 1", "the first barn of the house", null, imagebarn1,mapimagebarn3);
+        barn2 = new Room("barn 2", "the second barn of the house", null, imagebarn2,mapimagebarn2);
+        barn3 = new Room("barn 3", "a third small barn", barn3Door, imagebarn3,mapimagebarn1);
+        garden = new Room("garden", "a big beautiful garden", null, imagegarden,mapimagegarden);
+        hall = new Room("hall", "the hall of the house, to welcome visitors", null, imagehall,mapimagehall);
+        smallHall = new Room("small hall", "a second small hall", smallHallDoor, imagesmallHall,mapimagesmallHall);
+        kiosk = new Room("kiosk", "A quiet kiosk to rest", null, imagekiosk,mapimagekiosk);
+        livingRoom = new Room("living", "the most cosy living room you have ever seen", livingRoomDoor, imagelivingRoom,mapimagelivingRoom);
+        diningRoom = new Room("dining", "a large, friendly room", diningRoomDoor, imagediningRoom,mapimagediningRoom);
+        kitchen = new Room("kitchen", "the heart of the house : the kitchen", kitchenDoor, imagekitchen,mapimagekitchen);
+        corridor1 = new Room("corridor 1", "A simple corridor", null, imagecorridor1,mapimagecorridor1);
+        corridor2 = new Room("corridor 2", "A simple corridor", null, imagecorridor2,mapimagecorridor2);
+        corridor3 = new Room("corridor 3", "A simple corridor", null, imagecorridor3,mapimagecorridor3);
+        corridor4 = new Room("corridor 4", "A simple corridor", null, imagecorridor4,mapimagecorridor4);
+        corridor5 = new Room("corridor 5", "A simple corridor", null, imagecorridor5,mapimagecorridor5);
+        corridor6 = new Room("corridor 6", "A simple corridor", null, imagecorridor6,mapimagecorridor6);
+        corridor7 = new Room("corridor 7", "A simple corridor", null, imagecorridor7,mapimagecorridor7);
+        corridor8 = new Room("corridor 8", "A simple corridor", null, imagecorridor8,mapimagecorridor8);
+        corridor9 = new Room("corridor 9", "A simple corridor", null, imagecorridor9,mapimagecorridor9);
+        corridor10 = new Room("corridor 10", "A simple corridor", null, imagecorridor10,mapimagecorridor10);
+        corridor11 = new Room("corridor 11", "A simple corridor", null, imagecorridor11,mapimagecorridor11);
+        corridor12 = new Room("corridor 12", "A simple corridor", null, imagecorridor12,mapimagecorridor12);
+        corridor13 = new Room("corridor 13", "A simple corridor", null, imagecorridor13,mapimagecorridor13);
+        corridor14 = new Room("corridor 14", "A simple corridor", null, imagecorridor14,mapimagecorridor14);
+        corridor15 = new Room("corridor 15", "A simple corridor", null, imagecorridor15,mapimagecorridor15);
+        corridor16 = new Room("corridor 16", "A simple corridor", null, imagecorridor16,mapimagecorridor16);
+        corridor17 = new Room("corridor 17", "A simple corridor", null, imagecorridor17,mapimagecorridor17);
+        corridor18 = new Room("corridor 18", "A simple corridor", null, imagecorridor18,mapimagecorridor18);
 
         // Creation of the exits in the rooms
         fountain.setExit("down", corridor1);
@@ -391,12 +434,19 @@ public class World {
         menuBar.add(menuJournal);
         menuBar.add(menuItems);
 
-        lMap = new JPanel();
-        map = new JLabel(carte);
-        lMap.add(map);
+//        lMap = new JPanel();
+//        map = new JLabel(carte);
+//        lMap.add(map);
+//        
+        
         cPicture = new JLabel();
         cPicture.setIcon(player1.getCurrentRoom().getImage());
+        
+        lMap = new JLabel();
+        lMap.setIcon(player1.getCurrentRoom().getImagePlan());
 
+        
+        
         rActions = new JPanel();
         rActions.setLayout(new GridLayout(3, 1));
         btSpeak = new JButton("Speak");
@@ -441,21 +491,25 @@ public class World {
         btRight.addActionListener(ae -> {
             player1.move("right");
             cPicture.setIcon(player1.getCurrentRoom().getImage());
+            lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription());
         });
         btLeft.addActionListener(ae -> {
             player1.move("left");
             cPicture.setIcon(player1.getCurrentRoom().getImage());
+            lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription());
         });
         btUp.addActionListener(ae -> {
             player1.move("up");
             cPicture.setIcon(player1.getCurrentRoom().getImage());
+            lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription());
         });
         btDown.addActionListener(ae -> {
             player1.move("down");
             cPicture.setIcon(player1.getCurrentRoom().getImage());
+            lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription());
         });
 
