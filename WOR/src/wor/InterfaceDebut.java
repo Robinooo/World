@@ -22,18 +22,18 @@ import java.awt.*;
    //////////////////
    private final JPanel panelBut1 = new JPanel();
    private final JLabel labBut1 = new JLabel ("Inspecteur Gadget",JLabel.CENTER); //"Gadget
-   private final JLabel labBut4 = new JLabel ("Niveau facile",JLabel.CENTER);
+   private final JLabel labBut4 = new JLabel ("EASY LEVEL",JLabel.CENTER);
    private final JPanel pBut1 = new JPanel();
    
    
    private final JPanel panelBut2 = new JPanel();
    private final JLabel labBut2 = new JLabel ("Inspecteur Barnaby",JLabel.CENTER); // Colombo
-   private final JLabel labBut5 = new JLabel ("Niveau moyen",JLabel.CENTER);
+   private final JLabel labBut5 = new JLabel ("MEDIUM LEVEL",JLabel.CENTER);
    private final JPanel pBut2 = new JPanel();
    
    private final JPanel panelBut3 = new JPanel();
    private final JLabel labBut3 = new JLabel ("Sherlock Holmes",JLabel.CENTER); // Holmes
-   private final JLabel labBut6 = new JLabel ("Niveau difficile",JLabel.CENTER);
+   private final JLabel labBut6 = new JLabel ("HARD LEVEL",JLabel.CENTER);
    private final JPanel pBut3 = new JPanel();
    
    //////////////////
@@ -92,11 +92,11 @@ import java.awt.*;
        //Panel player 1
        labBut1.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,20));
        labBut1.setForeground(Color.white);
-       labBut4.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,20));
+       labBut4.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,30));
        labBut4.setForeground(Color.red);
        pic1 = new ImageIcon(getClass().getResource("/pictures/gadget.jpg"));
        butChar1 = new JButton (pic1);
-       butChar1.setPreferredSize(new Dimension(96,96));
+       butChar1.setPreferredSize(new Dimension(150,150));
        panelBut1.setLayout(new BorderLayout());
        pBut1.add(butChar1);
        pBut1.setOpaque(false);
@@ -110,11 +110,11 @@ import java.awt.*;
        //Panel player 2
        labBut2.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,20));
        labBut2.setForeground(Color.white);
-       labBut5.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,20));
+       labBut5.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,30));
        labBut5.setForeground(Color.red);
        pic2 = new ImageIcon(getClass().getResource("/pictures/colombo.jpg"));
        butChar2 = new JButton (pic2);
-       butChar2.setPreferredSize(new Dimension(96,96));
+       butChar2.setPreferredSize(new Dimension(150,150));
        panelBut2.setLayout(new BorderLayout());
        pBut2.add(butChar2);
        pBut2.setOpaque(false);
@@ -127,11 +127,11 @@ import java.awt.*;
        //Panel player 3
        labBut3.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,20));
        labBut3.setForeground(Color.white);
-       labBut6.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,20));
+       labBut6.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,30));
        labBut6.setForeground(Color.red);
        pic3 = new ImageIcon(getClass().getResource("/pictures/holmes.jpg"));
        butChar3 = new JButton (pic3);
-       butChar3.setPreferredSize(new Dimension(96,96));
+       butChar3.setPreferredSize(new Dimension(150,150));
        panelBut3.setLayout(new BorderLayout());
        pBut3.add(butChar3);
        pBut3.setOpaque(false);
@@ -157,21 +157,21 @@ import java.awt.*;
        
        /// BOTTOM : Boutons start and change
         butStart = new JButton();
-        butStart.setPreferredSize(new Dimension(200,60));
-        butStart.setIcon(new ImageIcon(getClass().getResource("/pictures/boutton_game.png")));
+        butStart.setPreferredSize(new Dimension(225,73));
+        butStart.setIcon(new ImageIcon(getClass().getResource("/pictures/boutton_game2.png")));
         butStart.setText("Start Game");
-        butStart.setForeground(Color.black);
-        butStart.setDisabledIcon(new ImageIcon(getClass().getResource("/pictures/boutton_game.png")));
+        butStart.setForeground(Color.white);
+        butStart.setDisabledIcon(new ImageIcon(getClass().getResource("/pictures/boutton_game2.png")));
         butStart.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,25));
         butStart.setVerticalTextPosition(SwingConstants.CENTER);
         butStart.setHorizontalTextPosition(SwingConstants.CENTER);
        
         butChange = new JButton();
-        butChange.setPreferredSize(new Dimension(200,60));
-        butChange.setIcon(new ImageIcon(getClass().getResource("/pictures/boutton_game.png")));
+        butChange.setPreferredSize(new Dimension(225,73));
+        butChange.setIcon(new ImageIcon(getClass().getResource("/pictures/boutton_game2.png")));
         butChange.setText("Change player");
-        butChange.setForeground(Color.black);
-        butChange.setDisabledIcon(new ImageIcon(getClass().getResource("/pictures/boutton_game.png")));
+        butChange.setForeground(Color.white);
+        butChange.setDisabledIcon(new ImageIcon(getClass().getResource("/pictures/boutton_game2.png")));
         butChange.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,25));
         butChange.setVerticalTextPosition(SwingConstants.CENTER);
         butChange.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -240,7 +240,7 @@ import java.awt.*;
    */
    
    private ImageIcon makeImage(){
-       return new ImageIcon(getClass().getResource("/pictures/fond1.PNG"));    
+       return new ImageIcon(getClass().getResource("/pictures/testhorreur2.jpg"));    
    }
    
    
