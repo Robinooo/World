@@ -76,39 +76,39 @@ public class World {
 
         // Creation of the images associated with the rooms 
         carte = new ImageIcon(getClass().getResource("/pictures/Map_code.jpg"));
-        imagefountain = new ImageIcon(getClass().getResource("/pictures/fontaine.jpg"));
-        imagelibrary = new ImageIcon(getClass().getResource("/pictures/bibliothèque2.jpg"));
-        imagepoolRoom = new ImageIcon(getClass().getResource("/pictures/billard1.jpg"));
-        imageoffice = new ImageIcon(getClass().getResource("/pictures/bureau.jpg"));
-        imageveranda = new ImageIcon(getClass().getResource("/pictures/veranda5.jpg"));
-        imagebarn3 = new ImageIcon(getClass().getResource("/pictures/grange.jpg"));
-        imagebarn2 = new ImageIcon(getClass().getResource("/pictures/grange2.jpg"));
-        imagebarn1 = new ImageIcon(getClass().getResource("/pictures/grange3.jpg"));
-        imagegarden = new ImageIcon(getClass().getResource("/pictures/jardin3.jpg"));
-        imagehall = new ImageIcon(getClass().getResource("/pictures/Hall.jpg"));
-        imagesmallHall = new ImageIcon(getClass().getResource("/pictures/petitsalon2.jpg"));
-        imagekiosk = new ImageIcon(getClass().getResource("/pictures/kiosque.jpg"));
-        imagelivingRoom = new ImageIcon(getClass().getResource("/pictures/grandsalon.jpg"));
-        imagediningRoom = new ImageIcon(getClass().getResource("/pictures/salle_manger.jpg"));
-        imagekitchen = new ImageIcon(getClass().getResource("/pictures/cuisine2.jpg"));
-        imagecorridor1 = new ImageIcon(getClass().getResource("/pictures/c1.jpg"));
-        imagecorridor2 = new ImageIcon(getClass().getResource("/pictures/c2.jpg"));
-        imagecorridor3 = new ImageIcon(getClass().getResource("/pictures/c3.jpg"));
-        imagecorridor4 = new ImageIcon(getClass().getResource("/pictures/c4.jpg"));
-        imagecorridor5 = new ImageIcon(getClass().getResource("/pictures/c5.jpg"));
-        imagecorridor6 = new ImageIcon(getClass().getResource("/pictures/c6.jpg"));
-        imagecorridor7 = new ImageIcon(getClass().getResource("/pictures/c7.jpg"));
-        imagecorridor8 = new ImageIcon(getClass().getResource("/pictures/c8.jpg"));
-        imagecorridor9 = new ImageIcon(getClass().getResource("/pictures/c9.jpg"));
-        imagecorridor10 = new ImageIcon(getClass().getResource("/pictures/c10.jpg"));
-        imagecorridor11 = new ImageIcon(getClass().getResource("/pictures/c11.jpg"));
-        imagecorridor12 = new ImageIcon(getClass().getResource("/pictures/c12.jpg"));
-        imagecorridor13 = new ImageIcon(getClass().getResource("/pictures/c13.jpg"));
-        imagecorridor14 = new ImageIcon(getClass().getResource("/pictures/c14.jpg"));
-        imagecorridor15 = new ImageIcon(getClass().getResource("/pictures/c15.jpg"));
-        imagecorridor16 = new ImageIcon(getClass().getResource("/pictures/c16.jpg"));
-        imagecorridor17 = new ImageIcon(getClass().getResource("/pictures/c17.jpg"));
-        imagecorridor18 = new ImageIcon(getClass().getResource("/pictures/c18.jpg"));
+        imagefountain = new ImageIcon(getClass().getResource("/pictures2/fontaine.jpg"));
+        imagelibrary = new ImageIcon(getClass().getResource("/pictures2/library.jpg"));
+        imagepoolRoom = new ImageIcon(getClass().getResource("/pictures2/poolroom.jpg"));
+        imageoffice = new ImageIcon(getClass().getResource("/pictures2/office.jpeg"));
+        imageveranda = new ImageIcon(getClass().getResource("/pictures2/veranda.jpg"));
+        imagebarn3 = new ImageIcon(getClass().getResource("/pictures2/grange.jpg"));
+        imagebarn2 = new ImageIcon(getClass().getResource("/pictures2/grange2.jpg"));
+        imagebarn1 = new ImageIcon(getClass().getResource("/pictures2/grange3.jpg"));
+        imagegarden = new ImageIcon(getClass().getResource("/pictures2/garden.png"));
+        imagehall = new ImageIcon(getClass().getResource("/pictures2/hall.png"));
+        imagesmallHall = new ImageIcon(getClass().getResource("/pictures2/smallhall.png"));
+        imagekiosk = new ImageIcon(getClass().getResource("/pictures2/kiosque.jpg"));
+        imagelivingRoom = new ImageIcon(getClass().getResource("/pictures2/livingroom.png"));
+        imagediningRoom = new ImageIcon(getClass().getResource("/pictures2/diningroom.png"));
+        imagekitchen = new ImageIcon(getClass().getResource("/pictures2/cuisine.jpg"));
+        imagecorridor1 = new ImageIcon(getClass().getResource("/pictures2/c1.png"));
+        imagecorridor2 = new ImageIcon(getClass().getResource("/pictures2/c2.png"));
+        imagecorridor3 = new ImageIcon(getClass().getResource("/pictures2/c3.png"));
+        imagecorridor4 = new ImageIcon(getClass().getResource("/pictures2/c4-c13.png"));
+        imagecorridor5 = new ImageIcon(getClass().getResource("/pictures2/c5-c14.png"));
+        imagecorridor6 = new ImageIcon(getClass().getResource("/pictures2/c6-c15.png"));
+        imagecorridor7 = new ImageIcon(getClass().getResource("/pictures2/c7-c16.png"));
+        imagecorridor8 = new ImageIcon(getClass().getResource("/pictures2/c8.png"));
+        imagecorridor9 = new ImageIcon(getClass().getResource("/pictures2/c10-c9-c18.png"));
+        imagecorridor10 = new ImageIcon(getClass().getResource("/pictures2/c10-c9-c18.png"));
+        imagecorridor11 = new ImageIcon(getClass().getResource("/pictures2/c11.png"));
+        imagecorridor12 = new ImageIcon(getClass().getResource("/pictures2/c12.png"));
+        imagecorridor13 = new ImageIcon(getClass().getResource("/pictures2/c4-c13.png"));
+        imagecorridor14 = new ImageIcon(getClass().getResource("/pictures2/c5-c14.png"));
+        imagecorridor15 = new ImageIcon(getClass().getResource("/pictures2/c6-c15.png"));
+        imagecorridor16 = new ImageIcon(getClass().getResource("/pictures2/c7-c16.png"));
+        imagecorridor17 = new ImageIcon(getClass().getResource("/pictures2/c17.png"));
+        imagecorridor18 = new ImageIcon(getClass().getResource("/pictures2/c10-c9-c18.png"));
         
         
         // Creation of the image (plan) associated with the rooms 
@@ -474,7 +474,7 @@ public class World {
         
 
         frame = new JFrame("World Of Zuul");
-        frame.setSize(1000, 700);
+        frame.setSize(1950, 1000);
         frame.setResizable(false);
         frame.setAlwaysOnTop(true);
         frame.setLayout(new BorderLayout());
