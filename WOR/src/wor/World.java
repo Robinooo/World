@@ -81,9 +81,9 @@ public class World {
         imagepoolRoom = new ImageIcon(getClass().getResource("/pictures/billard1.jpg"));
         imageoffice = new ImageIcon(getClass().getResource("/pictures/bureau.jpg"));
         imageveranda = new ImageIcon(getClass().getResource("/pictures/veranda5.jpg"));
-        imagebarn1 = new ImageIcon(getClass().getResource("/pictures/grange.jpg"));
+        imagebarn3 = new ImageIcon(getClass().getResource("/pictures/grange.jpg"));
         imagebarn2 = new ImageIcon(getClass().getResource("/pictures/grange2.jpg"));
-        imagebarn3 = new ImageIcon(getClass().getResource("/pictures/grange3.jpg"));
+        imagebarn1 = new ImageIcon(getClass().getResource("/pictures/grange3.jpg"));
         imagegarden = new ImageIcon(getClass().getResource("/pictures/jardin3.jpg"));
         imagehall = new ImageIcon(getClass().getResource("/pictures/Hall.jpg"));
         imagesmallHall = new ImageIcon(getClass().getResource("/pictures/petitsalon2.jpg"));
@@ -225,7 +225,7 @@ public class World {
         corridor7.setExit("right", veranda);
         corridor7.setExit("up", corridor6);
 
-        barn1.setExit("left", barn2);
+        barn3.setExit("left", barn2);
 
         corridor8.setExit("right", corridor2);
         corridor8.setExit("down", garden);
@@ -253,11 +253,11 @@ public class World {
 
         smallHall.setExit("up", corridor10);
 
-        barn2.setExit("right", barn1);
-        barn2.setExit("left", barn3);
+        barn2.setExit("right", barn3);
+        barn2.setExit("left", barn1);
 
-        barn3.setExit("up", corridor16);
-        barn3.setExit("right", barn2);
+        barn1.setExit("up", corridor16);
+        barn1.setExit("right", barn2);
 
         corridor11.setExit("right", corridor8);
         corridor11.setExit("down", corridor12);
@@ -283,7 +283,7 @@ public class World {
         corridor15.setExit("left", corridor18);
         corridor15.setExit("up", corridor14);
 
-        corridor16.setExit("down", barn3);
+        corridor16.setExit("down", barn1);
         corridor16.setExit("up", corridor15);
 
         kiosk.setExit("right", corridor11);
@@ -322,7 +322,7 @@ public class World {
         library.addCharacter(clnMoutarde);
         poolRoom.addCharacter(missPrunelle);
         veranda.addCharacter(misterRouge);
-        barn1.addCharacter(drViolet);
+        barn3.addCharacter(drViolet);
         garden.addCharacter(missLeblanc);
         corridor11.addCharacter(countOrange);
         kiosk.addCharacter(countnessOrange);
@@ -473,7 +473,7 @@ public class World {
         bBar.add(moveBt);
         
 
-        frame = new JFrame("TestWoZ");
+        frame = new JFrame("World Of Zuul");
         frame.setSize(1000, 700);
         frame.setResizable(false);
         frame.setAlwaysOnTop(true);
@@ -514,16 +514,18 @@ public class World {
         });
 
         btExplore.addActionListener(ae -> {
-            player1.explore();
-
+            player1.explore(this.zoneTexte);
             player1.getTime();
         });
         btTake.addActionListener(ae -> {
             player1.takeItem();
-
             player1.getTime();
         });
-
+        
+        btSpeak.addActionListener(ae -> {
+            player1.speak(zoneTexte);
+            player1.getTime();
+        });
     }
 
     private void printWelcome() {
