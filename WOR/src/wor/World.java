@@ -154,9 +154,9 @@ public class World {
         poolRoom = new Room("pool", "a small game of pool ?", poolRoomDoor, imagepoolRoom, mapimagepoolRoom);
         office = new Room("office", "the ideal place to work in peace", officeDoor, imageoffice,mapimageoffice);
         veranda = new Room("veranda", "a warm place to watch the garden during winter", verandaDoor, imageveranda,mapimageveranda);
-        barn1 = new Room("barn 1", "the first barn of the house", null, imagebarn1,mapimagebarn3);
+        barn1 = new Room("barn 1", "the first barn of the house", null, imagebarn1,mapimagebarn1);
         barn2 = new Room("barn 2", "the second barn of the house", null, imagebarn2,mapimagebarn2);
-        barn3 = new Room("barn 3", "a third small barn", barn3Door, imagebarn3,mapimagebarn1);
+        barn3 = new Room("barn 3", "a third small barn", barn3Door, imagebarn3,mapimagebarn3);
         garden = new Room("garden", "a big beautiful garden", null, imagegarden,mapimagegarden);
         hall = new Room("hall", "the hall of the house, to welcome visitors", null, imagehall,mapimagehall);
         smallHall = new Room("small hall", "a second small hall", smallHallDoor, imagesmallHall,mapimagesmallHall);
