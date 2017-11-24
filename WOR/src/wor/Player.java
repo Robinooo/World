@@ -1,5 +1,7 @@
 package wor;
 
+import javax.swing.*;
+
 /**
  * This class represents the player, who can move, interact with characters and
  * find items on the map.
@@ -192,7 +194,7 @@ public class Player extends Character {
         return currentRoom;
     }
      
-     public void explore(){
+     public void explore(JTextArea zoneTexte){
          
          
          if(currentRoom.listItem.size() > 0 ){
@@ -200,22 +202,22 @@ public class Player extends Character {
                 {
                     if (currentRoom.listItem.get(i).getHidden()) {
                     setTime(10);
-                        System.out.println(getTime());
+                        zoneTexte.setText("Il vous reste " + getTime() + "minutes.");
                     }
                     else {
                     setTime(5);
-                        System.out.println(getTime());
+                        zoneTexte.setText("Il vous reste " + getTime() + "minutes.");
                     }
                 }
             }
 
         }
 
-    public void speak() {
+    public void speak(JTextArea zoneTexte) {
         if (currentRoom.getCharaInTheRoom() == null) {
             //btSpeak.setEnabled(false);
             // World.zoneTexte.append("There is no character to talk to here, maybe think about talking to yourself");
-            System.out.println("There is no one to talk to here, you think about talking to yourself and loose 5 minutes of your precious time");
+            zoneTexte.setText("There is no one to talk to here, you think about talking to yourself and loose 5 minutes \n of your precious time");
             setTime(5);
         } else {
             currentRoom.getTalkingInTheRoom().talk(persuasion);
