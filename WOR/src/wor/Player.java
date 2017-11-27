@@ -226,7 +226,7 @@ public class Player extends Character {
            
         } else {
              setTime(5);
-            zoneTexte.setText(currentRoom.getTalkingInTheRoom().talk(persuasion)  + "\n You have " + getTime() + " minutes left.");
+            zoneTexte.setText(currentRoom.getTalkingInTheRoom().talk(persuasion)  + "\n You have " + getTime() + " minutes left." + "\n");
         }
 
     }
