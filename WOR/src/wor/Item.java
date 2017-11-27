@@ -1,5 +1,7 @@
 package wor;
 
+import javax.swing.*;
+
 /**
  * This class is used to create objects that will be usable by the player during
  * the game.
@@ -19,15 +21,19 @@ public class Item {
     private boolean use;
     private boolean hidden;
     private int persupoints;
+    private Icon imgItem;
+    
+           
 
     /**
      * Constructor for objects of class Item
      */
-    public Item(String name, String description, int persupoints) {
+    public Item(String name, String description, int persupoints, Icon pitem) {
         this.name = name;
         this.description = description;
         this.use = true;
         this.hidden = false;
+        this.imgItem = pitem;
     }
 
     /**
@@ -84,9 +90,8 @@ public class Item {
         return persupoints;
     }
 
-    public String getDescription() {
-        return description;
+      
+    public Icon getImageItem() {
+        return imgItem;
     }
-    
-    
 }

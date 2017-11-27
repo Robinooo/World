@@ -17,7 +17,7 @@ import javax.swing.JLabel;
 public class World {
 
     private JFrame frame, journalFrame;
-    private JButton btUp, btDown, btLeft, btRight, btSpeak, btExplore, btTake, btJournal;
+    private JButton btUp, btDown, btLeft, btRight, btSpeak, btExplore, btTake, btJournal, btInventory;
     private JPanel bBar, rActions; //lMap
     public JLabel map, cPicture, text, lMap;
     JTextArea zoneTexte = new JTextArea(1,10);
@@ -51,7 +51,7 @@ public class World {
     public Player player1;
 
     private Icon imagefountain, imagelibrary, imagepoolRoom, imageoffice, imageveranda, imagebarn1, imagebarn2, imagebarn3,
-            imagegarden, imagehall, imagesmallHall, imagekiosk, imagelivingRoom, imagediningRoom, imagekitchen, imagecorridor1, imagecorridor2,
+            imagegarden, imagehall, imagesmallHall,imagekiosk, imagelivingRoom, imagediningRoom, imagekitchen, imagecorridor1, imagecorridor2,
             imagecorridor3, imagecorridor4, imagecorridor5, imagecorridor6, imagecorridor7, imagecorridor8, imagecorridor9, imagecorridor10, imagecorridor11,
             imagecorridor12, imagecorridor13, imagecorridor14, imagecorridor15, imagecorridor16, imagecorridor17, imagecorridor18, carte;
     
@@ -169,6 +169,9 @@ public class World {
         mapimagecorridor16 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c16.jpg"));
         mapimagecorridor17 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c17.jpg"));
         mapimagecorridor18 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c18.jpg"));
+        
+        // Creation of the item image
+        
         
         
 
@@ -354,50 +357,50 @@ public class World {
         kitchen.addCharacter(generalLegris);
 
         //Creation of weapons
-        rope = new Item("rope","You found a rope on a stool. This is clearly not the murder weapon. However, someone might have thought about suicide, remorse maybe …",2);
+        rope = new Item("rope","You found a rope on a stool. This is clearly not the murder weapon. However, someone might have thought about suicide, remorse maybe …",2, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
         rope.setUse(false); // this item is not usable by the player
-        dagger = new Item("dagger","You found a nicely decorated dagger. You question yourself on its presence inside the veranda. But you remind that there were no cutoff marks on the victim. There may be other crimes to come...",2);
+        dagger = new Item("dagger","You found a nicely decorated dagger. You question yourself on its presence inside the veranda. But you remind that there were no cutoff marks on the victim. There may be other crimes to come...",2, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
         dagger.setUse(false);
         dagger.setHidden(true);
-        ironBar = new Item("ironBar","You found a quite impressive iron bare. Exactly the kind of thing that can knock out someone. Or worst. ",2);
+        ironBar = new Item("ironBar","You found a quite impressive iron bare. Exactly the kind of thing that can knock out someone. Or worst. ",2, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
         ironBar.setUse(false);
-        revolver = new Item("revolver","Hidden into a desk drawer, you found a Revolver with only one bullet in the chamber. Maybe the one that you will keep for Ms Pervenche murderer.",2);
+        revolver = new Item("revolver","Hidden into a desk drawer, you found a Revolver with only one bullet in the chamber. Maybe the one that you will keep for Ms Pervenche murderer.",2, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
         revolver.setHidden(true); // the revovler is hidden in the room
         revolver.setUse(false);
-        candlestick = new Item("candlestick","You found a dusty candlestick. Perfect for a candlelit dinner with Miss Prunelle once this case solved. The duty before everything !",2);
+        candlestick = new Item("candlestick","You found a dusty candlestick. Perfect for a candlelit dinner with Miss Prunelle once this case solved. The duty before everything !",2, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
         candlestick.setUse(false);
-        wrench = new Item("wrench","You found a wrench. Its implication into the murder seems unlikely. However, you have a sink that has a leakage back home, this might help you to fix it.",2);
+        wrench = new Item("wrench","You found a wrench. Its implication into the murder seems unlikely. However, you have a sink that has a leakage back home, this might help you to fix it.",2, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
         wrench.setUse(false);
-        poison = new Item("poison","You found an half empty flask that contains a suspicious liquid. POISON ! This might be the murder weapon, but who would be perfidious enough to use it …",5);
+        poison = new Item("poison","You found an half empty flask that contains a suspicious liquid. POISON ! This might be the murder weapon, but who would be perfidious enough to use it …",5, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
         poison.setUse(false);
-        axe = new Item("axe","You found an axe. It reminds you your childhood with your father, who was a lumberjack. You focus and notice that there is no blood on it. On one hand, it would be very barbaric to kill someone with an axe...",2);
+        axe = new Item("axe","You found an axe. It reminds you your childhood with your father, who was a lumberjack. You focus and notice that there is no blood on it. On one hand, it would be very barbaric to kill someone with an axe...",2, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
         axe.setUse(false);
         
         // Creation of key - code
-        keyLibrary = new Item ("Keylibrary","You found the library’s key. Who knows, maybe this key will allow you to open other doors ...",0);
+        keyLibrary = new Item ("Keylibrary","You found the library’s key. Who knows, maybe this key will allow you to open other doors ...",0, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
         keyLibrary.setHidden(true);
-        keyVeranda = new Item ("Keyveranda","You found the key of the veranda. People always hide strange things in there. Try your luck…",0);
+        keyVeranda = new Item ("Keyveranda","You found the key of the veranda. People always hide strange things in there. Try your luck…",0, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
         keyVeranda.setHidden(true);
-        keyLivingRoom = new Item ("Keyliving","You found the key of the living room. This is the right occasion to interrogate new suspects. ", 0);
+        keyLivingRoom = new Item ("Keyliving","You found the key of the living room. This is the right occasion to interrogate new suspects. ", 0, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
         keyLivingRoom.setHidden(true);
-        keyDiningRoom = new Item ("Keydining","You found the dining room’s key. Stroke of luck, the dining room and the living room are communicating rooms !",0);
+        keyDiningRoom = new Item ("Keydining","You found the dining room’s key. Stroke of luck, the dining room and the living room are communicating rooms !",0, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
         keyDiningRoom.setHidden(true);
         
-        codeOffice = new Item ("Codeoffice","You found a 4 digits code (4 4 4 4). It looks like they does not bother that much about security here.",1);
+        codeOffice = new Item ("Codeoffice","You found a 4 digits code (4 4 4 4). It looks like they does not bother that much about security here.",1, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
         codeOffice.setHidden(true);
-        codeKitchen = new Item ("Codekitchen", "You found a 17 digits code. Yes, that is possible. Good luck to memorise the combination of the kitchen’s door.",0);
+        codeKitchen = new Item ("Codekitchen", "You found a 17 digits code. Yes, that is possible. Good luck to memorise the combination of the kitchen’s door.",0, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
         codeKitchen.setHidden(true);
         
         //Creation of utilities 
-        irGlasses = new Item ("Glasses Infrared","Your extraordinary observation capabilities allow you to discover infrared glasses hidden inside a bush. This might look useless but with it, you will have style !",0);
+        irGlasses = new Item ("Glasses Infrared","Your extraordinary observation capabilities allow you to discover infrared glasses hidden inside a bush. This might look useless but with it, you will have style !",0,new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
         irGlasses.setHidden(true);
-        gasMask = new Item ("Gas Mask","You found a gas mask from the second world war. Why it is here ? Nevermind, it can be useful at some point.",0);
+        gasMask = new Item ("Gas Mask","You found a gas mask from the second world war. Why it is here ? Nevermind, it can be useful at some point.",0, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
             
         // Creation of clues
-        footPrints = new Item ("Foot prints","You noticed footprints on the ground, from two people. It seems that they were walking towards the garden...",1);
-        scarf = new Item ("Scarf","A soft cashmere scarf, color periwinkle, does not fool anyone on the identity of its owner. How did Ms Pervenche lose it ...?",1);
-        clothSoaked = new Item ("Soaked cloth","You found a cloth soaked in red wine. This reminds you arguing with your wife on Valentine’s Day…",5);
-        hippocraticOath = new Item("Hippocatric Oath","You found a piece of the Hippocratic Oath. That is strange...",5);
+        footPrints = new Item ("Foot prints","You noticed footprints on the ground, from two people. It seems that they were walking towards the garden...",1, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
+        scarf = new Item ("Scarf","A soft cashmere scarf, color periwinkle, does not fool anyone on the identity of its owner. How did Ms Pervenche lose it ...?",1, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
+        clothSoaked = new Item ("Soaked cloth","You found a cloth soaked in red wine. This reminds you arguing with your wife on Valentine’s Day…",5, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
+        hippocraticOath = new Item("Hippocatric Oath","You found a piece of the Hippocratic Oath. That is strange...",5, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
         hippocraticOath.setHidden(true);
 
         // Add the items into the rooms  
@@ -417,6 +420,11 @@ public class World {
         poolRoom.addItem(keyDiningRoom);
         library.addItem(codeOffice);
         office.addItem(codeKitchen);
+        
+        // Creation of the items images associated with the rooms
+        
+        
+        
 
         // Creation of clues
         kiosk.addItem(footPrints);
@@ -499,10 +507,12 @@ public class World {
         rActions.add(btJournal);
 
         bBar = new JPanel();
-        bBar.setLayout(new GridLayout(1, 2));
+        bBar.setLayout(new GridLayout(1, 3));
         bBar.setSize(200, 300);
         JPanel moveBt = new JPanel();
         moveBt.setLayout(new BorderLayout());
+        btInventory = new JButton("Inventory");
+        rActions.add(btInventory);       
         btRight = new JButton("→");
         btLeft = new JButton("←");
         btUp = new JButton("↑");
@@ -511,6 +521,7 @@ public class World {
         moveBt.add(btLeft, BorderLayout.WEST);
         moveBt.add(btUp, BorderLayout.NORTH);
         moveBt.add(btDown, BorderLayout.CENTER);
+        bBar.add(btInventory);
         bBar.add(zoneTexte);
         bBar.add(moveBt);
         
@@ -573,6 +584,24 @@ public class World {
             journalFrame.setVisible(true);
             journalFrame.setAlwaysOnTop(true);
         });
+        
+        btInventory.addActionListener(ae -> {
+           // cPicture.setIcon(inventory.ItemsList.displayItemsImg());
+           System.out.println("Your Inventory");
+           JFrame Frame2 = new JFrame();
+           Frame2.setSize(500,500);
+           Frame2.setLayout(new GridLayout(5,5));
+           JLabel lRope = new JLabel();
+           lRope.setIcon(rope.getImageItem());
+           Frame2.add(lRope);         
+           Frame2.setEnabled(true);
+           //inventory.displayItemsImg(inventory.ItemsList);
+            
+        });
+        
+//            cPicture.setIcon(player1.getCurrentRoom().getImage());
+//            lMap.setIcon(player1.getCurrentRoom().getImagePlan());
+//            this.zoneTexte.setText(player1.getCurrentRoom().getDescription());
     }
 
     private void printWelcome() {

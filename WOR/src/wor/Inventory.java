@@ -57,6 +57,21 @@ public class Inventory {
 
         }
     }
+    
+    
+    public boolean displayItemsImg(ArrayList<Item> ItemsList) {
+        if (ItemsList.isEmpty()) {
+            System.out.println("Aucun items dans l'inventaire.");
+            return false;
+        } else {
+            System.out.println("Items dans l'inventaire : ");
+            for (int i = 0; i < ItemsList.size(); i++) {
+                ItemsList.get(i).getImageItem();
+            }
+            return true;
+
+        }
+    }
 
     /**
      * remove an Items from the inventory

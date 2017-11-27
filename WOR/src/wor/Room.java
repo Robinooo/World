@@ -77,8 +77,8 @@ public class Room
     public Icon getImage() {
         return img;
     }
-
-     /**
+    
+    /**
      * @return The location of the player in the room
      */
        public Icon getImagePlan() {
