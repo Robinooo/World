@@ -17,7 +17,7 @@ import javax.swing.JLabel;
 public class World {
 
     private JFrame frame, journalFrame;
-    private JButton btUp, btDown, btLeft, btRight, btSpeak, btExplore, btTake, btJournal;
+    private JButton btUp, btDown, btLeft, btRight, btSpeak, btExplore, btTake, btJournal, btHelp;
     private JPanel bBar, rActions; //lMap
     public JLabel map, cPicture, text, lMap;
     JTextArea zoneTexte = new JTextArea(1,10);
@@ -440,25 +440,7 @@ public class World {
 
         System.out.println((player1.getCurrentRoom()).getRoomName());
 
-        // Creation and setting of the menu 
-        
-        JMenuBar menuBar = new JMenuBar();
-        JMenu menu = new JMenu("Menu");
-        JMenu menuHelp = new JMenu("Help");
-        JMenu menuJournal = new JMenu("Journal");
-        JMenu menuItems = new JMenu("Items");
-
-        JMenuItem reset = new JMenuItem("Reset game");
-        JMenuItem quit = new JMenuItem("Exit the game");
-
-        menu.add(reset);
-        menu.add(quit);
-
-        menuBar.add(menu);
-        menuBar.add(menuHelp);
-        menuBar.add(menuJournal);
-        menuBar.add(menuItems);
-        
+       
         // Setting the Journal Frame, where all the text from the notebook is displayed
         JFrame journalFrame = new JFrame();
         journalFrame.setTitle("Notebook");
@@ -469,11 +451,6 @@ public class World {
         textJournal.setLineWrap(true);
         journalFrame.add(textJournal);
         
-        reset.addActionListener(ae -> {});
-        quit.addActionListener(ae -> {});
-        menuHelp.addActionListener(ae -> {});
-        menuItems.addActionListener(ae -> {});
-
 //        lMap = new JPanel();
 //        map = new JLabel(carte);
 //        lMap.add(map);
@@ -486,17 +463,18 @@ public class World {
         lMap.setIcon(player1.getCurrentRoom().getImagePlan());
 
         
-        
         rActions = new JPanel();
-        rActions.setLayout(new GridLayout(4, 1));
+        rActions.setLayout(new GridLayout(5, 1));
         btSpeak = new JButton("Speak");
         btExplore = new JButton("Explore");
         btTake = new JButton("Take");
         btJournal = new JButton("Journal");
+        btHelp = new JButton("Help");
         rActions.add(btSpeak);
         rActions.add(btExplore);
         rActions.add(btTake);
         rActions.add(btJournal);
+        rActions.add(btHelp);
 
         bBar = new JPanel();
         bBar.setLayout(new GridLayout(1, 2));
@@ -523,11 +501,11 @@ public class World {
         frame.add(bBar, BorderLayout.SOUTH);
         frame.add(rActions, BorderLayout.EAST);
         frame.add(lMap, BorderLayout.WEST);
-        frame.setJMenuBar(menuBar);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
         this.zoneTexte.setText(player1.getCurrentRoom().getDescription());
+        zoneTexte.setLineWrap(true);
         
         btRight.addActionListener(ae -> {
             player1.move("right");
@@ -572,6 +550,9 @@ public class World {
             textJournal.setText(notebook.getText());
             journalFrame.setVisible(true);
             journalFrame.setAlwaysOnTop(true);
+        });
+        btHelp.addActionListener(ae -> {
+            // Supposed to redirect the player to a PDF page (user manual)
         });
     }
 

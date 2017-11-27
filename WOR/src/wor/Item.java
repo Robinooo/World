@@ -82,11 +82,5 @@ public class Item {
      */
     public int getPersupoints() {
         return persupoints;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-    
-    
+    }    
 }
