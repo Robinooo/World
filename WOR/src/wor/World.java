@@ -430,7 +430,6 @@ public class World {
             player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 300);
         }
 
-        System.out.println((player1.getCurrentRoom()).getRoomName());
 
         // Setting the Journal Frame, where all the text from the notebook is displayed
         journalFrame = new JFrame();
@@ -563,7 +562,6 @@ public class World {
         
         // Setting the Inventory Frame
         btInventory.addActionListener(ae -> {
-        System.out.println("Your Inventory");
         JFrame inventoryFrame = new JFrame();
         inventoryFrame.setTitle("Inventory");
         inventoryFrame.setSize(500,500);

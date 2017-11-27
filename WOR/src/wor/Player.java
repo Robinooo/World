@@ -140,55 +140,50 @@ public class Player extends Character {
 
         if (currentRoom.containsDirection(direction)) {
             testRoom = currentRoom.getRoom(direction);
-            if (testRoom.getDoor() != null) { //if there is a door
-                System.out.println("There is a door in the Room");
+            if (testRoom.getDoor() != null) {
                 if (testRoom.getDoor().isOpenable() == true) { //if isOpenable -> true if is openable
                     nextRoom = currentRoom.getRoom(direction);
-                    System.out.println("The door is openable");
-                } else { //if openable is false... Try a Key or a Code
-                    System.out.println("The door is not openable. There is a key or a code to use");
-                    if (testRoom.getDoor().getHaveCodeLock()) { //if it's a code lock
-                        System.out.println("It's a code lock");
+                } 
+                else {
+                    if (testRoom.getDoor().getHaveCodeLock()) {
                         for (int i = 0; i < inv.ItemsList.size(); i++) {
                             boolean test = testRoom.getDoor().openDoorPass(inv.ItemsList.get(i).getName());
-                            System.out.println("\nThe boolean of codeLock:" + test + "\n");
                             if (test) { // Try each object from the inventory -> return true if the door is unlock
                                 testRoom.getDoor().setOpenable(true);
                                 nextRoom = currentRoom.getRoom(direction);
-                                System.out.println("On est rentré dans la room");
                             } else {
                                 nextRoom = currentRoom;
-                                System.out.println("We don't have the Code -> We can't enter into the room");
                             }
                         }
-                    } else {
-                        System.out.println("It's a keyLock");
+                    } 
+                    else {
+                        System.out.println("1");
+                        if (!inv.ItemsList.isEmpty()) {
                         for (int i = 0; i < inv.ItemsList.size(); i++) {
+                            System.out.println("2");
                             boolean test = testRoom.getDoor().openDoorKey(inv.ItemsList.get(i).getName());
-                            System.out.println("\nThe boolean of keyLock:" + test + "\n");
-                            if (test) { // Try each object from the inventory -> return true if the door is unlock
-                                System.out.println("The door is unlock. We can enter into the room");
+                            if (test) {
+                                System.out.println("3");
                                 testRoom.getDoor().setOpenable(true);
                                 nextRoom = currentRoom.getRoom(direction);
-                            } else {
+                            } 
+                            else {
+                                System.out.println("4");
                                 nextRoom = currentRoom;
-                                System.out.println("We don't have the key to enter into the room");
                             }
-                        }
+                            System.out.println("5");
+                        }} else { nextRoom = currentRoom; }
+                        System.out.println("6");
                     }
                 }
             } else // there is no door
             {
-                System.out.println("There is no door in this room");
                 nextRoom = currentRoom.getRoom(direction);
             }
         } else {
             nextRoom = currentRoom;
-            System.out.println("This direction doesn't exist...");
         }
         currentRoom = nextRoom;
-
-       
     }
 
     public Room getCurrentRoom() {
