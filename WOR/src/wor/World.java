@@ -12,47 +12,40 @@ import java.util.ArrayList;
  */
 public class World {
 
-    private JFrame frame, journalFrame;
-    private JButton btUp, btDown, btLeft, btRight, btSpeak, btExplore, btTake, btJournal, btInventory, btHelp;
-    private JPanel bBar, rActions; //lMap
+    private final JFrame frame, journalFrame;
+    private final JButton btUp, btDown, btLeft, btRight, btSpeak, btExplore, btTake, btJournal, btInventory, btHelp;
+    private final JPanel bBar, rActions;
     public JLabel map, cPicture, text, lMap;
-    JTextArea zoneTexte = new JTextArea(1, 10);
-    private JTextArea textJournal;
-    private String lastTeam;
-    private String lastAction;
-    private Player thePlayer;
-    private ArrayList<Room> listRoom;
-    private boolean win;
-    private Icon feuvert;
+    JTextArea zoneTexte = new JTextArea(7,50);
     public ArrayList<JButton> InventoryList;
     
 
     // instance variables - replace the example below with your own
-    private Room fountain, library, poolRoom, office, veranda, barn1, barn2, barn3,
+    private final Room fountain, library, poolRoom, office, veranda, barn1, barn2, barn3,
             garden, hall, smallHall, kiosk, livingRoom, diningRoom, kitchen, corridor1, corridor2,
             corridor3, corridor4, corridor5, corridor6, corridor7, corridor8, corridor9, corridor10, corridor11,
             corridor12, corridor13, corridor14, corridor15, corridor16, corridor17, corridor18;
 
-    private Door libraryDoor, officeDoor, verandaDoor, barn3Door, smallHallDoor, poolRoomDoor, kitchenDoor, diningRoomDoor, livingRoomDoor;
+    private final Door libraryDoor, officeDoor, verandaDoor, barn3Door, smallHallDoor, poolRoomDoor, kitchenDoor, diningRoomDoor, livingRoomDoor;
 
-    private KeyLock libraryKey, verandaKey, livingRoomKey, diningRoomKey;
-    private CodeLock officeCode, kitchenCode;
+    private final KeyLock libraryKey, verandaKey, livingRoomKey, diningRoomKey;
+    private final CodeLock officeCode, kitchenCode;
 
-    private Talking clnMoutarde, missRose, prOlive, missLeblanc, generalLegris, misterRouge, countOrange, countnessOrange;
-    private Killer drViolet;
-    private Follower missPrunelle;
+    private final Talking clnMoutarde, missRose, prOlive, missLeblanc, generalLegris, misterRouge, countOrange, countnessOrange;
+    private final Killer drViolet;
+    private final Follower missPrunelle;
 
-    private Item hippocraticOath, clothSoaked, scarf, footPrints, rope, dagger, ironBar, revolver, candlestick, wrench, poison, axe, keyLibrary, keyVeranda, keyLivingRoom, keyDiningRoom, codeOffice, codeKitchen, irGlasses, gasMask;
-    private Inventory inventory;
+    private final Item hippocraticOath, clothSoaked, scarf, footPrints, rope, dagger, ironBar, revolver, candlestick, wrench, poison, axe, keyLibrary, keyVeranda, keyLivingRoom, keyDiningRoom, codeOffice, codeKitchen, irGlasses, gasMask;
+    private final Inventory inventory;
     private NoteBook notebook;
     public Player player1;
 
-    private Icon imagefountain, imagelibrary, imagepoolRoom, imageoffice, imageveranda, imagebarn1, imagebarn2, imagebarn3,
+    private final Icon imagefountain, imagelibrary, imagepoolRoom, imageoffice, imageveranda, imagebarn1, imagebarn2, imagebarn3,
             imagegarden, imagehall, imagesmallHall,imagekiosk, imagelivingRoom, imagediningRoom, imagekitchen, imagecorridor1, imagecorridor2,
             imagecorridor3, imagecorridor4, imagecorridor5, imagecorridor6, imagecorridor7, imagecorridor8, imagecorridor9, imagecorridor10, imagecorridor11,
-            imagecorridor12, imagecorridor13, imagecorridor14, imagecorridor15, imagecorridor16, imagecorridor17, imagecorridor18, carte;
+            imagecorridor12, imagecorridor13, imagecorridor14, imagecorridor15, imagecorridor16, imagecorridor17, imagecorridor18;
 
-    private Icon mapimagefountain, mapimagelibrary, mapimagepoolRoom, mapimageoffice, mapimageveranda, mapimagebarn1, mapimagebarn2, mapimagebarn3,
+    private final Icon mapimagefountain, mapimagelibrary, mapimagepoolRoom, mapimageoffice, mapimageveranda, mapimagebarn1, mapimagebarn2, mapimagebarn3,
             mapimagegarden, mapimagehall, mapimagesmallHall, mapimagekiosk, mapimagelivingRoom, mapimagediningRoom, mapimagekitchen, mapimagecorridor1, mapimagecorridor2,
             mapimagecorridor3, mapimagecorridor4, mapimagecorridor5, mapimagecorridor6, mapimagecorridor7, mapimagecorridor8, mapimagecorridor9, mapimagecorridor10, mapimagecorridor11,
             mapimagecorridor12, mapimagecorridor13, mapimagecorridor14, mapimagecorridor15, mapimagecorridor16, mapimagecorridor17, mapimagecorridor18;
@@ -310,10 +303,8 @@ public class World {
         corridor17.setExit("up", kiosk);
 
         livingRoom.setExit("right", corridor13);
-        livingRoom.setExit("down", diningRoom);
 
         diningRoom.setExit("right", corridor14);
-        diningRoom.setExit("up", livingRoom);
 
         corridor18.setExit("right", corridor15);
         corridor18.setExit("down", kitchen);
@@ -439,7 +430,7 @@ public class World {
         System.out.println((player1.getCurrentRoom()).getRoomName());
 
         // Setting the Journal Frame, where all the text from the notebook is displayed
-        JFrame journalFrame = new JFrame();
+        journalFrame = new JFrame();
         journalFrame.setTitle("Notebook");
         journalFrame.setSize(900, 200);
         journalFrame.setLocationRelativeTo(null);
@@ -448,10 +439,7 @@ public class World {
         textJournal.setLineWrap(true);
         journalFrame.add(textJournal);
 
-//        lMap = new JPanel();
-//        map = new JLabel(carte);
-//        lMap.add(map);
-//        
+      
         cPicture = new JLabel();
         cPicture.setIcon(player1.getCurrentRoom().getImage());
 
@@ -459,26 +447,32 @@ public class World {
         lMap.setIcon(player1.getCurrentRoom().getImagePlan());
 
         rActions = new JPanel();
-        rActions.setLayout(new GridLayout(5, 1));
+        rActions.setLayout(new GridLayout(4, 1));
         btSpeak = new JButton("Speak");
         btExplore = new JButton("Explore");
         btTake = new JButton("Take");
         btTake.setEnabled(false);
-        btJournal = new JButton("Journal");
         btHelp = new JButton("Help");
         rActions.add(btSpeak);
         rActions.add(btExplore);
         rActions.add(btTake);
-        rActions.add(btJournal);
         rActions.add(btHelp);
 
         bBar = new JPanel();
-        bBar.setLayout(new GridLayout(1, 3));
-        bBar.setSize(200, 300);
+        //bBar.setLayout(new GridLayout(1, 4));
+        bBar.setLayout(new FlowLayout(FlowLayout.LEFT));
+        //bBar.setSize(1000, 300);
         JPanel moveBt = new JPanel();
         moveBt.setLayout(new BorderLayout());
-        btInventory = new JButton("Inventory");
-        rActions.add(btInventory);       
+        btInventory = new JButton("",new ImageIcon(getClass().getResource("/pictures2/bag.png")));
+        btInventory.setOpaque(false);
+        btInventory.setContentAreaFilled(false);
+        btInventory.setBorderPainted(false);
+        btJournal = new JButton("",new ImageIcon(getClass().getResource("/pictures2/notebook.png")));
+        btJournal.setOpaque(false);
+        btJournal.setContentAreaFilled(false);
+        btJournal.setBorderPainted(false);
+        rActions.add(btInventory);
         btRight = new JButton("→");
         btLeft = new JButton("←");
         btUp = new JButton("↑");
@@ -487,6 +481,7 @@ public class World {
         moveBt.add(btLeft, BorderLayout.WEST);
         moveBt.add(btUp, BorderLayout.NORTH);
         moveBt.add(btDown, BorderLayout.CENTER);
+        bBar.add(btJournal);
         bBar.add(btInventory);
         bBar.add(zoneTexte);
         bBar.add(moveBt);
