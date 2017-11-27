@@ -37,6 +37,13 @@ public class Item {
         return name;
     }
 
+       /**
+     * @return the item's description
+     */
+    public String getDescription() {
+        return description;
+    }
+
     /**
      * @return the value of the boolean "hidden"
      */
