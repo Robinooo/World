@@ -67,6 +67,7 @@ public class Inventory {
             System.out.println("Items dans l'inventaire : ");
             for (int i = 0; i < ItemsList.size(); i++) {
                 ItemsList.get(i).getImageItem();
+                
             }
             return true;
 

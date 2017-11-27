@@ -28,6 +28,8 @@ public class World {
     private ArrayList<Room> listRoom;
     private boolean win;
     private Icon feuvert;
+    public ArrayList<JButton> InventoryList;
+    
 
     // instance variables - replace the example below with your own
     //private ArrayList<Room> listRoom;
@@ -65,7 +67,7 @@ public class World {
      */
     public World(String playerClass, String playerName) {
 
-      
+        InventoryList = new ArrayList<JButton>();
 
         //imagehall = new ImageIcon (getClass().getResource("/pictures/c1.jpg")) ;
         libraryDoor = new Door("library");
@@ -359,12 +361,12 @@ public class World {
         //Creation of weapons
         rope = new Item("rope","You found a rope on a stool. This is clearly not the murder weapon. However, someone might have thought about suicide, remorse maybe …",2, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
         rope.setUse(false); // this item is not usable by the player
-        dagger = new Item("dagger","You found a nicely decorated dagger. You question yourself on its presence inside the veranda. But you remind that there were no cutoff marks on the victim. There may be other crimes to come...",2, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
+        dagger = new Item("dagger","You found a nicely decorated dagger. You question yourself on its presence inside the veranda. But you remind that there were no cutoff marks on the victim. There may be other crimes to come...",2, new ImageIcon(getClass().getResource("/picturesitems/dagger.png")));
         dagger.setUse(false);
         dagger.setHidden(true);
-        ironBar = new Item("ironBar","You found a quite impressive iron bare. Exactly the kind of thing that can knock out someone. Or worst. ",2, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
+        ironBar = new Item("ironBar","You found a quite impressive iron bare. Exactly the kind of thing that can knock out someone. Or worst. ",2, new ImageIcon(getClass().getResource("/picturesitems/ironbar.png")));
         ironBar.setUse(false);
-        revolver = new Item("revolver","Hidden into a desk drawer, you found a Revolver with only one bullet in the chamber. Maybe the one that you will keep for Ms Pervenche murderer.",2, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
+        revolver = new Item("revolver","Hidden into a desk drawer, you found a Revolver with only one bullet in the chamber. Maybe the one that you will keep for Ms Pervenche murderer.",2, new ImageIcon(getClass().getResource("/picturesitems/revolver.png")));
         revolver.setHidden(true); // the revovler is hidden in the room
         revolver.setUse(false);
         candlestick = new Item("candlestick","You found a dusty candlestick. Perfect for a candlelit dinner with Miss Prunelle once this case solved. The duty before everything !",2, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
@@ -585,26 +587,31 @@ public class World {
             journalFrame.setAlwaysOnTop(true);
         });
         
+        // Setting the Inventory Frame
         btInventory.addActionListener(ae -> {
-           // cPicture.setIcon(inventory.ItemsList.displayItemsImg());
-           System.out.println("Your Inventory");
-           JFrame inventoryFrame = new JFrame();
-           inventoryFrame.setSize(500,500);
-           inventoryFrame.setLayout(new GridLayout(5,5));
-           JLabel lRope = new JLabel();
-           lRope.setIcon(rope.getImageItem());
-           
-           inventoryFrame.add(lRope); 
-           inventoryFrame.setEnabled(true);
-           inventoryFrame.setVisible(true);
-           inventoryFrame.setAlwaysOnTop(true);
-           //inventory.displayItemsImg(inventory.ItemsList);
-            
+        System.out.println("Your Inventory");
+        JFrame inventoryFrame = new JFrame();
+        inventoryFrame.setTitle("Inventory");
+        inventoryFrame.setSize(500,500);
+        inventoryFrame.setLayout(new GridLayout(5,5));
+        
+        
+        //InventoryList = new ArrayList<JButton>();
+        
+         for (int i = 0; i < player1.getInventory().ItemsList.size(); i++) {
+             InventoryList.add(new JButton("",player1.getInventory().ItemsList.get(i).getImageItem()));
+             InventoryList.get(i).setPreferredSize( new Dimension(100, 100));
+             inventoryFrame.add(InventoryList.get(i));
+         };
+        
+        JLabel litem = new JLabel();
+        
+        inventoryFrame.setEnabled(true);
+        inventoryFrame.setVisible(true);
+        inventoryFrame.setAlwaysOnTop(true);
+         
         });
         
-//            cPicture.setIcon(player1.getCurrentRoom().getImage());
-//            lMap.setIcon(player1.getCurrentRoom().getImagePlan());
-//            this.zoneTexte.setText(player1.getCurrentRoom().getDescription());
     }
 
     private void printWelcome() {
