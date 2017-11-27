@@ -114,7 +114,7 @@ public class Player extends Character {
                 //inv.addObject(currentRoom.listItem.get(i));
                  inv.addItems(currentRoom.getItem(i));
                  setPersuasion(currentRoom.getItem(i).getPersupoints()); // add the persuasion points associated with the item to the player
-                 zoneTexte.setText(currentRoom.getItem(i).getDescription());
+                 zoneTexte.append(currentRoom.getItem(i).getDescription() + "\n ");
                  note.addText(currentRoom.getItem(i).getDescription());
             }
             inv.displayItems(inv.ItemsList);
