@@ -68,15 +68,15 @@ public class World {
 
         //imagehall = new ImageIcon (getClass().getResource("/pictures/c1.jpg")) ;
         libraryDoor = new Door("library");
-        libraryKey = new KeyLock("keylibrary");
+        libraryKey = new KeyLock("Keylibrary");
         libraryDoor.addKeyLock(libraryKey);
         
         officeDoor = new Door("office");
-        officeCode = new CodeLock("4444");
+        officeCode = new CodeLock("Codeoffice");
         officeDoor.addCodeLock(officeCode);
         
         verandaDoor = new Door("veranda");
-        verandaKey = new KeyLock("keyveranda");
+        verandaKey = new KeyLock("Keyveranda");
         verandaDoor.addKeyLock(verandaKey);
         
         barn3Door = new Door("Thirdbarn");
@@ -86,15 +86,15 @@ public class World {
         poolRoomDoor = new Door("pool");
         
         kitchenDoor = new Door("kitchen");
-        kitchenCode = new CodeLock("54673872638390293373827");
+        kitchenCode = new CodeLock("Codekitchen");
         kitchenDoor.addCodeLock(officeCode);
         
         diningRoomDoor = new Door("dining");
-        diningRoomKey = new KeyLock("keydining");
+        diningRoomKey = new KeyLock("Keydining");
         diningRoomDoor.addKeyLock(diningRoomKey);
         
         livingRoomDoor = new Door("living");
-        livingRoomKey = new KeyLock("keyliving");
+        livingRoomKey = new KeyLock("Keyliving");
         livingRoomDoor.addKeyLock(livingRoomKey);
 
         // Creation of the images associated with the rooms 
