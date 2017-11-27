@@ -3,10 +3,6 @@ package wor;
 import java.awt.*;
 import javax.swing.*;
 import java.util.ArrayList;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 /**
  * Write a description of class World here.
@@ -98,8 +94,7 @@ public class World {
         livingRoomKey = new KeyLock("Keyliving");
         livingRoomDoor.addKeyLock(livingRoomKey);
 
-        // Creation of the images associated with the rooms 
-        carte = new ImageIcon(getClass().getResource("/pictures/Map_code.jpg"));
+        // Creation of the images associated with the rooms
         imagefountain = new ImageIcon(getClass().getResource("/pictures2/fontaine.jpg"));
         imagelibrary = new ImageIcon(getClass().getResource("/pictures2/library.jpg"));
         imagepoolRoom = new ImageIcon(getClass().getResource("/pictures2/poolroom.jpg"));
