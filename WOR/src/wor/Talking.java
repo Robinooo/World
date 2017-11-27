@@ -69,11 +69,11 @@ public class Talking extends Character {
     /**
      * Display the 2 speaches of the talking
      */
-    public void talk(int persuasion) {
+    public String talk(int persuasion) {
         if (persuasion > 16){
-            System.out.println(getspeach2()); // Depending of the persuasion points
+            return getspeach1(); // Depending of the persuasion points
         } else {
-            System.out.println(getspeach1()); // Depending of the persuasion points
+            return getspeach2(); // Depending of the persuasion points
         }
     }
 }

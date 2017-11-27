@@ -17,6 +17,8 @@ public class Room
     private String roomName;
     private Character chara;
     private Talking talking;
+    private Killer killer;
+    private Follower follower;
     protected ArrayList<Item> listItem;
     private Door door;
     private String description;
@@ -248,14 +250,31 @@ public class Room
     }
 
     /**
-     * Add a character to the room
-     * @param pcharacter The character added to the room;
+     * Add a Talking character to the room
+     * @param pTalking The character added to the room;
      */
-         public void addCharacter (Character pcharacter) 
+         public void addCharacter (Talking pTalking) 
          {
-           chara=pcharacter;
+           talking=pTalking;
     }
-
+         
+             /**
+     * Add a killer character to the room
+     * @param pKiller The character added to the room;
+     */
+         public void addKiller (Killer pKiller) 
+         {
+           killer=pKiller;
+    }
+         
+    /**
+     * Add a Following character to the room
+     * @param pFollowing The character added to the room;
+     */
+         public void addFollower (Follower pFollower) 
+         {
+           follower=pFollower;
+    }
     /**
      * Displays the room description
      * @return the all the informations of a room
