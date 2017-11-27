@@ -108,12 +108,15 @@ public class Player extends Character {
      * inventory and update his number of persuasion points by adding the points associated to 
      * the item he is picking up
      */
-    public void takeItem() {
+    public void takeItem(JTextArea zoneTexte) {
         if (currentRoom.listItem.size() > 0) {
             for (int i = 0; i < currentRoom.listItem.size(); i++) {
                 //inv.addObject(currentRoom.listItem.get(i));
                  inv.addItems(currentRoom.getItem(i));
                  setPersuasion(currentRoom.getItem(i).getPersupoints()); // add the persuasion points associated with the item to the player
+                 zoneTexte.setText(currentRoom.getItem(i).getDescription());
+                 
+
             }
             inv.displayItems(inv.ItemsList);
         }
@@ -202,33 +205,32 @@ public class Player extends Character {
                 {
                     if (currentRoom.listItem.get(i).getHidden()) {
                     setTime(10);
-                        zoneTexte.setText("Il vous reste " + getTime() + "minutes.");
+                        zoneTexte.setText("You have " + getTime() + " minutes left.");
                     }
                     else {
                     setTime(5);
-                        zoneTexte.setText("Il vous reste " + getTime() + "minutes.");
+                        zoneTexte.setText("You have " + getTime() + " minutes left.");
                     }
                 }
-            }
-
+            } else {                    
+             setTime(10);
+             zoneTexte.setText("There is no items here, you have lost precious time exploring for nothing \n You have " + getTime() + " minutes left.");
+         }
+    // on perd 5 minutes de temps des qu'on explore si il y pas d'item ou si un item n'est pas caché 
+    // on perds 10 minutes si un item est caché
         }
 
     public void speak(JTextArea zoneTexte) {
         if (currentRoom.getTalkingInTheRoom() == null) {
-            //btSpeak.setEnabled(false);
-            // World.zoneTexte.append("There is no character to talk to here, maybe think about talking to yourself");
-             setTime(5);
-            zoneTexte.setText("There is no one to talk to here, you think about talking to yourself and loose 5 minutes \n of your precious time \n Il vous reste " + getTime() + " minutes.");
+            setTime(5);
+            zoneTexte.setText("There is no one to talk to here, you think about talking to yourself and loose 5 minutes \n of your precious time \n You have " + getTime() + " minutes left.");
            
         } else {
              setTime(5);
-            zoneTexte.setText(currentRoom.getTalkingInTheRoom().talk(persuasion)  + "\n Il vous reste " + getTime() + " minutes.");
+            zoneTexte.setText(currentRoom.getTalkingInTheRoom().talk(persuasion)  + "\n You have " + getTime() + " minutes left.");
         }
 
     }
-
-    // on perd 5 minutes de temps des qu'on explore si il y pas d'item ou si un item n'est pas caché 
-    // on perds 10 minutes si un item est caché
 }
 
      

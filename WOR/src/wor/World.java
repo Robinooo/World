@@ -540,7 +540,7 @@ public class World {
             player1.getTime();
         });
         btTake.addActionListener(ae -> {
-            player1.takeItem();
+            player1.takeItem(zoneTexte);
             player1.getTime();
         });
         
