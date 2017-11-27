@@ -72,7 +72,7 @@ public class World {
         libraryDoor.addKeyLock(libraryKey);
         
         officeDoor = new Door("office");
-        officeCode = new CodeLock("Codeoffice");
+        officeCode = new CodeLock("Codeoffice", "Codeoffice");
         officeDoor.addCodeLock(officeCode);
         
         verandaDoor = new Door("veranda");
@@ -86,7 +86,7 @@ public class World {
         poolRoomDoor = new Door("pool");
         
         kitchenDoor = new Door("kitchen");
-        kitchenCode = new CodeLock("Codekitchen");
+        kitchenCode = new CodeLock("Codekitchen", "Codekitchen");
         kitchenDoor.addCodeLock(officeCode);
         
         diningRoomDoor = new Door("dining");
