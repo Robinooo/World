@@ -157,23 +157,17 @@ public class Player extends Character {
                         }
                     } 
                     else {
-                        System.out.println("1");
                         if (!inv.ItemsList.isEmpty()) {
                         for (int i = 0; i < inv.ItemsList.size(); i++) {
-                            System.out.println("2");
                             boolean test = testRoom.getDoor().openDoorKey(inv.ItemsList.get(i).getName());
                             if (test) {
-                                System.out.println("3");
                                 testRoom.getDoor().setOpenable(true);
                                 nextRoom = currentRoom.getRoom(direction);
                             } 
                             else {
-                                System.out.println("4");
                                 nextRoom = currentRoom;
                             }
-                            System.out.println("5");
                         }} else { nextRoom = currentRoom; }
-                        System.out.println("6");
                     }
                 }
             } else // there is no door
