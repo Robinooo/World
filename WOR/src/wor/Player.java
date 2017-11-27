@@ -217,11 +217,12 @@ public class Player extends Character {
         if (currentRoom.getTalkingInTheRoom() == null) {
             //btSpeak.setEnabled(false);
             // World.zoneTexte.append("There is no character to talk to here, maybe think about talking to yourself");
-            zoneTexte.setText("There is no one to talk to here, you think about talking to yourself and loose 5 minutes \n of your precious time");
-            setTime(5);
+             setTime(5);
+            zoneTexte.setText("There is no one to talk to here, you think about talking to yourself and loose 5 minutes \n of your precious time \n Il vous reste " + getTime() + " minutes.");
+           
         } else {
-            zoneTexte.setText(currentRoom.getTalkingInTheRoom().talk(persuasion));
-            setTime(5);
+             setTime(5);
+            zoneTexte.setText(currentRoom.getTalkingInTheRoom().talk(persuasion)  + "\n Il vous reste " + getTime() + " minutes.");
         }
 
     }
