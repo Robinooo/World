@@ -23,9 +23,9 @@ public class World {
     private TimeBar tBar;
     private LifeBar lBar;
 
-    private Icon pImg, tImg, lImg;  
-    private JLabel myLabelGold, myLabelGold1, myLabelGold2;
-    private JPanel myPanelGold,myGlobalPanel;
+    private Icon pImg, tImg, lImg, pic1, pic2,pic3;  
+    private JLabel myLabelGold, myLabelGold1, myLabelGold2,tout, myLabelperso, myLabeltout,myLabelNiveau1,myLabelNiveau2,myLabelNiveau3;
+    private JPanel myPanelGold,myGlobalPanel, myPaneltout;
     
     
     // instance variables - replace the example below with your own
@@ -428,7 +428,7 @@ public class World {
         inventory = new Inventory();
         //inventory.addItems(rope);
         //inventory.addItems(dagger);
-        //inventory.addItems(keyDiningRoom);
+        inventory.addItems(keyDiningRoom);
 
         if (playerClass == "Gadget") {
             player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 100);
@@ -438,7 +438,6 @@ public class World {
             player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 80);
         }
 
-        System.out.println((player1.getCurrentRoom()).getRoomName());
 
         // Setting the Journal Frame, where all the text from the notebook is displayed
         journalFrame = new JFrame();
@@ -549,6 +548,9 @@ public class World {
         
         myLabelGold2.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,15));
         myLabelGold2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        
+        
+        
         myPanelGold = new JPanel();
         myPanelGold.setLayout(new GridLayout(3,3));
         
@@ -566,19 +568,71 @@ public class World {
         
         
         
+        pic1 = new ImageIcon(getClass().getResource("/pictures2/gadget.jpg"));
+        pic2 = new ImageIcon(getClass().getResource("/pictures2/colombo.jpg"));
+        pic3 = new ImageIcon(getClass().getResource("/pictures2/holmes.jpg"));
+
         
+        JLabel myLabelperso = new JLabel();
         
+        if (playerClass == "Gadget") 
+        {
+            myLabelperso.setIcon(pic1);
+        } 
+         else if (playerClass == "Colombo") 
+        {
+            myLabelperso.setIcon(pic2);
+        } 
+        else 
+         {
+            myLabelperso.setIcon(pic3);
+         }
+         
+            JLabel myLabelNiveau1 = new JLabel("Easy Level");
+            JLabel myLabelNiveau2 = new JLabel("Medium Level");
+            JLabel myLabelNiveau3 = new JLabel("Hard Level");
+
+        myLabelperso.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,15));
+        myLabelperso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        
+        //JLabel myLabelNiveau = new JLabel("test");
+        myLabelNiveau1.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,30));
+        myLabelNiveau1.setForeground(Color.red);
+        myLabelNiveau1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        myLabelNiveau2.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,30));
+        myLabelNiveau2.setForeground(Color.red);
+        myLabelNiveau2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        myLabelNiveau3.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,30));
+        myLabelNiveau3.setForeground(Color.red);
+        myLabelNiveau3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        
+        JPanel myPaneltout = new JPanel();
+        myPaneltout.setLayout(new BorderLayout());
+        myPaneltout.add(myPanelGold,BorderLayout.WEST);
+        myPaneltout.add(myLabelperso,BorderLayout.EAST);
+        
+        if (playerClass == "Gadget") 
+        {
+        myPaneltout.add(myLabelNiveau1,BorderLayout.CENTER);
+        }
+        else if (playerClass == "Colombo") 
+        {
+        myPaneltout.add(myLabelNiveau2,BorderLayout.CENTER);
+        }
+        else{
+        myPaneltout.add(myLabelNiveau3,BorderLayout.CENTER);
+        };
         
         
         frame = new JFrame("World Of Zuul");
-        frame.setSize(1000, 700);
+        frame.setSize(1000, 850);
         frame.setResizable(false);
         frame.setLayout(new BorderLayout());
         frame.add(cPicture, BorderLayout.CENTER);
         frame.add(bBar, BorderLayout.SOUTH);
         frame.add(rActions, BorderLayout.EAST);
         frame.add(lMap, BorderLayout.WEST);
-        frame.add(myPanelGold, BorderLayout.NORTH);
+        frame.add(myPaneltout, BorderLayout.NORTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
@@ -666,7 +720,6 @@ public class World {
         
         // Setting the Inventory Frame
         btInventory.addActionListener(ae -> {
-        System.out.println("Your Inventory");
         JFrame inventoryFrame = new JFrame();
         inventoryFrame.setTitle("Inventory");
         inventoryFrame.setSize(500,500);

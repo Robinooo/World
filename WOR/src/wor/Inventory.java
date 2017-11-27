@@ -34,7 +34,6 @@ public class Inventory {
      */
     public void addItems(Item newItem) {
         ItemsList.add(newItem);
-        System.out.println("Item ajouté à l'inventaire.");
     }
 
     /**
@@ -46,12 +45,9 @@ public class Inventory {
      */
     public boolean displayItems(ArrayList<Item> ItemsList) {
         if (ItemsList.isEmpty()) {
-            System.out.println("Aucun items dans l'inventaire.");
             return false;
         } else {
-            System.out.println("Items dans l'inventaire : ");
             for (int i = 0; i < ItemsList.size(); i++) {
-                System.out.println(ItemsList.get(i).getName());
             }
             return true;
 
@@ -61,10 +57,8 @@ public class Inventory {
     
     public boolean displayItemsImg(ArrayList<Item> ItemsList) {
         if (ItemsList.isEmpty()) {
-            System.out.println("Aucun items dans l'inventaire.");
             return false;
         } else {
-            System.out.println("Items dans l'inventaire : ");
             for (int i = 0; i < ItemsList.size(); i++) {
                 ItemsList.get(i).getImageItem();
                 
@@ -81,6 +75,5 @@ public class Inventory {
      */
     public void removeItems(Item usedItem) {
         ItemsList.remove(usedItem);
-        System.out.println("Item supprimé de l'inventaire.");
     }
 }

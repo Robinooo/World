@@ -109,8 +109,6 @@ public class Door {
      * @return Returns true if the door is unlock
      */
     public boolean openDoorKey(String keyName) {
-        System.out.println(keyLock.getNameKey());
-        System.out.println(keyName);
 
         if (keyLock.getNameKey().equals(keyName)) {
             return true;
@@ -143,10 +141,8 @@ public class Door {
     public boolean openDoor() {
         if (isOpenable()) {
             return true;
-            //System.out.println("You can pass the door");
         } else {
             return false;
-            //System.out.println("The door still lock.\nTry a key or a password.");
         }
     }
 }
