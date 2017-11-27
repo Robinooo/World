@@ -25,8 +25,6 @@ public class Door {
      * door can not have a code and a key lock
      *
      * @param name The name of the door
-     * @param ifKeyLock To know if a door have a keyLock
-     * @param ifCodeLock To know if a door have a codeLock
      */
     public Door(String name) {
         openable = true; // door is open
