@@ -109,6 +109,7 @@ public class Player extends Character {
      * the item he is picking up
      */
     public void takeItem(JTextArea zoneTexte) {
+        zoneTexte.setText("");
         if (currentRoom.listItem.size() > 0) {
             for (int i = 0; i < currentRoom.listItem.size(); i++) {
                 //inv.addObject(currentRoom.listItem.get(i));
@@ -116,6 +117,10 @@ public class Player extends Character {
                  setPersuasion(currentRoom.getItem(i).getPersupoints()); // add the persuasion points associated with the item to the player
                  zoneTexte.append(currentRoom.getItem(i).getDescription() + "\n ");
                  note.addText(currentRoom.getItem(i).getDescription());
+                 currentRoom.listItem.remove(i);
+//                 if (i > 0) {
+                     i--;
+//                 }
             }
             inv.displayItems(inv.ItemsList);
         }
@@ -181,13 +186,7 @@ public class Player extends Character {
             nextRoom = currentRoom;
             System.out.println("This direction doesn't exist...");
         }
-        // System.out.println("You are " + currentRoom.getDescription());
-        // System.out.print("Exits: ");
-        // currentRoom.displayRoomInformations(); 
-        // System.out.println();
-        //System.out.println(nextRoom.getRoomName());
         currentRoom = nextRoom;
-        System.out.println(currentRoom.getRoomName());
 
        
     }
@@ -200,20 +199,19 @@ public class Player extends Character {
          
          
          if(currentRoom.listItem.size() > 0 ){
+             zoneTexte.setText(currentRoom.listItem.size()+" items in the room.");
                 for(int i=0; i < currentRoom.listItem.size(); i++) 
                 {
                     if (currentRoom.listItem.get(i).getHidden()) {
                     setTime(10);
-                        zoneTexte.setText("You have " + getTime() + " minutes left.");
                     }
                     else {
                     setTime(5);
-                        zoneTexte.setText("You have " + getTime() + " minutes left.");
                     }
                 }
             } else {                    
              setTime(10);
-             zoneTexte.setText("There is no items here, you have lost precious time exploring for nothing \n You have " + getTime() + " minutes left.");
+             zoneTexte.setText("There is no items here, you have lost precious time exploring for nothing \n");
          }
     // on perd 5 minutes de temps des qu'on explore si il y pas d'item ou si un item n'est pas caché 
     // on perds 10 minutes si un item est caché
@@ -222,11 +220,11 @@ public class Player extends Character {
     public void speak(JTextArea zoneTexte) {
         if (currentRoom.getTalkingInTheRoom() == null) {
             setTime(5);
-            zoneTexte.setText("There is no one to talk to here, you think about talking to yourself and loose 5 minutes \n of your precious time \n You have " + getTime() + " minutes left.");
+            zoneTexte.setText("There is no one to talk to here, you think about talking to yourself and loose 5 minutes \n of your precious time \n");
            
         } else {
              setTime(5);
-            zoneTexte.setText(currentRoom.getTalkingInTheRoom().talk(persuasion)  + "\n You have " + getTime() + " minutes left." + "\n");
+            zoneTexte.setText(currentRoom.getTalkingInTheRoom().talk(persuasion)  + "\n");
         }
 
     }

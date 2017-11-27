@@ -52,6 +52,9 @@ public class World {
 
     /**
      * Constructor for objects of class World
+     * 
+     * @param playerClass
+     * @param playerName
      */
     public World(String playerClass, String playerName) {
 
@@ -415,9 +418,9 @@ public class World {
 
         notebook = new NoteBook();
         inventory = new Inventory();
-        inventory.addItems(rope);
-        inventory.addItems(dagger);
-        inventory.addItems(keyDiningRoom);
+        //inventory.addItems(rope);
+        //inventory.addItems(dagger);
+        //inventory.addItems(keyDiningRoom);
 
         if (playerClass == "Gadget") {
             player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 500);
@@ -504,36 +507,37 @@ public class World {
             player1.move("right");
             cPicture.setIcon(player1.getCurrentRoom().getImage());
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
-            this.zoneTexte.setText(player1.getCurrentRoom().getDescription());
+            this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
         });
         btLeft.addActionListener(ae -> {
             player1.move("left");
             cPicture.setIcon(player1.getCurrentRoom().getImage());
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
-            this.zoneTexte.setText(player1.getCurrentRoom().getDescription());
+            this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
         });
         btUp.addActionListener(ae -> {
             player1.move("up");
             cPicture.setIcon(player1.getCurrentRoom().getImage());
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
-            this.zoneTexte.setText(player1.getCurrentRoom().getDescription());
+            this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
         });
         btDown.addActionListener(ae -> {
             player1.move("down");
             cPicture.setIcon(player1.getCurrentRoom().getImage());
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
-            this.zoneTexte.setText(player1.getCurrentRoom().getDescription());
+            this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
         });
 
         btExplore.addActionListener(ae -> {
             player1.explore(this.zoneTexte);
-            System.out.println(player1.getCurrentRoom().getItem(0).getName());
             player1.getTime();
-            btTake.setEnabled(true);
+            if (!player1.getCurrentRoom().listItem.isEmpty()){
+               btTake.setEnabled(true); 
+            }
         });
         btTake.addActionListener(ae -> {
             player1.takeItem(zoneTexte);
