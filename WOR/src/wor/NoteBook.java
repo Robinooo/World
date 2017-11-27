@@ -23,7 +23,7 @@ public class NoteBook {
      * This method allows the user to add text in the notebook.
      */
     public void addText(String note) {
-        pnote = pnote + note + "\n";
+            pnote = pnote + note + "\n";
     }
 
     /**
@@ -32,6 +32,6 @@ public class NoteBook {
      * @return pnote
      */
     public String getText() {
-        return ("NoteBook : \n" + "-" + pnote);
+        return ("NoteBook : \n" + pnote);
     }
 }

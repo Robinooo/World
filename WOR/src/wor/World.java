@@ -462,10 +462,11 @@ public class World {
         // Setting the Journal Frame, where all the text from the notebook is displayed
         JFrame journalFrame = new JFrame();
         journalFrame.setTitle("Notebook");
-        journalFrame.setSize(500,200);
+        journalFrame.setSize(900,200);
         journalFrame.setLocationRelativeTo(null);
-        JTextArea textJournal = new JTextArea(notebook.getText());
+        JTextArea textJournal = new JTextArea();
         textJournal.setEditable(false);
+        textJournal.setLineWrap(true);
         journalFrame.add(textJournal);
         
         reset.addActionListener(ae -> {});
@@ -555,6 +556,7 @@ public class World {
 
         btExplore.addActionListener(ae -> {
             player1.explore(this.zoneTexte);
+            System.out.println(player1.getCurrentRoom().getItem(0).getName());
             player1.getTime();
         });
         btTake.addActionListener(ae -> {
@@ -567,11 +569,9 @@ public class World {
             player1.getTime();
         });
         btJournal.addActionListener(ae -> {
-//            System.out.println("hello");
-//            journalFrame.setVisible(true);
-//            journalFrame.setAlwaysOnTop(true);
-//            notebook.addText("test");
-              System.out.print(notebook.getText());
+            textJournal.setText(notebook.getText());
+            journalFrame.setVisible(true);
+            journalFrame.setAlwaysOnTop(true);
         });
     }
 

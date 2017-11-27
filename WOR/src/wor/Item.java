@@ -25,6 +25,7 @@ public class Item {
      */
     public Item(String name, String description, int persupoints) {
         this.name = name;
+        this.description = description;
         this.use = true;
         this.hidden = false;
     }
