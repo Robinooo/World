@@ -588,13 +588,16 @@ public class World {
         btInventory.addActionListener(ae -> {
            // cPicture.setIcon(inventory.ItemsList.displayItemsImg());
            System.out.println("Your Inventory");
-           JFrame Frame2 = new JFrame();
-           Frame2.setSize(500,500);
-           Frame2.setLayout(new GridLayout(5,5));
+           JFrame inventoryFrame = new JFrame();
+           inventoryFrame.setSize(500,500);
+           inventoryFrame.setLayout(new GridLayout(5,5));
            JLabel lRope = new JLabel();
            lRope.setIcon(rope.getImageItem());
-           Frame2.add(lRope);         
-           Frame2.setEnabled(true);
+           
+           inventoryFrame.add(lRope); 
+           inventoryFrame.setEnabled(true);
+           inventoryFrame.setVisible(true);
+           inventoryFrame.setAlwaysOnTop(true);
            //inventory.displayItemsImg(inventory.ItemsList);
             
         });
