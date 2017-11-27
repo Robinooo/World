@@ -114,6 +114,7 @@ public class Player extends Character {
                 //inv.addObject(currentRoom.listItem.get(i));
                  inv.addItems(currentRoom.getItem(i));
                  setPersuasion(currentRoom.getItem(i).getPersupoints()); // add the persuasion points associated with the item to the player
+                 zoneTexte.append(currentRoom.getItem(i).getDescription() + "\n ");
                  note.addText(currentRoom.getItem(i).getDescription());
             }
             inv.displayItems(inv.ItemsList);
@@ -225,7 +226,7 @@ public class Player extends Character {
            
         } else {
              setTime(5);
-            zoneTexte.setText(currentRoom.getTalkingInTheRoom().talk(persuasion)  + "\n You have " + getTime() + " minutes left.");
+            zoneTexte.setText(currentRoom.getTalkingInTheRoom().talk(persuasion)  + "\n You have " + getTime() + " minutes left." + "\n");
         }
 
     }

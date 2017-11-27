@@ -88,9 +88,7 @@ public class Item {
      */
     public int getPersupoints() {
         return persupoints;
-    }
-
-      
+    }      
     public Icon getImageItem() {
         return imgItem;
     }
