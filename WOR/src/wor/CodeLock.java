@@ -9,7 +9,8 @@ package wor;
  */
 public class CodeLock extends Lock {
 
-    private String code; //The code of the CodeLock
+    private String code; // The code of the CodeLock
+    private String name; // The name of the CodeLock
 
     /**
      * Constructor for objects of class CodeLock
@@ -27,5 +28,13 @@ public class CodeLock extends Lock {
      */
     public String getPasswd() {
         return code;
+    }
+    
+    /**
+     * Retur the name of the code lock
+     * @return The name of the code lock 
+     */
+    public String getName(){
+        return name;
     }
 }
