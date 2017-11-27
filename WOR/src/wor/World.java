@@ -365,7 +365,6 @@ public class World {
         codeKitchen.setHidden(true);
         
         //Creation of utilities 
-
         irGlasses = new Item ("Glasses Infrared","Your extraordinary observation capabilities allow you to discover infrared glasses hidden inside a bush. This might look useless but with it, you will have style !",0);
         irGlasses.setHidden(true);
         gasMask = new Item ("Gas Mask","You found a gas mask from the second world war. Why it is here ? Nevermind, it can be useful at some point.",0);
