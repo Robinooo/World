@@ -275,19 +275,6 @@ public class Room
          {
            follower=pFollower;
     }
-    /**
-     * Displays the room description
-     * @return the all the informations of a room
-     */
-    public void displayRoomInformations() {
-        System.out.println("Current location : " + roomName);
-        System.out.println(description);
-        System.out.println(myHashRoom.keySet());
-        // System.out.println("Available exits are : ");
-        // for(Exit r: exitRooms) {
-        // System.out.println(r.getNextRoom().getRoomName());
-        // }
-    }
 
     /**
      * Set the room description

@@ -420,7 +420,7 @@ public class World {
         inventory = new Inventory();
         //inventory.addItems(rope);
         //inventory.addItems(dagger);
-        //inventory.addItems(keyDiningRoom);
+        inventory.addItems(keyDiningRoom);
 
         if (playerClass == "Gadget") {
             player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 500);
