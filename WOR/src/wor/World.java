@@ -12,11 +12,12 @@ import java.util.ArrayList;
  */
 public class World {
 
-    private JFrame frame;
-    private JButton btUp, btDown, btLeft, btRight, btSpeak, btExplore, btTake;
+    private JFrame frame, journalFrame;
+    private JButton btUp, btDown, btLeft, btRight, btSpeak, btExplore, btTake, btJournal;
     private JPanel bBar, rActions; //lMap
     public JLabel map, cPicture, text, lMap;
     JTextArea zoneTexte = new JTextArea(1,10);
+    private JTextArea textJournal;
     private String lastTeam;
     private String lastAction;
     private Player thePlayer;
@@ -33,6 +34,9 @@ public class World {
 
     private Door libraryDoor, officeDoor, verandaDoor, barn3Door, smallHallDoor, poolRoomDoor, kitchenDoor, diningRoomDoor, livingRoomDoor;
 
+    private KeyLock libraryKey, verandaKey, livingRoomKey, diningRoomKey;
+    private CodeLock officeCode, kitchenCode;
+    
     private Talking clnMoutarde, missRose, prOlive, missLeblanc, generalLegris, misterRouge, countOrange, countnessOrange;
     private Killer drViolet;
     private Follower missPrunelle;
@@ -60,15 +64,35 @@ public class World {
       
 
         //imagehall = new ImageIcon (getClass().getResource("/pictures/c1.jpg")) ;
-        libraryDoor = new Door("library", true, false);
-        officeDoor = new Door("office", false, true);
-        verandaDoor = new Door("veranda", true, false);
-        barn3Door = new Door("Thirdbarn", false, false);
-        smallHallDoor = new Door("smallhall", false, false);
-        poolRoomDoor = new Door("pool", false, false);
-        kitchenDoor = new Door("kitchen", false, true);
-        diningRoomDoor = new Door("dining", true, false);
-        livingRoomDoor = new Door("living", true, false);
+        libraryDoor = new Door("library");
+        libraryKey = new KeyLock("Keylibrary");
+        libraryDoor.addKeyLock(libraryKey);
+        
+        officeDoor = new Door("office");
+        officeCode = new CodeLock("Codeoffice", "Codeoffice");
+        officeDoor.addCodeLock(officeCode);
+        
+        verandaDoor = new Door("veranda");
+        verandaKey = new KeyLock("Keyveranda");
+        verandaDoor.addKeyLock(verandaKey);
+        
+        barn3Door = new Door("Thirdbarn");
+        
+        smallHallDoor = new Door("smallhall");
+        
+        poolRoomDoor = new Door("pool");
+        
+        kitchenDoor = new Door("kitchen");
+        kitchenCode = new CodeLock("Codekitchen", "Codekitchen");
+        kitchenDoor.addCodeLock(officeCode);
+        
+        diningRoomDoor = new Door("dining");
+        diningRoomKey = new KeyLock("Keydining");
+        diningRoomDoor.addKeyLock(diningRoomKey);
+        
+        livingRoomDoor = new Door("living");
+        livingRoomKey = new KeyLock("Keyliving");
+        livingRoomDoor.addKeyLock(livingRoomKey);
 
         // Creation of the images associated with the rooms
         imagefountain = new ImageIcon(getClass().getResource("/pictures2/fontaine.jpg"));
@@ -315,9 +339,9 @@ public class World {
         // Add the character into rooms
         fountain.addCharacter(missRose);
         library.addCharacter(clnMoutarde);
-        poolRoom.addCharacter(missPrunelle);
+        poolRoom.addFollower(missPrunelle);
         veranda.addCharacter(misterRouge);
-        barn3.addCharacter(drViolet);
+        barn3.addKiller(drViolet);
         garden.addCharacter(missLeblanc);
         corridor11.addCharacter(countOrange);
         kiosk.addCharacter(countnessOrange);
@@ -360,7 +384,6 @@ public class World {
         codeKitchen.setHidden(true);
         
         //Creation of utilities 
-
         irGlasses = new Item ("Glasses Infrared","Your extraordinary observation capabilities allow you to discover infrared glasses hidden inside a bush. This might look useless but with it, you will have style !",0);
         irGlasses.setHidden(true);
         gasMask = new Item ("Gas Mask","You found a gas mask from the second world war. Why it is here ? Nevermind, it can be useful at some point.",0);
@@ -412,6 +435,8 @@ public class World {
 
         System.out.println((player1.getCurrentRoom()).getRoomName());
 
+        // Creation and setting of the menu 
+        
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("Menu");
         JMenu menuHelp = new JMenu("Help");
@@ -428,6 +453,21 @@ public class World {
         menuBar.add(menuHelp);
         menuBar.add(menuJournal);
         menuBar.add(menuItems);
+        
+        // Setting the Journal Frame, where all the text from the notebook is displayed
+        JFrame journalFrame = new JFrame();
+        journalFrame.setTitle("Notebook");
+        journalFrame.setSize(900,200);
+        journalFrame.setLocationRelativeTo(null);
+        JTextArea textJournal = new JTextArea();
+        textJournal.setEditable(false);
+        textJournal.setLineWrap(true);
+        journalFrame.add(textJournal);
+        
+        reset.addActionListener(ae -> {});
+        quit.addActionListener(ae -> {});
+        menuHelp.addActionListener(ae -> {});
+        menuItems.addActionListener(ae -> {});
 
 //        lMap = new JPanel();
 //        map = new JLabel(carte);
@@ -443,13 +483,15 @@ public class World {
         
         
         rActions = new JPanel();
-        rActions.setLayout(new GridLayout(3, 1));
+        rActions.setLayout(new GridLayout(4, 1));
         btSpeak = new JButton("Speak");
         btExplore = new JButton("Explore");
         btTake = new JButton("Take");
+        btJournal = new JButton("Journal");
         rActions.add(btSpeak);
         rActions.add(btExplore);
         rActions.add(btTake);
+        rActions.add(btJournal);
 
         bBar = new JPanel();
         bBar.setLayout(new GridLayout(1, 2));
@@ -471,7 +513,6 @@ public class World {
         frame = new JFrame("World Of Zuul");
         frame.setSize(1000, 700);
         frame.setResizable(false);
-        frame.setAlwaysOnTop(true);
         frame.setLayout(new BorderLayout());
         frame.add(cPicture, BorderLayout.CENTER);
         frame.add(bBar, BorderLayout.SOUTH);
@@ -510,16 +551,22 @@ public class World {
 
         btExplore.addActionListener(ae -> {
             player1.explore(this.zoneTexte);
+            System.out.println(player1.getCurrentRoom().getItem(0).getName());
             player1.getTime();
         });
         btTake.addActionListener(ae -> {
-            player1.takeItem();
+            player1.takeItem(zoneTexte);
             player1.getTime();
         });
         
         btSpeak.addActionListener(ae -> {
             player1.speak(zoneTexte);
             player1.getTime();
+        });
+        btJournal.addActionListener(ae -> {
+            textJournal.setText(notebook.getText());
+            journalFrame.setVisible(true);
+            journalFrame.setAlwaysOnTop(true);
         });
     }
 

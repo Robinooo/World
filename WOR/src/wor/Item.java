@@ -25,6 +25,7 @@ public class Item {
      */
     public Item(String name, String description, int persupoints) {
         this.name = name;
+        this.description = description;
         this.use = true;
         this.hidden = false;
     }
@@ -34,6 +35,13 @@ public class Item {
      */
     public String getName() {
         return name;
+    }
+
+       /**
+     * @return the item's description
+     */
+    public String getDescription() {
+        return description;
     }
 
     /**
@@ -75,4 +83,10 @@ public class Item {
     public int getPersupoints() {
         return persupoints;
     }
+
+    public String getDescription() {
+        return description;
+    }
+    
+    
 }

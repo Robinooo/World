@@ -23,15 +23,15 @@ public class NoteBook {
      * This method allows the user to add text in the notebook.
      */
     public void addText(String note) {
-        pnote = pnote + note + "\n";
+            pnote = pnote + note + "\n";
     }
 
     /**
      * This methods allows the user to get all the text from the notebook.
-     *
+     * 
      * @return pnote
      */
     public String getText() {
-        return (pnote);
+        return ("NoteBook : \n" + pnote);
     }
 }
