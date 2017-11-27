@@ -343,9 +343,9 @@ public class World {
         // Add the character into rooms
         fountain.addCharacter(missRose);
         library.addCharacter(clnMoutarde);
-        poolRoom.addCharacter(missPrunelle);
+        poolRoom.addFollower(missPrunelle);
         veranda.addCharacter(misterRouge);
-        barn3.addCharacter(drViolet);
+        barn3.addKiller(drViolet);
         garden.addCharacter(missLeblanc);
         corridor11.addCharacter(countOrange);
         kiosk.addCharacter(countnessOrange);
