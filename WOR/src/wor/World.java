@@ -37,6 +37,9 @@ public class World {
 
     private Door libraryDoor, officeDoor, verandaDoor, barn3Door, smallHallDoor, poolRoomDoor, kitchenDoor, diningRoomDoor, livingRoomDoor;
 
+    private KeyLock libraryKey, verandaKey, livingRoomKey, diningRoomKey;
+    private CodeLock officeCode, kitchenCode;
+    
     private Talking clnMoutarde, missRose, prOlive, missLeblanc, generalLegris, misterRouge, countOrange, countnessOrange;
     private Killer drViolet;
     private Follower missPrunelle;
@@ -64,15 +67,35 @@ public class World {
       
 
         //imagehall = new ImageIcon (getClass().getResource("/pictures/c1.jpg")) ;
-        libraryDoor = new Door("library", true, false);
-        officeDoor = new Door("office", false, true);
-        verandaDoor = new Door("veranda", true, false);
-        barn3Door = new Door("Thirdbarn", false, false);
-        smallHallDoor = new Door("smallhall", false, false);
-        poolRoomDoor = new Door("pool", false, false);
-        kitchenDoor = new Door("kitchen", false, true);
-        diningRoomDoor = new Door("dining", true, false);
-        livingRoomDoor = new Door("living", true, false);
+        libraryDoor = new Door("library");
+        libraryKey = new KeyLock("keylibrary");
+        libraryDoor.addKeyLock(libraryKey);
+        
+        officeDoor = new Door("office");
+        officeCode = new CodeLock("4444");
+        officeDoor.addCodeLock(officeCode);
+        
+        verandaDoor = new Door("veranda");
+        verandaKey = new KeyLock("keyveranda");
+        verandaDoor.addKeyLock(verandaKey);
+        
+        barn3Door = new Door("Thirdbarn");
+        
+        smallHallDoor = new Door("smallhall");
+        
+        poolRoomDoor = new Door("pool");
+        
+        kitchenDoor = new Door("kitchen");
+        kitchenCode = new CodeLock("54673872638390293373827");
+        kitchenDoor.addCodeLock(officeCode);
+        
+        diningRoomDoor = new Door("dining");
+        diningRoomKey = new KeyLock("keydining");
+        diningRoomDoor.addKeyLock(diningRoomKey);
+        
+        livingRoomDoor = new Door("living");
+        livingRoomKey = new KeyLock("keyliving");
+        livingRoomDoor.addKeyLock(livingRoomKey);
 
         // Creation of the images associated with the rooms 
         carte = new ImageIcon(getClass().getResource("/pictures/Map_code.jpg"));
