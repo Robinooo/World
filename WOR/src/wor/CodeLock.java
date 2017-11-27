@@ -17,7 +17,7 @@ public class CodeLock extends Lock {
      * @param newCode The password of the code
      */
     public CodeLock(String newCode) {
-        code = newCode;//fffff
+        code = newCode;
     }
 
     /**

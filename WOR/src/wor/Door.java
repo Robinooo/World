@@ -13,8 +13,8 @@ import java.util.*;
  */
 public class Door {
 
-    private KeyLock keyLock; // KeyLock of the door
-    private CodeLock codeLock; // CodeLock of the door
+    private KeyLock keyLock = null; // KeyLock of the door
+    private CodeLock codeLock = null; // CodeLock of the door
     private String name; //Name of the door
     private boolean openable; //state is either "is openable" or "not openable"
 
@@ -28,24 +28,9 @@ public class Door {
      * @param ifKeyLock To know if a door have a keyLock
      * @param ifCodeLock To know if a door have a codeLock
      */
-    public Door(String name, boolean ifKeyLock, boolean ifCodeLock) {
+    public Door(String name) {
         openable = true; // door is open
         this.name = name + "Door";
-        if (ifKeyLock && ifCodeLock) {
-            System.out.println("\nYou can't have a code and a key lock\nYou have to chose\n");
-        } else {
-            if (ifKeyLock) {
-                String foo = "Key" + name; //create a specif name for the key
-                keyLock = new KeyLock(foo); //create the KeyLock object
-                openable = false;
-            }
-
-            if (ifCodeLock) {
-                String foo = "Code" + name; //create a specif name for the code
-                codeLock = new CodeLock(foo); //create the CodeLock object
-                openable = false;
-            }
-        }
     }
 
     /**
@@ -89,6 +74,22 @@ public class Door {
         }
     }
 
+    /**
+     * Add a code lock to the door
+     * @param codeLock The lock for the door
+     */
+    public void addCodeLock(CodeLock codeLock){
+        this.codeLock = codeLock;
+    }
+    
+    /**
+     *  Add a key lock to the door
+     * @param keyLock The lock for the door
+     */
+    public void addKeyLock(KeyLock keyLock){
+        this.keyLock = keyLock;
+    }
+    
     /**
      * Return a boolean to know if a door have a CodeLock
      *
