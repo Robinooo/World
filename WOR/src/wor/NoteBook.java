@@ -28,10 +28,10 @@ public class NoteBook {
 
     /**
      * This methods allows the user to get all the text from the notebook.
-     *
+     * 
      * @return pnote
      */
     public String getText() {
-        return (pnote);
+        return ("NoteBook : \n" + "-" + pnote);
     }
 }

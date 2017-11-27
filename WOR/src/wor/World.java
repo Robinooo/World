@@ -16,11 +16,12 @@ import javax.swing.JLabel;
  */
 public class World {
 
-    private JFrame frame;
-    private JButton btUp, btDown, btLeft, btRight, btSpeak, btExplore, btTake;
+    private JFrame frame, journalFrame;
+    private JButton btUp, btDown, btLeft, btRight, btSpeak, btExplore, btTake, btJournal;
     private JPanel bBar, rActions; //lMap
     public JLabel map, cPicture, text, lMap;
     JTextArea zoneTexte = new JTextArea(1,10);
+    private JTextArea textJournal;
     private String lastTeam;
     private String lastAction;
     private Player thePlayer;
@@ -68,15 +69,15 @@ public class World {
 
         //imagehall = new ImageIcon (getClass().getResource("/pictures/c1.jpg")) ;
         libraryDoor = new Door("library");
-        libraryKey = new KeyLock("keylibrary");
+        libraryKey = new KeyLock("Keylibrary");
         libraryDoor.addKeyLock(libraryKey);
         
         officeDoor = new Door("office");
-        officeCode = new CodeLock("4444");
+        officeCode = new CodeLock("Codeoffice", "Codeoffice");
         officeDoor.addCodeLock(officeCode);
         
         verandaDoor = new Door("veranda");
-        verandaKey = new KeyLock("keyveranda");
+        verandaKey = new KeyLock("Keyveranda");
         verandaDoor.addKeyLock(verandaKey);
         
         barn3Door = new Door("Thirdbarn");
@@ -86,15 +87,15 @@ public class World {
         poolRoomDoor = new Door("pool");
         
         kitchenDoor = new Door("kitchen");
-        kitchenCode = new CodeLock("54673872638390293373827");
+        kitchenCode = new CodeLock("Codekitchen", "Codekitchen");
         kitchenDoor.addCodeLock(officeCode);
         
         diningRoomDoor = new Door("dining");
-        diningRoomKey = new KeyLock("keydining");
+        diningRoomKey = new KeyLock("Keydining");
         diningRoomDoor.addKeyLock(diningRoomKey);
         
         livingRoomDoor = new Door("living");
-        livingRoomKey = new KeyLock("keyliving");
+        livingRoomKey = new KeyLock("Keyliving");
         livingRoomDoor.addKeyLock(livingRoomKey);
 
         // Creation of the images associated with the rooms 
@@ -439,6 +440,8 @@ public class World {
 
         System.out.println((player1.getCurrentRoom()).getRoomName());
 
+        // Creation and setting of the menu 
+        
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("Menu");
         JMenu menuHelp = new JMenu("Help");
@@ -455,6 +458,20 @@ public class World {
         menuBar.add(menuHelp);
         menuBar.add(menuJournal);
         menuBar.add(menuItems);
+        
+        // Setting the Journal Frame, where all the text from the notebook is displayed
+        JFrame journalFrame = new JFrame();
+        journalFrame.setTitle("Notebook");
+        journalFrame.setSize(500,200);
+        journalFrame.setLocationRelativeTo(null);
+        JTextArea textJournal = new JTextArea(notebook.getText());
+        textJournal.setEditable(false);
+        journalFrame.add(textJournal);
+        
+        reset.addActionListener(ae -> {});
+        quit.addActionListener(ae -> {});
+        menuHelp.addActionListener(ae -> {});
+        menuItems.addActionListener(ae -> {});
 
 //        lMap = new JPanel();
 //        map = new JLabel(carte);
@@ -470,13 +487,15 @@ public class World {
         
         
         rActions = new JPanel();
-        rActions.setLayout(new GridLayout(3, 1));
+        rActions.setLayout(new GridLayout(4, 1));
         btSpeak = new JButton("Speak");
         btExplore = new JButton("Explore");
         btTake = new JButton("Take");
+        btJournal = new JButton("Journal");
         rActions.add(btSpeak);
         rActions.add(btExplore);
         rActions.add(btTake);
+        rActions.add(btJournal);
 
         bBar = new JPanel();
         bBar.setLayout(new GridLayout(1, 2));
@@ -496,9 +515,8 @@ public class World {
         
 
         frame = new JFrame("World Of Zuul");
-        frame.setSize(1950, 1000);
+        frame.setSize(1000, 700);
         frame.setResizable(false);
-        frame.setAlwaysOnTop(true);
         frame.setLayout(new BorderLayout());
         frame.add(cPicture, BorderLayout.CENTER);
         frame.add(bBar, BorderLayout.SOUTH);
@@ -547,6 +565,13 @@ public class World {
         btSpeak.addActionListener(ae -> {
             player1.speak(zoneTexte);
             player1.getTime();
+        });
+        btJournal.addActionListener(ae -> {
+//            System.out.println("hello");
+//            journalFrame.setVisible(true);
+//            journalFrame.setAlwaysOnTop(true);
+//            notebook.addText("test");
+              System.out.print(notebook.getText());
         });
     }
 

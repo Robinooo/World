@@ -78,6 +78,7 @@ public class Door {
      */
     public void addCodeLock(CodeLock codeLock){
         this.codeLock = codeLock;
+        openable = false; // door is close
     }
     
     /**
@@ -86,6 +87,7 @@ public class Door {
      */
     public void addKeyLock(KeyLock keyLock){
         this.keyLock = keyLock;
+        openable = false; // door is close
     }
     
     /**
