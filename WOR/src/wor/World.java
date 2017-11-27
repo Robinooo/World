@@ -38,6 +38,9 @@ public class World {
 
     private Door libraryDoor, officeDoor, verandaDoor, barn3Door, smallHallDoor, poolRoomDoor, kitchenDoor, diningRoomDoor, livingRoomDoor;
 
+    private KeyLock libraryKey, verandaKey, livingRoomKey, diningRoomKey;
+    private CodeLock officeCode, kitchenCode;
+    
     private Talking clnMoutarde, missRose, prOlive, missLeblanc, generalLegris, misterRouge, countOrange, countnessOrange;
     private Killer drViolet;
     private Follower missPrunelle;
@@ -65,15 +68,35 @@ public class World {
       
 
         //imagehall = new ImageIcon (getClass().getResource("/pictures/c1.jpg")) ;
-        libraryDoor = new Door("library", true, false);
-        officeDoor = new Door("office", false, true);
-        verandaDoor = new Door("veranda", true, false);
-        barn3Door = new Door("Thirdbarn", false, false);
-        smallHallDoor = new Door("smallhall", false, false);
-        poolRoomDoor = new Door("pool", false, false);
-        kitchenDoor = new Door("kitchen", false, true);
-        diningRoomDoor = new Door("dining", true, false);
-        livingRoomDoor = new Door("living", true, false);
+        libraryDoor = new Door("library");
+        libraryKey = new KeyLock("Keylibrary");
+        libraryDoor.addKeyLock(libraryKey);
+        
+        officeDoor = new Door("office");
+        officeCode = new CodeLock("Codeoffice", "Codeoffice");
+        officeDoor.addCodeLock(officeCode);
+        
+        verandaDoor = new Door("veranda");
+        verandaKey = new KeyLock("Keyveranda");
+        verandaDoor.addKeyLock(verandaKey);
+        
+        barn3Door = new Door("Thirdbarn");
+        
+        smallHallDoor = new Door("smallhall");
+        
+        poolRoomDoor = new Door("pool");
+        
+        kitchenDoor = new Door("kitchen");
+        kitchenCode = new CodeLock("Codekitchen", "Codekitchen");
+        kitchenDoor.addCodeLock(officeCode);
+        
+        diningRoomDoor = new Door("dining");
+        diningRoomKey = new KeyLock("Keydining");
+        diningRoomDoor.addKeyLock(diningRoomKey);
+        
+        livingRoomDoor = new Door("living");
+        livingRoomKey = new KeyLock("Keyliving");
+        livingRoomDoor.addKeyLock(livingRoomKey);
 
         // Creation of the images associated with the rooms 
         carte = new ImageIcon(getClass().getResource("/pictures/Map_code.jpg"));
@@ -321,9 +344,9 @@ public class World {
         // Add the character into rooms
         fountain.addCharacter(missRose);
         library.addCharacter(clnMoutarde);
-        poolRoom.addCharacter(missPrunelle);
+        poolRoom.addFollower(missPrunelle);
         veranda.addCharacter(misterRouge);
-        barn3.addCharacter(drViolet);
+        barn3.addKiller(drViolet);
         garden.addCharacter(missLeblanc);
         corridor11.addCharacter(countOrange);
         kiosk.addCharacter(countnessOrange);
@@ -366,7 +389,6 @@ public class World {
         codeKitchen.setHidden(true);
         
         //Creation of utilities 
-
         irGlasses = new Item ("Glasses Infrared","Your extraordinary observation capabilities allow you to discover infrared glasses hidden inside a bush. This might look useless but with it, you will have style !",0);
         irGlasses.setHidden(true);
         gasMask = new Item ("Gas Mask","You found a gas mask from the second world war. Why it is here ? Nevermind, it can be useful at some point.",0);

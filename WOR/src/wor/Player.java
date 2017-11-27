@@ -216,13 +216,13 @@ public class Player extends Character {
         }
 
     public void speak(JTextArea zoneTexte) {
-        if (currentRoom.getCharaInTheRoom() == null) {
+        if (currentRoom.getTalkingInTheRoom() == null) {
             //btSpeak.setEnabled(false);
             // World.zoneTexte.append("There is no character to talk to here, maybe think about talking to yourself");
             zoneTexte.setText("There is no one to talk to here, you think about talking to yourself and loose 5 minutes \n of your precious time");
             setTime(5);
         } else {
-            currentRoom.getTalkingInTheRoom().talk(persuasion);
+            zoneTexte.setText(currentRoom.getTalkingInTheRoom().talk(persuasion));
             setTime(5);
         }
 

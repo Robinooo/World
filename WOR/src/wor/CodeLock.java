@@ -9,15 +9,17 @@ package wor;
  */
 public class CodeLock extends Lock {
 
-    private String code; //The code of the CodeLock
+    private String code; // The code of the CodeLock
+    private String name; // The name of the CodeLock
 
     /**
      * Constructor for objects of class CodeLock
      *
      * @param newCode The password of the code
      */
-    public CodeLock(String newCode) {
-        code = newCode;//fffff
+    public CodeLock(String name, String newCode) {
+        code = newCode;
+        this.name = name;
     }
 
     /**
@@ -27,5 +29,13 @@ public class CodeLock extends Lock {
      */
     public String getPasswd() {
         return code;
+    }
+    
+    /**
+     * Retur the name of the code lock
+     * @return The name of the code lock 
+     */
+    public String getName(){
+        return name;
     }
 }
