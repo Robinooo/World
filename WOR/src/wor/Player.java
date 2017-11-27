@@ -146,6 +146,7 @@ public class Player extends Character {
                 } 
                 else {
                     if (testRoom.getDoor().getHaveCodeLock()) {
+                        if (!inv.ItemsList.isEmpty()) {
                         for (int i = 0; i < inv.ItemsList.size(); i++) {
                             boolean test = testRoom.getDoor().openDoorPass(inv.ItemsList.get(i).getName());
                             if (test) { // Try each object from the inventory -> return true if the door is unlock
@@ -154,8 +155,8 @@ public class Player extends Character {
                             } else {
                                 nextRoom = currentRoom;
                             }
-                        }
-                    } 
+                        }} else { nextRoom = currentRoom; }
+                    }
                     else {
                         if (!inv.ItemsList.isEmpty()) {
                         for (int i = 0; i < inv.ItemsList.size(); i++) {
