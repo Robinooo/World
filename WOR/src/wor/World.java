@@ -19,7 +19,15 @@ public class World {
     JTextArea zoneTexte = new JTextArea(7,50);
     public ArrayList<JButton> InventoryList;
     
+    private PersuasionBar pBar;
+    private TimeBar tBar;
+    private LifeBar lBar;
 
+    private Icon pImg, tImg, lImg;  
+    private JLabel myLabelGold, myLabelGold1, myLabelGold2;
+    private JPanel myPanelGold,myGlobalPanel;
+    
+    
     // instance variables - replace the example below with your own
     private final Room fountain, library, poolRoom, office, veranda, barn1, barn2, barn3,
             garden, hall, smallHall, kiosk, livingRoom, diningRoom, kitchen, corridor1, corridor2,
@@ -423,11 +431,11 @@ public class World {
         //inventory.addItems(keyDiningRoom);
 
         if (playerClass == "Gadget") {
-            player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 500);
+            player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 100);
         } else if (playerClass == "Colombo") {
-            player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 400);
+            player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 90);
         } else {
-            player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 300);
+            player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 80);
         }
 
         System.out.println((player1.getCurrentRoom()).getRoomName());
@@ -489,6 +497,79 @@ public class World {
         bBar.add(zoneTexte);
         bBar.add(moveBt);
 
+
+        lImg = new ImageIcon(getClass().getResource("/pictures2/life.png"));
+       
+        pImg = new ImageIcon(getClass().getResource("/pictures2/persuasion.jpg"));
+       
+        tImg = new ImageIcon(getClass().getResource("/pictures2/time.jpg"));
+       
+
+        
+        pBar = new PersuasionBar();
+        pBar.setValueBar(player1.getPersuasion());
+
+        tBar = new TimeBar();
+        tBar.setValueBar(player1.getTime());
+
+        lBar = new LifeBar();
+        lBar.setValueBar(player1.getLife());
+        
+        JLabel Persuasion = new JLabel("Persuasion : ");
+        Persuasion.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,15));
+        Persuasion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        
+         JLabel Time = new JLabel("Time : ");
+        Time.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,15));
+        Time.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+       
+        
+        JLabel Life = new JLabel("Vie : ");
+        Life.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,15));
+        Life.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        
+        
+      
+        
+        JLabel myLabelGold = new JLabel();
+        myLabelGold.setIcon(pImg);
+        
+        JLabel myLabelGold1 = new JLabel();
+        myLabelGold1.setIcon(lImg);
+        
+        JLabel myLabelGold2 = new JLabel();
+        myLabelGold2.setIcon(tImg);
+
+        myLabelGold.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,15));
+        myLabelGold.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        
+        myLabelGold1.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,15));
+        myLabelGold1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        
+        
+        myLabelGold2.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,15));
+        myLabelGold2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        myPanelGold = new JPanel();
+        myPanelGold.setLayout(new GridLayout(3,3));
+        
+        myPanelGold.add(myLabelGold);
+        myPanelGold.add(Persuasion);
+        myPanelGold.add(pBar.getPersuasionBar());    
+        
+        myPanelGold.add(myLabelGold2);
+        myPanelGold.add(Time);
+        myPanelGold.add(tBar.getTimeBar());
+        
+        myPanelGold.add(myLabelGold1);
+        myPanelGold.add(Life);
+        myPanelGold.add(lBar.getLifeBar());
+        
+        
+        
+        
+        
+        
+        
         frame = new JFrame("World Of Zuul");
         frame.setSize(1000, 700);
         frame.setResizable(false);
@@ -497,6 +578,7 @@ public class World {
         frame.add(bBar, BorderLayout.SOUTH);
         frame.add(rActions, BorderLayout.EAST);
         frame.add(lMap, BorderLayout.WEST);
+        frame.add(myPanelGold, BorderLayout.NORTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
@@ -509,6 +591,8 @@ public class World {
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
+            tBar.setValueBar(player1.getTime());
+            
         });
         btLeft.addActionListener(ae -> {
             player1.move("left");
@@ -516,6 +600,8 @@ public class World {
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
+            tBar.setValueBar(player1.getTime());
+
         });
         btUp.addActionListener(ae -> {
             player1.move("up");
@@ -523,6 +609,8 @@ public class World {
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
+            tBar.setValueBar(player1.getTime());
+
         });
         btDown.addActionListener(ae -> {
             player1.move("down");
@@ -530,6 +618,8 @@ public class World {
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
+            tBar.setValueBar(player1.getTime());
+
         });
 
         btExplore.addActionListener(ae -> {
@@ -538,23 +628,36 @@ public class World {
             if (!player1.getCurrentRoom().listItem.isEmpty()){
                btTake.setEnabled(true); 
             }
+            pBar.setValueBar(player1.getPersuasion());
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+
+
         });
         btTake.addActionListener(ae -> {
             player1.takeItem(zoneTexte);
             player1.getTime();
             btTake.setEnabled(false);
+            pBar.setValueBar(player1.getPersuasion());
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
         });
 
         btSpeak.addActionListener(ae -> {
             player1.speak(zoneTexte);
             player1.getTime();
             btTake.setEnabled(false);
+            pBar.setValueBar(player1.getPersuasion());
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
         });
         btJournal.addActionListener(ae -> {
             textJournal.setText(notebook.getText());
             journalFrame.setVisible(true);
             journalFrame.setAlwaysOnTop(true);
             btTake.setEnabled(false);
+            tBar.setValueBar(player1.getTime());
+
         });
         btHelp.addActionListener(ae -> {
             // Supposed to redirect the player to a PDF page (user manual)
@@ -568,7 +671,8 @@ public class World {
         inventoryFrame.setTitle("Inventory");
         inventoryFrame.setSize(500,500);
         inventoryFrame.setLayout(new GridLayout(5,5));
-        
+        tBar.setValueBar(player1.getTime());
+
         
         //InventoryList = new ArrayList<JButton>();
         

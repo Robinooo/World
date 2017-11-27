@@ -11,12 +11,15 @@ import javax.swing.*;
  */
 public class Player extends Character {
 
+    
+    
+    //private int PersuasionBar = 200;//persuasion default value is always set on 100
     private NoteBook note; // the player's notebook
     private Room currentRoom; // the room where the player is currently
     private Inventory inv; // the player's inventory
-    private int persuasion; // the number of persuasion points of the player
-    private int pointsoflife; // the player's number of points of life
-    private int time; // the player's remaining time (a number of minutes)
+    private int persuasionBar; // the number of persuasion points of the player
+    private int lifeBar; // the player's number of points of life
+    private int timeBar; // the player's remaining time (a number of minutes)
 
     /**
      * Constructor for objects of class Player
@@ -26,9 +29,9 @@ public class Player extends Character {
         note = pnote;
         currentRoom = pcurrentRoom;
         inv = pinv;
-        persuasion = pper;
-        pointsoflife = ppoints;
-        time = ptime;
+        persuasionBar = pper;
+        lifeBar = ppoints;
+        timeBar = ptime;
     }
 
     /**
@@ -40,68 +43,68 @@ public class Player extends Character {
         return this.inv;
     }
 
-    /**
-     * This method allows the user to get the persuasion points of the player
-     *
-     * @return the player's persuasion points
-     */
-    public int getPersuasion() {
-        return this.persuasion;
-    }
-
-    /**
-     * This method allows the user to get the player's points of life
-     *
-     * @return the player's points of life
-     */
-    public int getPointsOfLife() {
-        return this.pointsoflife;
-    }
-
-    /**
-     * This method allows the user to get the time that remains to the player
-     *
-     * @return the player's time remaining (number of minutes)
-     */
-    public int getTime() {
-        return this.time;
-    }
-
-    /**
-     * This method allows the game to add some persuasion points to the player
-     *
-     * @param ppersua : an integer representing the number of persuasion points
-     * to add to the player
-     */
-    public void setPersuasion(Integer ppersua) {
-        this.persuasion = this.persuasion + ppersua;
-    }
-
-    /**
-     * This method allows the game to add some points of life to the player
-     *
-     * @param ppoints : an integer representing the number of points of life to
-     * add to the player. This integer can be positive or negative.
-     */
-    public void setPointsOfLife(Integer ppoints) {
-        this.pointsoflife = this.pointsoflife + ppoints;
-        if (this.pointsoflife <= 0) {
-            //mort
-        }
-    }
-
-    /**
-     * This method allows the game to add some points of time to the player
-     *
-     * @param ptime : an integer representing the number of minutes to add to
-     * the player. This integer can be positive or negative.
-     */
-    public void setTime(Integer ptime){
-        this.time = this.time - ptime;
-        if (this.time <= 0) {
-            //perdu
-        }
-    }
+//    /**
+//     * This method allows the user to get the persuasion points of the player
+//     *
+//     * @return the player's persuasion points
+//     */
+//    public int getPersuasion2() {
+//        return this.persuasion;
+//    }
+//
+//    /**
+//     * This method allows the user to get the player's points of life
+//     *
+//     * @return the player's points of life
+//     */
+//    public int getPointsOfLife() {
+//        return this.pointsoflife;
+//    }
+//
+//    /**
+//     * This method allows the user to get the time that remains to the player
+//     *
+//     * @return the player's time remaining (number of minutes)
+//     */
+//    public int getTime() {
+//        return this.timeBar;
+//    }
+//
+//    /**
+//     * This method allows the game to add some persuasion points to the player
+//     *
+//     * @param ppersua : an integer representing the number of persuasion points
+//     * to add to the player
+//     */
+//    public void setPersuasion2(Integer ppersua) {
+//        this.persuasion = this.persuasion + ppersua;
+//    }
+//
+//    /**
+//     * This method allows the game to add some points of life to the player
+//     *
+//     * @param ppoints : an integer representing the number of points of life to
+//     * add to the player. This integer can be positive or negative.
+//     */
+//    public void setPointsOfLife(Integer ppoints) {
+//        this.pointsoflife = this.pointsoflife + ppoints;
+//        if (this.pointsoflife <= 0) {
+//            //mort
+//        }
+//    }
+//
+//    /**
+//     * This method allows the game to add some points of time to the player
+//     *
+//     * @param ptime : an integer representing the number of minutes to add to
+//     * the player. This integer can be positive or negative.
+//     */
+//    public void setTime(Integer ptime){
+//        this.time = this.time - ptime;
+//        if (this.time <= 0) {
+//            //perdu
+//        }
+//    }
 
     /**
      * This method allows the player to take an item that is present in a room, add it to his 
@@ -114,7 +117,9 @@ public class Player extends Character {
             for (int i = 0; i < currentRoom.listItem.size(); i++) {
                 //inv.addObject(currentRoom.listItem.get(i));
                  inv.addItems(currentRoom.getItem(i));
+                 //setPersuasion2(currentRoom.getItem(i).getPersupoints()); // add the persuasion points associated with the item to the player
                  setPersuasion(currentRoom.getItem(i).getPersupoints()); // add the persuasion points associated with the item to the player
+
                  zoneTexte.append(currentRoom.getItem(i).getDescription() + "\n ");
                  note.addText(currentRoom.getItem(i).getDescription());
                  currentRoom.listItem.remove(i);
@@ -133,63 +138,60 @@ public class Player extends Character {
      * @param direction : north, east... Represents the direction of the
      * movement of the player
      */
-    public void move(String direction) {
+     public void move(String direction) {
 
         Room nextRoom = null;
         Room testRoom = null; // Room to try the door of a room 
 
+        setTime(1);
         if (currentRoom.containsDirection(direction)) {
             testRoom = currentRoom.getRoom(direction);
-            if (testRoom.getDoor() != null) { //if there is a door
-                System.out.println("There is a door in the Room");
+            if (testRoom.getDoor() != null) {
                 if (testRoom.getDoor().isOpenable() == true) { //if isOpenable -> true if is openable
                     nextRoom = currentRoom.getRoom(direction);
-                    System.out.println("The door is openable");
-                } else { //if openable is false... Try a Key or a Code
-                    System.out.println("The door is not openable. There is a key or a code to use");
-                    if (testRoom.getDoor().getHaveCodeLock()) { //if it's a code lock
-                        System.out.println("It's a code lock");
+                } 
+                else {
+                    if (testRoom.getDoor().getHaveCodeLock()) {
+                        if (!inv.ItemsList.isEmpty()) {
                         for (int i = 0; i < inv.ItemsList.size(); i++) {
                             boolean test = testRoom.getDoor().openDoorPass(inv.ItemsList.get(i).getName());
-                            System.out.println("\nThe boolean of codeLock:" + test + "\n");
                             if (test) { // Try each object from the inventory -> return true if the door is unlock
                                 testRoom.getDoor().setOpenable(true);
-                                nextRoom = currentRoom.getRoom(direction);
-                                System.out.println("On est rentré dans la room");
+                                nextRoom = currentRoom.getRoom(direction);         
+                                setTime(2);
+
                             } else {
                                 nextRoom = currentRoom;
-                                System.out.println("We don't have the Code -> We can't enter into the room");
                             }
-                        }
-                    } else {
-                        System.out.println("It's a keyLock");
-                        for (int i = 0; i < inv.ItemsList.size(); i++) {
+                        }} else { nextRoom = currentRoom; }
+                    }
+                    else {
+                        if (!inv.ItemsList.isEmpty()) {
+                        for (int i = 0; i < inv.ItemsList.size(); i++) {System.out.println("1");
                             boolean test = testRoom.getDoor().openDoorKey(inv.ItemsList.get(i).getName());
-                            System.out.println("\nThe boolean of keyLock:" + test + "\n");
-                            if (test) { // Try each object from the inventory -> return true if the door is unlock
-                                System.out.println("The door is unlock. We can enter into the room");
+                            if (test) {System.out.println("2");
                                 testRoom.getDoor().setOpenable(true);
                                 nextRoom = currentRoom.getRoom(direction);
-                            } else {
+                                setTime(2);
+                                break;
+                            } 
+                            else {System.out.println("3");
                                 nextRoom = currentRoom;
-                                System.out.println("We don't have the key to enter into the room");
                             }
-                        }
+                        }} else { nextRoom = currentRoom; }
                     }
                 }
             } else // there is no door
             {
-                System.out.println("There is no door in this room");
                 nextRoom = currentRoom.getRoom(direction);
             }
         } else {
             nextRoom = currentRoom;
-            System.out.println("This direction doesn't exist...");
         }
         currentRoom = nextRoom;
-
-       
     }
+
+   
 
     public Room getCurrentRoom() {
         return currentRoom;
@@ -203,14 +205,20 @@ public class Player extends Character {
                 for(int i=0; i < currentRoom.listItem.size(); i++) 
                 {
                     if (currentRoom.listItem.get(i).getHidden()) {
-                    setTime(10);
+                    //setTime(10);
+                    setTime(4);
+
                     }
                     else {
-                    setTime(5);
+                    //setTime(5);
+                    setTime(2);
+
                     }
                 }
             } else {                    
-             setTime(10);
+             //setTime(5);
+             setTime(2);
+
              zoneTexte.setText("There is no items here, you have lost precious time exploring for nothing \n");
          }
     // on perd 5 minutes de temps des qu'on explore si il y pas d'item ou si un item n'est pas caché 
@@ -219,15 +227,114 @@ public class Player extends Character {
 
     public void speak(JTextArea zoneTexte) {
         if (currentRoom.getTalkingInTheRoom() == null) {
-            setTime(5);
+            setTime(2);
             zoneTexte.setText("There is no one to talk to here, you think about talking to yourself and loose 5 minutes \n of your precious time \n");
            
         } else {
-             setTime(5);
-            zoneTexte.setText(currentRoom.getTalkingInTheRoom().talk(persuasion)  + "\n");
+             //setTime(5);
+             setTime(2);
+             setPersuasion(5);
+            zoneTexte.setText(currentRoom.getTalkingInTheRoom().talk(persuasionBar)  + "\n");
         }
-
+        
     }
-}
+ 
+    
+    
+    public int getPersuasion(){
+        return persuasionBar;
+    }
+    /**
+     * setter for the Persuasion attribute
+     * @param k Persuasion value between 0 and 100
+     */
+//    public void setPersuasion(int k){
+//        if(k <= 100 && k >= 0){
+//        PersuasionBar=k;
+//        }
+//    }
+    
+    
+    public void setPersuasion(Integer ppersua) {
+        persuasionBar = persuasionBar + ppersua;
+    }
+    
+    /*
+    * This method allow to add 10 points to the Persuasion bar of the player
+    */   
 
-     
+    /**
+     *
+     */
+   
+    public void add10Persuasion()
+    {
+        if(persuasionBar >= 90)
+        {
+            setPersuasion(100);
+        }
+        else setPersuasion(persuasionBar+10);
+    }
+   
+    /*
+    * This method allow to delete 10 points to the Persuasion bar of the player
+    */
+
+    /**
+     *
+     */
+
+    public void del10Persuasion()
+    {
+        if(persuasionBar <= 10)
+        {
+            setPersuasion(0);
+        }
+        else setPersuasion(persuasionBar-10);
+    }
+
+
+      
+
+
+     public int getLife(){
+        return lifeBar;
+    }
+    /**
+     * setter for the Persuasion attribute
+     * @param k Persuasion value between 0 and 100
+     */
+//    public void setPersuasion(int k){
+//        if(k <= 100 && k >= 0){
+//        PersuasionBar=k;
+//        }
+//    }
+    
+    
+    public void setLife(Integer plife) {
+        lifeBar = lifeBar - plife;
+    }
+    
+    
+    
+     public int getTime(){
+        return timeBar;
+    }
+    /**
+     * setter for the Persuasion attribute
+     * @param k Persuasion value between 0 and 100
+     */
+//    public void setPersuasion(int k){
+//        if(k <= 100 && k >= 0){
+//        PersuasionBar=k;
+//        }
+//    }
+    
+    
+    public void setTime(Integer ptime) {
+        timeBar = timeBar - ptime;
+    }
+   
+   
+    
+} 
