@@ -455,7 +455,7 @@ public class World {
         btSpeak = new JButton("Speak");
         btExplore = new JButton("Explore");
         btTake = new JButton("Take");
-//        btTake.setEnabled(false);
+        btTake.setEnabled(false);
         btJournal = new JButton("Journal");
         btHelp = new JButton("Help");
         rActions.add(btSpeak);
