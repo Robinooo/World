@@ -24,8 +24,7 @@ public class World {
     private LifeBar lBar;
 
     private Icon pImg, tImg, lImg, pic1, pic2,pic3;  
-    private JLabel myLabelPersuasion, myLabelLife, myLabelTime,tout, myLabelperso, myLabeltout,myLabelNiveau1,myLabelNiveau2,myLabelNiveau3;
-    private JPanel myPanelBar, myPaneltout;
+    private JPanel myPanelBar;
     
     // instance variables - replace the example below with your own
 
