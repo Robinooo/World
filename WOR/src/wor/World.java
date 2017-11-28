@@ -16,8 +16,9 @@ public class World {
     private final JButton btUp, btDown, btLeft, btRight, btSpeak, btExplore, btTake, btJournal, btInventory, btHelp;
     private final JPanel bBar, rActions;
     public JLabel map, cPicture, text, lMap;
-    JTextArea zoneTexte = new JTextArea(7,50);
-    
+    JTextArea zoneTexte = new JTextArea(7, 40);
+    public ArrayList<JButton> InventoryList;
+
     private PersuasionBar pBar;
     private TimeBar tBar;
     private LifeBar lBar;
@@ -30,7 +31,7 @@ public class World {
 
     /**
      * Constructor for objects of class World
-     * 
+     *
      * @param playerClass
      * @param playerName
      */
@@ -38,7 +39,6 @@ public class World {
 
         
         
-
 
         // Setting the Journal Frame, where all the text from the notebook is displayed
         journalFrame = new JFrame();
@@ -50,7 +50,6 @@ public class World {
         textJournal.setLineWrap(true);
         journalFrame.add(textJournal);
 
-      
         cPicture = new JLabel();
         cPicture.setIcon(player1.getCurrentRoom().getImage());
 
@@ -70,16 +69,14 @@ public class World {
         rActions.add(btHelp);
 
         bBar = new JPanel();
-        //bBar.setLayout(new GridLayout(1, 4));
         bBar.setLayout(new FlowLayout(FlowLayout.LEFT));
-        //bBar.setSize(1000, 300);
         JPanel moveBt = new JPanel();
         moveBt.setLayout(new BorderLayout());
-        btInventory = new JButton("",new ImageIcon(getClass().getResource("/pictures2/bag.png")));
+        btInventory = new JButton("", new ImageIcon(getClass().getResource("/pictures2/bag.png")));
         btInventory.setOpaque(false);
         btInventory.setContentAreaFilled(false);
         btInventory.setBorderPainted(false);
-        btJournal = new JButton("",new ImageIcon(getClass().getResource("/pictures2/notebook.png")));
+        btJournal = new JButton("", new ImageIcon(getClass().getResource("/pictures2/notebook.png")));
         btJournal.setOpaque(false);
         btJournal.setContentAreaFilled(false);
         btJournal.setBorderPainted(false);
@@ -97,15 +94,12 @@ public class World {
         bBar.add(zoneTexte);
         bBar.add(moveBt);
 
-
         lImg = new ImageIcon(getClass().getResource("/pictures2/life.png"));
-       
-        pImg = new ImageIcon(getClass().getResource("/pictures2/persuasion.jpg"));
-       
-        tImg = new ImageIcon(getClass().getResource("/pictures2/time.jpg"));
-       
 
-        
+        pImg = new ImageIcon(getClass().getResource("/pictures2/persuasion.jpg"));
+
+        tImg = new ImageIcon(getClass().getResource("/pictures2/time.jpg"));
+
         pBar = new PersuasionBar();
         pBar.setValueBar(player1.getPersuasion());
 
@@ -114,18 +108,17 @@ public class World {
 
         lBar = new LifeBar();
         lBar.setValueBar(player1.getLife());
-        
+
         JLabel Persuasion = new JLabel("Persuasion : ");
-        Persuasion.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,15));
+        Persuasion.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 15));
         Persuasion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        
-         JLabel Time = new JLabel("Time : ");
-        Time.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,15));
+
+        JLabel Time = new JLabel("Time : ");
+        Time.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 15));
         Time.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-       
-        
+
         JLabel Life = new JLabel("Vie : ");
-        Life.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,15));
+        Life.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 15));
         Life.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         
         
@@ -168,11 +161,10 @@ public class World {
         
         
         
-        pic1 = new ImageIcon(getClass().getResource("/pictures2/gadget2.jpg"));
-        pic2 = new ImageIcon(getClass().getResource("/pictures2/colombo2.jpg"));
-        pic3 = new ImageIcon(getClass().getResource("/pictures2/holmes2.jpg"));
+        pic1 = new ImageIcon(getClass().getResource("/pictures2/gadget.jpg"));
+        pic2 = new ImageIcon(getClass().getResource("/pictures2/colombo.jpg"));
+        pic3 = new ImageIcon(getClass().getResource("/pictures2/holmes.jpg"));
 
-        
         JLabel myLabelperso = new JLabel();
         
         if (playerClass == "Gadget") 
@@ -192,20 +184,32 @@ public class World {
             JLabel myLabelNiveau2 = new JLabel("Medium Level");
             JLabel myLabelNiveau3 = new JLabel("Hard Level");
 
-        myLabelperso.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,15));
+        if (playerClass == "Gadget") {
+            myLabelperso.setIcon(pic1);
+        } else if (playerClass == "Colombo") {
+            myLabelperso.setIcon(pic2);
+        } else {
+            myLabelperso.setIcon(pic3);
+        }
+
+//        JLabel myLabelNiveau1 = new JLabel("Easy Level");
+//        JLabel myLabelNiveau2 = new JLabel("Medium Level");
+//        JLabel myLabelNiveau3 = new JLabel("Hard Level");
+
+        myLabelperso.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 15));
         myLabelperso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        
+
         //JLabel myLabelNiveau = new JLabel("test");
-        myLabelNiveau1.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,30));
+        myLabelNiveau1.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 30));
         myLabelNiveau1.setForeground(Color.red);
         myLabelNiveau1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        myLabelNiveau2.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,30));
+        myLabelNiveau2.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 30));
         myLabelNiveau2.setForeground(Color.red);
         myLabelNiveau2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        myLabelNiveau3.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,30));
+        myLabelNiveau3.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 30));
         myLabelNiveau3.setForeground(Color.red);
         myLabelNiveau3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        
+
         JPanel myPaneltout = new JPanel();
         myPaneltout.setLayout(new BorderLayout());
         myPaneltout.add(myPanelBar,BorderLayout.WEST);
@@ -222,10 +226,9 @@ public class World {
         else if (playerClass == "Holmes"){
         myPaneltout.add(myLabelNiveau3,BorderLayout.CENTER);
         };
-        
-        
+
         frame = new JFrame("World Of Zuul");
-        frame.setSize(1000, 850);
+        frame.setSize(900, 700);
         frame.setResizable(false);
         frame.setLayout(new BorderLayout());
         frame.add(cPicture, BorderLayout.CENTER);
@@ -247,7 +250,7 @@ public class World {
             btTake.setEnabled(false);
             btSpeak.setEnabled(true);
             tBar.setValueBar(player1.getTime());
-            
+
         });
         btLeft.addActionListener(ae -> {
             player1.move("left");
@@ -285,13 +288,12 @@ public class World {
         btExplore.addActionListener(ae -> {
             player1.explore(this.zoneTexte);
             player1.getTime();
-            if (!player1.getCurrentRoom().listItem.isEmpty()){
-               btTake.setEnabled(true); 
+            if (!player1.getCurrentRoom().listItem.isEmpty()) {
+                btTake.setEnabled(true);
             }
             pBar.setValueBar(player1.getPersuasion());
             tBar.setValueBar(player1.getTime());
             lBar.setValueBar(player1.getLife());
-
 
         });
         btTake.addActionListener(ae -> {
@@ -325,32 +327,30 @@ public class World {
             // Supposed to redirect the player to a PDF page (user manual)
             btTake.setEnabled(false);
         });
-        
+
         // Setting the Inventory Frame
         btInventory.addActionListener(ae -> {
-        JFrame inventoryFrame = new JFrame();
-        inventoryFrame.setTitle("Inventory");
-        inventoryFrame.setSize(500,500);
-        inventoryFrame.setLayout(new GridLayout(5,5));
-        tBar.setValueBar(player1.getTime());
+            JFrame inventoryFrame = new JFrame();
+            inventoryFrame.setTitle("Inventory");
+            inventoryFrame.setSize(500, 500);
+            inventoryFrame.setLayout(new GridLayout(5, 5));
+            tBar.setValueBar(player1.getTime());
 
-        
-        //InventoryList = new ArrayList<JButton>();
-        
-         for (int i = 0; i < player1.getInventory().ItemsList.size(); i++) {
-             InventoryList.add(new JButton("",player1.getInventory().ItemsList.get(i).getImageItem()));
-             InventoryList.get(i).setPreferredSize(new Dimension(100, 100));
-             inventoryFrame.add(InventoryList.get(i));
-         };
-        
-        JLabel litem = new JLabel();
-        
-        inventoryFrame.setEnabled(true);
-        inventoryFrame.setVisible(true);
-        inventoryFrame.setAlwaysOnTop(true);
-         
+            //InventoryList = new ArrayList<JButton>();
+            for (int i = 0; i < player1.getInventory().ItemsList.size(); i++) {
+                InventoryList.add(new JButton("", player1.getInventory().ItemsList.get(i).getImageItem()));
+                InventoryList.get(i).setPreferredSize(new Dimension(100, 100));
+                inventoryFrame.add(InventoryList.get(i));
+            };
+
+            JLabel litem = new JLabel();
+
+            inventoryFrame.setEnabled(true);
+            inventoryFrame.setVisible(true);
+            inventoryFrame.setAlwaysOnTop(true);
+
         });
-        
+
     }
 
     private void printWelcome() {

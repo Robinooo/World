@@ -240,7 +240,7 @@ import java.awt.*;
    */
    
    private ImageIcon makeImage(){
-       return new ImageIcon(getClass().getResource("/pictures/testhorreur2.jpg"));    
+       return new ImageIcon(getClass().getResource("/pictures2/testhorreur2.jpg"));    
    }
    
    
