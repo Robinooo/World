@@ -285,8 +285,10 @@ import java.awt.*;
       {
          playerName = fieldName.getText();
          //new InterfaceGame(playerClass,playerName);
-          World w = new World(playerClass,playerName);
-          
+         
+          //World w = new World(playerClass,playerName);
+          InitializeGame g = new InitializeGame(playerClass,playerName);
+
       
     
          this.dispose();
