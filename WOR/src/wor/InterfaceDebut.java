@@ -27,7 +27,7 @@ import java.awt.*;
    
    
    private final JPanel panelBut2 = new JPanel();
-   private final JLabel labBut2 = new JLabel ("Inspecteur Barnaby",JLabel.CENTER); // Colombo
+   private final JLabel labBut2 = new JLabel ("Inspecteur Columbo",JLabel.CENTER); // Colombo
    private final JLabel labBut5 = new JLabel ("MEDIUM LEVEL",JLabel.CENTER);
    private final JPanel pBut2 = new JPanel();
    
@@ -46,7 +46,6 @@ import java.awt.*;
     //////////////////
    private final JLabel label,labTitle;
     //////////////////
-   private final Icon pic1,pic2,pic3;
    
    private JTextField fieldName;
 
@@ -94,9 +93,10 @@ import java.awt.*;
        labBut1.setForeground(Color.white);
        labBut4.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,30));
        labBut4.setForeground(Color.red);
-       pic1 = new ImageIcon(getClass().getResource("/pictures2/gadget.jpg"));
-       butChar1 = new JButton (pic1);
-       butChar1.setPreferredSize(new Dimension(150,150));
+       butChar1 = new JButton (new ImageIcon(getClass().getResource("/pictures2/gadget.jpg")));
+       butChar1.setOpaque(false);
+       butChar1.setContentAreaFilled(false);
+       butChar1.setBorderPainted(false);
        panelBut1.setLayout(new BorderLayout());
        pBut1.add(butChar1);
        pBut1.setOpaque(false);
@@ -112,9 +112,10 @@ import java.awt.*;
        labBut2.setForeground(Color.white);
        labBut5.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,30));
        labBut5.setForeground(Color.red);
-       pic2 = new ImageIcon(getClass().getResource("/pictures2/colombo.jpg"));
-       butChar2 = new JButton (pic2);
-       butChar2.setPreferredSize(new Dimension(150,150));
+       butChar2 = new JButton (new ImageIcon(getClass().getResource("/pictures2/colombo.jpg")));
+       butChar2.setOpaque(false);
+       butChar2.setContentAreaFilled(false);
+       butChar2.setBorderPainted(false);
        panelBut2.setLayout(new BorderLayout());
        pBut2.add(butChar2);
        pBut2.setOpaque(false);
@@ -129,9 +130,10 @@ import java.awt.*;
        labBut3.setForeground(Color.white);
        labBut6.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,30));
        labBut6.setForeground(Color.red);
-       pic3 = new ImageIcon(getClass().getResource("/pictures2/holmes.jpg"));
-       butChar3 = new JButton (pic3);
-       butChar3.setPreferredSize(new Dimension(150,150));
+       butChar3 = new JButton (new ImageIcon(getClass().getResource("/pictures2/holmes.jpg")));
+       butChar3.setOpaque(false);
+       butChar3.setContentAreaFilled(false);
+       butChar3.setBorderPainted(false);
        panelBut3.setLayout(new BorderLayout());
        pBut3.add(butChar3);
        pBut3.setOpaque(false);
@@ -241,7 +243,7 @@ import java.awt.*;
    */
    
    private ImageIcon makeImage(){
-       return new ImageIcon(getClass().getResource("/pictures/testhorreur2.jpg"));    
+       return new ImageIcon(getClass().getResource("/pictures2/testhorreur2.jpg"));    
    }
    
    

@@ -469,9 +469,6 @@ public class InitializeGame {
 
         notebook = new NoteBook();
         inventory = new Inventory();
-        //inventory.addItems(rope);
-        //inventory.addItems(dagger);
-        inventory.addItems(keyDiningRoom);
 
         
         if (playerClass == "Gadget") {
