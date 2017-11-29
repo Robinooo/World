@@ -1,5 +1,6 @@
 package wor;
 
+import java.awt.Container;
 import java.util.*;
 import java.util.HashMap;
 import javax.swing.*;
@@ -23,13 +24,15 @@ public class Room
     private Door door;
     private String description;
     //private ArrayList<Exit> exitRooms; 
-    private Icon img, imgplan;
-
+    private Icon  imgplan;
+    private Icon img;
+    private JButton bou;
+    private JPanel panel;
+    
     private boolean noir;
     private boolean gaz;
     private boolean director;
     private HashMap<String,Room> myHashRoom;
-
     /**
      * Create a room
      *
@@ -54,7 +57,8 @@ public class Room
         noir = false;
         director = false;
         myHashRoom = new HashMap<String,Room>();
-
+        bou = null;
+        panel = null;
     }
 
     /**
@@ -76,6 +80,14 @@ public class Room
      */
     public Icon getImage() {
         return img;
+    }
+    
+    
+    /**
+     * @return The image of the room
+     */
+    public JButton getButton() {
+        return bou;
     }
     
     /**
@@ -139,6 +151,9 @@ public class Room
         return talking ;
     }
 
+        
+        public JPanel getPanel(){
+        return panel;}
     
     // /**
     // * @return the exitRoom
@@ -258,6 +273,25 @@ public class Room
            talking=pTalking;
     }
          
+    /**
+     * Add a Button to the room
+     * @param pboug The boutton added to the room;
+     */
+         public void addButton (JButton pbou) 
+         {
+           bou=pbou;
+    }     
+         
+  /**
+     * Add a Button to the room
+     * @param pboug The boutton added to the room;
+     */
+         public void addPanel (JPanel panelp) 
+         {
+           panel=panelp;
+    }     
+                 
+ 
              /**
      * Add a killer character to the room
      * @param pKiller The character added to the room;

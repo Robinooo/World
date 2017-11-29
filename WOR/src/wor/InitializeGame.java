@@ -5,10 +5,15 @@
  */
 package wor;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -36,6 +41,9 @@ public class InitializeGame {
     private String playerName; 
     private NoteBook notebook;
 
+    private JButton btTest, btTest2, btTest3, btTest4, btTest5, btTest6, btTest7, btTest8;
+    private JPanel panelRoom;
+    
     private final Icon imagefountain, imagelibrary, imagepoolRoom, imageoffice, imageveranda, imagebarn1, imagebarn2, imagebarn3,
             imagegarden, imagehall, imagesmallHall,imagekiosk, imagelivingRoom, imagediningRoom, imagekitchen, imagecorridor1, imagecorridor2,
             imagecorridor3, imagecorridor4, imagecorridor5, imagecorridor6, imagecorridor7, imagecorridor8, imagecorridor9, imagecorridor10, imagecorridor11,
@@ -47,6 +55,7 @@ public class InitializeGame {
             mapimagecorridor12, mapimagecorridor13, mapimagecorridor14, mapimagecorridor15, mapimagecorridor16, mapimagecorridor17, mapimagecorridor18;
     
     public ArrayList<JButton> InventoryList;
+    private JLabel co;
 
     public InitializeGame(String playerClass, String playerName )
       {
@@ -154,6 +163,12 @@ public class InitializeGame {
         mapimagecorridor17 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c17.jpg"));
         mapimagecorridor18 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c18.jpg"));
 
+        
+        
+        
+        
+        
+        
         // Creation of all the rooms
         fountain = new Room("fountain", "A beautiful fountain", null, imagefountain, mapimagefountain);
         library = new Room("library", "The library, where you can read quietly", libraryDoor, imagelibrary, mapimagelibrary);
@@ -189,6 +204,9 @@ public class InitializeGame {
         corridor17 = new Room("corridor 17", "A simple corridor", null, imagecorridor17, mapimagecorridor17);
         corridor18 = new Room("corridor 18", "A simple corridor", null, imagecorridor18, mapimagecorridor18);
 
+      
+        
+        
         // Creation of the exits in the rooms
         fountain.setExit("down", corridor1);
         fountain.setExit("left", corridor2);
@@ -321,6 +339,46 @@ public class InitializeGame {
 
         missPrunelle = new Follower("I am only the cleaning lady, but I can help you another way in your investigation.", "miss Prunelle");
 
+       btTest = new JButton("",new ImageIcon(getClass().getResource("/Personnage/ComptesseOrange.png")));
+       btTest.setOpaque(false);
+       btTest.setContentAreaFilled(false);
+       btTest.setBorderPainted(false);
+       btTest.setPreferredSize(new Dimension(200,282));
+       
+        JPanel panelTest = new JPanel();
+        panelTest.setLayout(new FlowLayout(1,100,100));
+        //panelTest.add(btTest);
+        panelTest.setOpaque(false);
+        
+       
+//        JPanel panelRoom = new JPanel();
+//        panelRoom.setLayout(new FlowLayout(2,100,100));
+//       // panelTest.add(btTest);
+//        panelRoom.setOpaque(false);
+//       
+       
+       btTest2 = new JButton("",new ImageIcon(getClass().getResource("/Personnage/Prunelle.png")));
+       btTest2.setOpaque(false);
+       btTest2.setContentAreaFilled(false);
+       btTest2.setBorderPainted(false);
+       btTest2.setPreferredSize(new Dimension(340,530));    
+       
+         JPanel panelTest2 = new JPanel();
+        panelTest2.setLayout(new FlowLayout(2,1,1));
+        //panelTest.add(btTest);
+        panelTest2.setOpaque(false);
+        
+       
+       
+       kiosk.addButton(btTest);
+       kiosk.addPanel(panelTest);
+       poolRoom.addButton(btTest2);
+       poolRoom.addPanel(panelTest2);
+
+        
+        
+        
+        
         // Add the character into rooms
         fountain.addCharacter(missRose);
         library.addCharacter(clnMoutarde);
@@ -426,7 +484,7 @@ public class InitializeGame {
        
        
         
-        World w = new World(player1,InventoryList,notebook,playerClass);
+        World w = new World(player1,InventoryList,notebook,playerClass, btTest, btTest2);
 
 }
    

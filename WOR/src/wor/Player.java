@@ -20,6 +20,9 @@ public class Player extends Character {
     private int persuasionBar; // the number of persuasion points of the player
     private int lifeBar; // the player's number of points of life
     private int timeBar; // the player's remaining time (a number of minutes)
+    
+    
+    
 
     /**
      * Constructor for objects of class Player
@@ -223,6 +226,9 @@ public class Player extends Character {
          }
     // on perd 5 minutes de temps des qu'on explore si il y pas d'item ou si un item n'est pas caché 
     // on perds 10 minutes si un item est caché
+    
+                           
+    
         }
 
     public void speak(JTextArea zoneTexte) {

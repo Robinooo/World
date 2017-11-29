@@ -10,21 +10,26 @@ import java.util.ArrayList;
  * @author (Group2)
  * @version (11/23/17)
  */
-public class World {
+public class World extends JFrame {
 
     private final JFrame frame, journalFrame;
-    private final JButton btUp, btDown, btLeft, btRight, btSpeak, btExplore, btTake, btJournal, btInventory, btHelp;
+    private JFrame  frame2;
+    private final JButton btUp, btDown, btLeft, btRight, btSpeak, btExplore, btTake, btJournal, btInventory, btHelp ;
     private final JPanel bBar, rActions;
-    public JLabel map, cPicture, text, lMap;
+    public JLabel map, cPicture, text, lMap,myLabelGO ;
+
     JTextArea zoneTexte = new JTextArea(7,50);
     
     private PersuasionBar pBar;
     private TimeBar tBar;
     private LifeBar lBar;
 
-    private Icon pImg, tImg, lImg, pic1, pic2,pic3;  
+    private Icon pImg, tImg, lImg, pic1, pic2,pic3, testGameOver;  
     private JLabel myLabelPersuasion, myLabelLife, myLabelTime,tout, myLabelperso, myLabeltout,myLabelNiveau1,myLabelNiveau2,myLabelNiveau3;
-    private JPanel myPanelBar, myPaneltout;
+    private JPanel myPanelBar, myPaneltout, myMainPanel;
+    
+     private  JPanel pBut1 ;
+     private  JLabel co;
     
     // instance variables - replace the example below with your own
 
@@ -34,12 +39,13 @@ public class World {
      * @param playerClass
      * @param playerName
      */
-    public World(Player player1,ArrayList<JButton> InventoryList,NoteBook notebook, String playerClass ) {
+    public World(Player player1,ArrayList<JButton> InventoryList,NoteBook notebook, String playerClass, JButton btTest,JButton btTest2 ) {
 
         
         
 
 
+        
         // Setting the Journal Frame, where all the text from the notebook is displayed
         journalFrame = new JFrame();
         journalFrame.setTitle("Notebook");
@@ -49,10 +55,44 @@ public class World {
         textJournal.setEditable(false);
         textJournal.setLineWrap(true);
         journalFrame.add(textJournal);
+        
+         JLabel co = new JLabel(new ImageIcon(getClass().getResource("/pictures2/hall.png")));  
+        co.setLayout(new BorderLayout());
+       //co.add(panelTest,BorderLayout.SOUTH);
+       co.setPreferredSize(new Dimension(800,800));
+       co.setMaximumSize(new Dimension(800,800));
+       co.setMinimumSize(new Dimension(800,800));
+        
 
-      
+        //JPanel panelTest = new JPanel();
+        //panelTest.setLayout(new FlowLayout(1,100,100));
+        //panelTest.add(btTest);
+        //panelTest.setOpaque(false);
+//  
+//       co.setLayout(new BorderLayout());
+//       //co.add(panelTest,BorderLayout.SOUTH);
+//       co.setPreferredSize(new Dimension(800,800));
+//       co.setMaximumSize(new Dimension(800,800));
+//       co.setMinimumSize(new Dimension(800,800));
+//       
+        
+        
+        
+       
+       
+
+    
+//      // frame.add(c);
+//       frame.setResizable(false);
+//       frame.setPreferredSize(new Dimension(1000,550));
+//       frame.setMaximumSize(new Dimension(1000,550));
+//       frame.setMinimumSize(new Dimension(1000,550));
+//       frame.setLocationRelativeTo(null);
+//       frame.setVisible(true);        
+//        
         cPicture = new JLabel();
         cPicture.setIcon(player1.getCurrentRoom().getImage());
+        
 
         lMap = new JLabel();
         lMap.setIcon(player1.getCurrentRoom().getImagePlan());
@@ -69,6 +109,10 @@ public class World {
         rActions.add(btTake);
         rActions.add(btHelp);
 
+        
+        
+        
+        
         bBar = new JPanel();
         //bBar.setLayout(new GridLayout(1, 4));
         bBar.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -84,6 +128,7 @@ public class World {
         btJournal.setContentAreaFilled(false);
         btJournal.setBorderPainted(false);
         rActions.add(btInventory);
+
         btRight = new JButton("→");
         btLeft = new JButton("←");
         btUp = new JButton("↑");
@@ -223,12 +268,11 @@ public class World {
         myPaneltout.add(myLabelNiveau3,BorderLayout.CENTER);
         };
         
-        
-        frame = new JFrame("World Of Zuul");
+        frame = new JFrame();
         frame.setSize(1000, 850);
         frame.setResizable(false);
         frame.setLayout(new BorderLayout());
-        frame.add(cPicture, BorderLayout.CENTER);
+        frame.add(co, BorderLayout.CENTER);
         frame.add(bBar, BorderLayout.SOUTH);
         frame.add(rActions, BorderLayout.EAST);
         frame.add(lMap, BorderLayout.WEST);
@@ -241,17 +285,52 @@ public class World {
 
         btRight.addActionListener(ae -> {
             player1.move("right");
-            cPicture.setIcon(player1.getCurrentRoom().getImage());
+
+            //cPicture.setIcon(player1.getCurrentRoom().getImage());
+            co.removeAll();
+            co.setIcon(player1.getCurrentRoom().getImage());
+            co.setLayout(new BorderLayout());
+       //co.add(panelTest,BorderLayout.SOUTH);
+            co.setPreferredSize(new Dimension(800,800));
+            co.setMaximumSize(new Dimension(800,800));
+            co.setMinimumSize(new Dimension(800,800));
+            co.setIcon(player1.getCurrentRoom().getImage());
+         
+           if (player1.getCurrentRoom().getButton() != null){
+            player1.getCurrentRoom().getPanel().removeAll();    
+            player1.getCurrentRoom().getPanel().add(player1.getCurrentRoom().getButton());
+            co.add(player1.getCurrentRoom().getPanel(), BorderLayout.SOUTH);}
+            
+            
+            //btTest.setEnabled(false);
+//            co.remove(btTest);
+//            co.revalidate();
+//            co.repaint();
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
             btSpeak.setEnabled(true);
             tBar.setValueBar(player1.getTime());
+            //Container c = new JLabel(player1.getCurrentRoom().getImage());
+
             
         });
         btLeft.addActionListener(ae -> {
             player1.move("left");
-            cPicture.setIcon(player1.getCurrentRoom().getImage());
+            //cPicture.setIcon(player1.getCurrentRoom().getImage());
+            co.removeAll();
+            co.setIcon(player1.getCurrentRoom().getImage());
+            co.setLayout(new BorderLayout());
+       //co.add(panelTest,BorderLayout.SOUTH);
+            co.setPreferredSize(new Dimension(800,800));
+            co.setMaximumSize(new Dimension(800,800));
+            co.setMinimumSize(new Dimension(800,800));
+             if (player1.getCurrentRoom().getButton() != null){
+            player1.getCurrentRoom().getPanel().removeAll();    
+            player1.getCurrentRoom().getPanel().add(player1.getCurrentRoom().getButton());
+            co.add(player1.getCurrentRoom().getPanel(), BorderLayout.SOUTH);}
+            
+            
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
@@ -261,7 +340,23 @@ public class World {
         });
         btUp.addActionListener(ae -> {
             player1.move("up");
-            cPicture.setIcon(player1.getCurrentRoom().getImage());
+            //cPicture.setIcon(player1.getCurrentRoom().getImage());
+//            co.removeAll();
+//            co.setIcon(player1.getCurrentRoom().getImage());
+
+            co.removeAll();
+            co.setIcon(player1.getCurrentRoom().getImage());
+            co.setLayout(new BorderLayout());
+       //co.add(panelTest,BorderLayout.SOUTH);
+            co.setPreferredSize(new Dimension(800,800));
+            co.setMaximumSize(new Dimension(800,800));
+            co.setMinimumSize(new Dimension(800,800));
+           
+            if (player1.getCurrentRoom().getButton() != null){
+            player1.getCurrentRoom().getPanel().removeAll();    
+            player1.getCurrentRoom().getPanel().add(player1.getCurrentRoom().getButton());
+            co.add(player1.getCurrentRoom().getPanel(), BorderLayout.SOUTH);}
+            
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
@@ -272,7 +367,22 @@ public class World {
         });
         btDown.addActionListener(ae -> {
             player1.move("down");
-            cPicture.setIcon(player1.getCurrentRoom().getImage());
+            //cPicture.setIcon(player1.getCurrentRoom().getImage());
+            co.removeAll();
+            co.setIcon(player1.getCurrentRoom().getImage());
+            co.setLayout(new BorderLayout());
+       //co.add(panelTest,BorderLayout.SOUTH);
+            co.setPreferredSize(new Dimension(800,800));
+            co.setMaximumSize(new Dimension(800,800));
+            co.setMinimumSize(new Dimension(800,800));
+          
+             if (player1.getCurrentRoom().getButton() != null){
+            player1.getCurrentRoom().getPanel().removeAll();    
+            player1.getCurrentRoom().getPanel().add(player1.getCurrentRoom().getButton());
+            co.add(player1.getCurrentRoom().getPanel(), BorderLayout.SOUTH);}
+            
+            
+          
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
@@ -287,12 +397,26 @@ public class World {
             player1.getTime();
             if (!player1.getCurrentRoom().listItem.isEmpty()){
                btTake.setEnabled(true); 
+               
             }
             pBar.setValueBar(player1.getPersuasion());
             tBar.setValueBar(player1.getTime());
             lBar.setValueBar(player1.getLife());
+            
+ // TEST GAME OVER NE MARCHE PAS ENCORE           
+//            if(player1.getTime() == 0 ){
+//                           testGameOver = new ImageIcon(getClass().getResource("/pictures2/gadget.jpg"));
+//                           myLabelGO = new JLabel();
+//                           myLabelGO.setIcon(testGameOver);
+//                           frame2 = new JFrame("Game Over");
+//                           frame2.setSize(1000, 850);
+//                           frame2.add(myLabelGO);
+//                           frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//                           frame2.setVisible(true);      
+//
+//            }
 
-
+            
         });
         btTake.addActionListener(ae -> {
             player1.takeItem(zoneTexte);
@@ -303,7 +427,18 @@ public class World {
             lBar.setValueBar(player1.getLife());
         });
 
-        btSpeak.addActionListener(ae -> {
+        btTest.addActionListener(ae -> {
+            player1.speak(zoneTexte);
+            player1.getTime();
+            btTake.setEnabled(false);
+            pBar.setValueBar(player1.getPersuasion());
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+            btSpeak.setEnabled(false);
+            
+        });
+
+        btTest2.addActionListener(ae -> {
             player1.speak(zoneTexte);
             player1.getTime();
             btTake.setEnabled(false);
@@ -320,6 +455,9 @@ public class World {
             btTake.setEnabled(false);
             tBar.setValueBar(player1.getTime());
 
+      
+        
+        
         });
         btHelp.addActionListener(ae -> {
             // Supposed to redirect the player to a PDF page (user manual)
@@ -356,6 +494,7 @@ public class World {
     private void printWelcome() {
 
     }
-
+    
+    
     
 }

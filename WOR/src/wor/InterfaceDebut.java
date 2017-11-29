@@ -221,6 +221,7 @@ import java.awt.*;
        Container c = new JLabel(makeImage());
        c.setLayout(new FlowLayout());
        c.add(myMainPanel);
+       
        c.setPreferredSize(new Dimension(800,800));
        c.setMaximumSize(new Dimension(800,800));
        c.setMinimumSize(new Dimension(800,800));
