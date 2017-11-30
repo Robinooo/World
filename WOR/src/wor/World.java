@@ -13,10 +13,9 @@ import java.util.ArrayList;
 public class World extends JFrame {
 
     private final JFrame frame, journalFrame;
-    private JFrame  frame2;
-    private final JButton btUp, btDown, btLeft, btRight, btSpeak, btExplore, btTake, btJournal, btInventory, btHelp ;
+    private final JButton btUp, btDown, btLeft, btRight, btExplore, btTake, btJournal, btInventory, btHelp ; //btSPeak
     private final JPanel bBar, rActions;
-    public JLabel map, cPicture, text, lMap,myLabelGO ;
+    private JLabel map, cPicture, text, lMap,myLabelGO ;
 
     
     JTextArea zoneTexte = new JTextArea(7, 40);
@@ -69,29 +68,11 @@ public class World extends JFrame {
        co.setMinimumSize(new Dimension(800,800));
        
        
-        
-//  
-//       co.setLayout(new BorderLayout());
-//       //co.add(panelTest,BorderLayout.SOUTH);
-//       co.setPreferredSize(new Dimension(800,800));
-//       co.setMaximumSize(new Dimension(800,800));
-//       co.setMinimumSize(new Dimension(800,800));
-//       
-        
-        
-        
-       
-       
-
-    
-//      // frame.add(c);
-//       frame.setResizable(false);
-//       frame.setPreferredSize(new Dimension(1000,550));
-//       frame.setMaximumSize(new Dimension(1000,550));
-//       frame.setMinimumSize(new Dimension(1000,550));
-//       frame.setLocationRelativeTo(null);
-//       frame.setVisible(true);        
-//        
+        if (player1.getCurrentRoom().getButton() != null){
+            player1.getCurrentRoom().getPanel().removeAll();    
+            player1.getCurrentRoom().getPanel().add(player1.getCurrentRoom().getButton());
+            co.add(player1.getCurrentRoom().getPanel(), BorderLayout.SOUTH);}
+     
         cPicture = new JLabel();
         cPicture.setIcon(player1.getCurrentRoom().getImage());
         
@@ -101,12 +82,12 @@ public class World extends JFrame {
 
         rActions = new JPanel();
         rActions.setLayout(new GridLayout(4, 1));
-        btSpeak = new JButton("Speak");
+        //btSpeak = new JButton("Speak");
         btExplore = new JButton("Explore");
         btTake = new JButton("Take");
         btTake.setEnabled(false);
         btHelp = new JButton("Help");
-        rActions.add(btSpeak);
+        //rActions.add(btSpeak);
         rActions.add(btExplore);
         rActions.add(btTake);
         rActions.add(btHelp);
@@ -286,6 +267,14 @@ public class World extends JFrame {
         frame.add(myPaneltout, BorderLayout.NORTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+        
+        JOptionPane.showMessageDialog(this,
+				"The President of the AEGP Alexandre has been killed\n"
+				+ "You have to find the killer ! \n "
+				+ "You will have to play the detective !\n"
+				+ "Speak and help everyone, maybe they will reward you with an important information.\n ",
+				"A murder was committed in the AEGP !" ,
+				JOptionPane.INFORMATION_MESSAGE);
 
         this.zoneTexte.setText(player1.getCurrentRoom().getDescription());
         zoneTexte.setLineWrap(true);
@@ -316,9 +305,12 @@ public class World extends JFrame {
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
-            btSpeak.setEnabled(true);
+            //btSpeak.setEnabled(true);
             tBar.setValueBar(player1.getTime());
             //Container c = new JLabel(player1.getCurrentRoom().getImage());
+            if(player1.getTime() == 0 | player1.getLife() ==0){                        
+                        InterfaceGameOver go = new InterfaceGameOver();
+            }
 
             
         });
@@ -341,8 +333,11 @@ public class World extends JFrame {
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
-            btSpeak.setEnabled(true);
+            //btSpeak.setEnabled(true);
             tBar.setValueBar(player1.getTime());
+            if(player1.getTime() == 0 | player1.getLife() ==0){                        
+                        InterfaceGameOver go = new InterfaceGameOver();
+            }
 
         });
         btUp.addActionListener(ae -> {
@@ -367,9 +362,12 @@ public class World extends JFrame {
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
-            btSpeak.setEnabled(true);
+            //btSpeak.setEnabled(true);
 
             tBar.setValueBar(player1.getTime());
+            if(player1.getTime() == 0 | player1.getLife() ==0){                        
+                        InterfaceGameOver go = new InterfaceGameOver();
+            }
 
         });
         btDown.addActionListener(ae -> {
@@ -393,9 +391,12 @@ public class World extends JFrame {
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
-            btSpeak.setEnabled(true);
+            //btSpeak.setEnabled(true);
             tBar.setValueBar(player1.getTime());
             
+            if(player1.getTime() == 0 | player1.getLife() ==0){                        
+                        InterfaceGameOver go = new InterfaceGameOver();
+            }
 
         });
 
@@ -409,19 +410,12 @@ public class World extends JFrame {
             pBar.setValueBar(player1.getPersuasion());
             tBar.setValueBar(player1.getTime());
             lBar.setValueBar(player1.getLife());
-            
- // TEST GAME OVER NE MARCHE PAS ENCORE           
-//            if(player1.getTime() == 0 ){
-//                           testGameOver = new ImageIcon(getClass().getResource("/pictures2/gadget.jpg"));
-//                           myLabelGO = new JLabel();
-//                           myLabelGO.setIcon(testGameOver);
-//                           frame2 = new JFrame("Game Over");
-//                           frame2.setSize(1000, 850);
-//                           frame2.add(myLabelGO);
-//                           frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//                           frame2.setVisible(true);      
-//
-//            }
+                       
+            if(player1.getTime() == 0 | player1.getLife() ==0){                        
+                        InterfaceGameOver go = new InterfaceGameOver();
+            }
+
+
 
             
         });
@@ -434,25 +428,25 @@ public class World extends JFrame {
             lBar.setValueBar(player1.getLife());
         });
 
-        btTest.addActionListener(ae -> {
+            btTest.addActionListener(ae -> {
             player1.speak(zoneTexte);
             player1.getTime();
             btTake.setEnabled(false);
             pBar.setValueBar(player1.getPersuasion());
             tBar.setValueBar(player1.getTime());
             lBar.setValueBar(player1.getLife());
-            btSpeak.setEnabled(false);
+            //btSpeak.setEnabled(false);
             
         });
-
-        btTest2.addActionListener(ae -> {
+        
+            btTest2.addActionListener(ae -> {
             player1.speak(zoneTexte);
             player1.getTime();
             btTake.setEnabled(false);
             pBar.setValueBar(player1.getPersuasion());
             tBar.setValueBar(player1.getTime());
             lBar.setValueBar(player1.getLife());
-            btSpeak.setEnabled(false);
+            //btSpeak.setEnabled(false);
         });
 
         btTest3.addActionListener(ae -> {
@@ -462,7 +456,7 @@ public class World extends JFrame {
             pBar.setValueBar(player1.getPersuasion());
             tBar.setValueBar(player1.getTime());
             lBar.setValueBar(player1.getLife());
-            btSpeak.setEnabled(false);
+            //btSpeak.setEnabled(false);
         });
         btTest4.addActionListener(ae -> {
             player1.speak(zoneTexte);
@@ -471,7 +465,7 @@ public class World extends JFrame {
             pBar.setValueBar(player1.getPersuasion());
             tBar.setValueBar(player1.getTime());
             lBar.setValueBar(player1.getLife());
-            btSpeak.setEnabled(false);
+            //btSpeak.setEnabled(false);
             
         });
 
@@ -482,7 +476,7 @@ public class World extends JFrame {
             pBar.setValueBar(player1.getPersuasion());
             tBar.setValueBar(player1.getTime());
             lBar.setValueBar(player1.getLife());
-            btSpeak.setEnabled(false);
+            //btSpeak.setEnabled(false);
         });
 
         btTest6.addActionListener(ae -> {
@@ -492,7 +486,7 @@ public class World extends JFrame {
             pBar.setValueBar(player1.getPersuasion());
             tBar.setValueBar(player1.getTime());
             lBar.setValueBar(player1.getLife());
-            btSpeak.setEnabled(false);
+            //btSpeak.setEnabled(false);
         });   
         
         btTest7.addActionListener(ae -> {
@@ -502,7 +496,7 @@ public class World extends JFrame {
             pBar.setValueBar(player1.getPersuasion());
             tBar.setValueBar(player1.getTime());
             lBar.setValueBar(player1.getLife());
-            btSpeak.setEnabled(false);
+            //btSpeak.setEnabled(false);
             
         });
 
@@ -513,7 +507,7 @@ public class World extends JFrame {
             pBar.setValueBar(player1.getPersuasion());
             tBar.setValueBar(player1.getTime());
             lBar.setValueBar(player1.getLife());
-            btSpeak.setEnabled(false);
+            //btSpeak.setEnabled(false);
         });
 
         btTest9.addActionListener(ae -> {
@@ -523,7 +517,7 @@ public class World extends JFrame {
             pBar.setValueBar(player1.getPersuasion());
             tBar.setValueBar(player1.getTime());
             lBar.setValueBar(player1.getLife());
-            btSpeak.setEnabled(false);
+            //btSpeak.setEnabled(false);
         });
         
         btTest10.addActionListener(ae -> {
@@ -533,7 +527,7 @@ public class World extends JFrame {
             pBar.setValueBar(player1.getPersuasion());
             tBar.setValueBar(player1.getTime());
             lBar.setValueBar(player1.getLife());
-            btSpeak.setEnabled(false);
+            //btSpeak.setEnabled(false);
             
         });
         
@@ -544,7 +538,7 @@ public class World extends JFrame {
             pBar.setValueBar(player1.getPersuasion());
             tBar.setValueBar(player1.getTime());
             lBar.setValueBar(player1.getLife());
-            btSpeak.setEnabled(false);
+            //btSpeak.setEnabled(false);
             
         });
 
