@@ -9,6 +9,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import java.awt.Color; 
 
 /**
  *
@@ -23,12 +24,14 @@ public class InterfaceGameOver {
         JLabel myLabelGO = new JLabel();
         myLabelGO.setIcon(testGameOver);
         JFrame frame2 = new JFrame("Game Over");
-        frame2.setSize(1000, 850);
+        frame2.setSize(405, 285);
         frame2.add(myLabelGO);
+        //Définition de sa couleur de fond
+        frame2.setBackground(Color.ORANGE);
         frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame2.setVisible(true);      
     }
 
 
-    }
+}
 
