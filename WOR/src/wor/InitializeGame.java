@@ -559,7 +559,7 @@ public class InitializeGame {
         notebook = new NoteBook();
         inventory = new Inventory();
 
-        
+        inventory.addItems(codeOffice);
         
         if (playerClass == "Gadget") {
             player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 100);
