@@ -236,6 +236,7 @@ public class World extends JFrame {
         frame.add(myPaneltout, BorderLayout.NORTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
 
         JOptionPane.showMessageDialog(this,
                 "Miss Pervenche has been killed in the manor\n"
@@ -250,12 +251,9 @@ public class World extends JFrame {
 
         btRight.addActionListener(ae -> {
             player1.move("right");
-
-            //cPicture.setIcon(player1.getCurrentRoom().getImage());
             co.removeAll();
             co.setIcon(player1.getCurrentRoom().getImage());
             co.setLayout(new BorderLayout());
-            //co.add(panelTest,BorderLayout.SOUTH);
             co.setPreferredSize(new Dimension(800, 800));
             co.setMaximumSize(new Dimension(800, 800));
             co.setMinimumSize(new Dimension(800, 800));
@@ -267,28 +265,20 @@ public class World extends JFrame {
                 co.add(player1.getCurrentRoom().getPanel(), BorderLayout.SOUTH);
             }
 
-            //btTest.setEnabled(false);
-//            co.remove(btTest);
-//            co.revalidate();
-//            co.repaint();
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
-            //btSpeak.setEnabled(true);
             tBar.setValueBar(player1.getTime());
-            //Container c = new JLabel(player1.getCurrentRoom().getImage());
-            if (player1.getTime() <= 0 | player1.getLife() <= 0) {
+            if (player1.getTime() == 0 | player1.getLife() == 0) {
                 InterfaceGameOver go = new InterfaceGameOver();
             }
 
         });
         btLeft.addActionListener(ae -> {
             player1.move("left");
-            //cPicture.setIcon(player1.getCurrentRoom().getImage());
             co.removeAll();
             co.setIcon(player1.getCurrentRoom().getImage());
             co.setLayout(new BorderLayout());
-            //co.add(panelTest,BorderLayout.SOUTH);
             co.setPreferredSize(new Dimension(800, 800));
             co.setMaximumSize(new Dimension(800, 800));
             co.setMinimumSize(new Dimension(800, 800));
@@ -301,7 +291,6 @@ public class World extends JFrame {
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
-            //btSpeak.setEnabled(true);
             tBar.setValueBar(player1.getTime());
             if (player1.getTime() <= 0 | player1.getLife() <= 0) {
                 InterfaceGameOver go = new InterfaceGameOver();
@@ -310,14 +299,9 @@ public class World extends JFrame {
         });
         btUp.addActionListener(ae -> {
             player1.move("up");
-            //cPicture.setIcon(player1.getCurrentRoom().getImage());
-//            co.removeAll();
-//            co.setIcon(player1.getCurrentRoom().getImage());
-
             co.removeAll();
             co.setIcon(player1.getCurrentRoom().getImage());
             co.setLayout(new BorderLayout());
-            //co.add(panelTest,BorderLayout.SOUTH);
             co.setPreferredSize(new Dimension(800, 800));
             co.setMaximumSize(new Dimension(800, 800));
             co.setMinimumSize(new Dimension(800, 800));
