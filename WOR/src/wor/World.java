@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class World extends JFrame {
 
     private final JFrame frame, journalFrame;
-    private final JButton btUp, btDown, btLeft, btRight, btExplore, btTake, btJournal, btInventory, btHelp; //btSPeak
+    private final JButton btUp, btDown, btLeft, btRight, btExplore, btTake, btJournal, btInventory, btHelp, btAccuse; //btSPeak
     private final JPanel bBar, rActions;
     private JLabel cPicture, lMap;
 
@@ -69,16 +69,18 @@ public class World extends JFrame {
         lMap.setIcon(player1.getCurrentRoom().getImagePlan());
 
         rActions = new JPanel();
-        rActions.setLayout(new GridLayout(4, 1));
+        rActions.setLayout(new GridLayout(5, 1));
         //btSpeak = new JButton("Speak");
         btExplore = new JButton("Explore");
         btTake = new JButton("Take");
         btTake.setEnabled(false);
         btHelp = new JButton("Help");
+        btAccuse = new JButton("Accuse");
         //rActions.add(btSpeak);
         rActions.add(btExplore);
         rActions.add(btTake);
         rActions.add(btHelp);
+        rActions.add(btAccuse);
 
         bBar = new JPanel();
         bBar.setLayout(new FlowLayout(FlowLayout.LEFT));
