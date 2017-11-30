@@ -476,7 +476,8 @@ public class World extends JFrame {
             lBar.setValueBar(player1.getLife());
 
         });
-
+        
+        // Setting the Journal Frame
         btJournal.addActionListener(ae -> {
             textJournal.setText(notebook.getText());
             journalFrame.setVisible(true);
@@ -485,6 +486,8 @@ public class World extends JFrame {
             tBar.setValueBar(player1.getTime());
 
         });
+        
+        // Setting the Help Frame
         btHelp.addActionListener(ae -> {
             // Supposed to redirect the player to a PDF page (user manual)
             try {
@@ -498,17 +501,19 @@ public class World extends JFrame {
         
         // Setting the Accuse Frame
         btAccuse.addActionListener(ae -> {
-            JFrame AccuseFrame = new JFrame();
-            AccuseFrame.setTitle("Accuse");
-            AccuseFrame.setSize(500, 500);
-            //AccuseFrame.setLayout(new GridLayout(5, 5));
-            tBar.setValueBar(player1.getTime());
+            //JFrame AccuseFrame = new JFrame();
+            //AccuseFrame.setTitle("Accuse");
+            //AccuseFrame.setSize(500, 500);
             
-            //JLabel litem = new JLabel();
-
-            AccuseFrame.setEnabled(true);
-            AccuseFrame.setVisible(true);
-            AccuseFrame.setAlwaysOnTop(true);
+            JOptionPane jop = new JOptionPane(), jop2 = new JOptionPane();
+            String nom = jop.showInputDialog(null, "Who is the killer inspector?", JOptionPane.QUESTION_MESSAGE);
+            jop2.showMessageDialog(null, "The killer is : " + nom, "Did you find the killer?", JOptionPane.INFORMATION_MESSAGE);
+            
+                  
+            tBar.setValueBar(player1.getTime());
+            //AccuseFrame.setEnabled(true);
+            //AccuseFrame.setVisible(true);
+            //AccuseFrame.setAlwaysOnTop(true);
         });
 
         // Setting the Inventory Frame
