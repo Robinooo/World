@@ -68,7 +68,7 @@ public class InitializeGame {
         libraryDoor.addKeyLock(libraryKey);
 
         officeDoor = new Door("office");
-        officeCode = new CodeLock("Codeoffice", "Codeoffice");
+        officeCode = new CodeLock("Codeoffice", "4444");
         officeDoor.addCodeLock(officeCode);
 
         verandaDoor = new Door("veranda");
@@ -82,7 +82,7 @@ public class InitializeGame {
         poolRoomDoor = new Door("pool");
 
         kitchenDoor = new Door("kitchen");
-        kitchenCode = new CodeLock("Codekitchen", "Codekitchen");
+        kitchenCode = new CodeLock("Codekitchen", "4444");
         kitchenDoor.addCodeLock(officeCode);
 
         diningRoomDoor = new Door("dining");

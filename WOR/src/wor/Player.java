@@ -22,7 +22,7 @@ public class Player extends Character {
     private JFrame frame; // The frame for the code dialog box
     private JLabel label;
     private Icon icon;
-    
+
     /**
      * Constructor for objects of class Player
      */
@@ -151,23 +151,22 @@ public class Player extends Character {
                 if (testRoom.getDoor().isOpenable() == true) { //if isOpenable -> true if is openable
                     nextRoom = currentRoom.getRoom(direction);
                 } else {
-                    if (testRoom.getDoor().getHaveCodeLock()) {
+                    if (testRoom.getDoor().getHaveCodeLock()) { // Door have a code lock
                         if (!inv.ItemsList.isEmpty()) {
-                            for (int i = 0; i < inv.ItemsList.size(); i++) {
-                                boolean test = testRoom.getDoor().openDoorPass(inv.ItemsList.get(i).getName());
-                                if (test) { // Try each object from the inventory -> return true if the door is unlock
-                                    testRoom.getDoor().setOpenable(true);
-                                    nextRoom = currentRoom.getRoom(direction);
-                                    setTime(2);
-
-                                } else {
-                                    nextRoom = currentRoom;
-                                }
+                            String testCodeDoor = dialogCodeInput();
+                            boolean test = testRoom.getDoor().openDoorPass(testCodeDoor);
+                            if (test) { // Try each object from the inventory -> return true if the door is unlock
+                                testRoom.getDoor().setOpenable(true);
+                                nextRoom = currentRoom.getRoom(direction);
+                                setTime(2);
+                            } else {
+                                nextRoom = currentRoom;
                             }
                         } else {
                             nextRoom = currentRoom;
                         }
-                    } else {
+                    } 
+                    else { // Door have a key Lock
                         if (!inv.ItemsList.isEmpty()) {
                             for (int i = 0; i < inv.ItemsList.size(); i++) {
                                 boolean test = testRoom.getDoor().openDoorKey(inv.ItemsList.get(i).getName());
@@ -253,7 +252,6 @@ public class Player extends Character {
 //        PersuasionBar=k;
 //        }
 //    }
-
     public void setPersuasion(Integer ppersua) {
         persuasionBar = persuasionBar + ppersua;
     }
@@ -300,7 +298,6 @@ public class Player extends Character {
 //        PersuasionBar=k;
 //        }
 //    }
-
     public void setLife(Integer plife) {
         lifeBar = lifeBar - plife;
     }
@@ -319,18 +316,19 @@ public class Player extends Character {
 //        PersuasionBar=k;
 //        }
 //    }
-
     public void setTime(Integer ptime) {
         timeBar = timeBar - ptime;
     }
-    
-    /** Sets the text displayed at the bottom of the frame. */
+
+    /**
+     * Sets the text displayed at the bottom of the frame.
+     */
     void setLabel(String newText) {
         label.setText(newText);
     }
 
-
     private String dialogCodeInput() {
+        //System.out.println("Test");
         String s = (String) JOptionPane.showInputDialog(
                 frame,
                 "Enter your code:\n",
@@ -340,13 +338,13 @@ public class Player extends Character {
                 null,
                 "");
 
-//If a string was returned, say so.
+        //If a string was returned, say so.
         if ((s != null) && (s.length() > 0)) {
             return s;
         }
-
-//If you're here, the return value was null/empty.
-        setLabel("Come on, finish the sentence!");
-        return s;
+        else{
+            System.out.println("Enter your code please");
+            return "";
+        }
     }
 }
