@@ -275,7 +275,7 @@ public class World extends JFrame {
             //btSpeak.setEnabled(true);
             tBar.setValueBar(player1.getTime());
             //Container c = new JLabel(player1.getCurrentRoom().getImage());
-            if (player1.getTime() == 0 | player1.getLife() == 0) {
+            if (player1.getTime() <= 0 | player1.getLife() <= 0) {
                 InterfaceGameOver go = new InterfaceGameOver();
             }
 
@@ -301,7 +301,7 @@ public class World extends JFrame {
             btTake.setEnabled(false);
             //btSpeak.setEnabled(true);
             tBar.setValueBar(player1.getTime());
-            if (player1.getTime() == 0 | player1.getLife() == 0) {
+            if (player1.getTime() <= 0 | player1.getLife() <= 0) {
                 InterfaceGameOver go = new InterfaceGameOver();
             }
 
@@ -332,7 +332,7 @@ public class World extends JFrame {
             //btSpeak.setEnabled(true);
 
             tBar.setValueBar(player1.getTime());
-            if (player1.getTime() == 0 | player1.getLife() == 0) {
+            if (player1.getTime() <= 0 | player1.getLife() <= 0) {
                 InterfaceGameOver go = new InterfaceGameOver();
             }
 
@@ -357,7 +357,7 @@ public class World extends JFrame {
             btTake.setEnabled(false);
             tBar.setValueBar(player1.getTime());
 
-            if (player1.getTime() == 0 | player1.getLife() == 0) {
+            if (player1.getTime() <= 0 | player1.getLife() <= 0) {
                 InterfaceGameOver go = new InterfaceGameOver();
             }
 
@@ -374,7 +374,7 @@ public class World extends JFrame {
             tBar.setValueBar(player1.getTime());
             lBar.setValueBar(player1.getLife());
 
-            if (player1.getTime() == 0 | player1.getLife() == 0) {
+            if (player1.getTime() <= 0 | player1.getLife() <= 0) {
                 InterfaceGameOver go = new InterfaceGameOver();
             }
 
