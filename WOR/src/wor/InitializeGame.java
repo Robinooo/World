@@ -556,10 +556,6 @@ public class InitializeGame {
 
         notebook = new NoteBook();
         inventory = new Inventory();
-        inventory.addItems(keyLibrary);
-        inventory.addItems(keyVeranda);
-        inventory.addItems(keyLivingRoom);
-        inventory.addItems(keyDiningRoom);
 
         
         
