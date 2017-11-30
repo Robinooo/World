@@ -41,7 +41,9 @@ public class World extends JFrame {
      * @param playerClass
      * @param playerName
      */
-    public World(Player player1,ArrayList<JButton> InventoryList,NoteBook notebook, String playerClass, JButton btTest,JButton btTest2 ) {
+    public World(Player player1,ArrayList<JButton> InventoryList,NoteBook notebook, String playerClass, JButton btTest,
+            JButton btTest2,JButton btTest3, JButton btTest4,JButton btTest5,JButton btTest6,
+            JButton btTest7,JButton btTest8,JButton btTest9,JButton btTest10, JButton btTest11) {
 
         
         
@@ -57,18 +59,17 @@ public class World extends JFrame {
         textJournal.setLineWrap(true);
         journalFrame.add(textJournal);
         
+        
+        
          JLabel co = new JLabel(new ImageIcon(getClass().getResource("/pictures2/hall.png")));  
         co.setLayout(new BorderLayout());
        //co.add(panelTest,BorderLayout.SOUTH);
        co.setPreferredSize(new Dimension(800,800));
        co.setMaximumSize(new Dimension(800,800));
        co.setMinimumSize(new Dimension(800,800));
+       
+       
         
-
-        //JPanel panelTest = new JPanel();
-        //panelTest.setLayout(new FlowLayout(1,100,100));
-        //panelTest.add(btTest);
-        //panelTest.setOpaque(false);
 //  
 //       co.setLayout(new BorderLayout());
 //       //co.add(panelTest,BorderLayout.SOUTH);
@@ -275,7 +276,7 @@ public class World extends JFrame {
         };
         
         frame = new JFrame();
-        frame.setSize(1000, 850);
+        frame.setSize(1000, 700);
         frame.setResizable(false);
         frame.setLayout(new BorderLayout());
         frame.add(co, BorderLayout.CENTER);
@@ -452,8 +453,102 @@ public class World extends JFrame {
             tBar.setValueBar(player1.getTime());
             lBar.setValueBar(player1.getLife());
             btSpeak.setEnabled(false);
-
         });
+
+        btTest3.addActionListener(ae -> {
+            player1.speak(zoneTexte);
+            player1.getTime();
+            btTake.setEnabled(false);
+            pBar.setValueBar(player1.getPersuasion());
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+            btSpeak.setEnabled(false);
+        });
+        btTest4.addActionListener(ae -> {
+            player1.speak(zoneTexte);
+            player1.getTime();
+            btTake.setEnabled(false);
+            pBar.setValueBar(player1.getPersuasion());
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+            btSpeak.setEnabled(false);
+            
+        });
+
+        btTest5.addActionListener(ae -> {
+            player1.speak(zoneTexte);
+            player1.getTime();
+            btTake.setEnabled(false);
+            pBar.setValueBar(player1.getPersuasion());
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+            btSpeak.setEnabled(false);
+        });
+
+        btTest6.addActionListener(ae -> {
+            player1.speak(zoneTexte);
+            player1.getTime();
+            btTake.setEnabled(false);
+            pBar.setValueBar(player1.getPersuasion());
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+            btSpeak.setEnabled(false);
+        });   
+        
+        btTest7.addActionListener(ae -> {
+            player1.speak(zoneTexte);
+            player1.getTime();
+            btTake.setEnabled(false);
+            pBar.setValueBar(player1.getPersuasion());
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+            btSpeak.setEnabled(false);
+            
+        });
+
+        btTest8.addActionListener(ae -> {
+            player1.speak(zoneTexte);
+            player1.getTime();
+            btTake.setEnabled(false);
+            pBar.setValueBar(player1.getPersuasion());
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+            btSpeak.setEnabled(false);
+        });
+
+        btTest9.addActionListener(ae -> {
+            player1.speak(zoneTexte);
+            player1.getTime();
+            btTake.setEnabled(false);
+            pBar.setValueBar(player1.getPersuasion());
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+            btSpeak.setEnabled(false);
+        });
+        
+        btTest10.addActionListener(ae -> {
+            player1.speak(zoneTexte);
+            player1.getTime();
+            btTake.setEnabled(false);
+            pBar.setValueBar(player1.getPersuasion());
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+            btSpeak.setEnabled(false);
+            
+        });
+        
+            btTest11.addActionListener(ae -> {
+            player1.speak(zoneTexte);
+            player1.getTime();
+            btTake.setEnabled(false);
+            pBar.setValueBar(player1.getPersuasion());
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+            btSpeak.setEnabled(false);
+            
+        });
+
+      
         btJournal.addActionListener(ae -> {
             textJournal.setText(notebook.getText());
             journalFrame.setVisible(true);

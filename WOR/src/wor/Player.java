@@ -170,15 +170,15 @@ public class Player extends Character {
                     }
                     else {
                         if (!inv.ItemsList.isEmpty()) {
-                        for (int i = 0; i < inv.ItemsList.size(); i++) {
+                        for (int i = 0; i < inv.ItemsList.size(); i++) {System.out.println("1");
                             boolean test = testRoom.getDoor().openDoorKey(inv.ItemsList.get(i).getName());
-                            if (test) {
+                            if (test) {System.out.println("2");
                                 testRoom.getDoor().setOpenable(true);
                                 nextRoom = currentRoom.getRoom(direction);
                                 setTime(2);
                                 break;
                             } 
-                            else {
+                            else {System.out.println("3");
                                 nextRoom = currentRoom;
                             }
                         }} else { nextRoom = currentRoom; }
