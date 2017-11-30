@@ -239,25 +239,12 @@ public class Player extends Character {
         return persuasionBar;
     }
 
-    /**
-     * setter for the Persuasion attribute
-     *
-     * @param k Persuasion value between 0 and 100
-     */
-//    public void setPersuasion(int k){
-//        if(k <= 100 && k >= 0){
-//        PersuasionBar=k;
-//        }
-//    }
     public void setPersuasion(Integer ppersua) {
         persuasionBar = persuasionBar + ppersua;
     }
 
-    /*
-    * This method allow to add 10 points to the Persuasion bar of the player
-     */
     /**
-     *
+     * This method allow to add 10 points to the Persuasion bar of the player
      */
     public void add10Persuasion() {
         if (persuasionBar >= 90) {
@@ -267,11 +254,8 @@ public class Player extends Character {
         }
     }
 
-    /*
-    * This method allow to delete 10 points to the Persuasion bar of the player
-     */
     /**
-     *
+     * This method allow to delete 10 points to the Persuasion bar of the player
      */
     public void del10Persuasion() {
         if (persuasionBar <= 10) {
@@ -285,16 +269,6 @@ public class Player extends Character {
         return lifeBar;
     }
 
-    /**
-     * setter for the Persuasion attribute
-     *
-     * @param k Persuasion value between 0 and 100
-     */
-//    public void setPersuasion(int k){
-//        if(k <= 100 && k >= 0){
-//        PersuasionBar=k;
-//        }
-//    }
     public void setLife(Integer plife) {
         lifeBar = lifeBar - plife;
     }
