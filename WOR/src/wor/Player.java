@@ -107,10 +107,11 @@ public class Player extends Character {
 //            //perdu
 //        }
 //    }
+
     /**
-     * This method allows the player to take an item that is present in a room,
-     * add it to his inventory and update his number of persuasion points by
-     * adding the points associated to the item he is picking up
+     * This method allows the player to take an item that is present in a room, add it to his 
+     * inventory and update his number of persuasion points by adding the points associated to 
+     * the item he is picking up
      */
     public void takeItem(JTextArea zoneTexte) {
         zoneTexte.setText("");

@@ -13,10 +13,9 @@ import java.util.ArrayList;
 public class World extends JFrame {
 
     private final JFrame frame, journalFrame;
-    private JFrame  frame2;
-    private final JButton btUp, btDown, btLeft, btRight, btSpeak, btExplore, btTake, btJournal, btInventory, btHelp ;
+    private final JButton btUp, btDown, btLeft, btRight, btExplore, btTake, btJournal, btInventory, btHelp ; //btSPeak
     private final JPanel bBar, rActions;
-    public JLabel map, cPicture, text, lMap,myLabelGO ;
+    private JLabel map, cPicture, text, lMap,myLabelGO ;
 
     
     JTextArea zoneTexte = new JTextArea(7, 40);
@@ -29,7 +28,7 @@ public class World extends JFrame {
     private Icon pImg, tImg, lImg, pic1, pic2,pic3, testGameOver;  
     private JLabel myLabelPersuasion, myLabelLife, myLabelTime,tout, myLabelperso, myLabeltout,myLabelNiveau1,myLabelNiveau2,myLabelNiveau3;
     private JPanel myPanelBar, myPaneltout, myMainPanel;
-    
+
      private  JPanel pBut1 ;
      private  JLabel co;
     
@@ -41,7 +40,9 @@ public class World extends JFrame {
      * @param playerClass
      * @param playerName
      */
-    public World(Player player1,ArrayList<JButton> InventoryList,NoteBook notebook, String playerClass, JButton btTest,JButton btTest2 ) {
+    public World(Player player1,ArrayList<JButton> InventoryList,NoteBook notebook, String playerClass, JButton btTest,
+            JButton btTest2,JButton btTest3, JButton btTest4,JButton btTest5,JButton btTest6,
+            JButton btTest7,JButton btTest8,JButton btTest9,JButton btTest10, JButton btTest11) {
 
         
         
@@ -57,55 +58,36 @@ public class World extends JFrame {
         textJournal.setLineWrap(true);
         journalFrame.add(textJournal);
         
+        
+        
          JLabel co = new JLabel(new ImageIcon(getClass().getResource("/pictures2/hall.png")));  
         co.setLayout(new BorderLayout());
        //co.add(panelTest,BorderLayout.SOUTH);
        co.setPreferredSize(new Dimension(800,800));
        co.setMaximumSize(new Dimension(800,800));
        co.setMinimumSize(new Dimension(800,800));
-        
-
-        //JPanel panelTest = new JPanel();
-        //panelTest.setLayout(new FlowLayout(1,100,100));
-        //panelTest.add(btTest);
-        //panelTest.setOpaque(false);
-//  
-//       co.setLayout(new BorderLayout());
-//       //co.add(panelTest,BorderLayout.SOUTH);
-//       co.setPreferredSize(new Dimension(800,800));
-//       co.setMaximumSize(new Dimension(800,800));
-//       co.setMinimumSize(new Dimension(800,800));
-//       
-        
-        
-        
        
        
-
-    
-//      // frame.add(c);
-//       frame.setResizable(false);
-//       frame.setPreferredSize(new Dimension(1000,550));
-//       frame.setMaximumSize(new Dimension(1000,550));
-//       frame.setMinimumSize(new Dimension(1000,550));
-//       frame.setLocationRelativeTo(null);
-//       frame.setVisible(true);        
-//        
+        if (player1.getCurrentRoom().getButton() != null){
+            player1.getCurrentRoom().getPanel().removeAll();    
+            player1.getCurrentRoom().getPanel().add(player1.getCurrentRoom().getButton());
+            co.add(player1.getCurrentRoom().getPanel(), BorderLayout.SOUTH);}
+     
         cPicture = new JLabel();
         cPicture.setIcon(player1.getCurrentRoom().getImage());
-        
+
 
         lMap = new JLabel();
         lMap.setIcon(player1.getCurrentRoom().getImagePlan());
 
         rActions = new JPanel();
         rActions.setLayout(new GridLayout(4, 1));
-        btSpeak = new JButton("Speak");
+        //btSpeak = new JButton("Speak");
         btExplore = new JButton("Explore");
         btTake = new JButton("Take");
         btTake.setEnabled(false);
         btHelp = new JButton("Help");
-        rActions.add(btSpeak);
+        //rActions.add(btSpeak);
         rActions.add(btExplore);
         rActions.add(btTake);
         rActions.add(btHelp);
@@ -167,45 +149,45 @@ public class World extends JFrame {
         JLabel Life = new JLabel("Vie : ");
         Life.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 15));
         Life.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        
+
         
         
         JLabel myLabelPersuasion = new JLabel();
         myLabelPersuasion.setIcon(pImg);
-        
+
         JLabel myLabelLife = new JLabel();
         myLabelLife.setIcon(lImg);
-        
+
         JLabel myLabelTime = new JLabel();
         myLabelTime.setIcon(tImg);
 
         myLabelPersuasion.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,15));
         myLabelPersuasion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        
+
         myLabelLife.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,15));
         myLabelLife.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        
+
         
         myLabelTime.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,15));
         myLabelTime.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        
+
         
         
         myPanelBar = new JPanel();
         myPanelBar.setLayout(new GridLayout(3,3));
-        
+
         myPanelBar.add(myLabelPersuasion);
         myPanelBar.add(Persuasion);
-        myPanelBar.add(pBar.getPersuasionBar());    
-        
+        myPanelBar.add(pBar.getPersuasionBar());
+
         myPanelBar.add(myLabelTime);
         myPanelBar.add(Time);
         myPanelBar.add(tBar.getTimeBar());
-        
+
         myPanelBar.add(myLabelLife);
         myPanelBar.add(Life);
         myPanelBar.add(lBar.getLifeBar());
-        
+
         
         
         pic1 = new ImageIcon(getClass().getResource("/pictures2/gadget.jpg"));
@@ -213,7 +195,7 @@ public class World extends JFrame {
         pic3 = new ImageIcon(getClass().getResource("/pictures2/holmes.jpg"));
 
         JLabel myLabelperso = new JLabel();
-        
+
         if (playerClass == "Gadget") 
         {
             myLabelperso.setIcon(pic1);
@@ -225,11 +207,11 @@ public class World extends JFrame {
          else if (playerClass == "Holmes") 
          {
             myLabelperso.setIcon(pic3);
-         }
-         
-            JLabel myLabelNiveau1 = new JLabel("Easy Level");
-            JLabel myLabelNiveau2 = new JLabel("Medium Level");
-            JLabel myLabelNiveau3 = new JLabel("Hard Level");
+        }
+
+        JLabel myLabelNiveau1 = new JLabel("Easy Level");
+        JLabel myLabelNiveau2 = new JLabel("Medium Level");
+        JLabel myLabelNiveau3 = new JLabel("Hard Level");
 
         if (playerClass == "Gadget") {
             myLabelperso.setIcon(pic1);
@@ -261,7 +243,7 @@ public class World extends JFrame {
         myPaneltout.setLayout(new BorderLayout());
         myPaneltout.add(myPanelBar,BorderLayout.WEST);
         myPaneltout.add(myLabelperso,BorderLayout.EAST);
-        
+
         if (playerClass == "Gadget") 
         {
         myPaneltout.add(myLabelNiveau1,BorderLayout.CENTER);
@@ -273,9 +255,9 @@ public class World extends JFrame {
         else if (playerClass == "Holmes"){
         myPaneltout.add(myLabelNiveau3,BorderLayout.CENTER);
         };
-        
+
         frame = new JFrame();
-        frame.setSize(1000, 850);
+        frame.setSize(1000, 700);
         frame.setResizable(false);
         frame.setLayout(new BorderLayout());
         frame.add(co, BorderLayout.CENTER);
@@ -285,6 +267,14 @@ public class World extends JFrame {
         frame.add(myPaneltout, BorderLayout.NORTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+        
+        JOptionPane.showMessageDialog(this,
+				"The President of the AEGP Alexandre has been killed\n"
+				+ "You have to find the killer ! \n "
+				+ "You will have to play the detective !\n"
+				+ "Speak and help everyone, maybe they will reward you with an important information.\n ",
+				"A murder was committed in the AEGP !" ,
+				JOptionPane.INFORMATION_MESSAGE);
 
         this.zoneTexte.setText(player1.getCurrentRoom().getDescription());
         zoneTexte.setLineWrap(true);
@@ -301,12 +291,12 @@ public class World extends JFrame {
             co.setMaximumSize(new Dimension(800,800));
             co.setMinimumSize(new Dimension(800,800));
             co.setIcon(player1.getCurrentRoom().getImage());
-         
+
            if (player1.getCurrentRoom().getButton() != null){
-            player1.getCurrentRoom().getPanel().removeAll();    
-            player1.getCurrentRoom().getPanel().add(player1.getCurrentRoom().getButton());
+                player1.getCurrentRoom().getPanel().removeAll();
+                player1.getCurrentRoom().getPanel().add(player1.getCurrentRoom().getButton());
             co.add(player1.getCurrentRoom().getPanel(), BorderLayout.SOUTH);}
-            
+
             
             //btTest.setEnabled(false);
 //            co.remove(btTest);
@@ -315,9 +305,12 @@ public class World extends JFrame {
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
-            btSpeak.setEnabled(true);
+            //btSpeak.setEnabled(true);
             tBar.setValueBar(player1.getTime());
             //Container c = new JLabel(player1.getCurrentRoom().getImage());
+            if(player1.getTime() == 0 | player1.getLife() ==0){                        
+                        InterfaceGameOver go = new InterfaceGameOver();
+            }
 
             
         });
@@ -332,16 +325,19 @@ public class World extends JFrame {
             co.setMaximumSize(new Dimension(800,800));
             co.setMinimumSize(new Dimension(800,800));
              if (player1.getCurrentRoom().getButton() != null){
-            player1.getCurrentRoom().getPanel().removeAll();    
-            player1.getCurrentRoom().getPanel().add(player1.getCurrentRoom().getButton());
+                player1.getCurrentRoom().getPanel().removeAll();
+                player1.getCurrentRoom().getPanel().add(player1.getCurrentRoom().getButton());
             co.add(player1.getCurrentRoom().getPanel(), BorderLayout.SOUTH);}
-            
+
             
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
-            btSpeak.setEnabled(true);
+            //btSpeak.setEnabled(true);
             tBar.setValueBar(player1.getTime());
+            if(player1.getTime() == 0 | player1.getLife() ==0){                        
+                        InterfaceGameOver go = new InterfaceGameOver();
+            }
 
         });
         btUp.addActionListener(ae -> {
@@ -353,22 +349,25 @@ public class World extends JFrame {
             co.removeAll();
             co.setIcon(player1.getCurrentRoom().getImage());
             co.setLayout(new BorderLayout());
-       //co.add(panelTest,BorderLayout.SOUTH);
+            //co.add(panelTest,BorderLayout.SOUTH);
             co.setPreferredSize(new Dimension(800,800));
             co.setMaximumSize(new Dimension(800,800));
             co.setMinimumSize(new Dimension(800,800));
-           
+
             if (player1.getCurrentRoom().getButton() != null){
-            player1.getCurrentRoom().getPanel().removeAll();    
-            player1.getCurrentRoom().getPanel().add(player1.getCurrentRoom().getButton());
+                player1.getCurrentRoom().getPanel().removeAll();
+                player1.getCurrentRoom().getPanel().add(player1.getCurrentRoom().getButton());
             co.add(player1.getCurrentRoom().getPanel(), BorderLayout.SOUTH);}
-            
+
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
-            btSpeak.setEnabled(true);
+            //btSpeak.setEnabled(true);
 
             tBar.setValueBar(player1.getTime());
+            if(player1.getTime() == 0 | player1.getLife() ==0){                        
+                        InterfaceGameOver go = new InterfaceGameOver();
+            }
 
         });
         btDown.addActionListener(ae -> {
@@ -381,20 +380,23 @@ public class World extends JFrame {
             co.setPreferredSize(new Dimension(800,800));
             co.setMaximumSize(new Dimension(800,800));
             co.setMinimumSize(new Dimension(800,800));
-          
+
              if (player1.getCurrentRoom().getButton() != null){
-            player1.getCurrentRoom().getPanel().removeAll();    
-            player1.getCurrentRoom().getPanel().add(player1.getCurrentRoom().getButton());
+                player1.getCurrentRoom().getPanel().removeAll();
+                player1.getCurrentRoom().getPanel().add(player1.getCurrentRoom().getButton());
             co.add(player1.getCurrentRoom().getPanel(), BorderLayout.SOUTH);}
-            
+
             
           
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
-            btSpeak.setEnabled(true);
+            //btSpeak.setEnabled(true);
             tBar.setValueBar(player1.getTime());
             
+            if(player1.getTime() == 0 | player1.getLife() ==0){                        
+                        InterfaceGameOver go = new InterfaceGameOver();
+            }
 
         });
 
@@ -402,25 +404,18 @@ public class World extends JFrame {
             player1.explore(this.zoneTexte);
             player1.getTime();
             if (!player1.getCurrentRoom().listItem.isEmpty()){
-               btTake.setEnabled(true); 
-               
+                btTake.setEnabled(true);
+
             }
             pBar.setValueBar(player1.getPersuasion());
             tBar.setValueBar(player1.getTime());
             lBar.setValueBar(player1.getLife());
-            
- // TEST GAME OVER NE MARCHE PAS ENCORE           
-//            if(player1.getTime() == 0 ){
-//                           testGameOver = new ImageIcon(getClass().getResource("/pictures2/gadget.jpg"));
-//                           myLabelGO = new JLabel();
-//                           myLabelGO.setIcon(testGameOver);
-//                           frame2 = new JFrame("Game Over");
-//                           frame2.setSize(1000, 850);
-//                           frame2.add(myLabelGO);
-//                           frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//                           frame2.setVisible(true);      
-//
-//            }
+                       
+            if(player1.getTime() == 0 | player1.getLife() ==0){                        
+                        InterfaceGameOver go = new InterfaceGameOver();
+            }
+
+
 
             
         });
@@ -433,27 +428,121 @@ public class World extends JFrame {
             lBar.setValueBar(player1.getLife());
         });
 
-        btTest.addActionListener(ae -> {
+            btTest.addActionListener(ae -> {
             player1.speak(zoneTexte);
             player1.getTime();
             btTake.setEnabled(false);
             pBar.setValueBar(player1.getPersuasion());
             tBar.setValueBar(player1.getTime());
             lBar.setValueBar(player1.getLife());
-            btSpeak.setEnabled(false);
+            //btSpeak.setEnabled(false);
+            
+        });
+        
+            btTest2.addActionListener(ae -> {
+            player1.speak(zoneTexte);
+            player1.getTime();
+            btTake.setEnabled(false);
+            pBar.setValueBar(player1.getPersuasion());
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+            //btSpeak.setEnabled(false);
+        });
+
+        btTest3.addActionListener(ae -> {
+            player1.speak(zoneTexte);
+            player1.getTime();
+            btTake.setEnabled(false);
+            pBar.setValueBar(player1.getPersuasion());
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+            //btSpeak.setEnabled(false);
+        });
+        btTest4.addActionListener(ae -> {
+            player1.speak(zoneTexte);
+            player1.getTime();
+            btTake.setEnabled(false);
+            pBar.setValueBar(player1.getPersuasion());
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+            //btSpeak.setEnabled(false);
             
         });
 
-        btTest2.addActionListener(ae -> {
+        btTest5.addActionListener(ae -> {
             player1.speak(zoneTexte);
             player1.getTime();
             btTake.setEnabled(false);
             pBar.setValueBar(player1.getPersuasion());
             tBar.setValueBar(player1.getTime());
             lBar.setValueBar(player1.getLife());
-            btSpeak.setEnabled(false);
-
+            //btSpeak.setEnabled(false);
         });
+
+        btTest6.addActionListener(ae -> {
+            player1.speak(zoneTexte);
+            player1.getTime();
+            btTake.setEnabled(false);
+            pBar.setValueBar(player1.getPersuasion());
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+            //btSpeak.setEnabled(false);
+        });   
+        
+        btTest7.addActionListener(ae -> {
+            player1.speak(zoneTexte);
+            player1.getTime();
+            btTake.setEnabled(false);
+            pBar.setValueBar(player1.getPersuasion());
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+            //btSpeak.setEnabled(false);
+            
+        });
+
+        btTest8.addActionListener(ae -> {
+            player1.speak(zoneTexte);
+            player1.getTime();
+            btTake.setEnabled(false);
+            pBar.setValueBar(player1.getPersuasion());
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+            //btSpeak.setEnabled(false);
+        });
+
+        btTest9.addActionListener(ae -> {
+            player1.speak(zoneTexte);
+            player1.getTime();
+            btTake.setEnabled(false);
+            pBar.setValueBar(player1.getPersuasion());
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+            //btSpeak.setEnabled(false);
+        });
+
+        btTest10.addActionListener(ae -> {
+            player1.speak(zoneTexte);
+            player1.getTime();
+            btTake.setEnabled(false);
+            pBar.setValueBar(player1.getPersuasion());
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+            //btSpeak.setEnabled(false);
+            
+        });
+
+        btTest11.addActionListener(ae -> {
+            player1.speak(zoneTexte);
+            player1.getTime();
+            btTake.setEnabled(false);
+            pBar.setValueBar(player1.getPersuasion());
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+            //btSpeak.setEnabled(false);
+            
+        });
+
+      
         btJournal.addActionListener(ae -> {
             textJournal.setText(notebook.getText());
             journalFrame.setVisible(true);
@@ -498,7 +587,5 @@ public class World extends JFrame {
     private void printWelcome() {
 
     }
-    
-    
-    
+
 }

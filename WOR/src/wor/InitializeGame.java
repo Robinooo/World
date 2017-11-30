@@ -5,7 +5,6 @@
  */
 package wor;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Sylvia
+ * @author Robin
  */
 public class InitializeGame {
     private final Room fountain, library, poolRoom, office, veranda, barn1, barn2, barn3,
@@ -36,13 +35,10 @@ public class InitializeGame {
 
     private final Item hippocraticOath, clothSoaked, scarf, footPrints, rope, dagger, ironBar, revolver, candlestick, wrench, poison, axe, keyLibrary, keyVeranda, keyLivingRoom, keyDiningRoom, codeOffice, codeKitchen, irGlasses, gasMask;
     private final Inventory inventory;
-    private Player player1;
-    private String playerClass2;
-    private String playerName; 
+    private Player player1; 
     private NoteBook notebook;
 
-    private JButton btTest, btTest2, btTest3, btTest4, btTest5, btTest6, btTest7, btTest8;
-    private JPanel panelRoom;
+    private JButton btTest, btTest2, btTest3, btTest4, btTest5, btTest6, btTest7, btTest8, btTest9, btTest10,btTest11;
     
     private final Icon imagefountain, imagelibrary, imagepoolRoom, imageoffice, imageveranda, imagebarn1, imagebarn2, imagebarn3,
             imagegarden, imagehall, imagesmallHall,imagekiosk, imagelivingRoom, imagediningRoom, imagekitchen, imagecorridor1, imagecorridor2,
@@ -55,14 +51,13 @@ public class InitializeGame {
             mapimagecorridor12, mapimagecorridor13, mapimagecorridor14, mapimagecorridor15, mapimagecorridor16, mapimagecorridor17, mapimagecorridor18;
     
     public ArrayList<JButton> InventoryList;
-    private JLabel co;
 
     public InitializeGame(String playerClass, String playerName )
       {
 
         InventoryList = new ArrayList<JButton>();
 
-        //imagehall = new ImageIcon (getClass().getResource("/pictures/c1.jpg")) ;
+
         libraryDoor = new Door("library");
         libraryKey = new KeyLock("Keylibrary");
         libraryDoor.addKeyLock(libraryKey);
@@ -344,38 +339,130 @@ public class InitializeGame {
        btTest.setContentAreaFilled(false);
        btTest.setBorderPainted(false);
        btTest.setPreferredSize(new Dimension(200,282));
-       
-        JPanel panelTest = new JPanel();
-        panelTest.setLayout(new FlowLayout(1,100,100));
-        //panelTest.add(btTest);
-        panelTest.setOpaque(false);
-        
-       
-//        JPanel panelRoom = new JPanel();
-//        panelRoom.setLayout(new FlowLayout(2,100,100));
-//       // panelTest.add(btTest);
-//        panelRoom.setOpaque(false);
-//       
+       JPanel panelTest = new JPanel();
+       panelTest.setLayout(new FlowLayout(1,20,20));
+       panelTest.setOpaque(false);
        
        btTest2 = new JButton("",new ImageIcon(getClass().getResource("/Personnage/Prunelle.png")));
        btTest2.setOpaque(false);
        btTest2.setContentAreaFilled(false);
        btTest2.setBorderPainted(false);
-       btTest2.setPreferredSize(new Dimension(340,530));    
-       
-         JPanel panelTest2 = new JPanel();
-        panelTest2.setLayout(new FlowLayout(2,1,1));
-        //panelTest.add(btTest);
-        panelTest2.setOpaque(false);
+       btTest2.setPreferredSize(new Dimension(262,400));    
+       JPanel panelTest2 = new JPanel();
+       panelTest2.setLayout(new FlowLayout(2,50,0));
+       panelTest2.setOpaque(false);
         
+       btTest3 = new JButton("",new ImageIcon(getClass().getResource("/Personnage/MissRose.png")));
+       btTest3.setOpaque(false);
+       btTest3.setContentAreaFilled(false);
+       btTest3.setBorderPainted(false);
+       btTest3.setPreferredSize(new Dimension(261,380));    
+       JPanel panelTest3 = new JPanel();
+       panelTest3.setLayout(new FlowLayout(2,80,0));
+       panelTest3.setOpaque(false);
+        
+        
+       btTest4 = new JButton("",new ImageIcon(getClass().getResource("/Personnage/Colonel moutarde2.png")));
+       btTest4.setOpaque(false);
+       btTest4.setContentAreaFilled(false);
+       btTest4.setBorderPainted(false);
+       btTest4.setPreferredSize(new Dimension(321,400));    
+       JPanel panelTest4 = new JPanel();
+       panelTest4.setLayout(new FlowLayout(2,80,0));
+       panelTest4.setOpaque(false);
+        
+        
+       btTest5 = new JButton("",new ImageIcon(getClass().getResource("/Personnage/MrRouge.png")));
+       btTest5.setOpaque(false);
+       btTest5.setContentAreaFilled(false);
+       btTest5.setBorderPainted(false);
+       btTest5.setPreferredSize(new Dimension(307,400));    
+       JPanel panelTest5 = new JPanel();
+       panelTest5.setLayout(new FlowLayout(2,80,0));
+       panelTest5.setOpaque(false);
+        
+        
+       btTest6 = new JButton("",new ImageIcon(getClass().getResource("/Personnage/DrViolet.png")));
+       btTest6.setOpaque(false);
+       btTest6.setContentAreaFilled(false);
+       btTest6.setBorderPainted(false);
+       btTest6.setPreferredSize(new Dimension(280,420));    
+       JPanel panelTest6 = new JPanel();
+       panelTest6.setLayout(new FlowLayout(2,200,0));
+       panelTest6.setOpaque(false);
+        
+        
+       btTest7 = new JButton("",new ImageIcon(getClass().getResource("/Personnage/MmeLeblanc.png")));
+       btTest7.setOpaque(false);
+       btTest7.setContentAreaFilled(false);
+       btTest7.setBorderPainted(false);
+       btTest7.setPreferredSize(new Dimension(226,320));    
+       JPanel panelTest7 = new JPanel();
+       panelTest7.setLayout(new FlowLayout(1,0,0));
+       panelTest7.setOpaque(false);
+        
+        
+       btTest8 = new JButton("",new ImageIcon(getClass().getResource("/Personnage/comte orange.png")));
+       btTest8.setOpaque(false);
+       btTest8.setContentAreaFilled(false);
+       btTest8.setBorderPainted(false);
+       btTest8.setPreferredSize(new Dimension(229,400));    
+       JPanel panelTest8 = new JPanel();
+       panelTest8.setLayout(new FlowLayout(1,80,0));
+       panelTest8.setOpaque(false);
+        
+       btTest9 = new JButton("",new ImageIcon(getClass().getResource("/Personnage/reverend olive.png")));
+       btTest9.setOpaque(false);
+       btTest9.setContentAreaFilled(false);
+       btTest9.setBorderPainted(false);
+       btTest9.setPreferredSize(new Dimension(196,320));    
+       JPanel panelTest9 = new JPanel();
+       panelTest9.setLayout(new FlowLayout(2,80,0));
+       panelTest9.setOpaque(false);
+       
+       btTest10 = new JButton("",new ImageIcon(getClass().getResource("/Personnage/GeneralLegris.png")));
+       btTest10.setOpaque(false);
+       btTest10.setContentAreaFilled(false);
+       btTest10.setBorderPainted(false);
+       btTest10.setPreferredSize(new Dimension(245,350));    
+       JPanel panelTest10 = new JPanel();
+       panelTest10.setLayout(new FlowLayout(2,80,0));
+       panelTest10.setOpaque(false);
+       
+       btTest11 = new JButton("",new ImageIcon(getClass().getResource("/Personnage/inspecteur.png")));
+       btTest11.setOpaque(false);
+       btTest11.setContentAreaFilled(false);
+       btTest11.setBorderPainted(false);
+       btTest11.setPreferredSize(new Dimension(233,350));    
+       JPanel panelTest11 = new JPanel();
+       panelTest11.setLayout(new FlowLayout(4,80,0));
+       panelTest11.setOpaque(false);
+       
        
        
        kiosk.addButton(btTest);
        kiosk.addPanel(panelTest);
        poolRoom.addButton(btTest2);
        poolRoom.addPanel(panelTest2);
-
-        
+       fountain.addButton(btTest3);
+       fountain.addPanel(panelTest3);
+       library.addButton(btTest4);
+       library.addPanel(panelTest4);
+       veranda.addButton(btTest5);
+       veranda.addPanel(panelTest5);
+       barn3.addButton(btTest6);
+       barn3.addPanel(panelTest6);
+       garden.addButton(btTest7);
+       garden.addPanel(panelTest7);
+       corridor11.addButton(btTest8);
+       corridor11.addPanel(panelTest8);
+       livingRoom.addButton(btTest9);
+       livingRoom.addPanel(panelTest9);
+       kitchen.addButton(btTest10);
+       kitchen.addPanel(panelTest10);
+       hall.addButton(btTest11);
+       hall.addPanel(panelTest11);
+//        
         
         
         
@@ -469,7 +556,12 @@ public class InitializeGame {
 
         notebook = new NoteBook();
         inventory = new Inventory();
+        inventory.addItems(keyLibrary);
+        inventory.addItems(keyVeranda);
+        inventory.addItems(keyLivingRoom);
+        inventory.addItems(keyDiningRoom);
 
+        
         
         if (playerClass == "Gadget") {
             player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 100);
@@ -481,7 +573,7 @@ public class InitializeGame {
        
        
         
-        World w = new World(player1,InventoryList,notebook,playerClass, btTest, btTest2);
+        World w = new World(player1,InventoryList,notebook,playerClass, btTest, btTest2, btTest3,btTest4,btTest5,btTest6,btTest7,btTest8,btTest9,btTest10,btTest11);
 
 }
    
