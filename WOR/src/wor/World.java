@@ -511,6 +511,21 @@ public class World extends JFrame {
             }
             btTake.setEnabled(false);
         });
+        
+        // Setting the Accuse Frame
+        btAccuse.addActionListener(ae -> {
+            JFrame AccuseFrame = new JFrame();
+            AccuseFrame.setTitle("Accuse");
+            AccuseFrame.setSize(500, 500);
+            //AccuseFrame.setLayout(new GridLayout(5, 5));
+            tBar.setValueBar(player1.getTime());
+            
+            //JLabel litem = new JLabel();
+
+            AccuseFrame.setEnabled(true);
+            AccuseFrame.setVisible(true);
+            AccuseFrame.setAlwaysOnTop(true);
+        });
 
         // Setting the Inventory Frame
         btInventory.addActionListener(ae -> {
@@ -525,15 +540,16 @@ public class World extends JFrame {
                 InventoryList.get(i).setPreferredSize(new Dimension(100, 100));
                 inventoryFrame.add(InventoryList.get(i));
             };
+        
 
             JLabel litem = new JLabel();
 
             inventoryFrame.setEnabled(true);
             inventoryFrame.setVisible(true);
             inventoryFrame.setAlwaysOnTop(true);
-
-        });
-
+            
+            });
+       
     }
 
     private void printWelcome() {
