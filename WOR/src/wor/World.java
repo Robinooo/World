@@ -501,19 +501,19 @@ public class World extends JFrame {
         
         // Setting the Accuse Frame
         btAccuse.addActionListener(ae -> {
-            //JFrame AccuseFrame = new JFrame();
-            //AccuseFrame.setTitle("Accuse");
-            //AccuseFrame.setSize(500, 500);
-            
             JOptionPane jop = new JOptionPane(), jop2 = new JOptionPane();
             String nom = jop.showInputDialog(null, "Who is the killer inspector?", JOptionPane.QUESTION_MESSAGE);
-            jop2.showMessageDialog(null, "The killer is : " + nom, "Did you find the killer?", JOptionPane.INFORMATION_MESSAGE);
+            jop2.showMessageDialog(null, "Are you sure inspector the killer is ? " + nom, "Did you find the killer?", JOptionPane.INFORMATION_MESSAGE);
             
-                  
+            if (nom.equals("Violet") |nom.equals("Dr Violet") |nom.equals("Docteur Violet") |nom.equals("violet") ){
+                InterfaceWin go = new InterfaceWin();
+            }
+            else{
+            jop2.showMessageDialog(null, "Nooo! Inspector the killer is not " + nom, "Try again?", JOptionPane.INFORMATION_MESSAGE);
+            }
+                        
             tBar.setValueBar(player1.getTime());
-            //AccuseFrame.setEnabled(true);
-            //AccuseFrame.setVisible(true);
-            //AccuseFrame.setAlwaysOnTop(true);
+           
         });
 
         // Setting the Inventory Frame
