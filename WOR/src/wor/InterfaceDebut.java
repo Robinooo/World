@@ -9,7 +9,7 @@ import java.awt.*;
 
 /**
  *
- * @author Sylvia
+ * @author Robin
  */
     public class InterfaceDebut extends JFrame implements ActionListener {
 
@@ -286,15 +286,9 @@ import java.awt.*;
       
       else if (e.getSource() == butStart)
       {
-         playerName = fieldName.getText();
-         //new InterfaceGame(playerClass,playerName);
-         
-          //World w = new World(playerClass,playerName);
-          InitializeGame g = new InitializeGame(playerClass,playerName);
-
-      
-    
-         this.dispose();
+          playerName = fieldName.getText();
+          if (!fieldName.getText().isEmpty()) {
+          InitializeGame g = new InitializeGame(playerClass,playerName);}
       }
       
       else if (e.getSource() == butChange)

@@ -5,7 +5,6 @@
  */
 package wor;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Sylvia
+ * @author Robin
  */
 public class InitializeGame {
     private final Room fountain, library, poolRoom, office, veranda, barn1, barn2, barn3,
@@ -36,13 +35,10 @@ public class InitializeGame {
 
     private final Item hippocraticOath, clothSoaked, scarf, footPrints, rope, dagger, ironBar, revolver, candlestick, wrench, poison, axe, keyLibrary, keyVeranda, keyLivingRoom, keyDiningRoom, codeOffice, codeKitchen, irGlasses, gasMask;
     private final Inventory inventory;
-    private Player player1;
-    private String playerClass2;
-    private String playerName; 
+    private Player player1; 
     private NoteBook notebook;
 
     private JButton btTest, btTest2, btTest3, btTest4, btTest5, btTest6, btTest7, btTest8, btTest9, btTest10,btTest11;
-    private JPanel panelRoom;
     
     private final Icon imagefountain, imagelibrary, imagepoolRoom, imageoffice, imageveranda, imagebarn1, imagebarn2, imagebarn3,
             imagegarden, imagehall, imagesmallHall,imagekiosk, imagelivingRoom, imagediningRoom, imagekitchen, imagecorridor1, imagecorridor2,
@@ -55,14 +51,13 @@ public class InitializeGame {
             mapimagecorridor12, mapimagecorridor13, mapimagecorridor14, mapimagecorridor15, mapimagecorridor16, mapimagecorridor17, mapimagecorridor18;
     
     public ArrayList<JButton> InventoryList;
-    private JLabel co;
 
     public InitializeGame(String playerClass, String playerName )
       {
 
         InventoryList = new ArrayList<JButton>();
 
-        //imagehall = new ImageIcon (getClass().getResource("/pictures/c1.jpg")) ;
+
         libraryDoor = new Door("library");
         libraryKey = new KeyLock("Keylibrary");
         libraryDoor.addKeyLock(libraryKey);
