@@ -22,8 +22,7 @@ public class Room
     private Follower follower;
     protected ArrayList<Item> listItem;
     private Door door;
-    private String description;
-    //private ArrayList<Exit> exitRooms; 
+    private String description; 
     private Icon  imgplan;
     private Icon img;
     private JButton bou;
@@ -325,14 +324,9 @@ public class Room
     public Item getItem(int indice){
         return listItem.get(indice);
     }
-
-    // public boolean checkExitInRoomExits(Exit pexit) {
-    // for(Exit e : exitRooms) {
-    // if(e == pexit) {
-    // return true;
-    // }
-    // }
-    // return false;
-    // }
+    
+    public void setImage (Icon image) {
+        img = image;
+    }
     
 }

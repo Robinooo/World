@@ -33,7 +33,7 @@ public class InitializeGame {
     private final Killer drViolet;
     private final Follower missPrunelle;
 
-    private final Item hippocraticOath, clothSoaked, scarf, footPrints, rope, dagger, ironBar, revolver, candlestick, wrench, poison, axe, keyLibrary, keyVeranda, keyLivingRoom, keyDiningRoom, codeOffice, codeKitchen, irGlasses, gasMask;
+    private final Item hippocraticOath, clothSoaked, scarf, footPrints, rope, dagger, ironBar, revolver, candlestick, wrench, poison, axe, keyLibrary, keyVeranda, keyLivingRoom, keyDiningRoom, codeOffice, codeKitchen, irGlasses, gasMask,shield;
     private final Inventory inventory;
     private Player player1; 
     private NoteBook notebook;
@@ -50,12 +50,9 @@ public class InitializeGame {
             mapimagecorridor3, mapimagecorridor4, mapimagecorridor5, mapimagecorridor6, mapimagecorridor7, mapimagecorridor8, mapimagecorridor9, mapimagecorridor10, mapimagecorridor11,
             mapimagecorridor12, mapimagecorridor13, mapimagecorridor14, mapimagecorridor15, mapimagecorridor16, mapimagecorridor17, mapimagecorridor18;
     
-    public ArrayList<JButton> InventoryList;
 
     public InitializeGame(String playerClass, String playerName )
       {
-
-        InventoryList = new ArrayList<JButton>();
 
 
         libraryDoor = new Door("library");
@@ -95,7 +92,7 @@ public class InitializeGame {
         imageoffice = new ImageIcon(getClass().getResource("/pictures2/office.jpeg"));
         imageveranda = new ImageIcon(getClass().getResource("/pictures2/veranda.jpg"));
         imagebarn3 = new ImageIcon(getClass().getResource("/pictures2/grange.jpg"));
-        imagebarn2 = new ImageIcon(getClass().getResource("/pictures2/grange2.jpg"));
+        imagebarn2 = new ImageIcon(getClass().getResource("/pictures2/Black.png"));
         imagebarn1 = new ImageIcon(getClass().getResource("/pictures2/grange3.jpg"));
         imagegarden = new ImageIcon(getClass().getResource("/pictures2/garden.png"));
         imagehall = new ImageIcon(getClass().getResource("/pictures2/hall.png"));
@@ -499,6 +496,8 @@ public class InitializeGame {
         poison.setUse(false);
         axe = new Item("axe","You found an axe. It reminds you your childhood with your father, who was a lumberjack. You focus and notice that there is no blood on it. On one hand, it would be very barbaric to kill someone with an axe...",2, new ImageIcon(getClass().getResource("/picturesitems/axe.png")));
         axe.setUse(false);
+        shield = new Item("Shield","You find a shield. The murderer is still in the mansion, it is better to take something to protect himself.",0, new ImageIcon(getClass().getResource("/picturesitems/shield.jpg")));
+        shield.setUse(false);
 
         // Creation of key - code
         keyLibrary = new Item ("Keylibrary","You found the library’s key. Who knows, maybe this key will allow you to open other doors ...",0, new ImageIcon(getClass().getResource("/picturesitems/key1.png")));
@@ -544,6 +543,7 @@ public class InitializeGame {
         poolRoom.addItem(keyDiningRoom);
         library.addItem(codeOffice);
         office.addItem(codeKitchen);
+        office.addItem(shield);
         
         // Creation of the items images associated with the rooms
         
@@ -560,6 +560,7 @@ public class InitializeGame {
         inventory = new Inventory();
 
         inventory.addItems(codeOffice);
+        inventory.addItems(shield);
         
         if (playerClass == "Gadget") {
             player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 100);
@@ -571,7 +572,7 @@ public class InitializeGame {
        
        
         
-        World w = new World(player1,InventoryList,notebook,playerClass, btTest, btTest2, btTest3,btTest4,btTest5,btTest6,btTest7,btTest8,btTest9,btTest10,btTest11);
+        World w = new World(player1,notebook,playerClass, btTest, btTest2, btTest3,btTest4,btTest5,btTest6,btTest7,btTest8,btTest9,btTest10,btTest11);
 
 }
    

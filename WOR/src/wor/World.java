@@ -4,6 +4,7 @@ import java.awt.*;
 import java.io.*;
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Write a description of class World here.
@@ -19,7 +20,6 @@ public class World extends JFrame {
     private JLabel cPicture, lMap;
 
     JTextArea zoneTexte = new JTextArea(7, 40);
-    public ArrayList<JButton> InventoryList;
 
     private PersuasionBar pBar;
     private TimeBar tBar;
@@ -35,7 +35,7 @@ public class World extends JFrame {
      * @param playerClass
      * @param playerName
      */
-    public World(Player player1, ArrayList<JButton> InventoryList, NoteBook notebook, String playerClass, JButton btTest,
+    public World(Player player1, NoteBook notebook, String playerClass, JButton btTest,
             JButton btTest2, JButton btTest3, JButton btTest4, JButton btTest5, JButton btTest6,
             JButton btTest7, JButton btTest8, JButton btTest9, JButton btTest10, JButton btTest11) {
 
@@ -251,6 +251,31 @@ public class World extends JFrame {
 
         btRight.addActionListener(ae -> {
             player1.move("right");
+            if (player1.getCurrentRoom().getRoomName() == "barn 2") {
+                boolean survival = false;
+                JOptionPane jop = new JOptionPane();
+                jop.showMessageDialog(null, "The light goes out suddenly and you hear something approaching. It attacks you!",
+                         "Ambush", JOptionPane.INFORMATION_MESSAGE);
+                if (!player1.getInventory().ItemsList.isEmpty()) {
+                    for (int i = 0; i < player1.getInventory().ItemsList.size(); i++) {
+                        if (player1.getInventory().ItemsList.get(i).getName().equals("Shield")) {
+                            jop.showMessageDialog(null, "You take out your shield in haste.\n "
+                                    + "The weapon hits your shield and your attacker runs away.\n "
+                                    + "You turn on the light, there is no one in the room.",
+                                     "Ambush", JOptionPane.INFORMATION_MESSAGE); 
+                            survival = true;
+                            player1.getCurrentRoom().setImage(new ImageIcon(getClass().getResource("/pictures2/grange2.jpg")));
+                            break;
+                        }
+                    }
+                }
+                if (!survival) {
+                    jop.showMessageDialog(null, "You had nothing to deflect the blade that hit you. "
+                            + "The blow touched a vital point. "
+                            + "You will not get away this time ...",
+                             "Ambush", JOptionPane.INFORMATION_MESSAGE); InterfaceGameOver theEnd = new InterfaceGameOver();
+                }
+            }
             co.removeAll();
             co.setIcon(player1.getCurrentRoom().getImage());
             co.setLayout(new BorderLayout());
@@ -305,7 +330,6 @@ public class World extends JFrame {
             co.setPreferredSize(new Dimension(800, 800));
             co.setMaximumSize(new Dimension(800, 800));
             co.setMinimumSize(new Dimension(800, 800));
-
             if (player1.getCurrentRoom().getButton() != null) {
                 player1.getCurrentRoom().getPanel().removeAll();
                 player1.getCurrentRoom().getPanel().add(player1.getCurrentRoom().getButton());
@@ -476,7 +500,7 @@ public class World extends JFrame {
             lBar.setValueBar(player1.getLife());
 
         });
-        
+
         // Setting the Journal Frame
         btJournal.addActionListener(ae -> {
             textJournal.setText(notebook.getText());
@@ -486,7 +510,7 @@ public class World extends JFrame {
             tBar.setValueBar(player1.getTime());
 
         });
-        
+
         // Setting the Help Frame
         btHelp.addActionListener(ae -> {
             // Supposed to redirect the player to a PDF page (user manual)
@@ -505,48 +529,62 @@ public class World extends JFrame {
 //            }
             btTake.setEnabled(false);
         });
-        
+
         // Setting the Accuse Frame
         btAccuse.addActionListener(ae -> {
             JOptionPane jop = new JOptionPane(), jop2 = new JOptionPane();
-            String nom = jop.showInputDialog(null, "Who is the killer inspector?", JOptionPane.QUESTION_MESSAGE);
+            String nom = jop.showInputDialog(null, "Who is the killer, inspector?", JOptionPane.QUESTION_MESSAGE);
             String arme = jop.showInputDialog(null, "Which weapon was used?", JOptionPane.QUESTION_MESSAGE);
-            String room = jop.showInputDialog(null, "In which room did the murder of Mrs. Pervenche take place?", JOptionPane.QUESTION_MESSAGE);
-            
-            jop2.showMessageDialog(null, "Are you sure inspector the killer is : " + nom, "Did you find the killer?", JOptionPane.INFORMATION_MESSAGE);
-            jop2.showMessageDialog(null, "Are you sure the weapon is : " + arme, "Did you find the killer?", JOptionPane.INFORMATION_MESSAGE);
-            jop2.showMessageDialog(null, "Are you sure the room is : " + room, "Did you find the killer?", JOptionPane.INFORMATION_MESSAGE);
-            
-            
-            {if (nom.equals("Violet")| nom.equals("Pr Violet") | nom.equals("Professor Violet") | nom.equals("violet") )
-            {jop2.showMessageDialog(null, "Yes! Inspector the killer is : " + nom, "Well done!", JOptionPane.INFORMATION_MESSAGE);
+            String room = jop.showInputDialog(null, "In which room was Mrs. Pervenche killed?", JOptionPane.QUESTION_MESSAGE);
+
+            jop2.showMessageDialog(null, "You have said the killer is : " + nom + "\n"
+                    + "And the weapon is : " + arme + "\n"
+                    + "And the room is : " + room, "Did you find the killer?", JOptionPane.INFORMATION_MESSAGE);
+
+            if (nom.equals("Violet") | nom.equals("Pr Violet") | nom.equals("Professor Violet") | nom.equals("violet") && arme.equals("Poison") | arme.equals("poison") && room.equals("small hall") | room.equals("Small hall")) {
+                InterfaceWin go = new InterfaceWin();
+            } else {
+                if (nom.equals("Violet") | nom.equals("Pr Violet") | nom.equals("Professor Violet") | nom.equals("violet")) {
+                    if (arme.equals("Poison") | arme.equals("poison")) {
+                        jop2.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector.\n"
+                                + "The murder did not happen in the " + room, "Results", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        if (room.equals("Small hall") | room.equals("small hall")) {
+                            jop2.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
+                                    + "The murder was not committed with the " + arme, "Results", JOptionPane.INFORMATION_MESSAGE);
+                        } else {
+                            jop2.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
+                                    + "The murder did not happen in the " + room + "\n"
+                                    + "And was not committed with the " + arme + "\n", "Results", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                    }
+                } else {
+                    if (arme.equals("Poison") | arme.equals("poison")) {
+                        if (room.equals("Small hall") | room.equals("small hall")) {
+                            jop2.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
+                                    + "It was not " + nom + " who killed her.\n", "Results", JOptionPane.INFORMATION_MESSAGE);
+                        } else {
+                            jop2.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
+                                    + "It was not " + nom + " who killed her.\n"
+                                    + "The murder did not happen in the " + room + "\n", "Results", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                    } else {
+                        jop2.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
+                                + "None of your suggestions is good.\n", "Results", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
             }
-            else {jop2.showMessageDialog(null, "Nooo! Inspector the killer is not : " + nom, "Try again?", JOptionPane.INFORMATION_MESSAGE);
-            }}
-             
-            {if (arme.equals("Poison") |arme.equals("poison")){
-            jop2.showMessageDialog(null, "Yes! Inspector the arme is : " + arme, "Well done!", JOptionPane.INFORMATION_MESSAGE);
-            }
-            else {jop2.showMessageDialog(null, "Nooo! Inspector the arme is not : " + arme, "Try again?", JOptionPane.INFORMATION_MESSAGE);
-            }}
-            
-            {if (room.equals("hall") |room.equals("Hall")){
-            jop2.showMessageDialog(null, "Yes! Inspector the room where Mrs Pervenche was killed is : " + room, "Well done", JOptionPane.INFORMATION_MESSAGE);
-            }            
-            else{jop2.showMessageDialog(null, "Nooo! Inspector the room where Mrs Pervenche was killed is not : " + room, "Try again?", JOptionPane.INFORMATION_MESSAGE);
-            }} 
-                
-            {if (nom.equals("Violet")| nom.equals("Pr Violet") | nom.equals("Professor Violet") | nom.equals("violet") && arme.equals("Poison") |arme.equals("poison")&& room.equals("hall") |room.equals("Hall") )
-            {InterfaceWin go = new InterfaceWin();
-            }}
-            
+
             tBar.setValueBar(player1.getTime());
-           
-        });
+
+        }
+        );
 
         // Setting the Inventory Frame
-        btInventory.addActionListener(ae -> {
+        btInventory.addActionListener(ae
+                -> {
             JFrame inventoryFrame = new JFrame();
+            ArrayList<JButton> InventoryList = new ArrayList<JButton>();
             inventoryFrame.setTitle("Inventory");
             inventoryFrame.setSize(500, 500);
             inventoryFrame.setLayout(new GridLayout(5, 5));
@@ -557,16 +595,16 @@ public class World extends JFrame {
                 InventoryList.get(i).setPreferredSize(new Dimension(100, 100));
                 inventoryFrame.add(InventoryList.get(i));
             };
-        
 
             JLabel litem = new JLabel();
 
             inventoryFrame.setEnabled(true);
             inventoryFrame.setVisible(true);
             inventoryFrame.setAlwaysOnTop(true);
-            
-            });
-       
+
+        }
+        );
+
     }
 
     private void printWelcome() {
