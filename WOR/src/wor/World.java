@@ -511,7 +511,7 @@ public class World extends JFrame {
             jop2.showMessageDialog(null, "Are you sure the room is : " + room, "Did you find the killer?", JOptionPane.INFORMATION_MESSAGE);
             
             
-            {if (nom.equals("Violet")| nom.equals("Dr Violet") | nom.equals("Docteur Violet") | nom.equals("violet") )
+            {if (nom.equals("Violet")| nom.equals("Pr Violet") | nom.equals("Professor Violet") | nom.equals("violet") )
             {jop2.showMessageDialog(null, "Yes! Inspector the killer is : " + nom, "Well done!", JOptionPane.INFORMATION_MESSAGE);
             }
             else {jop2.showMessageDialog(null, "Nooo! Inspector the killer is not : " + nom, "Try again?", JOptionPane.INFORMATION_MESSAGE);
@@ -529,7 +529,7 @@ public class World extends JFrame {
             else{jop2.showMessageDialog(null, "Nooo! Inspector the room where Mrs Pervenche was killed is not : " + room, "Try again?", JOptionPane.INFORMATION_MESSAGE);
             }} 
                 
-            {if (nom.equals("Violet")| nom.equals("Dr Violet") | nom.equals("Docteur Violet") | nom.equals("violet") && arme.equals("Poison") |arme.equals("poison")&& room.equals("hall") |room.equals("Hall") )
+            {if (nom.equals("Violet")| nom.equals("Pr Violet") | nom.equals("Professor Violet") | nom.equals("violet") && arme.equals("Poison") |arme.equals("poison")&& room.equals("hall") |room.equals("Hall") )
             {InterfaceWin go = new InterfaceWin();
             }}
             
