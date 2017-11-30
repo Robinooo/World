@@ -16,7 +16,7 @@ public class WorldMain {
     
     public static void main(String[] args) {
         //World w = new World();
-        InterfaceDebut game = new InterfaceDebut();  
+        InterfaceDebut game = new InterfaceDebut(); 
     }
  
 }

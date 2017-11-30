@@ -24,7 +24,7 @@ public class InterfaceGameOver {
         JLabel myLabelGO = new JLabel();
         myLabelGO.setIcon(testGameOver);
         JFrame frame2 = new JFrame("Game Over");
-        frame2.setSize(405, 285);
+        frame2.setSize(865, 575);
         frame2.add(myLabelGO);
         //Définition de sa couleur de fond
         frame2.setBackground(Color.ORANGE);
