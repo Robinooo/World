@@ -117,17 +117,13 @@ public class Player extends Character {
         zoneTexte.setText("");
         if (currentRoom.listItem.size() > 0) {
             for (int i = 0; i < currentRoom.listItem.size(); i++) {
-                //inv.addObject(currentRoom.listItem.get(i));
                 inv.addItems(currentRoom.getItem(i));
-                //setPersuasion2(currentRoom.getItem(i).getPersupoints()); // add the persuasion points associated with the item to the player
                 setPersuasion(currentRoom.getItem(i).getPersupoints()); // add the persuasion points associated with the item to the player
 
                 zoneTexte.append(currentRoom.getItem(i).getDescription() + "\n ");
                 note.addText(currentRoom.getItem(i).getDescription());
                 currentRoom.listItem.remove(i);
-//                 if (i > 0) {
                 i--;
-//                 }
             }
             inv.displayItems(inv.ItemsList);
         }
