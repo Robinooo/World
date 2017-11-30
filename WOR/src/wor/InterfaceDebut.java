@@ -285,10 +285,13 @@ import java.awt.*;
       }
       
       else if (e.getSource() == butStart)
-      {
+      {   
           playerName = fieldName.getText();
           if (!fieldName.getText().isEmpty()) {
-          InitializeGame g = new InitializeGame(playerClass,playerName);}
+          InitializeGame g = new InitializeGame(playerClass,playerName);
+          this.dispose();}
+          
+          
       }
       
       else if (e.getSource() == butChange)
