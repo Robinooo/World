@@ -29,7 +29,7 @@ public class InitializeGame {
     private final KeyLock libraryKey, verandaKey, livingRoomKey, diningRoomKey;
     private final CodeLock officeCode, kitchenCode;
 
-    private final Talking clnMoutarde, missRose, prOlive, missLeblanc, generalLegris, misterRouge, countOrange, countnessOrange;
+    private final Talking clnMoutarde, missRose, prOlive, missLeblanc, generalLegris, misterRouge, countOrange, countnessOrange,inspecteur;
     private final Killer drViolet;
     private final Follower missPrunelle;
 
@@ -329,6 +329,7 @@ public class InitializeGame {
         misterRouge = new Talking("Mrs. Pervenche was a good friend. We used to have good times together.", "She was supposed to spend the evening with me last night, but she never came ... ", "Mister Rouge");
         countOrange = new Talking("Hello inspector, what do you want?  Yes …  I learned for Mrs. Pervench ... It's very unfortunate. Did you find the murderer ?", "I heard Mrs. Pervenche speak to a man when I was in the living room last night, I think they were in the kiosk at this moment.", "Compte Orange");
         countnessOrange = new Talking("Me and my husband the Count Orange have been the owner of this hotel for over 20 years and this is the first time such a horrible thing happens! I am taking a deep breath of fresh air in the kiosk to recover from all these emotions.", "Mrs. Pervenche seemed so friendly, resourceful, and early in life! What a pity..", "Comptesse Orange");
+        inspecteur = new Talking("Blablabla de l'inspecteur","blablabla2","Inspecteur");
 
         drViolet = new Killer("Docteur Violet");
 
@@ -477,6 +478,7 @@ public class InitializeGame {
         kiosk.addCharacter(countnessOrange);
         livingRoom.addCharacter(prOlive);
         kitchen.addCharacter(generalLegris);
+        hall.addCharacter(inspecteur);
 
         //Creation of weapons
         rope = new Item("rope","You found a rope on a stool. This is clearly not the murder weapon. However, someone might have thought about suicide, remorse maybe …",2, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));

@@ -150,7 +150,10 @@ public class Room
         public Talking getTalkingInTheRoom(){
         return talking ;
     }
-
+        
+         public Follower getFollowerInTheRoom(){
+        return follower ;
+    }
         
         public JPanel getPanel(){
         return panel;}

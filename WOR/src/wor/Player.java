@@ -228,17 +228,31 @@ public class Player extends Character {
     }
 
     public void speak(JTextArea zoneTexte) {
-        if (currentRoom.getTalkingInTheRoom() == null) {
-            setTime(2);
-            zoneTexte.setText("There is no one to talk to here, you think about talking to yourself and loose 5 minutes \n of your precious time \n");
-
-        } else {
-            //setTime(5);
+        if (currentRoom.getTalkingInTheRoom() != null) {
+          
             setTime(2);
             setPersuasion(5);
             zoneTexte.setText(currentRoom.getTalkingInTheRoom().talk(persuasionBar) + "\n");
+        } 
+        
+        else if (currentRoom.getFollowerInTheRoom() != null) {
+            setTime(2);
+            setPersuasion(5);
+            zoneTexte.setText(currentRoom.getFollowerInTheRoom().follow2(persuasionBar) + "\n");
+        }  
+        else {
+             setTime(2);
+            zoneTexte.setText("There is no one to talk to here, you think about talking to yourself and loose 5 minutes \n of your precious time \n");
         }
 
+//        else if (currentRoom.getFollowerInTheRoom() == null) {
+//            setTime(2);
+//            zoneTexte.setText("There is no one to talk to here, you think about talking to yourself and loose 5 minutes \n of your precious time \n");
+//        }  
+
+        
+        
+        
     }
 
     public int getPersuasion() {

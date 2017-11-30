@@ -25,5 +25,15 @@ public class Follower extends Character {
     public boolean follow() {
         return false; // the talking characters are not following the player
     }
-
+    
+    public String getspeach1() {
+        return speach1;//"testSpeach1";
+    }
+    public String follow2(int persuasion) {
+   
+            return getspeach1(); // Depending of the persuasion points
+        
+    }
+    
+    
 }
