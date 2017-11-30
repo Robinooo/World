@@ -77,7 +77,7 @@ public class InitializeGame {
         poolRoomDoor = new Door("pool");
 
         kitchenDoor = new Door("kitchen");
-        kitchenCode = new CodeLock("Codekitchen", "4444");
+        kitchenCode = new CodeLock("Codekitchen", "29745618027351054");
         kitchenDoor.addCodeLock(officeCode);
 
         diningRoomDoor = new Door("dining");
