@@ -491,11 +491,18 @@ public class World extends JFrame {
         btHelp.addActionListener(ae -> {
             // Supposed to redirect the player to a PDF page (user manual)
             try {
-                Runtime r = Runtime.getRuntime();
-                r.exec("explorer.exe Bomb.pdf");
-            } catch (IOException err) {
-                System.out.println("err" + err);
+                Desktop.getDesktop().open(new File("CLUEDO.pdf"));
+            } catch (IOException f) {
+
+                f.printStackTrace();
             }
+         
+//            try {
+//                Runtime r = Runtime.getRuntime();
+//                r.exec("explorer.exe Bomb.pdf");
+//            } catch (IOException err) {
+//                System.out.println("err" + err);
+//            }
             btTake.setEnabled(false);
         });
         
