@@ -503,15 +503,36 @@ public class World extends JFrame {
         btAccuse.addActionListener(ae -> {
             JOptionPane jop = new JOptionPane(), jop2 = new JOptionPane();
             String nom = jop.showInputDialog(null, "Who is the killer inspector?", JOptionPane.QUESTION_MESSAGE);
-            jop2.showMessageDialog(null, "Are you sure inspector the killer is ? " + nom, "Did you find the killer?", JOptionPane.INFORMATION_MESSAGE);
+            String arme = jop.showInputDialog(null, "Which weapon was used?", JOptionPane.QUESTION_MESSAGE);
+            String room = jop.showInputDialog(null, "In which room did the murder of Mrs. Pervenche take place?", JOptionPane.QUESTION_MESSAGE);
             
-            if (nom.equals("Violet") |nom.equals("Dr Violet") |nom.equals("Docteur Violet") |nom.equals("violet") ){
-                InterfaceWin go = new InterfaceWin();
+            jop2.showMessageDialog(null, "Are you sure inspector the killer is : " + nom, "Did you find the killer?", JOptionPane.INFORMATION_MESSAGE);
+            jop2.showMessageDialog(null, "Are you sure the weapon is : " + arme, "Did you find the killer?", JOptionPane.INFORMATION_MESSAGE);
+            jop2.showMessageDialog(null, "Are you sure the room is : " + room, "Did you find the killer?", JOptionPane.INFORMATION_MESSAGE);
+            
+            
+            {if (nom.equals("Violet")| nom.equals("Dr Violet") | nom.equals("Docteur Violet") | nom.equals("violet") )
+            {jop2.showMessageDialog(null, "Yes! Inspector the killer is : " + nom, "Well done!", JOptionPane.INFORMATION_MESSAGE);
             }
-            else{
-            jop2.showMessageDialog(null, "Nooo! Inspector the killer is not " + nom, "Try again?", JOptionPane.INFORMATION_MESSAGE);
+            else {jop2.showMessageDialog(null, "Nooo! Inspector the killer is not : " + nom, "Try again?", JOptionPane.INFORMATION_MESSAGE);
+            }}
+             
+            {if (arme.equals("Poison") |arme.equals("poison")){
+            jop2.showMessageDialog(null, "Yes! Inspector the arme is : " + arme, "Well done!", JOptionPane.INFORMATION_MESSAGE);
             }
-                        
+            else {jop2.showMessageDialog(null, "Nooo! Inspector the arme is not : " + arme, "Try again?", JOptionPane.INFORMATION_MESSAGE);
+            }}
+            
+            {if (room.equals("hall") |room.equals("Hall")){
+            jop2.showMessageDialog(null, "Yes! Inspector the room where Mrs Pervenche was killed is : " + room, "Well done", JOptionPane.INFORMATION_MESSAGE);
+            }            
+            else{jop2.showMessageDialog(null, "Nooo! Inspector the room where Mrs Pervenche was killed is not : " + room, "Try again?", JOptionPane.INFORMATION_MESSAGE);
+            }} 
+                
+            {if (nom.equals("Violet")| nom.equals("Dr Violet") | nom.equals("Docteur Violet") | nom.equals("violet") && arme.equals("Poison") |arme.equals("poison")&& room.equals("hall") |room.equals("Hall") )
+            {InterfaceWin go = new InterfaceWin();
+            }}
+            
             tBar.setValueBar(player1.getTime());
            
         });
