@@ -231,14 +231,14 @@ public class Room
     
     /**
      * Set the name of the Room
-     * @param roomName the roomName to set
+     * @param proomName the roomName to set
      */
     public void setRoomName(String proomName) {
         roomName = proomName;
     }
     /**
      * Set the type of the room, the room is a black room
-     * @param pnoir if the boolean is true -> black , false : not black
+     * @param pNoir if the boolean is true -> black , false : not black
      *
      */
 

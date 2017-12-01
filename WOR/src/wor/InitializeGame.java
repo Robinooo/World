@@ -40,7 +40,7 @@ public class InitializeGame {
 
     private JButton btTest, btTest2, btTest3, btTest4, btTest5, btTest6, btTest7, btTest8, btTest9, btTest10,btTest11;
     
-    private final Icon imagefountain, imagelibrary, imagepoolRoom, imageoffice, imageveranda, imagebarn1, imagebarn2, imagebarn3,
+    private final Icon imagefountain, imagelibrary, imagepoolRoom, imageoffice, imageveranda, imagebarn1, imageblack, imagebarn2, imagebarn3,
             imagegarden, imagehall, imagesmallHall,imagekiosk, imagelivingRoom, imagediningRoom, imagekitchen, imagecorridor1, imagecorridor2,
             imagecorridor3, imagecorridor4, imagecorridor5, imagecorridor6, imagecorridor7, imagecorridor8, imagecorridor9, imagecorridor10, imagecorridor11,
             imagecorridor12, imagecorridor13, imagecorridor14, imagecorridor15, imagecorridor16, imagecorridor17, imagecorridor18;
@@ -92,7 +92,8 @@ public class InitializeGame {
         imageoffice = new ImageIcon(getClass().getResource("/pictures2/office.jpeg"));
         imageveranda = new ImageIcon(getClass().getResource("/pictures2/veranda.jpg"));
         imagebarn3 = new ImageIcon(getClass().getResource("/pictures2/grange.jpg"));
-        imagebarn2 = new ImageIcon(getClass().getResource("/pictures2/Black.png"));
+        imageblack = new ImageIcon(getClass().getResource("/pictures2/Black.png"));
+        imagebarn2 = new ImageIcon(getClass().getResource("/pictures2/grange2.jpg"));
         imagebarn1 = new ImageIcon(getClass().getResource("/pictures2/grange3.jpg"));
         imagegarden = new ImageIcon(getClass().getResource("/pictures2/garden.png"));
         imagehall = new ImageIcon(getClass().getResource("/pictures2/hall.png"));
@@ -168,7 +169,8 @@ public class InitializeGame {
         office = new Room("office", "the ideal place to work in peace", officeDoor, imageoffice, mapimageoffice);
         veranda = new Room("veranda", "a warm place to watch the garden during winter", verandaDoor, imageveranda, mapimageveranda);
         barn1 = new Room("barn 1", "the first barn of the house", null, imagebarn1, mapimagebarn1);
-        barn2 = new Room("barn 2", "the second barn of the house", null, imagebarn2, mapimagebarn2);
+        barn2 = new Room("barn 2", "the second barn of the house", null, imageblack, mapimagebarn2);
+        barn2.setNoir(true);
         barn3 = new Room("barn 3", "a third small barn", barn3Door, imagebarn3, mapimagebarn3);
         garden = new Room("garden", "a big beautiful garden", null, imagegarden, mapimagegarden);
         hall = new Room("hall", "the hall of the house, to welcome visitors", null, imagehall, mapimagehall);
