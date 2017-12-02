@@ -40,7 +40,7 @@ public class InitializeGame {
 
     private JButton btTest, btTest2, btTest3, btTest4, btTest5, btTest6, btTest7, btTest8, btTest9, btTest10,btTest11;
     
-    private final Icon imagefountain, imagelibrary, imagepoolRoom, imageoffice, imageveranda, imagebarn1, imageblack, imagebarn2, imagebarn3,
+    private final Icon imagefountain, imagelibrary, imagepoolRoom, imageveranda, imagebarn1, imageblack, imagebarn3,
             imagegarden, imagehall, imagesmallHall,imagekiosk, imagelivingRoom, imagediningRoom, imagekitchen, imagecorridor1, imagecorridor2,
             imagecorridor3, imagecorridor4, imagecorridor5, imagecorridor6, imagecorridor7, imagecorridor8, imagecorridor9, imagecorridor10, imagecorridor11,
             imagecorridor12, imagecorridor13, imagecorridor14, imagecorridor15, imagecorridor16, imagecorridor17, imagecorridor18;
@@ -89,11 +89,9 @@ public class InitializeGame {
         imagefountain = new ImageIcon(getClass().getResource("/pictures2/fontaine.jpg"));
         imagelibrary = new ImageIcon(getClass().getResource("/pictures2/library.jpg"));
         imagepoolRoom = new ImageIcon(getClass().getResource("/pictures2/poolroom.jpg"));
-        imageoffice = new ImageIcon(getClass().getResource("/pictures2/office.jpeg"));
         imageveranda = new ImageIcon(getClass().getResource("/pictures2/veranda.jpg"));
         imagebarn3 = new ImageIcon(getClass().getResource("/pictures2/grange.jpg"));
         imageblack = new ImageIcon(getClass().getResource("/pictures2/Black.png"));
-        imagebarn2 = new ImageIcon(getClass().getResource("/pictures2/grange2.jpg"));
         imagebarn1 = new ImageIcon(getClass().getResource("/pictures2/grange3.jpg"));
         imagegarden = new ImageIcon(getClass().getResource("/pictures2/garden.png"));
         imagehall = new ImageIcon(getClass().getResource("/pictures2/hall.png"));
@@ -157,16 +155,12 @@ public class InitializeGame {
         mapimagecorridor18 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c18.jpg"));
 
         
-        
-        
-        
-        
-        
         // Creation of all the rooms
         fountain = new Room("fountain", "A beautiful fountain", null, imagefountain, mapimagefountain);
         library = new Room("library", "The library, where you can read quietly", libraryDoor, imagelibrary, mapimagelibrary);
         poolRoom = new Room("pool", "a small game of pool ?", poolRoomDoor, imagepoolRoom, mapimagepoolRoom);
-        office = new Room("office", "the ideal place to work in peace", officeDoor, imageoffice, mapimageoffice);
+        office = new Room("office", "the ideal place to work in peace", officeDoor, imageblack, mapimageoffice);
+        office.setNoir(true);
         veranda = new Room("veranda", "a warm place to watch the garden during winter", verandaDoor, imageveranda, mapimageveranda);
         barn1 = new Room("barn 1", "the first barn of the house", null, imagebarn1, mapimagebarn1);
         barn2 = new Room("barn 2", "the second barn of the house", null, imageblack, mapimagebarn2);
@@ -530,22 +524,23 @@ public class InitializeGame {
 
         // Add the items into the rooms  
         barn3.addItem(rope);
-        veranda.addItem(dagger);
+        barn3.addItem(keyVeranda);
         barn2.addItem(ironBar);
+        barn2.addItem(axe);
         office.addItem(revolver);
+        office.addItem(codeKitchen);
+        office.addItem(shield);
         diningRoom.addItem(candlestick);
         fountain.addItem(wrench);
         kitchen.addItem(poison);
-        barn2.addItem(axe);
         garden.addItem(irGlasses);
+        veranda.addItem(dagger);
         veranda.addItem(gasMask);
         kiosk.addItem(keyLibrary);
-        barn3.addItem(keyVeranda);
         smallHall.addItem(keyLivingRoom);
         poolRoom.addItem(keyDiningRoom);
         library.addItem(codeOffice);
-        office.addItem(codeKitchen);
-        office.addItem(shield);
+        
         
         // Creation of the items images associated with the rooms
         
@@ -560,9 +555,6 @@ public class InitializeGame {
 
         notebook = new NoteBook();
         inventory = new Inventory();
-
-        inventory.addItems(codeOffice);
-        inventory.addItems(shield);
         
         if (playerClass == "Gadget") {
             player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 100);
