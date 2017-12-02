@@ -76,7 +76,7 @@ public class World extends JFrame {
         btTake.setEnabled(false);
         btHelp = new JButton("Help");
         btAccuse = new JButton("Accuse");
-        //rActions.add(btSpeak);
+        btAccuse.setEnabled(false);
         rActions.add(btExplore);
         rActions.add(btTake);
         rActions.add(btHelp);
@@ -195,9 +195,6 @@ public class World extends JFrame {
             myLabelperso.setIcon(pic3);
         }
 
-//        JLabel myLabelNiveau1 = new JLabel("Easy Level");
-//        JLabel myLabelNiveau2 = new JLabel("Medium Level");
-//        JLabel myLabelNiveau3 = new JLabel("Hard Level");
         myLabelperso.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 15));
         myLabelperso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
@@ -250,7 +247,7 @@ public class World extends JFrame {
         zoneTexte.setLineWrap(true);
 
         btRight.addActionListener(ae -> {
-            if (player1.getCurrentRoom().getNoir()) {
+            if ("barn 2".equals(player1.getCurrentRoom().getRoomName()) && player1.getCurrentRoom().getNoir()) {
                 boolean survival = false;
                 JOptionPane jop = new JOptionPane();
                 jop.showMessageDialog(null, "You hear something approaching. It attacks you!",
@@ -278,7 +275,7 @@ public class World extends JFrame {
                 }
             }
             player1.move("right");
-            if ("barn 2".equals(player1.getCurrentRoom().getRoomName())) {JOptionPane jop = new JOptionPane(); jop.showMessageDialog(null, "The light goes out suddenly.",
+            if ("barn 2".equals(player1.getCurrentRoom().getRoomName()) && player1.getCurrentRoom().getNoir()) {JOptionPane jop = new JOptionPane(); jop.showMessageDialog(null, "The light goes out suddenly.",
                         "Black room", JOptionPane.INFORMATION_MESSAGE);}
             co.removeAll();
             co.setIcon(player1.getCurrentRoom().getImage());
