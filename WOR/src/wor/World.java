@@ -19,7 +19,7 @@ public class World extends JFrame {
     private final JPanel bBar, rActions;
     private JLabel cPicture, lMap;
 
-    JTextArea zoneTexte = new JTextArea(7, 40);
+    JTextArea zoneTexte = new JTextArea(7, 52);
 
     private PersuasionBar pBar;
     private TimeBar tBar;
@@ -51,7 +51,6 @@ public class World extends JFrame {
 
         JLabel co = new JLabel(new ImageIcon(getClass().getResource("/pictures2/hall.png")));
         co.setLayout(new BorderLayout());
-        //co.add(panelTest,BorderLayout.SOUTH);
         co.setPreferredSize(new Dimension(800, 800));
         co.setMaximumSize(new Dimension(800, 800));
         co.setMinimumSize(new Dimension(800, 800));
@@ -76,7 +75,6 @@ public class World extends JFrame {
         btTake.setEnabled(false);
         btHelp = new JButton("Help");
         btAccuse = new JButton("Accuse");
-        btAccuse.setEnabled(false);
         rActions.add(btExplore);
         rActions.add(btTake);
         rActions.add(btHelp);
@@ -274,10 +272,46 @@ public class World extends JFrame {
                 }
             }
             player1.move("right");
-            if ("hall".equals(player1.getCurrentRoom().getRoomName())) {btAccuse.setEnabled(true);} else {btAccuse.setEnabled(false);}
-            if ("barn 2".equals(player1.getCurrentRoom().getRoomName()) && player1.getCurrentRoom().getNoir()) {JOptionPane jop = new JOptionPane(); jop.showMessageDialog(null, "The light goes out suddenly.",
+            if ("office".equals(player1.getCurrentRoom().getRoomName())) {
+                JOptionPane jop = new JOptionPane();
+                if (player1.getCurrentRoom().getNoir()) {
+                    btExplore.setEnabled(false);
+                    if (!player1.getInventory().ItemsList.isEmpty()) {
+                        for (int i = 0; i < player1.getInventory().ItemsList.size(); i++) {
+                            if ("Glasses Infrared".equals(player1.getInventory().ItemsList.get(i).getName())) {
+                                player1.getCurrentRoom().setImage(new ImageIcon(getClass().getResource("/pictures2/office.jpeg")));
+                                player1.getCurrentRoom().setNoir(false);
+                                jop.showMessageDialog(null, "Your night vision goggles allow you to see what's in this room.",
+                                        "Ambush", JOptionPane.INFORMATION_MESSAGE);
+                                btExplore.setEnabled(true);
+                                break;
+                            } else {
+                                jop.showMessageDialog(null, "This room is plunged into darkness.\n"
+                                        + "You would need something that lets you see in the dark like cat's eyes\n"
+                                        + "... or night vision goggles",
+                                        "Ambush", JOptionPane.INFORMATION_MESSAGE);
+                            }
+                        }
+                    }
+                } else {
+                    jop.showMessageDialog(null, "This room is plunged into darkness.\n"
+                            + "You would need something that lets you see in the dark like cat's eyes\n"
+                            + "... or night vision goggles",
+                            "Ambush", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+
+            if ("hall".equals(player1.getCurrentRoom().getRoomName())) {
+                btAccuse.setEnabled(true);
+            } else {
+                btAccuse.setEnabled(false);
+            }
+            if ("barn 2".equals(player1.getCurrentRoom().getRoomName()) && player1.getCurrentRoom().getNoir()) {
+                JOptionPane jop = new JOptionPane();
+                jop.showMessageDialog(null, "The light goes out suddenly.",
                         "Black room", JOptionPane.INFORMATION_MESSAGE);
-            btExplore.setEnabled(false);}
+                btExplore.setEnabled(false);
+            }
             co.removeAll();
             co.setIcon(player1.getCurrentRoom().getImage());
             co.setLayout(new BorderLayout());
@@ -302,7 +336,8 @@ public class World extends JFrame {
 
         });
         btLeft.addActionListener(ae -> {
-            if (player1.getCurrentRoom().getNoir()) {
+            if ("office".equals(player1.getCurrentRoom().getRoomName())) {btExplore.setEnabled(true);}
+            if ("barn 2".equals(player1.getCurrentRoom().getRoomName()) && player1.getCurrentRoom().getNoir()) {
                 boolean survival = false;
                 JOptionPane jop = new JOptionPane();
                 jop.showMessageDialog(null, "You hear something approaching. It attacks you!",
@@ -330,7 +365,11 @@ public class World extends JFrame {
                 }
             }
             player1.move("left");
-            if ("hall".equals(player1.getCurrentRoom().getRoomName())) {btAccuse.setEnabled(true);} else {btAccuse.setEnabled(false);}
+            if ("hall".equals(player1.getCurrentRoom().getRoomName())) {
+                btAccuse.setEnabled(true);
+            } else {
+                btAccuse.setEnabled(false);
+            }
             co.removeAll();
             co.setIcon(player1.getCurrentRoom().getImage());
             co.setLayout(new BorderLayout());
@@ -354,7 +393,11 @@ public class World extends JFrame {
         });
         btUp.addActionListener(ae -> {
             player1.move("up");
-            if ("hall".equals(player1.getCurrentRoom().getRoomName())) {btAccuse.setEnabled(true);} else {btAccuse.setEnabled(false);}
+            if ("hall".equals(player1.getCurrentRoom().getRoomName())) {
+                btAccuse.setEnabled(true);
+            } else {
+                btAccuse.setEnabled(false);
+            }
             co.removeAll();
             co.setIcon(player1.getCurrentRoom().getImage());
             co.setLayout(new BorderLayout());
@@ -378,7 +421,11 @@ public class World extends JFrame {
         });
         btDown.addActionListener(ae -> {
             player1.move("down");
-            if ("hall".equals(player1.getCurrentRoom().getRoomName())) {btAccuse.setEnabled(true);} else {btAccuse.setEnabled(false);}
+            if ("hall".equals(player1.getCurrentRoom().getRoomName())) {
+                btAccuse.setEnabled(true);
+            } else {
+                btAccuse.setEnabled(false);
+            }
             co.removeAll();
             co.setIcon(player1.getCurrentRoom().getImage());
             co.setLayout(new BorderLayout());
@@ -550,13 +597,6 @@ public class World extends JFrame {
 
                 f.printStackTrace();
             }
-
-//            try {
-//                Runtime r = Runtime.getRuntime();
-//                r.exec("explorer.exe Bomb.pdf");
-//            } catch (IOException err) {
-//                System.out.println("err" + err);
-//            }
             btTake.setEnabled(false);
         });
 
@@ -603,6 +643,7 @@ public class World extends JFrame {
                                 + "None of your suggestions is good.\n", "Results", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
+                player1.setTime(10);
             }
 
             tBar.setValueBar(player1.getTime());
