@@ -245,7 +245,6 @@ public class World extends JFrame {
 
         this.zoneTexte.setText(player1.getCurrentRoom().getDescription());
         zoneTexte.setLineWrap(true);
-
         btRight.addActionListener(ae -> {
             if ("barn 2".equals(player1.getCurrentRoom().getRoomName()) && player1.getCurrentRoom().getNoir()) {
                 boolean survival = false;
@@ -275,8 +274,10 @@ public class World extends JFrame {
                 }
             }
             player1.move("right");
+            if ("hall".equals(player1.getCurrentRoom().getRoomName())) {btAccuse.setEnabled(true);} else {btAccuse.setEnabled(false);}
             if ("barn 2".equals(player1.getCurrentRoom().getRoomName()) && player1.getCurrentRoom().getNoir()) {JOptionPane jop = new JOptionPane(); jop.showMessageDialog(null, "The light goes out suddenly.",
-                        "Black room", JOptionPane.INFORMATION_MESSAGE);}
+                        "Black room", JOptionPane.INFORMATION_MESSAGE);
+            btExplore.setEnabled(false);}
             co.removeAll();
             co.setIcon(player1.getCurrentRoom().getImage());
             co.setLayout(new BorderLayout());
@@ -329,6 +330,7 @@ public class World extends JFrame {
                 }
             }
             player1.move("left");
+            if ("hall".equals(player1.getCurrentRoom().getRoomName())) {btAccuse.setEnabled(true);} else {btAccuse.setEnabled(false);}
             co.removeAll();
             co.setIcon(player1.getCurrentRoom().getImage());
             co.setLayout(new BorderLayout());
@@ -352,6 +354,7 @@ public class World extends JFrame {
         });
         btUp.addActionListener(ae -> {
             player1.move("up");
+            if ("hall".equals(player1.getCurrentRoom().getRoomName())) {btAccuse.setEnabled(true);} else {btAccuse.setEnabled(false);}
             co.removeAll();
             co.setIcon(player1.getCurrentRoom().getImage());
             co.setLayout(new BorderLayout());
@@ -367,8 +370,6 @@ public class World extends JFrame {
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
-            //btSpeak.setEnabled(true);
-
             tBar.setValueBar(player1.getTime());
             if (player1.getTime() <= 0 | player1.getLife() <= 0) {
                 InterfaceGameOver go = new InterfaceGameOver();
@@ -377,6 +378,7 @@ public class World extends JFrame {
         });
         btDown.addActionListener(ae -> {
             player1.move("down");
+            if ("hall".equals(player1.getCurrentRoom().getRoomName())) {btAccuse.setEnabled(true);} else {btAccuse.setEnabled(false);}
             co.removeAll();
             co.setIcon(player1.getCurrentRoom().getImage());
             co.setLayout(new BorderLayout());
