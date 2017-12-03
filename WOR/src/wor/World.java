@@ -244,31 +244,36 @@ public class World extends JFrame {
         this.zoneTexte.setText(player1.getCurrentRoom().getDescription());
         zoneTexte.setLineWrap(true);
         btRight.addActionListener(ae -> {
-            if ("barn 2".equals(player1.getCurrentRoom().getRoomName()) && player1.getCurrentRoom().getNoir()) {
-                boolean survival = false;
-                JOptionPane jop = new JOptionPane();
-                jop.showMessageDialog(null, "You hear something approaching. It attacks you!",
-                        "Ambush", JOptionPane.INFORMATION_MESSAGE);
-                if (!player1.getInventory().ItemsList.isEmpty()) {
-                    for (int i = 0; i < player1.getInventory().ItemsList.size(); i++) {
-                        if (player1.getInventory().ItemsList.get(i).getName().equals("Shield")) {
-                            jop.showMessageDialog(null, "You take out your shield in haste.\n "
-                                    + "The weapon hits your shield and your attacker runs away.\n "
-                                    + "You turn on the light, there is no one in the room.",
-                                    "Ambush", JOptionPane.INFORMATION_MESSAGE);
-                            survival = true;
-                            player1.getCurrentRoom().setImage(new ImageIcon(getClass().getResource("/pictures2/grange2.jpg")));
-                            player1.getCurrentRoom().setNoir(false);
-                            break;
+            if ("barn 2".equals(player1.getCurrentRoom().getRoomName())) {
+                if (player1.getCurrentRoom().getNoir()) {
+                    boolean survival = false;
+                    JOptionPane jop = new JOptionPane();
+                    jop.showMessageDialog(null, "You hear something approaching. It attacks you!",
+                            "Ambush", JOptionPane.INFORMATION_MESSAGE);
+                    if (!player1.getInventory().ItemsList.isEmpty()) {
+                        for (int i = 0; i < player1.getInventory().ItemsList.size(); i++) {
+                            if (player1.getInventory().ItemsList.get(i).getName().equals("Shield")) {
+                                jop.showMessageDialog(null, "You take out your shield in haste.\n "
+                                        + "The weapon hits your shield and your attacker runs away.\n "
+                                        + "You turn on the light, there is no one in the room.",
+                                        "Ambush", JOptionPane.INFORMATION_MESSAGE);
+                                survival = true;
+                                player1.getCurrentRoom().setImage(new ImageIcon(getClass().getResource("/pictures2/grange2.jpg")));
+                                player1.getCurrentRoom().setNoir(false);
+                                btExplore.setEnabled(true);
+                                break;
+                            }
                         }
                     }
-                }
-                if (!survival) {
-                    jop.showMessageDialog(null, "You had nothing to deflect the blade that hit you. "
-                            + "The blow touched a vital point. "
-                            + "You will not get away this time ...",
-                            "Ambush", JOptionPane.INFORMATION_MESSAGE);
-                    InterfaceGameOver theEnd = new InterfaceGameOver();
+                    if (!survival) {
+                        jop.showMessageDialog(null, "You had nothing to deflect the blade that hit you. "
+                                + "The blow touched a vital point. "
+                                + "You will not get away this time ...",
+                                "Ambush", JOptionPane.INFORMATION_MESSAGE);
+                        InterfaceGameOver theEnd = new InterfaceGameOver();
+                    }
+                } else {
+                    btExplore.setEnabled(true);
                 }
             }
             player1.move("right");
@@ -336,32 +341,39 @@ public class World extends JFrame {
 
         });
         btLeft.addActionListener(ae -> {
-            if ("office".equals(player1.getCurrentRoom().getRoomName())) {btExplore.setEnabled(true);}
-            if ("barn 2".equals(player1.getCurrentRoom().getRoomName()) && player1.getCurrentRoom().getNoir()) {
-                boolean survival = false;
-                JOptionPane jop = new JOptionPane();
-                jop.showMessageDialog(null, "You hear something approaching. It attacks you!",
-                        "Ambush", JOptionPane.INFORMATION_MESSAGE);
-                if (!player1.getInventory().ItemsList.isEmpty()) {
-                    for (int i = 0; i < player1.getInventory().ItemsList.size(); i++) {
-                        if (player1.getInventory().ItemsList.get(i).getName().equals("Shield")) {
-                            jop.showMessageDialog(null, "You take out your shield in haste.\n "
-                                    + "The weapon hits your shield and your attacker runs away.\n "
-                                    + "You turn on the light, there is no one in the room.",
-                                    "Ambush", JOptionPane.INFORMATION_MESSAGE);
-                            survival = true;
-                            player1.getCurrentRoom().setImage(new ImageIcon(getClass().getResource("/pictures2/grange2.jpg")));
-                            player1.getCurrentRoom().setNoir(false);
-                            break;
+            if ("office".equals(player1.getCurrentRoom().getRoomName())) {
+                btExplore.setEnabled(true);
+            }
+            if ("barn 2".equals(player1.getCurrentRoom().getRoomName())) {
+                if (player1.getCurrentRoom().getNoir()) {
+                    boolean survival = false;
+                    JOptionPane jop = new JOptionPane();
+                    jop.showMessageDialog(null, "You hear something approaching. It attacks you!",
+                            "Ambush", JOptionPane.INFORMATION_MESSAGE);
+                    if (!player1.getInventory().ItemsList.isEmpty()) {
+                        for (int i = 0; i < player1.getInventory().ItemsList.size(); i++) {
+                            if (player1.getInventory().ItemsList.get(i).getName().equals("Shield")) {
+                                jop.showMessageDialog(null, "You take out your shield in haste.\n "
+                                        + "The weapon hits your shield and your attacker runs away.\n "
+                                        + "You turn on the light, there is no one in the room.",
+                                        "Ambush", JOptionPane.INFORMATION_MESSAGE);
+                                survival = true;
+                                player1.getCurrentRoom().setImage(new ImageIcon(getClass().getResource("/pictures2/grange2.jpg")));
+                                player1.getCurrentRoom().setNoir(false);
+                                btExplore.setEnabled(true);
+                                break;
+                            }
                         }
                     }
-                }
-                if (!survival) {
-                    jop.showMessageDialog(null, "You had nothing to deflect the blade that hit you. "
-                            + "The blow touched a vital point. "
-                            + "You will not get away this time ...",
-                            "Ambush", JOptionPane.INFORMATION_MESSAGE);
-                    InterfaceGameOver theEnd = new InterfaceGameOver();
+                    if (!survival) {
+                        jop.showMessageDialog(null, "You had nothing to deflect the blade that hit you. "
+                                + "The blow touched a vital point. "
+                                + "You will not get away this time ...",
+                                "Ambush", JOptionPane.INFORMATION_MESSAGE);
+                        InterfaceGameOver theEnd = new InterfaceGameOver();
+                    }
+                } else {
+                    btExplore.setEnabled(true);
                 }
             }
             player1.move("left");
