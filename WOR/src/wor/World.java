@@ -247,13 +247,12 @@ public class World extends JFrame {
             if ("barn 2".equals(player1.getCurrentRoom().getRoomName())) {
                 if (player1.getCurrentRoom().getNoir()) {
                     boolean survival = false;
-                    JOptionPane jop = new JOptionPane();
-                    jop.showMessageDialog(null, "You hear something approaching. It attacks you!",
+                    JOptionPane.showMessageDialog(null, "You hear something approaching. It attacks you!",
                             "Ambush", JOptionPane.INFORMATION_MESSAGE);
                     if (!player1.getInventory().ItemsList.isEmpty()) {
                         for (int i = 0; i < player1.getInventory().ItemsList.size(); i++) {
                             if (player1.getInventory().ItemsList.get(i).getName().equals("Shield")) {
-                                jop.showMessageDialog(null, "You take out your shield in haste.\n "
+                                JOptionPane.showMessageDialog(null, "You take out your shield in haste.\n "
                                         + "The weapon hits your shield and your attacker runs away.\n "
                                         + "You turn on the light, there is no one in the room.",
                                         "Ambush", JOptionPane.INFORMATION_MESSAGE);
@@ -266,11 +265,18 @@ public class World extends JFrame {
                         }
                     }
                     if (!survival) {
-                        jop.showMessageDialog(null, "You had nothing to deflect the blade that hit you. "
+                        JOptionPane.showMessageDialog(null, "You had nothing to deflect the blade that hit you. "
                                 + "The blow touched a vital point. "
                                 + "You will not get away this time ...",
                                 "Ambush", JOptionPane.INFORMATION_MESSAGE);
                         InterfaceGameOver theEnd = new InterfaceGameOver();
+                        btUp.setEnabled(false);
+                        btDown.setEnabled(false);
+                        btLeft.setEnabled(false);
+                        btRight.setEnabled(false);
+                        btExplore.setEnabled(false);
+                        btHelp.setEnabled(false);
+                        btAccuse.setEnabled(false);
                     }
                 } else {
                     btExplore.setEnabled(true);
@@ -278,7 +284,6 @@ public class World extends JFrame {
             }
             player1.move("right");
             if ("office".equals(player1.getCurrentRoom().getRoomName())) {
-                JOptionPane jop = new JOptionPane();
                 if (player1.getCurrentRoom().getNoir()) {
                     btExplore.setEnabled(false);
                     if (!player1.getInventory().ItemsList.isEmpty()) {
@@ -286,12 +291,12 @@ public class World extends JFrame {
                             if ("Glasses Infrared".equals(player1.getInventory().ItemsList.get(i).getName())) {
                                 player1.getCurrentRoom().setImage(new ImageIcon(getClass().getResource("/pictures2/office.jpeg")));
                                 player1.getCurrentRoom().setNoir(false);
-                                jop.showMessageDialog(null, "Your night vision goggles allow you to see what's in this room.",
+                                JOptionPane.showMessageDialog(null, "Your night vision goggles allow you to see what's in this room.",
                                         "Ambush", JOptionPane.INFORMATION_MESSAGE);
                                 btExplore.setEnabled(true);
                                 break;
                             } else {
-                                jop.showMessageDialog(null, "This room is plunged into darkness.\n"
+                                JOptionPane.showMessageDialog(null, "This room is plunged into darkness.\n"
                                         + "You would need something that lets you see in the dark like cat's eyes\n"
                                         + "... or night vision goggles",
                                         "Ambush", JOptionPane.INFORMATION_MESSAGE);
@@ -299,7 +304,7 @@ public class World extends JFrame {
                         }
                     }
                 } else {
-                    jop.showMessageDialog(null, "This room is plunged into darkness.\n"
+                    JOptionPane.showMessageDialog(null, "This room is plunged into darkness.\n"
                             + "You would need something that lets you see in the dark like cat's eyes\n"
                             + "... or night vision goggles",
                             "Ambush", JOptionPane.INFORMATION_MESSAGE);
@@ -312,8 +317,7 @@ public class World extends JFrame {
                 btAccuse.setEnabled(false);
             }
             if ("barn 2".equals(player1.getCurrentRoom().getRoomName()) && player1.getCurrentRoom().getNoir()) {
-                JOptionPane jop = new JOptionPane();
-                jop.showMessageDialog(null, "The light goes out suddenly.",
+                JOptionPane.showMessageDialog(null, "The light goes out suddenly.",
                         "Black room", JOptionPane.INFORMATION_MESSAGE);
                 btExplore.setEnabled(false);
             }
@@ -337,6 +341,13 @@ public class World extends JFrame {
             tBar.setValueBar(player1.getTime());
             if (player1.getTime() == 0 | player1.getLife() == 0) {
                 InterfaceGameOver go = new InterfaceGameOver();
+                btUp.setEnabled(false);
+                btDown.setEnabled(false);
+                btLeft.setEnabled(false);
+                btRight.setEnabled(false);
+                btExplore.setEnabled(false);
+                btHelp.setEnabled(false);
+                btAccuse.setEnabled(false);
             }
 
         });
@@ -347,13 +358,12 @@ public class World extends JFrame {
             if ("barn 2".equals(player1.getCurrentRoom().getRoomName())) {
                 if (player1.getCurrentRoom().getNoir()) {
                     boolean survival = false;
-                    JOptionPane jop = new JOptionPane();
-                    jop.showMessageDialog(null, "You hear something approaching. It attacks you!",
+                    JOptionPane.showMessageDialog(null, "You hear something approaching. It attacks you!",
                             "Ambush", JOptionPane.INFORMATION_MESSAGE);
                     if (!player1.getInventory().ItemsList.isEmpty()) {
                         for (int i = 0; i < player1.getInventory().ItemsList.size(); i++) {
                             if (player1.getInventory().ItemsList.get(i).getName().equals("Shield")) {
-                                jop.showMessageDialog(null, "You take out your shield in haste.\n "
+                                JOptionPane.showMessageDialog(null, "You take out your shield in haste.\n "
                                         + "The weapon hits your shield and your attacker runs away.\n "
                                         + "You turn on the light, there is no one in the room.",
                                         "Ambush", JOptionPane.INFORMATION_MESSAGE);
@@ -366,11 +376,18 @@ public class World extends JFrame {
                         }
                     }
                     if (!survival) {
-                        jop.showMessageDialog(null, "You had nothing to deflect the blade that hit you. "
+                        JOptionPane.showMessageDialog(null, "You had nothing to deflect the blade that hit you. "
                                 + "The blow touched a vital point. "
                                 + "You will not get away this time ...",
                                 "Ambush", JOptionPane.INFORMATION_MESSAGE);
                         InterfaceGameOver theEnd = new InterfaceGameOver();
+                        btUp.setEnabled(false);
+                        btDown.setEnabled(false);
+                        btLeft.setEnabled(false);
+                        btRight.setEnabled(false);
+                        btExplore.setEnabled(false);
+                        btHelp.setEnabled(false);
+                        btAccuse.setEnabled(false);
                     }
                 } else {
                     btExplore.setEnabled(true);
@@ -400,6 +417,13 @@ public class World extends JFrame {
             tBar.setValueBar(player1.getTime());
             if (player1.getTime() <= 0 | player1.getLife() <= 0) {
                 InterfaceGameOver go = new InterfaceGameOver();
+                btUp.setEnabled(false);
+                btDown.setEnabled(false);
+                btLeft.setEnabled(false);
+                btRight.setEnabled(false);
+                btExplore.setEnabled(false);
+                btHelp.setEnabled(false);
+                btAccuse.setEnabled(false);
             }
 
         });
@@ -428,11 +452,41 @@ public class World extends JFrame {
             tBar.setValueBar(player1.getTime());
             if (player1.getTime() <= 0 | player1.getLife() <= 0) {
                 InterfaceGameOver go = new InterfaceGameOver();
+                btUp.setEnabled(false);
+                btDown.setEnabled(false);
+                btLeft.setEnabled(false);
+                btRight.setEnabled(false);
+                btExplore.setEnabled(false);
+                btHelp.setEnabled(false);
+                btAccuse.setEnabled(false);
             }
 
         });
         btDown.addActionListener(ae -> {
             player1.move("down");
+            if (player1.getCurrentRoom().getGaz()) {
+                JOptionPane.showMessageDialog(null, "The room is full of gas. Without protection you will quickly suffocate.",
+                                "Gas", JOptionPane.INFORMATION_MESSAGE);
+                btExplore.setEnabled(false);
+                boolean survival = false;
+                if (!player1.getInventory().ItemsList.isEmpty()) {
+                    for (int i = 0; i < player1.getInventory().ItemsList.size(); i++) {
+                        if (player1.getInventory().ItemsList.get(i).getName().equals("Gas Mask")) {
+                            JOptionPane.showMessageDialog(null, "With your gas mask you can breathe. \n"
+                                    + "You can explore the room quietly.",
+                                    "Gas", JOptionPane.INFORMATION_MESSAGE);
+                            survival = true;
+                            player1.getCurrentRoom().setImage(new ImageIcon(getClass().getResource("/pictures2/cuisine.jpg")));
+                            player1.getCurrentRoom().setGaz(false);
+                            btExplore.setEnabled(true);
+                            break;
+                        }
+                    }
+                }
+                if (!survival) {JOptionPane.showMessageDialog(null, "As you enter, you feel your lungs burn. Get out before dying of asphyxiation.",
+                                "Gas", JOptionPane.INFORMATION_MESSAGE); player1.setLife(15);
+                }
+            }
             if ("hall".equals(player1.getCurrentRoom().getRoomName())) {
                 btAccuse.setEnabled(true);
             } else {
@@ -458,6 +512,13 @@ public class World extends JFrame {
 
             if (player1.getTime() <= 0 | player1.getLife() <= 0) {
                 InterfaceGameOver go = new InterfaceGameOver();
+                btUp.setEnabled(false);
+                btDown.setEnabled(false);
+                btLeft.setEnabled(false);
+                btRight.setEnabled(false);
+                btExplore.setEnabled(false);
+                btHelp.setEnabled(false);
+                btAccuse.setEnabled(false);
             }
 
         });
@@ -475,6 +536,13 @@ public class World extends JFrame {
 
             if (player1.getTime() <= 0 | player1.getLife() <= 0) {
                 InterfaceGameOver go = new InterfaceGameOver();
+                btUp.setEnabled(false);
+                btDown.setEnabled(false);
+                btLeft.setEnabled(false);
+                btRight.setEnabled(false);
+                btExplore.setEnabled(false);
+                btHelp.setEnabled(false);
+                btAccuse.setEnabled(false);
             }
 
         });

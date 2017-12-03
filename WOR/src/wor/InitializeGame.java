@@ -99,7 +99,7 @@ public class InitializeGame {
         imagekiosk = new ImageIcon(getClass().getResource("/pictures2/kiosque.jpg"));
         imagelivingRoom = new ImageIcon(getClass().getResource("/pictures2/livingroom.png"));
         imagediningRoom = new ImageIcon(getClass().getResource("/pictures2/diningroom.png"));
-        imagekitchen = new ImageIcon(getClass().getResource("/pictures2/cuisine.jpg"));
+        imagekitchen = new ImageIcon(getClass().getResource("/pictures2/gaz.jpg"));
         imagecorridor1 = new ImageIcon(getClass().getResource("/pictures2/c1.png"));
         imagecorridor2 = new ImageIcon(getClass().getResource("/pictures2/c2.png"));
         imagecorridor3 = new ImageIcon(getClass().getResource("/pictures2/c3.png"));
@@ -173,6 +173,7 @@ public class InitializeGame {
         livingRoom = new Room("living", "the most cosy living room you have ever seen", livingRoomDoor, imagelivingRoom, mapimagelivingRoom);
         diningRoom = new Room("dining", "a large, friendly room", diningRoomDoor, imagediningRoom, mapimagediningRoom);
         kitchen = new Room("kitchen", "the heart of the house : the kitchen", kitchenDoor, imagekitchen, mapimagekitchen);
+        kitchen.setGaz(true);
         corridor1 = new Room("corridor 1", "A simple corridor", null, imagecorridor1, mapimagecorridor1);
         corridor2 = new Room("corridor 2", "A simple corridor", null, imagecorridor2, mapimagecorridor2);
         corridor3 = new Room("corridor 3", "A simple corridor", null, imagecorridor3, mapimagecorridor3);
@@ -444,16 +445,16 @@ public class InitializeGame {
        library.addPanel(panelTest4);
        veranda.addButton(btTest5);
        veranda.addPanel(panelTest5);
-       barn3.addButton(btTest6);
-       barn3.addPanel(panelTest6);
+       smallHall.addButton(btTest6);
+       smallHall.addPanel(panelTest6);
        garden.addButton(btTest7);
        garden.addPanel(panelTest7);
        corridor11.addButton(btTest8);
        corridor11.addPanel(panelTest8);
        livingRoom.addButton(btTest9);
        livingRoom.addPanel(panelTest9);
-       kitchen.addButton(btTest10);
-       kitchen.addPanel(panelTest10);
+       diningRoom.addButton(btTest10);
+       diningRoom.addPanel(panelTest10);
        hall.addButton(btTest11);
        hall.addPanel(panelTest11);
 //        
@@ -465,12 +466,12 @@ public class InitializeGame {
         library.addCharacter(clnMoutarde);
         poolRoom.addFollower(missPrunelle);
         veranda.addCharacter(misterRouge);
-        barn3.addKiller(drViolet);
+        smallHall.addKiller(drViolet);
         garden.addCharacter(missLeblanc);
         corridor11.addCharacter(countOrange);
         kiosk.addCharacter(countnessOrange);
         livingRoom.addCharacter(prOlive);
-        kitchen.addCharacter(generalLegris);
+        diningRoom.addCharacter(generalLegris);
         hall.addCharacter(inspecteur);
 
         //Creation of weapons
@@ -555,6 +556,7 @@ public class InitializeGame {
 
         notebook = new NoteBook();
         inventory = new Inventory();
+        inventory.addItems(gasMask);
         
         if (playerClass == "Gadget") {
             player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 100);
