@@ -150,14 +150,20 @@ public class Player extends Character {
                 } else {
                     if (testRoom.getDoor().getHaveCodeLock()) { // Door have a code lock
                         if (!inv.ItemsList.isEmpty()) {
-                            String testCodeDoor = dialogCodeInput();
-                            boolean test = testRoom.getDoor().openDoorPass(testCodeDoor);
-                            if (test) { // Try each object from the inventory -> return true if the door is unlock
-                                testRoom.getDoor().setOpenable(true);
-                                nextRoom = currentRoom.getRoom(direction);
-                                setTime(2);
-                            } else {
-                                nextRoom = currentRoom;
+                            for (int i = 0; i < inv.ItemsList.size(); i++) {
+                                if (testRoom.getDoor().getCodeLock().getName().equals(inv.ItemsList.get(i).getName())) {
+                                    String testCodeDoor = dialogCodeInput();
+                                    if (testRoom.getDoor().openDoorPass(testCodeDoor)) { // Try the code in the room -> return true if the door is unlock
+                                        testRoom.getDoor().setOpenable(true);
+                                        nextRoom = currentRoom.getRoom(direction);
+                                        setTime(2);
+                                        break;
+                                    } else {
+                                        nextRoom = currentRoom;
+                                    }
+                                } else {
+                                    nextRoom = currentRoom;
+                                }
                             }
                         } else {
                             nextRoom = currentRoom;
@@ -166,8 +172,7 @@ public class Player extends Character {
                     else { // Door have a key Lock
                         if (!inv.ItemsList.isEmpty()) {
                             for (int i = 0; i < inv.ItemsList.size(); i++) {
-                                boolean test = testRoom.getDoor().openDoorKey(inv.ItemsList.get(i).getName());
-                                if (test) {
+                                if (testRoom.getDoor().openDoorKey(inv.ItemsList.get(i).getName())) {
                                     testRoom.getDoor().setOpenable(true);
                                     nextRoom = currentRoom.getRoom(direction);
                                     setTime(2);
