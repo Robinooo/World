@@ -81,10 +81,12 @@ public class Player extends Character {
         setTime(1);
         if (currentRoom.containsDirection(direction)) {
             testRoom = currentRoom.getRoom(direction);
+            boolean haveKey = false;
             if (testRoom.getDoor() != null) {
                 if (testRoom.getDoor().isOpenable() == true) { //if isOpenable -> true if is openable
                     s.playSoundSingle("music/porte_verrou.wav");
                     nextRoom = currentRoom.getRoom(direction);
+                    haveKey = true;
                 } else {
                     if (testRoom.getDoor().getHaveCodeLock()) { // Door have a code lock
                         if (!inv.ItemsList.isEmpty()) {
@@ -94,20 +96,12 @@ public class Player extends Character {
                                     if (testRoom.getDoor().openDoorPass(testCodeDoor)) { // Try the code in the room -> return true if the door is unlock
                                         testRoom.getDoor().setOpenable(true);
                                         nextRoom = currentRoom.getRoom(direction);
+                                        haveKey = true;
                                         setTime(2);
                                         break;
-                                    } else {
-                                        nextRoom = currentRoom;
-                                        putMessageDoor();
                                     }
-                                } else {
-                                    nextRoom = currentRoom;
-                                    putMessageDoor();
                                 }
                             }
-                        } else {
-                            nextRoom = currentRoom;
-                            putMessageDoor();
                         }
                     } else { // Door have a key Lock
                         if (!inv.ItemsList.isEmpty()) {
@@ -116,17 +110,16 @@ public class Player extends Character {
                                     testRoom.getDoor().setOpenable(true);
                                     nextRoom = currentRoom.getRoom(direction);
                                     setTime(2);
+                                    haveKey = true;
                                     break;
-                                } else {
-                                    nextRoom = currentRoom;
-                                    putMessageDoor();
                                 }
                             }
-                        } else {
-                            nextRoom = currentRoom;
-                            putMessageDoor();
                         }
                     }
+                }
+                if (!haveKey) {
+                    nextRoom = currentRoom;
+                    putMessageDoor();
                 }
             } else // there is no door
             {
@@ -140,16 +133,16 @@ public class Player extends Character {
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public Room getCurrentRoom() {
         return currentRoom;
     }
 
     /**
-     * 
-     * @param zoneTexte 
+     *
+     * @param zoneTexte
      */
     public void explore(JTextArea zoneTexte) {
         if (currentRoom.listItem.size() > 0) {
@@ -276,7 +269,6 @@ public class Player extends Character {
      * @return
      */
     private String dialogCodeInput() {
-        //System.out.println("Test");
         String s = (String) JOptionPane.showInputDialog(
                 frame,
                 "Enter your code:\n",
