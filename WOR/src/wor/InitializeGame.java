@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Robin
+ * @author G2
  */
 public class InitializeGame {
 

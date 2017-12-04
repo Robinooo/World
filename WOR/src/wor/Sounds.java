@@ -10,7 +10,7 @@ import java.io.File;
 
 /**
  *
- * @author Diane
+ * @author G2
  */
 public class Sounds {
 

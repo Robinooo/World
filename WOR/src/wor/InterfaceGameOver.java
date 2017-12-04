@@ -13,7 +13,7 @@ import java.awt.Color;
 
 /**
  *
- * @author Diane
+ * @author G2
  */
 public class InterfaceGameOver {
 

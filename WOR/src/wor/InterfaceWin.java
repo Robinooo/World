@@ -10,7 +10,7 @@ import javax.sound.sampled.Clip;
 
 /**
  *
- * @author Diane
+ * @author G2
  */
 public class InterfaceWin {
 

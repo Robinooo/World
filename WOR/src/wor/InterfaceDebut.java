@@ -8,7 +8,7 @@ import javax.swing.*;
 
 /**
  *
- * @author Robin
+ * @author G2
  */
 public class InterfaceDebut extends JFrame implements ActionListener {
 
