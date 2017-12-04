@@ -12,7 +12,9 @@ public class KeyLock extends Lock {
     private String nameKey; // The name of the key
 
     /**
-     * Constructor for objects of class KeyLock. A key lock is represented by a name.
+     * Constructor for objects of class KeyLock. A key lock is represented by a
+     * name.
+     *
      * @param name The name of the key
      */
     public KeyLock(String name) {
@@ -21,6 +23,7 @@ public class KeyLock extends Lock {
 
     /**
      * Returns the name of the key.
+     *
      * @return Returns the name of the key
      */
     public String getNameKey() {

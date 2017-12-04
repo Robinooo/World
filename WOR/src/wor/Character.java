@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * The class Character represent a character , with a strng, and his current
- * room. 
+ * room.
  *
  * @author Group2
  * @version 11/20/2017
@@ -15,7 +15,7 @@ public abstract class Character {
     protected Room currentRoom; // The current room of the character
 
     /**
-     * Constructor for objects of class Character. 
+     * Constructor for objects of class Character.
      */
     public Character() {
 

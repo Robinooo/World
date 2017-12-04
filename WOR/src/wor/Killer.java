@@ -10,7 +10,9 @@ package wor;
 public class Killer extends Character {
 
     /**
-     * Constructor for objects of class Killer. The killer is represented by a name.
+     * Constructor for objects of class Killer. The killer is represented by a
+     * name.
+     *
      * @param name, the name of the killer
      */
     public Killer(String n) {

@@ -9,20 +9,21 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.Color; 
+import java.awt.Color;
 
 /**
  *
  * @author Diane
  */
 public class InterfaceGameOver {
+
     private Icon testGameOver;
     private Sounds s;
-   // private JLabel myLabelGO ;
+    // private JLabel myLabelGO ;
 
-    public InterfaceGameOver(){
-        s.playSoundInfinite("music/gadget.wav"); 
-       testGameOver = new ImageIcon(getClass().getResource("/pictures2/gameover.png"));
+    public InterfaceGameOver() {
+        s.playSoundInfinite("music/gadget.wav");
+        testGameOver = new ImageIcon(getClass().getResource("/pictures2/gameover.png"));
         JLabel myLabelGO = new JLabel();
         myLabelGO.setIcon(testGameOver);
         JFrame frame2 = new JFrame("Game Over");
@@ -30,9 +31,7 @@ public class InterfaceGameOver {
         frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame2.setLocationRelativeTo(null);
         frame2.add(myLabelGO);
-        frame2.setVisible(true);      
+        frame2.setVisible(true);
     }
 
-
 }
-

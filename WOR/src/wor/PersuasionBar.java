@@ -2,19 +2,22 @@ package wor;
 
 import javax.swing.*;
 import java.awt.*;
+
 /**
- * The PersuasionBar class represents the bar which allows the player to visualize 
- * the number of persuasion points of the player into a bar. 
+ * The PersuasionBar class represents the bar which allows the player to
+ * visualize the number of persuasion points of the player into a bar.
+ *
  * @author G2
  * @version 27/11/17
  */
 public class PersuasionBar {
+
     private JProgressBar bar; // the graphical bar
 
     /**
-     * Constructor of the persuasion bar. 
+     * Constructor of the persuasion bar.
      */
-    public PersuasionBar(){
+    public PersuasionBar() {
         bar = new JProgressBar();
         bar.setMaximum(100);
         bar.setMinimum(0);
@@ -24,33 +27,35 @@ public class PersuasionBar {
         bar.setBackground(Color.white);
         bar.setForeground(Color.blue);
     }
-    
+
     /**
      * The getPersuasionBar method gets the persuasion bar of the player
+     *
      * @return bar
      */
-    public JProgressBar getPersuasionBar(){
+    public JProgressBar getPersuasionBar() {
         return bar;
     }
-    
+
     /**
-     * The setValueBar method sets the persuasion bar of the player by modifying 
-     * the number of persuasion points of the player. 
+     * The setValueBar method sets the persuasion bar of the player by modifying
+     * the number of persuasion points of the player.
+     *
      * @param val, the number of persuasion points of the player
      */
-    public void setValueBar(int val){
+    public void setValueBar(int val) {
         bar.setValue(val);
         colorBar();
     }
-    
+
     /**
-     * The colorBar method changes the color of the bar when the number of 
-     * persuasion points pass threshold of 59 persuasion points. 
+     * The colorBar method changes the color of the bar when the number of
+     * persuasion points pass threshold of 59 persuasion points.
      */
-    public void colorBar(){
-        if (bar.getValue() >45 ){
+    public void colorBar() {
+        if (bar.getValue() > 45) {
             bar.setForeground(Color.orange);
-        }else{
+        } else {
             bar.setForeground(Color.blue);
         }
     }

@@ -3,7 +3,7 @@ package wor;
 import java.util.ArrayList;
 
 /**
- * The class Inventory allows to manage the player's inventory. The inventory 
+ * The class Inventory allows to manage the player's inventory. The inventory
  * contains all the items of the player, that he found in the different rooms.
  *
  * @author Group 2 - DEGUISE Martin FRICOT Robin DOUMENGE Diane LIEVRE Clémence
@@ -16,15 +16,17 @@ public class Inventory {
     public ArrayList<Item> ItemsList; // The array containing all the items of the player
 
     /**
-     * Constructor for objects of class Inventory. An inventory in nothing more than 
-     * an array, containing all the items the player found in the room he visited.
+     * Constructor for objects of class Inventory. An inventory in nothing more
+     * than an array, containing all the items the player found in the room he
+     * visited.
      */
     public Inventory() {
         ItemsList = new ArrayList<Item>();
     }
 
     /**
-     * The addItems method adds a new item in the inventory. 
+     * The addItems method adds a new item in the inventory.
+     *
      * @param Item, the item to add to inventory.
      */
     public void addItems(Item newItem) {
@@ -35,8 +37,8 @@ public class Inventory {
      * The displayItems method displays the items contained in the inventory
      *
      * @param ItemsList : the list of items
-     * @return boolean false is the list of items is empty, true if the item
-     * is in the list
+     * @return boolean false is the list of items is empty, true if the item is
+     * in the list
      */
     public boolean displayItems(ArrayList<Item> ItemsList) {
         if (ItemsList.isEmpty()) {
@@ -45,10 +47,11 @@ public class Inventory {
             return true; // there is items in the inventory
         }
     }
-    
-    /** 
-     * The displayItemsImg method allows the user to display the images associated 
-     * to the items. 
+
+    /**
+     * The displayItemsImg method allows the user to display the images
+     * associated to the items.
+     *
      * @param ItemsList
      * @return true si la liste contient des items
      */
@@ -64,7 +67,8 @@ public class Inventory {
     }
 
     /**
-     * The removeItems method removes an item from the inventory. 
+     * The removeItems method removes an item from the inventory.
+     *
      * @param usedItem, the item to remove from inventory.
      */
     public void removeItems(Item usedItem) {

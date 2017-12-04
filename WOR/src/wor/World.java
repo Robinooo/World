@@ -27,7 +27,7 @@ public class World extends JFrame {
 
     private Icon pImg, tImg, lImg, pic1, pic2, pic3;
     private JPanel myPanelBar;
-    
+
     private JPanel journalPanel;
 
     // instance variables - replace the example below with your own
@@ -37,7 +37,7 @@ public class World extends JFrame {
      * @param playerClass
      * @param playerName
      */
-    public World(Player player1, NoteBook notebook, String playerClass, ArrayList <Room> listRoom, JButton btTest2) {
+    public World(Player player1, NoteBook notebook, String playerClass, ArrayList<Room> listRoom, JButton btTest2) {
 
         // Setting the Journal Frame, where all the text from the notebook is displayed
         journalFrame = new JFrame();
@@ -49,7 +49,7 @@ public class World extends JFrame {
         JScrollPane jScrollPane = new JScrollPane(journalPanel);
         jScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         journalFrame.getContentPane().add(jScrollPane);
-        
+
         journalFrame.setTitle("Notebook");
         journalFrame.setSize(900, 200);
         journalFrame.setLocationRelativeTo(null);
@@ -305,434 +305,425 @@ public class World extends JFrame {
                                 find = true;
                                 break;
                             }
-                        } if (!find) {
-                JOptionPane.showMessageDialog(null, "This room is plunged into darkness.\n"
-                        + "You would need something that lets you see in the dark like cat's eyes\n"
-                        + "... or night vision goggles",
-                        "Ambush", JOptionPane.INFORMATION_MESSAGE);}
+                        }
+                        if (!find) {
+                            JOptionPane.showMessageDialog(null, "This room is plunged into darkness.\n"
+                                    + "You would need something that lets you see in the dark like cat's eyes\n"
+                                    + "... or night vision goggles",
+                                    "Ambush", JOptionPane.INFORMATION_MESSAGE);
+                        }
                     }
                 }
             }
 
-        if ("hall".equals(player1.getCurrentRoom().getRoomName())) {
-            btAccuse.setEnabled(true);
-        } else {
-            btAccuse.setEnabled(false);
-        }
-        if ("barn 2".equals(player1.getCurrentRoom().getRoomName()) && player1.getCurrentRoom().getNoir()) {
-            JOptionPane.showMessageDialog(null, "The light goes out suddenly.",
-                    "Black room", JOptionPane.INFORMATION_MESSAGE);
-            btExplore.setEnabled(false);
-        }
-        
-        if ("kiosk".equals(player1.getCurrentRoom().getRoomName())
-                ||"garden".equals(player1.getCurrentRoom().getRoomName())
-                ||"veranda".equals(player1.getCurrentRoom().getRoomName())
-                ||"corridor1".equals(player1.getCurrentRoom().getRoomName())
-                ||"corridor2".equals(player1.getCurrentRoom().getRoomName())
-                ||"corridor3".equals(player1.getCurrentRoom().getRoomName()) 
-                ||"corridor8".equals(player1.getCurrentRoom().getRoomName())
-                ||"corridor11".equals(player1.getCurrentRoom().getRoomName())
-                ||"corridor12".equals(player1.getCurrentRoom().getRoomName())
-                ||"corridor17".equals(player1.getCurrentRoom().getRoomName())) 
-        {s.playSoundSingle("music/birds.wav");}
-        
-        if ("fountain".equals(player1.getCurrentRoom().getRoomName())) {
-            s.playSoundSingle("music/source.wav");}
+            if ("hall".equals(player1.getCurrentRoom().getRoomName())) {
+                btAccuse.setEnabled(true);
+            } else {
+                btAccuse.setEnabled(false);
+            }
+            if ("barn 2".equals(player1.getCurrentRoom().getRoomName()) && player1.getCurrentRoom().getNoir()) {
+                JOptionPane.showMessageDialog(null, "The light goes out suddenly.",
+                        "Black room", JOptionPane.INFORMATION_MESSAGE);
+                btExplore.setEnabled(false);
+            }
 
-            
-        co.removeAll();
-        co.setIcon(player1.getCurrentRoom().getImage());
-        co.setLayout(new BorderLayout());
-        co.setPreferredSize(new Dimension(800, 800));
-        co.setMaximumSize(new Dimension(800, 800));
-        co.setMinimumSize(new Dimension(800, 800));
-        co.setIcon(player1.getCurrentRoom().getImage());
+            if ("kiosk".equals(player1.getCurrentRoom().getRoomName())
+                    || "garden".equals(player1.getCurrentRoom().getRoomName())
+                    || "veranda".equals(player1.getCurrentRoom().getRoomName())
+                    || "corridor1".equals(player1.getCurrentRoom().getRoomName())
+                    || "corridor2".equals(player1.getCurrentRoom().getRoomName())
+                    || "corridor3".equals(player1.getCurrentRoom().getRoomName())
+                    || "corridor8".equals(player1.getCurrentRoom().getRoomName())
+                    || "corridor11".equals(player1.getCurrentRoom().getRoomName())
+                    || "corridor12".equals(player1.getCurrentRoom().getRoomName())
+                    || "corridor17".equals(player1.getCurrentRoom().getRoomName())) {
+                s.playSoundSingle("music/birds.wav");
+            }
 
-        if (player1.getCurrentRoom().getButton() != null) {
-            player1.getCurrentRoom().getPanel().removeAll();
-            player1.getCurrentRoom().getPanel().add(player1.getCurrentRoom().getButton());
-            co.add(player1.getCurrentRoom().getPanel(), BorderLayout.SOUTH);
+            if ("fountain".equals(player1.getCurrentRoom().getRoomName())) {
+                s.playSoundSingle("music/source.wav");
+            }
+
+            co.removeAll();
+            co.setIcon(player1.getCurrentRoom().getImage());
+            co.setLayout(new BorderLayout());
+            co.setPreferredSize(new Dimension(800, 800));
+            co.setMaximumSize(new Dimension(800, 800));
+            co.setMinimumSize(new Dimension(800, 800));
+            co.setIcon(player1.getCurrentRoom().getImage());
+
+            if (player1.getCurrentRoom().getButton() != null) {
+                player1.getCurrentRoom().getPanel().removeAll();
+                player1.getCurrentRoom().getPanel().add(player1.getCurrentRoom().getButton());
+                co.add(player1.getCurrentRoom().getPanel(), BorderLayout.SOUTH);
+            }
+
+            lMap.setIcon(player1.getCurrentRoom().getImagePlan());
+            this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
+            btTake.setEnabled(false);
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+            if (player1.getTime() == 0 | player1.getLife() == 0) {
+                InterfaceGameOver go = new InterfaceGameOver();
+                btUp.setEnabled(false);
+                btDown.setEnabled(false);
+                btLeft.setEnabled(false);
+                btRight.setEnabled(false);
+                btExplore.setEnabled(false);
+                btHelp.setEnabled(false);
+                btAccuse.setEnabled(false);
+            }
         }
-
-        lMap.setIcon(player1.getCurrentRoom().getImagePlan());
-        this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
-        btTake.setEnabled(false);
-        tBar.setValueBar(player1.getTime());
-        lBar.setValueBar(player1.getLife());
-        if (player1.getTime() == 0 | player1.getLife() == 0) {
-            InterfaceGameOver go = new InterfaceGameOver();
-            btUp.setEnabled(false);
-            btDown.setEnabled(false);
-            btLeft.setEnabled(false);
-            btRight.setEnabled(false);
-            btExplore.setEnabled(false);
-            btHelp.setEnabled(false);
-            btAccuse.setEnabled(false);
-        }
-    }
-
-    );
-    btLeft.addActionListener (ae  
-        -> {
+        );
+        btLeft.addActionListener(ae
+                -> {
             if ("office".equals(player1.getCurrentRoom().getRoomName())) {
-            btExplore.setEnabled(true);
+                btExplore.setEnabled(true);
+            }
+            if ("barn 2".equals(player1.getCurrentRoom().getRoomName())) {
+                if (player1.getCurrentRoom().getNoir()) {
+                    boolean survival = false;
+                    JOptionPane.showMessageDialog(null, "You hear something approaching. It attacks you!",
+                            "Ambush", JOptionPane.INFORMATION_MESSAGE);
+                    if (!player1.getInventory().ItemsList.isEmpty()) {
+                        for (int i = 0; i < player1.getInventory().ItemsList.size(); i++) {
+                            if (player1.getInventory().ItemsList.get(i).getName().equals("Shield")) {
+                                JOptionPane.showMessageDialog(null, "You take out your shield in haste.\n "
+                                        + "The weapon hits your shield and your attacker runs away.\n "
+                                        + "You turn on the light, there is no one in the room.",
+                                        "Ambush", JOptionPane.INFORMATION_MESSAGE);
+                                survival = true;
+                                player1.getCurrentRoom().setImage(new ImageIcon(getClass().getResource("/pictures2/grange2.jpg")));
+                                player1.getCurrentRoom().setNoir(false);
+                                btExplore.setEnabled(true);
+                                break;
+                            }
+                        }
+                    }
+                    if (!survival) {
+                        JOptionPane.showMessageDialog(null, "You had nothing to deflect the blade that hit you. "
+                                + "The blow touched a vital point. "
+                                + "You will not get away this time ...",
+                                "Ambush", JOptionPane.INFORMATION_MESSAGE);
+                        InterfaceGameOver theEnd = new InterfaceGameOver();
+                        btUp.setEnabled(false);
+                        btDown.setEnabled(false);
+                        btLeft.setEnabled(false);
+                        btRight.setEnabled(false);
+                        btExplore.setEnabled(false);
+                        btHelp.setEnabled(false);
+                        btAccuse.setEnabled(false);
+                    }
+                } else {
+                    btExplore.setEnabled(true);
+                }
+            }
+            player1.move("left");
+            if ("hall".equals(player1.getCurrentRoom().getRoomName())) {
+                btAccuse.setEnabled(true);
+            } else {
+                btAccuse.setEnabled(false);
+            }
+            co.removeAll();
+            co.setIcon(player1.getCurrentRoom().getImage());
+            co.setLayout(new BorderLayout());
+            co.setPreferredSize(new Dimension(800, 800));
+            co.setMaximumSize(new Dimension(800, 800));
+            co.setMinimumSize(new Dimension(800, 800));
+            if (player1.getCurrentRoom().getButton() != null) {
+                player1.getCurrentRoom().getPanel().removeAll();
+                player1.getCurrentRoom().getPanel().add(player1.getCurrentRoom().getButton());
+                co.add(player1.getCurrentRoom().getPanel(), BorderLayout.SOUTH);
+            }
+
+            lMap.setIcon(player1.getCurrentRoom().getImagePlan());
+            this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
+            btTake.setEnabled(false);
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+            if (player1.getTime() <= 0 | player1.getLife() <= 0) {
+                InterfaceGameOver go = new InterfaceGameOver();
+                btUp.setEnabled(false);
+                btDown.setEnabled(false);
+                btLeft.setEnabled(false);
+                btRight.setEnabled(false);
+                btExplore.setEnabled(false);
+                btHelp.setEnabled(false);
+                btAccuse.setEnabled(false);
+            }
+
         }
-        if ("barn 2".equals(player1.getCurrentRoom().getRoomName())) {
-            if (player1.getCurrentRoom().getNoir()) {
+        );
+        btUp.addActionListener(ae
+                -> {
+            player1.move("up");
+            if ("hall".equals(player1.getCurrentRoom().getRoomName())) {
+                btAccuse.setEnabled(true);
+            } else {
+                btAccuse.setEnabled(false);
+            }
+            co.removeAll();
+            co.setIcon(player1.getCurrentRoom().getImage());
+            co.setLayout(new BorderLayout());
+            co.setPreferredSize(new Dimension(800, 800));
+            co.setMaximumSize(new Dimension(800, 800));
+            co.setMinimumSize(new Dimension(800, 800));
+            if (player1.getCurrentRoom().getButton() != null) {
+                player1.getCurrentRoom().getPanel().removeAll();
+                player1.getCurrentRoom().getPanel().add(player1.getCurrentRoom().getButton());
+                co.add(player1.getCurrentRoom().getPanel(), BorderLayout.SOUTH);
+            }
+
+            lMap.setIcon(player1.getCurrentRoom().getImagePlan());
+            this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
+            btTake.setEnabled(false);
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+            if (player1.getTime() <= 0 | player1.getLife() <= 0) {
+                InterfaceGameOver go = new InterfaceGameOver();
+                btUp.setEnabled(false);
+                btDown.setEnabled(false);
+                btLeft.setEnabled(false);
+                btRight.setEnabled(false);
+                btExplore.setEnabled(false);
+                btHelp.setEnabled(false);
+                btAccuse.setEnabled(false);
+            }
+
+        }
+        );
+        btDown.addActionListener(ae
+                -> {
+            player1.move("down");
+            if (player1.getCurrentRoom().getGaz()) {
+                JOptionPane.showMessageDialog(null, "The room is full of gas. Without protection you will quickly suffocate.",
+                        "Gas", JOptionPane.INFORMATION_MESSAGE);
+                btExplore.setEnabled(false);
                 boolean survival = false;
-                JOptionPane.showMessageDialog(null, "You hear something approaching. It attacks you!",
-                        "Ambush", JOptionPane.INFORMATION_MESSAGE);
                 if (!player1.getInventory().ItemsList.isEmpty()) {
                     for (int i = 0; i < player1.getInventory().ItemsList.size(); i++) {
-                        if (player1.getInventory().ItemsList.get(i).getName().equals("Shield")) {
-                            JOptionPane.showMessageDialog(null, "You take out your shield in haste.\n "
-                                    + "The weapon hits your shield and your attacker runs away.\n "
-                                    + "You turn on the light, there is no one in the room.",
-                                    "Ambush", JOptionPane.INFORMATION_MESSAGE);
+                        if (player1.getInventory().ItemsList.get(i).getName().equals("Gas Mask")) {
+                            JOptionPane.showMessageDialog(null, "With your gas mask you can breathe. \n"
+                                    + "You can explore the room quietly.",
+                                    "Gas", JOptionPane.INFORMATION_MESSAGE);
                             survival = true;
-                            player1.getCurrentRoom().setImage(new ImageIcon(getClass().getResource("/pictures2/grange2.jpg")));
-                            player1.getCurrentRoom().setNoir(false);
+                            player1.getCurrentRoom().setImage(new ImageIcon(getClass().getResource("/pictures2/cuisine.jpg")));
+                            player1.getCurrentRoom().setGaz(false);
                             btExplore.setEnabled(true);
                             break;
                         }
                     }
                 }
                 if (!survival) {
-                    JOptionPane.showMessageDialog(null, "You had nothing to deflect the blade that hit you. "
-                            + "The blow touched a vital point. "
-                            + "You will not get away this time ...",
-                            "Ambush", JOptionPane.INFORMATION_MESSAGE);
-                    InterfaceGameOver theEnd = new InterfaceGameOver();
-                    btUp.setEnabled(false);
-                    btDown.setEnabled(false);
-                    btLeft.setEnabled(false);
-                    btRight.setEnabled(false);
-                    btExplore.setEnabled(false);
-                    btHelp.setEnabled(false);
-                    btAccuse.setEnabled(false);
+                    JOptionPane.showMessageDialog(null, "As you enter, you feel your lungs burn. Get out before dying of asphyxiation.",
+                            "Gas", JOptionPane.INFORMATION_MESSAGE);
+                    player1.setLife(15);
                 }
+            }
+            if ("hall".equals(player1.getCurrentRoom().getRoomName())) {
+                btAccuse.setEnabled(true);
             } else {
-                btExplore.setEnabled(true);
+                btAccuse.setEnabled(false);
             }
-        }
-        player1.move("left");
-        if ("hall".equals(player1.getCurrentRoom().getRoomName())) {
-            btAccuse.setEnabled(true);
-        } else {
-            btAccuse.setEnabled(false);
-        }
-        co.removeAll();
-        co.setIcon(player1.getCurrentRoom().getImage());
-        co.setLayout(new BorderLayout());
-        co.setPreferredSize(new Dimension(800, 800));
-        co.setMaximumSize(new Dimension(800, 800));
-        co.setMinimumSize(new Dimension(800, 800));
-        if (player1.getCurrentRoom().getButton() != null) {
-            player1.getCurrentRoom().getPanel().removeAll();
-            player1.getCurrentRoom().getPanel().add(player1.getCurrentRoom().getButton());
-            co.add(player1.getCurrentRoom().getPanel(), BorderLayout.SOUTH);
-        }
+            co.removeAll();
+            co.setIcon(player1.getCurrentRoom().getImage());
+            co.setLayout(new BorderLayout());
+            co.setPreferredSize(new Dimension(800, 800));
+            co.setMaximumSize(new Dimension(800, 800));
+            co.setMinimumSize(new Dimension(800, 800));
 
-        lMap.setIcon(player1.getCurrentRoom().getImagePlan());
-        this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
-        btTake.setEnabled(false);
-        tBar.setValueBar(player1.getTime());
-        lBar.setValueBar(player1.getLife());
-        if (player1.getTime() <= 0 | player1.getLife() <= 0) {
-            InterfaceGameOver go = new InterfaceGameOver();
-            btUp.setEnabled(false);
-            btDown.setEnabled(false);
-            btLeft.setEnabled(false);
-            btRight.setEnabled(false);
-            btExplore.setEnabled(false);
-            btHelp.setEnabled(false);
-            btAccuse.setEnabled(false);
-        }
-
-    }
-
-    );
-    btUp.addActionListener (ae  
-        -> {
-            player1.move("up");
-        if ("hall".equals(player1.getCurrentRoom().getRoomName())) {
-            btAccuse.setEnabled(true);
-        } else {
-            btAccuse.setEnabled(false);
-        }
-        co.removeAll();
-        co.setIcon(player1.getCurrentRoom().getImage());
-        co.setLayout(new BorderLayout());
-        co.setPreferredSize(new Dimension(800, 800));
-        co.setMaximumSize(new Dimension(800, 800));
-        co.setMinimumSize(new Dimension(800, 800));
-        if (player1.getCurrentRoom().getButton() != null) {
-            player1.getCurrentRoom().getPanel().removeAll();
-            player1.getCurrentRoom().getPanel().add(player1.getCurrentRoom().getButton());
-            co.add(player1.getCurrentRoom().getPanel(), BorderLayout.SOUTH);
-        }
-
-        lMap.setIcon(player1.getCurrentRoom().getImagePlan());
-        this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
-        btTake.setEnabled(false);
-        tBar.setValueBar(player1.getTime());
-        lBar.setValueBar(player1.getLife());
-        if (player1.getTime() <= 0 | player1.getLife() <= 0) {
-            InterfaceGameOver go = new InterfaceGameOver();
-            btUp.setEnabled(false);
-            btDown.setEnabled(false);
-            btLeft.setEnabled(false);
-            btRight.setEnabled(false);
-            btExplore.setEnabled(false);
-            btHelp.setEnabled(false);
-            btAccuse.setEnabled(false);
-        }
-
-    }
-
-    );
-    btDown.addActionListener (ae  
-        -> {
-            player1.move("down");
-        if (player1.getCurrentRoom().getGaz()) {
-            JOptionPane.showMessageDialog(null, "The room is full of gas. Without protection you will quickly suffocate.",
-                    "Gas", JOptionPane.INFORMATION_MESSAGE);
-            btExplore.setEnabled(false);
-            boolean survival = false;
-            if (!player1.getInventory().ItemsList.isEmpty()) {
-                for (int i = 0; i < player1.getInventory().ItemsList.size(); i++) {
-                    if (player1.getInventory().ItemsList.get(i).getName().equals("Gas Mask")) {
-                        JOptionPane.showMessageDialog(null, "With your gas mask you can breathe. \n"
-                                + "You can explore the room quietly.",
-                                "Gas", JOptionPane.INFORMATION_MESSAGE);
-                        survival = true;
-                        player1.getCurrentRoom().setImage(new ImageIcon(getClass().getResource("/pictures2/cuisine.jpg")));
-                        player1.getCurrentRoom().setGaz(false);
-                        btExplore.setEnabled(true);
-                        break;
-                    }
-                }
+            if (player1.getCurrentRoom().getButton() != null) {
+                player1.getCurrentRoom().getPanel().removeAll();
+                player1.getCurrentRoom().getPanel().add(player1.getCurrentRoom().getButton());
+                co.add(player1.getCurrentRoom().getPanel(), BorderLayout.SOUTH);
             }
-            if (!survival) {
-                JOptionPane.showMessageDialog(null, "As you enter, you feel your lungs burn. Get out before dying of asphyxiation.",
-                        "Gas", JOptionPane.INFORMATION_MESSAGE);
-                player1.setLife(15);
+
+            lMap.setIcon(player1.getCurrentRoom().getImagePlan());
+            this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
+            btTake.setEnabled(false);
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+            if (player1.getTime() <= 0 | player1.getLife() <= 0) {
+                InterfaceGameOver go = new InterfaceGameOver();
+                btUp.setEnabled(false);
+                btDown.setEnabled(false);
+                btLeft.setEnabled(false);
+                btRight.setEnabled(false);
+                btExplore.setEnabled(false);
+                btHelp.setEnabled(false);
+                btAccuse.setEnabled(false);
             }
+
         }
-        if ("hall".equals(player1.getCurrentRoom().getRoomName())) {
-            btAccuse.setEnabled(true);
-        } else {
-            btAccuse.setEnabled(false);
-        }
-        co.removeAll();
-        co.setIcon(player1.getCurrentRoom().getImage());
-        co.setLayout(new BorderLayout());
-        co.setPreferredSize(new Dimension(800, 800));
-        co.setMaximumSize(new Dimension(800, 800));
-        co.setMinimumSize(new Dimension(800, 800));
+        );
 
-        if (player1.getCurrentRoom().getButton() != null) {
-            player1.getCurrentRoom().getPanel().removeAll();
-            player1.getCurrentRoom().getPanel().add(player1.getCurrentRoom().getButton());
-            co.add(player1.getCurrentRoom().getPanel(), BorderLayout.SOUTH);
-        }
-
-        lMap.setIcon(player1.getCurrentRoom().getImagePlan());
-        this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
-        btTake.setEnabled(false);
-        tBar.setValueBar(player1.getTime());
-        lBar.setValueBar(player1.getLife());
-        if (player1.getTime() <= 0 | player1.getLife() <= 0) {
-            InterfaceGameOver go = new InterfaceGameOver();
-            btUp.setEnabled(false);
-            btDown.setEnabled(false);
-            btLeft.setEnabled(false);
-            btRight.setEnabled(false);
-            btExplore.setEnabled(false);
-            btHelp.setEnabled(false);
-            btAccuse.setEnabled(false);
-        }
-
-    }
-
-    );
-
-    btExplore.addActionListener (ae  
-        -> {
+        btExplore.addActionListener(ae
+                -> {
             player1.explore(this.zoneTexte);
-        player1.getTime();
-        if (!player1.getCurrentRoom().listItem.isEmpty()) {
-            btTake.setEnabled(true);
+            player1.getTime();
+            if (!player1.getCurrentRoom().listItem.isEmpty()) {
+                btTake.setEnabled(true);
+
+            }
+            pBar.setValueBar(player1.getPersuasion());
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+
+            if (player1.getTime() <= 0 | player1.getLife() <= 0) {
+                InterfaceGameOver go = new InterfaceGameOver();
+                btUp.setEnabled(false);
+                btDown.setEnabled(false);
+                btLeft.setEnabled(false);
+                btRight.setEnabled(false);
+                btExplore.setEnabled(false);
+                btHelp.setEnabled(false);
+                btAccuse.setEnabled(false);
+            }
 
         }
-        pBar.setValueBar(player1.getPersuasion());
-        tBar.setValueBar(player1.getTime());
-        lBar.setValueBar(player1.getLife());
-
-        if (player1.getTime() <= 0 | player1.getLife() <= 0) {
-            InterfaceGameOver go = new InterfaceGameOver();
-            btUp.setEnabled(false);
-            btDown.setEnabled(false);
-            btLeft.setEnabled(false);
-            btRight.setEnabled(false);
-            btExplore.setEnabled(false);
-            btHelp.setEnabled(false);
-            btAccuse.setEnabled(false);
-        }
-
-    }
-
-    );
-    btTake.addActionListener (ae  
-        -> {
+        );
+        btTake.addActionListener(ae
+                -> {
             player1.takeItem(zoneTexte);
-        player1.getTime();
-        btTake.setEnabled(false);
-        pBar.setValueBar(player1.getPersuasion());
-        tBar.setValueBar(player1.getTime());
-        lBar.setValueBar(player1.getLife());
-    }
-
-    );
-
-    for(int i = 0; i < listRoom.size(); i++)
-          {
-              if (listRoom.get(i).getButton() != null){
-            listRoom.get(i).getButton().addActionListener(ae -> 
-            {
-            player1.speak(zoneTexte);
             player1.getTime();
             btTake.setEnabled(false);
             pBar.setValueBar(player1.getPersuasion());
             tBar.setValueBar(player1.getTime());
             lBar.setValueBar(player1.getLife());
+        }
+        );
+
+        for (int i = 0; i < listRoom.size(); i++) {
+            if (listRoom.get(i).getButton() != null) {
+                listRoom.get(i).getButton().addActionListener(ae
+                        -> {
+                    player1.speak(zoneTexte);
+                    player1.getTime();
+                    btTake.setEnabled(false);
+                    pBar.setValueBar(player1.getPersuasion());
+                    tBar.setValueBar(player1.getTime());
+                    lBar.setValueBar(player1.getLife());
+                }
+                );
             }
-            );}
-          }
-    
-    btTest2.addActionListener (ae -> {
-        player1.setTime(2);
-        zoneTexte.setText(player1.getCurrentRoom().getFollowerInTheRoom().getspeach() + "\n"); 
-        notebook.addText(player1.getCurrentRoom().getFollowerInTheRoom().getName() + " : " + player1.getCurrentRoom().getFollowerInTheRoom().getspeach() + "\n");
-        player1.getTime();
-        btTake.setEnabled(false);
-        pBar.setValueBar(player1.getPersuasion());
-        tBar.setValueBar(player1.getTime());
-        lBar.setValueBar(player1.getLife());
-        player1.getCurrentRoom().getFollowerInTheRoom().follow(true);
-    });
-    
+        }
+
+        btTest2.addActionListener(ae -> {
+            player1.setTime(2);
+            zoneTexte.setText(player1.getCurrentRoom().getFollowerInTheRoom().getspeach() + "\n");
+            notebook.addText(player1.getCurrentRoom().getFollowerInTheRoom().getName() + " : " + player1.getCurrentRoom().getFollowerInTheRoom().getspeach() + "\n");
+            player1.getTime();
+            btTake.setEnabled(false);
+            pBar.setValueBar(player1.getPersuasion());
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+            player1.getCurrentRoom().getFollowerInTheRoom().follow(true);
+        });
 
         // Setting the Journal Frame
-    btJournal.addActionListener (ae  
-        -> {
-        notebook.addText(player1.getCurrentRoom().getFollowerInTheRoom().getName() + " \n ");
+        btJournal.addActionListener(ae
+                -> {
+            notebook.addText(player1.getCurrentRoom().getFollowerInTheRoom().getName() + " \n ");
             textJournal.setText(notebook.getText() + " \n ");
-        journalFrame.setVisible(true);
-        journalFrame.setAlwaysOnTop(true);
-        journalPanel.setVisible(true);
-        btTake.setEnabled(false);
-        tBar.setValueBar(player1.getTime());
+            journalFrame.setVisible(true);
+            journalFrame.setAlwaysOnTop(true);
+            journalPanel.setVisible(true);
+            btTake.setEnabled(false);
+            tBar.setValueBar(player1.getTime());
 
-    }
-
-    );
+        }
+        );
 
         // Setting the Help Frame
-    btHelp.addActionListener (ae  
-        -> {
+        btHelp.addActionListener(ae
+                -> {
             // Supposed to redirect the player to a PDF page (user manual)
             try {
-            Desktop.getDesktop().open(new File("CLUEDO.pdf"));
-        } catch (IOException f) {
+                Desktop.getDesktop().open(new File("CLUEDO.pdf"));
+            } catch (IOException f) {
 
-            f.printStackTrace();
+                f.printStackTrace();
+            }
+            btTake.setEnabled(false);
         }
-        btTake.setEnabled(false);
-    }
-
-    );
+        );
 
         // Setting the Accuse Frame
-    btAccuse.addActionListener (ae  
-        -> {
+        btAccuse.addActionListener(ae
+                -> {
             JOptionPane jop = new JOptionPane(), jop2 = new JOptionPane();
-        String nom = jop.showInputDialog(null, "Who is the killer, inspector?", JOptionPane.QUESTION_MESSAGE);
-        String arme = jop.showInputDialog(null, "Which weapon was used?", JOptionPane.QUESTION_MESSAGE);
-        String room = jop.showInputDialog(null, "In which room was Mrs. Pervenche killed?", JOptionPane.QUESTION_MESSAGE);
+            String nom = jop.showInputDialog(null, "Who is the killer, inspector?", JOptionPane.QUESTION_MESSAGE);
+            String arme = jop.showInputDialog(null, "Which weapon was used?", JOptionPane.QUESTION_MESSAGE);
+            String room = jop.showInputDialog(null, "In which room was Mrs. Pervenche killed?", JOptionPane.QUESTION_MESSAGE);
 
-        jop2.showMessageDialog(null, "You have said the killer is : " + nom + "\n"
-                + "And the weapon is : " + arme + "\n"
-                + "And the room is : " + room, "Did you find the killer?", JOptionPane.INFORMATION_MESSAGE);
+            jop2.showMessageDialog(null, "You have said the killer is : " + nom + "\n"
+                    + "And the weapon is : " + arme + "\n"
+                    + "And the room is : " + room, "Did you find the killer?", JOptionPane.INFORMATION_MESSAGE);
 
-        if (nom.equals("Violet") | nom.equals("Pr Violet") | nom.equals("Professor Violet") | nom.equals("violet") && arme.equals("Poison") | arme.equals("poison") && room.equals("small hall") | room.equals("Small hall")) {
-            InterfaceWin go = new InterfaceWin();
-        } else {
-            if (nom.equals("Violet") | nom.equals("Pr Violet") | nom.equals("Professor Violet") | nom.equals("violet")) {
-                if (arme.equals("Poison") | arme.equals("poison")) {
-                    jop2.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector.\n"
-                            + "The murder did not happen in the " + room, "Results", JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    if (room.equals("Small hall") | room.equals("small hall")) {
-                        jop2.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
-                                + "The murder was not committed with the " + arme, "Results", JOptionPane.INFORMATION_MESSAGE);
-                    } else {
-                        jop2.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
-                                + "The murder did not happen in the " + room + "\n"
-                                + "And was not committed with the " + arme + "\n", "Results", JOptionPane.INFORMATION_MESSAGE);
-                    }
-                }
+            if (nom.equals("Violet") | nom.equals("Pr Violet") | nom.equals("Professor Violet") | nom.equals("violet") && arme.equals("Poison") | arme.equals("poison") && room.equals("small hall") | room.equals("Small hall")) {
+                InterfaceWin go = new InterfaceWin();
             } else {
-                if (arme.equals("Poison") | arme.equals("poison")) {
-                    if (room.equals("Small hall") | room.equals("small hall")) {
-                        jop2.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
-                                + "It was not " + nom + " who killed her.\n", "Results", JOptionPane.INFORMATION_MESSAGE);
+                if (nom.equals("Violet") | nom.equals("Pr Violet") | nom.equals("Professor Violet") | nom.equals("violet")) {
+                    if (arme.equals("Poison") | arme.equals("poison")) {
+                        jop2.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector.\n"
+                                + "The murder did not happen in the " + room, "Results", JOptionPane.INFORMATION_MESSAGE);
                     } else {
-                        jop2.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
-                                + "It was not " + nom + " who killed her.\n"
-                                + "The murder did not happen in the " + room + "\n", "Results", JOptionPane.INFORMATION_MESSAGE);
+                        if (room.equals("Small hall") | room.equals("small hall")) {
+                            jop2.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
+                                    + "The murder was not committed with the " + arme, "Results", JOptionPane.INFORMATION_MESSAGE);
+                        } else {
+                            jop2.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
+                                    + "The murder did not happen in the " + room + "\n"
+                                    + "And was not committed with the " + arme + "\n", "Results", JOptionPane.INFORMATION_MESSAGE);
+                        }
                     }
                 } else {
-                    jop2.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
-                            + "None of your suggestions is good.\n", "Results", JOptionPane.INFORMATION_MESSAGE);
+                    if (arme.equals("Poison") | arme.equals("poison")) {
+                        if (room.equals("Small hall") | room.equals("small hall")) {
+                            jop2.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
+                                    + "It was not " + nom + " who killed her.\n", "Results", JOptionPane.INFORMATION_MESSAGE);
+                        } else {
+                            jop2.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
+                                    + "It was not " + nom + " who killed her.\n"
+                                    + "The murder did not happen in the " + room + "\n", "Results", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                    } else {
+                        jop2.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
+                                + "None of your suggestions is good.\n", "Results", JOptionPane.INFORMATION_MESSAGE);
+                    }
                 }
+                player1.setTime(10);
             }
-            player1.setTime(10);
+
+            tBar.setValueBar(player1.getTime());
+
         }
-
-        tBar.setValueBar(player1.getTime());
-
-    }
-
-    );
+        );
 
         // Setting the Inventory Frame
-    btInventory.addActionListener (ae
-                 
-        -> {
+        btInventory.addActionListener(ae
+                -> {
             JFrame inventoryFrame = new JFrame();
-        ArrayList<JButton> InventoryList = new ArrayList<JButton>();
-        inventoryFrame.setTitle("Inventory");
-        inventoryFrame.setSize(500, 500);
-        inventoryFrame.setLayout(new GridLayout(5, 5));
-        tBar.setValueBar(player1.getTime());
+            ArrayList<JButton> InventoryList = new ArrayList<JButton>();
+            inventoryFrame.setTitle("Inventory");
+            inventoryFrame.setSize(500, 500);
+            inventoryFrame.setLayout(new GridLayout(5, 5));
+            tBar.setValueBar(player1.getTime());
 
-        for (int i = 0; i < player1.getInventory().ItemsList.size(); i++) {
-            InventoryList.add(new JButton("", player1.getInventory().ItemsList.get(i).getImageItem()));
-            InventoryList.get(i).setPreferredSize(new Dimension(100, 100));
-            inventoryFrame.add(InventoryList.get(i));
-        };
+            for (int i = 0; i < player1.getInventory().ItemsList.size(); i++) {
+                InventoryList.add(new JButton("", player1.getInventory().ItemsList.get(i).getImageItem()));
+                InventoryList.get(i).setPreferredSize(new Dimension(100, 100));
+                inventoryFrame.add(InventoryList.get(i));
+            };
 
-        JLabel litem = new JLabel();
+            JLabel litem = new JLabel();
 
-        inventoryFrame.setEnabled(true);
-        inventoryFrame.setVisible(true);
-        inventoryFrame.setAlwaysOnTop(true);
+            inventoryFrame.setEnabled(true);
+            inventoryFrame.setVisible(true);
+            inventoryFrame.setAlwaysOnTop(true);
 
-    }
-
-);
+        }
+        );
 
     }
 

@@ -19,31 +19,32 @@ import javax.swing.JPanel;
  * @author Robin
  */
 public class InitializeGame {
+
     private final Room fountain, library, poolRoom, office, veranda, barn1, barn2, barn3,
             garden, hall, smallHall, kiosk, livingRoom, diningRoom, kitchen, corridor1, corridor2,
             corridor3, corridor4, corridor5, corridor6, corridor7, corridor8, corridor9, corridor10, corridor11,
             corridor12, corridor13, corridor14, corridor15, corridor16, corridor17, corridor18;
 
-    private ArrayList <Room> listRoom;
-    
+    private ArrayList<Room> listRoom;
+
     private final Door libraryDoor, officeDoor, verandaDoor, barn3Door, smallHallDoor, poolRoomDoor, kitchenDoor, diningRoomDoor, livingRoomDoor;
 
     private final KeyLock libraryKey, verandaKey, livingRoomKey, diningRoomKey;
     private final CodeLock officeCode, kitchenCode;
 
-    private final Talking clnMoutarde, missRose, prOlive, missLeblanc, generalLegris, misterRouge, countOrange, countessOrange,inspecteur;
+    private final Talking clnMoutarde, missRose, prOlive, missLeblanc, generalLegris, misterRouge, countOrange, countessOrange, inspecteur;
     private final Killer drViolet;
     private final Follower missPrunelle;
 
-    private final Item hippocraticOath, clothSoaked, scarf, footPrints, rope, dagger, ironBar, revolver, candlestick, wrench, poison, axe, keyLibrary, keyVeranda, keyLivingRoom, keyDiningRoom, codeOffice, codeKitchen, irGlasses, gasMask,shield;
+    private final Item hippocraticOath, clothSoaked, scarf, footPrints, rope, dagger, ironBar, revolver, candlestick, wrench, poison, axe, keyLibrary, keyVeranda, keyLivingRoom, keyDiningRoom, codeOffice, codeKitchen, irGlasses, gasMask, shield;
     private final Inventory inventory;
-    private Player player1; 
+    private Player player1;
     private NoteBook notebook;
 
-    private JButton btTest, btTest2, btTest3, btTest4, btTest5, btTest6, btTest7, btTest8, btTest9, btTest10,btTest11;
-    
+    private JButton btTest, btTest2, btTest3, btTest4, btTest5, btTest6, btTest7, btTest8, btTest9, btTest10, btTest11;
+
     private final Icon imagefountain, imagelibrary, imagepoolRoom, imageveranda, imagebarn1, imageblack, imagebarn3,
-            imagegarden, imagehall, imagesmallHall,imagekiosk, imagelivingRoom, imagediningRoom, imagekitchen, imagecorridor1, imagecorridor2,
+            imagegarden, imagehall, imagesmallHall, imagekiosk, imagelivingRoom, imagediningRoom, imagekitchen, imagecorridor1, imagecorridor2,
             imagecorridor3, imagecorridor4, imagecorridor5, imagecorridor6, imagecorridor7, imagecorridor8, imagecorridor9, imagecorridor10, imagecorridor11,
             imagecorridor12, imagecorridor13, imagecorridor14, imagecorridor15, imagecorridor16, imagecorridor17, imagecorridor18;
 
@@ -51,11 +52,8 @@ public class InitializeGame {
             mapimagegarden, mapimagehall, mapimagesmallHall, mapimagekiosk, mapimagelivingRoom, mapimagediningRoom, mapimagekitchen, mapimagecorridor1, mapimagecorridor2,
             mapimagecorridor3, mapimagecorridor4, mapimagecorridor5, mapimagecorridor6, mapimagecorridor7, mapimagecorridor8, mapimagecorridor9, mapimagecorridor10, mapimagecorridor11,
             mapimagecorridor12, mapimagecorridor13, mapimagecorridor14, mapimagecorridor15, mapimagecorridor16, mapimagecorridor17, mapimagecorridor18;
-    
 
-    public InitializeGame(String playerClass, String playerName )
-      {
-
+    public InitializeGame(String playerClass, String playerName) {
 
         libraryDoor = new Door("library");
         libraryKey = new KeyLock("Keylibrary");
@@ -156,7 +154,6 @@ public class InitializeGame {
         mapimagecorridor17 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c17.jpg"));
         mapimagecorridor18 = new ImageIcon(getClass().getResource("/picturesplan/Map_code_c18.jpg"));
 
-        
         // Creation of all the rooms
         fountain = new Room("fountain", "A beautiful fountain", null, imagefountain, mapimagefountain);
         library = new Room("library", "The library, where you can read quietly", libraryDoor, imagelibrary, mapimagelibrary);
@@ -196,9 +193,8 @@ public class InitializeGame {
         corridor18 = new Room("corridor 18", "A simple corridor", null, imagecorridor18, mapimagecorridor18);
 
         //Create room list
-        
-        ArrayList <Room> listRoom = new ArrayList <Room>() ;
-        
+        ArrayList<Room> listRoom = new ArrayList<Room>();
+
         listRoom.add(fountain);
         listRoom.add(library);
 //        listRoom.add(poolRoom);
@@ -216,8 +212,7 @@ public class InitializeGame {
         listRoom.add(diningRoom);
         listRoom.add(kitchen);
         listRoom.add(corridor11);
-        
-        
+
         // Creation of the exits in the rooms
         fountain.setExit("down", corridor1);
         fountain.setExit("left", corridor2);
@@ -345,141 +340,134 @@ public class InitializeGame {
         misterRouge = new Talking("Mrs. Pervenche was a good friend. We used to have good times together.", "She was supposed to spend the evening with me last night, but she never came ... ", "Mister Rouge");
         countOrange = new Talking("Hello inspector, what do you want?  Yes …  I learned for Mrs. Pervench ... It's very unfortunate. Did you find the murderer ?", "I heard Mrs. Pervenche speak to a man when I was in the living room last night, I think they were in the kiosk at this moment.", "Compte Orange");
         countessOrange = new Talking("Me and my husband the Count Orange have been the owner of this hotel for over 20 years and this is the first time such a horrible thing happens! I am taking a deep breath of fresh air in the kiosk to recover from all these emotions.", "Mrs. Pervenche seemed so friendly, resourceful, and early in life! What a pity..", "Comptesse Orange");
-        inspecteur = new Talking("Blablabla de l'inspecteur","blablabla2","Inspecteur");
+        inspecteur = new Talking("Blablabla de l'inspecteur", "blablabla2", "Inspecteur");
 
         drViolet = new Killer("Docteur Violet");
 
         missPrunelle = new Follower("I am only the cleaning lady, but I can help you another way in your investigation.", "miss Prunelle");
 
-       btTest = new JButton("",new ImageIcon(getClass().getResource("/Personnage/ComptesseOrange.png")));
-       btTest.setOpaque(false);
-       btTest.setContentAreaFilled(false);
-       btTest.setBorderPainted(false);
-       btTest.setPreferredSize(new Dimension(200,282));
-       JPanel panelTest = new JPanel();
-       panelTest.setLayout(new FlowLayout(1,20,20));
-       panelTest.setOpaque(false);
-       
-       btTest2 = new JButton("",new ImageIcon(getClass().getResource("/Personnage/Prunelle.png")));
-       btTest2.setOpaque(false);
-       btTest2.setContentAreaFilled(false);
-       btTest2.setBorderPainted(false);
-       btTest2.setPreferredSize(new Dimension(262,400));    
-       JPanel panelTest2 = new JPanel();
-       panelTest2.setLayout(new FlowLayout(2,50,0));
-       panelTest2.setOpaque(false);
-        
-       btTest3 = new JButton("",new ImageIcon(getClass().getResource("/Personnage/MissRose.png")));
-       btTest3.setOpaque(false);
-       btTest3.setContentAreaFilled(false);
-       btTest3.setBorderPainted(false);
-       btTest3.setPreferredSize(new Dimension(261,380));    
-       JPanel panelTest3 = new JPanel();
-       panelTest3.setLayout(new FlowLayout(2,80,0));
-       panelTest3.setOpaque(false);
-        
-        
-       btTest4 = new JButton("",new ImageIcon(getClass().getResource("/Personnage/Colonel moutarde2.png")));
-       btTest4.setOpaque(false);
-       btTest4.setContentAreaFilled(false);
-       btTest4.setBorderPainted(false);
-       btTest4.setPreferredSize(new Dimension(321,400));    
-       JPanel panelTest4 = new JPanel();
-       panelTest4.setLayout(new FlowLayout(2,80,0));
-       panelTest4.setOpaque(false);
-        
-        
-       btTest5 = new JButton("",new ImageIcon(getClass().getResource("/Personnage/MrRouge.png")));
-       btTest5.setOpaque(false);
-       btTest5.setContentAreaFilled(false);
-       btTest5.setBorderPainted(false);
-       btTest5.setPreferredSize(new Dimension(307,400));    
-       JPanel panelTest5 = new JPanel();
-       panelTest5.setLayout(new FlowLayout(2,80,0));
-       panelTest5.setOpaque(false);
-        
-        
-       btTest6 = new JButton("",new ImageIcon(getClass().getResource("/Personnage/DrViolet.png")));
-       btTest6.setOpaque(false);
-       btTest6.setContentAreaFilled(false);
-       btTest6.setBorderPainted(false);
-       btTest6.setPreferredSize(new Dimension(280,420));    
-       JPanel panelTest6 = new JPanel();
-       panelTest6.setLayout(new FlowLayout(2,200,0));
-       panelTest6.setOpaque(false);
-        
-        
-       btTest7 = new JButton("",new ImageIcon(getClass().getResource("/Personnage/MmeLeblanc.png")));
-       btTest7.setOpaque(false);
-       btTest7.setContentAreaFilled(false);
-       btTest7.setBorderPainted(false);
-       btTest7.setPreferredSize(new Dimension(226,320));    
-       JPanel panelTest7 = new JPanel();
-       panelTest7.setLayout(new FlowLayout(1,0,0));
-       panelTest7.setOpaque(false);
-        
-        
-       btTest8 = new JButton("",new ImageIcon(getClass().getResource("/Personnage/comte orange.png")));
-       btTest8.setOpaque(false);
-       btTest8.setContentAreaFilled(false);
-       btTest8.setBorderPainted(false);
-       btTest8.setPreferredSize(new Dimension(229,400));    
-       JPanel panelTest8 = new JPanel();
-       panelTest8.setLayout(new FlowLayout(1,80,0));
-       panelTest8.setOpaque(false);
-        
-       btTest9 = new JButton("",new ImageIcon(getClass().getResource("/Personnage/reverend olive.png")));
-       btTest9.setOpaque(false);
-       btTest9.setContentAreaFilled(false);
-       btTest9.setBorderPainted(false);
-       btTest9.setPreferredSize(new Dimension(196,320));    
-       JPanel panelTest9 = new JPanel();
-       panelTest9.setLayout(new FlowLayout(2,80,0));
-       panelTest9.setOpaque(false);
-       
-       btTest10 = new JButton("",new ImageIcon(getClass().getResource("/Personnage/GeneralLegris.png")));
-       btTest10.setOpaque(false);
-       btTest10.setContentAreaFilled(false);
-       btTest10.setBorderPainted(false);
-       btTest10.setPreferredSize(new Dimension(245,350));    
-       JPanel panelTest10 = new JPanel();
-       panelTest10.setLayout(new FlowLayout(2,80,0));
-       panelTest10.setOpaque(false);
-       
-       btTest11 = new JButton("",new ImageIcon(getClass().getResource("/Personnage/inspecteur.png")));
-       btTest11.setOpaque(false);
-       btTest11.setContentAreaFilled(false);
-       btTest11.setBorderPainted(false);
-       btTest11.setPreferredSize(new Dimension(233,350));    
-       JPanel panelTest11 = new JPanel();
-       panelTest11.setLayout(new FlowLayout(4,80,0));
-       panelTest11.setOpaque(false);
-       
-       
-       
-       kiosk.addButton(btTest);
-       kiosk.addPanel(panelTest);
-       poolRoom.addButton(btTest2);
-       poolRoom.addPanel(panelTest2);
-       fountain.addButton(btTest3);
-       fountain.addPanel(panelTest3);
-       library.addButton(btTest4);
-       library.addPanel(panelTest4);
-       veranda.addButton(btTest5);
-       veranda.addPanel(panelTest5);
-       smallHall.addButton(btTest6);
-       smallHall.addPanel(panelTest6);
-       garden.addButton(btTest7);
-       garden.addPanel(panelTest7);
-       corridor11.addButton(btTest8);
-       corridor11.addPanel(panelTest8);
-       livingRoom.addButton(btTest9);
-       livingRoom.addPanel(panelTest9);
-       diningRoom.addButton(btTest10);
-       diningRoom.addPanel(panelTest10);
-       hall.addButton(btTest11);
-       hall.addPanel(panelTest11);
-      
+        btTest = new JButton("", new ImageIcon(getClass().getResource("/Personnage/ComptesseOrange.png")));
+        btTest.setOpaque(false);
+        btTest.setContentAreaFilled(false);
+        btTest.setBorderPainted(false);
+        btTest.setPreferredSize(new Dimension(200, 282));
+        JPanel panelTest = new JPanel();
+        panelTest.setLayout(new FlowLayout(1, 20, 20));
+        panelTest.setOpaque(false);
+
+        btTest2 = new JButton("", new ImageIcon(getClass().getResource("/Personnage/Prunelle.png")));
+        btTest2.setOpaque(false);
+        btTest2.setContentAreaFilled(false);
+        btTest2.setBorderPainted(false);
+        btTest2.setPreferredSize(new Dimension(262, 400));
+        JPanel panelTest2 = new JPanel();
+        panelTest2.setLayout(new FlowLayout(2, 50, 0));
+        panelTest2.setOpaque(false);
+
+        btTest3 = new JButton("", new ImageIcon(getClass().getResource("/Personnage/MissRose.png")));
+        btTest3.setOpaque(false);
+        btTest3.setContentAreaFilled(false);
+        btTest3.setBorderPainted(false);
+        btTest3.setPreferredSize(new Dimension(261, 380));
+        JPanel panelTest3 = new JPanel();
+        panelTest3.setLayout(new FlowLayout(2, 80, 0));
+        panelTest3.setOpaque(false);
+
+        btTest4 = new JButton("", new ImageIcon(getClass().getResource("/Personnage/Colonel moutarde2.png")));
+        btTest4.setOpaque(false);
+        btTest4.setContentAreaFilled(false);
+        btTest4.setBorderPainted(false);
+        btTest4.setPreferredSize(new Dimension(321, 400));
+        JPanel panelTest4 = new JPanel();
+        panelTest4.setLayout(new FlowLayout(2, 80, 0));
+        panelTest4.setOpaque(false);
+
+        btTest5 = new JButton("", new ImageIcon(getClass().getResource("/Personnage/MrRouge.png")));
+        btTest5.setOpaque(false);
+        btTest5.setContentAreaFilled(false);
+        btTest5.setBorderPainted(false);
+        btTest5.setPreferredSize(new Dimension(307, 400));
+        JPanel panelTest5 = new JPanel();
+        panelTest5.setLayout(new FlowLayout(2, 80, 0));
+        panelTest5.setOpaque(false);
+
+        btTest6 = new JButton("", new ImageIcon(getClass().getResource("/Personnage/DrViolet.png")));
+        btTest6.setOpaque(false);
+        btTest6.setContentAreaFilled(false);
+        btTest6.setBorderPainted(false);
+        btTest6.setPreferredSize(new Dimension(280, 420));
+        JPanel panelTest6 = new JPanel();
+        panelTest6.setLayout(new FlowLayout(2, 200, 0));
+        panelTest6.setOpaque(false);
+
+        btTest7 = new JButton("", new ImageIcon(getClass().getResource("/Personnage/MmeLeblanc.png")));
+        btTest7.setOpaque(false);
+        btTest7.setContentAreaFilled(false);
+        btTest7.setBorderPainted(false);
+        btTest7.setPreferredSize(new Dimension(226, 320));
+        JPanel panelTest7 = new JPanel();
+        panelTest7.setLayout(new FlowLayout(1, 0, 0));
+        panelTest7.setOpaque(false);
+
+        btTest8 = new JButton("", new ImageIcon(getClass().getResource("/Personnage/comte orange.png")));
+        btTest8.setOpaque(false);
+        btTest8.setContentAreaFilled(false);
+        btTest8.setBorderPainted(false);
+        btTest8.setPreferredSize(new Dimension(229, 400));
+        JPanel panelTest8 = new JPanel();
+        panelTest8.setLayout(new FlowLayout(1, 80, 0));
+        panelTest8.setOpaque(false);
+
+        btTest9 = new JButton("", new ImageIcon(getClass().getResource("/Personnage/reverend olive.png")));
+        btTest9.setOpaque(false);
+        btTest9.setContentAreaFilled(false);
+        btTest9.setBorderPainted(false);
+        btTest9.setPreferredSize(new Dimension(196, 320));
+        JPanel panelTest9 = new JPanel();
+        panelTest9.setLayout(new FlowLayout(2, 80, 0));
+        panelTest9.setOpaque(false);
+
+        btTest10 = new JButton("", new ImageIcon(getClass().getResource("/Personnage/GeneralLegris.png")));
+        btTest10.setOpaque(false);
+        btTest10.setContentAreaFilled(false);
+        btTest10.setBorderPainted(false);
+        btTest10.setPreferredSize(new Dimension(245, 350));
+        JPanel panelTest10 = new JPanel();
+        panelTest10.setLayout(new FlowLayout(2, 80, 0));
+        panelTest10.setOpaque(false);
+
+        btTest11 = new JButton("", new ImageIcon(getClass().getResource("/Personnage/inspecteur.png")));
+        btTest11.setOpaque(false);
+        btTest11.setContentAreaFilled(false);
+        btTest11.setBorderPainted(false);
+        btTest11.setPreferredSize(new Dimension(233, 350));
+        JPanel panelTest11 = new JPanel();
+        panelTest11.setLayout(new FlowLayout(4, 80, 0));
+        panelTest11.setOpaque(false);
+
+        kiosk.addButton(btTest);
+        kiosk.addPanel(panelTest);
+        poolRoom.addButton(btTest2);
+        poolRoom.addPanel(panelTest2);
+        fountain.addButton(btTest3);
+        fountain.addPanel(panelTest3);
+        library.addButton(btTest4);
+        library.addPanel(panelTest4);
+        veranda.addButton(btTest5);
+        veranda.addPanel(panelTest5);
+        smallHall.addButton(btTest6);
+        smallHall.addPanel(panelTest6);
+        garden.addButton(btTest7);
+        garden.addPanel(panelTest7);
+        corridor11.addButton(btTest8);
+        corridor11.addPanel(panelTest8);
+        livingRoom.addButton(btTest9);
+        livingRoom.addPanel(panelTest9);
+        diningRoom.addButton(btTest10);
+        diningRoom.addPanel(panelTest10);
+        hall.addButton(btTest11);
+        hall.addPanel(panelTest11);
+
         // Add the character into rooms
         fountain.addCharacter(missRose);
         library.addCharacter(clnMoutarde);
@@ -494,52 +482,52 @@ public class InitializeGame {
         hall.addCharacter(inspecteur);
 
         //Creation of weapons
-        rope = new Item("rope","You found a rope on a stool. This is clearly not the murder weapon. However, someone might have thought about suicide, remorse maybe …",6, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
+        rope = new Item("rope", "You found a rope on a stool. This is clearly not the murder weapon. However, someone might have thought about suicide, remorse maybe …", 6, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
         rope.setUse(false); // this item is not usable by the player
-        dagger = new Item("dagger","You found a nicely decorated dagger. You question yourself on its presence inside the veranda. But you remind that there were no cutoff marks on the victim. There may be other crimes to come...",6, new ImageIcon(getClass().getResource("/picturesitems/dagger.png")));
+        dagger = new Item("dagger", "You found a nicely decorated dagger. You question yourself on its presence inside the veranda. But you remind that there were no cutoff marks on the victim. There may be other crimes to come...", 6, new ImageIcon(getClass().getResource("/picturesitems/dagger.png")));
         dagger.setUse(false);
         dagger.setHidden(true);
-        ironBar = new Item("ironBar","You found a quite impressive iron bare. Exactly the kind of thing that can knock out someone. Or worst. ",6, new ImageIcon(getClass().getResource("/picturesitems/ironbar.png")));
+        ironBar = new Item("ironBar", "You found a quite impressive iron bare. Exactly the kind of thing that can knock out someone. Or worst. ", 6, new ImageIcon(getClass().getResource("/picturesitems/ironbar.png")));
         ironBar.setUse(false);
-        revolver = new Item("revolver","Hidden into a desk drawer, you found a Revolver with only one bullet in the chamber. Maybe the one that you will keep for Ms Pervenche murderer.",6, new ImageIcon(getClass().getResource("/picturesitems/revolver.png")));
+        revolver = new Item("revolver", "Hidden into a desk drawer, you found a Revolver with only one bullet in the chamber. Maybe the one that you will keep for Ms Pervenche murderer.", 6, new ImageIcon(getClass().getResource("/picturesitems/revolver.png")));
         revolver.setHidden(true); // the revovler is hidden in the room
         revolver.setUse(false);
-        candlestick = new Item("candlestick","You found a dusty candlestick. Perfect for a candlelit dinner with Miss Prunelle once this case solved. The duty before everything !",6, new ImageIcon(getClass().getResource("/picturesitems/candelstick.png")));
+        candlestick = new Item("candlestick", "You found a dusty candlestick. Perfect for a candlelit dinner with Miss Prunelle once this case solved. The duty before everything !", 6, new ImageIcon(getClass().getResource("/picturesitems/candelstick.png")));
         candlestick.setUse(false);
-        wrench = new Item("wrench","You found a wrench. Its implication into the murder seems unlikely. However, you have a sink that has a leakage back home, this might help you to fix it.",6, new ImageIcon(getClass().getResource("/picturesitems/wrench.png")));
+        wrench = new Item("wrench", "You found a wrench. Its implication into the murder seems unlikely. However, you have a sink that has a leakage back home, this might help you to fix it.", 6, new ImageIcon(getClass().getResource("/picturesitems/wrench.png")));
         wrench.setUse(false);
-        poison = new Item("poison","You found an half empty flask that contains a suspicious liquid. POISON ! This might be the murder weapon, but who would be perfidious enough to use it …",15, new ImageIcon(getClass().getResource("/picturesitems/poison.png")));
+        poison = new Item("poison", "You found an half empty flask that contains a suspicious liquid. POISON ! This might be the murder weapon, but who would be perfidious enough to use it …", 15, new ImageIcon(getClass().getResource("/picturesitems/poison.png")));
         poison.setUse(false);
-        axe = new Item("axe","You found an axe. It reminds you your childhood with your father, who was a lumberjack. You focus and notice that there is no blood on it. On one hand, it would be very barbaric to kill someone with an axe...",6, new ImageIcon(getClass().getResource("/picturesitems/axe.png")));
+        axe = new Item("axe", "You found an axe. It reminds you your childhood with your father, who was a lumberjack. You focus and notice that there is no blood on it. On one hand, it would be very barbaric to kill someone with an axe...", 6, new ImageIcon(getClass().getResource("/picturesitems/axe.png")));
         axe.setUse(false);
-        shield = new Item("Shield","You find a shield. The murderer is still in the mansion, it is better to take something to protect himself.",0, new ImageIcon(getClass().getResource("/picturesitems/shield.jpg")));
+        shield = new Item("Shield", "You find a shield. The murderer is still in the mansion, it is better to take something to protect himself.", 0, new ImageIcon(getClass().getResource("/picturesitems/shield.jpg")));
         shield.setUse(false);
 
         // Creation of key - code
-        keyLibrary = new Item ("Keylibrary","You found the library’s key. Who knows, maybe this key will allow you to open other doors ...",0, new ImageIcon(getClass().getResource("/picturesitems/key1.png")));
+        keyLibrary = new Item("Keylibrary", "You found the library’s key. Who knows, maybe this key will allow you to open other doors ...", 0, new ImageIcon(getClass().getResource("/picturesitems/key1.png")));
         keyLibrary.setHidden(true);
-        keyVeranda = new Item ("Keyveranda","You found the key of the veranda. People always hide strange things in there. Try your luck…",0, new ImageIcon(getClass().getResource("/picturesitems/key2.png")));
+        keyVeranda = new Item("Keyveranda", "You found the key of the veranda. People always hide strange things in there. Try your luck…", 0, new ImageIcon(getClass().getResource("/picturesitems/key2.png")));
         keyVeranda.setHidden(true);
-        keyLivingRoom = new Item ("Keyliving","You found the key of the living room. This is the right occasion to interrogate new suspects. ", 0, new ImageIcon(getClass().getResource("/picturesitems/key3.png")));
+        keyLivingRoom = new Item("Keyliving", "You found the key of the living room. This is the right occasion to interrogate new suspects. ", 0, new ImageIcon(getClass().getResource("/picturesitems/key3.png")));
         keyLivingRoom.setHidden(true);
-        keyDiningRoom = new Item ("Keydining","You found the dining room’s key. Stroke of luck, the dining room and the living room are communicating rooms !",0, new ImageIcon(getClass().getResource("/picturesitems/key4.png")));
+        keyDiningRoom = new Item("Keydining", "You found the dining room’s key. Stroke of luck, the dining room and the living room are communicating rooms !", 0, new ImageIcon(getClass().getResource("/picturesitems/key4.png")));
         keyDiningRoom.setHidden(true);
-        
-        codeOffice = new Item ("Codeoffice","You found a 4 digits code (4 4 4 4). It looks like they does not bother that much about security here.",0, new ImageIcon(getClass().getResource("/picturesitems/code.png")));
+
+        codeOffice = new Item("Codeoffice", "You found a 4 digits code (4 4 4 4). It looks like they does not bother that much about security here.", 0, new ImageIcon(getClass().getResource("/picturesitems/code.png")));
         codeOffice.setHidden(true);
-        codeKitchen = new Item ("Codekitchen", "You found a 17 digits code. Yes, that is possible. Good luck to memorise the combination of the kitchen’s door.",0, new ImageIcon(getClass().getResource("/picturesitems/code2.png")));
+        codeKitchen = new Item("Codekitchen", "You found a 17 digits code. Yes, that is possible. Good luck to memorise the combination of the kitchen’s door.", 0, new ImageIcon(getClass().getResource("/picturesitems/code2.png")));
         codeKitchen.setHidden(true);
 
         //Creation of utilities 
-        irGlasses = new Item ("Glasses Infrared","Your extraordinary observation capabilities allow you to discover infrared glasses hidden inside a bush. This might look useless but with it, you will have style !",0,new ImageIcon(getClass().getResource("/picturesitems/glasses.png")));
+        irGlasses = new Item("Glasses Infrared", "Your extraordinary observation capabilities allow you to discover infrared glasses hidden inside a bush. This might look useless but with it, you will have style !", 0, new ImageIcon(getClass().getResource("/picturesitems/glasses.png")));
         irGlasses.setHidden(true);
-        gasMask = new Item ("Gas Mask","You found a gas mask from the second world war. Why it is here ? Nevermind, it can be useful at some point.",0, new ImageIcon(getClass().getResource("/picturesitems/gas.png")));
-            
+        gasMask = new Item("Gas Mask", "You found a gas mask from the second world war. Why it is here ? Nevermind, it can be useful at some point.", 0, new ImageIcon(getClass().getResource("/picturesitems/gas.png")));
+
         // Creation of clues
-        footPrints = new Item ("Foot prints","You noticed footprints on the ground, from two people. It seems that they were walking towards the garden...",3, new ImageIcon(getClass().getResource("/picturesitems/foot.png")));
-        scarf = new Item ("Scarf","A soft cashmere scarf, color periwinkle, does not fool anyone on the identity of its owner. How did Ms Pervenche lose it ...?",3, new ImageIcon(getClass().getResource("/picturesitems/scarf.png")));
-        clothSoaked = new Item ("Soaked cloth","You found a cloth soaked in red wine. This reminds you arguing with your wife on Valentine’s Day…",15, new ImageIcon(getClass().getResource("/picturesitems/wine.png")));
-        hippocraticOath = new Item("Hippocatric Oath","You found a piece of the Hippocratic Oath. That is strange...",15, new ImageIcon(getClass().getResource("/picturesitems/Hippocrate.png")));
+        footPrints = new Item("Foot prints", "You noticed footprints on the ground, from two people. It seems that they were walking towards the garden...", 3, new ImageIcon(getClass().getResource("/picturesitems/foot.png")));
+        scarf = new Item("Scarf", "A soft cashmere scarf, color periwinkle, does not fool anyone on the identity of its owner. How did Ms Pervenche lose it ...?", 3, new ImageIcon(getClass().getResource("/picturesitems/scarf.png")));
+        clothSoaked = new Item("Soaked cloth", "You found a cloth soaked in red wine. This reminds you arguing with your wife on Valentine’s Day…", 15, new ImageIcon(getClass().getResource("/picturesitems/wine.png")));
+        hippocraticOath = new Item("Hippocatric Oath", "You found a piece of the Hippocratic Oath. That is strange...", 15, new ImageIcon(getClass().getResource("/picturesitems/Hippocrate.png")));
         hippocraticOath.setHidden(true);
 
         // Add the items into the rooms  
@@ -560,13 +548,8 @@ public class InitializeGame {
         smallHall.addItem(keyLivingRoom);
         poolRoom.addItem(keyDiningRoom);
         library.addItem(codeOffice);
-        
-        
-        // Creation of the items images associated with the rooms
-        
-        
-        
 
+        // Creation of the items images associated with the rooms
         // Creation of clues
         kiosk.addItem(footPrints);
         garden.addItem(scarf);
@@ -576,7 +559,7 @@ public class InitializeGame {
         notebook = new NoteBook();
         inventory = new Inventory();
         inventory.addItems(gasMask);
-        
+
         if (playerClass == "Gadget") {
             player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 200);
         } else if (playerClass == "Colombo") {
@@ -584,14 +567,11 @@ public class InitializeGame {
         } else {
             player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 120);
         }
-       
-       
-        
-        World w = new World(player1,notebook,playerClass, listRoom, btTest2);
 
-}
-   
-    
+        World w = new World(player1, notebook, playerClass, listRoom, btTest2);
+
+    }
+
     public Player getPlayer() {
         return player1;
     }

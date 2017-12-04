@@ -107,11 +107,10 @@ public class Player extends Character {
 //            //perdu
 //        }
 //    }
-
     /**
-     * This method allows the player to take an item that is present in a room, add it to his 
-     * inventory and update his number of persuasion points by adding the points associated to 
-     * the item he is picking up
+     * This method allows the player to take an item that is present in a room,
+     * add it to his inventory and update his number of persuasion points by
+     * adding the points associated to the item he is picking up
      */
     public void takeItem(JTextArea zoneTexte) {
         zoneTexte.setText("");
@@ -136,7 +135,7 @@ public class Player extends Character {
      * @param direction : north, east... Represents the direction of the
      * movement of the player
      */
-public void move(String direction) {
+    public void move(String direction) {
 
         Room nextRoom = null;
         Room testRoom = null; // Room to try the door of a room 
@@ -146,7 +145,7 @@ public void move(String direction) {
             testRoom = currentRoom.getRoom(direction);
             if (testRoom.getDoor() != null) {
                 if (testRoom.getDoor().isOpenable() == true) { //if isOpenable -> true if is openable
-                    s.playSoundSingle("music/porte_verrou.wav"); 
+                    s.playSoundSingle("music/porte_verrou.wav");
                     nextRoom = currentRoom.getRoom(direction);
                 } else {
                     if (testRoom.getDoor().getHaveCodeLock()) { // Door have a code lock
@@ -172,8 +171,7 @@ public void move(String direction) {
                             nextRoom = currentRoom;
                             putMessageDoor();
                         }
-                    } 
-                    else { // Door have a key Lock
+                    } else { // Door have a key Lock
                         if (!inv.ItemsList.isEmpty()) {
                             for (int i = 0; i < inv.ItemsList.size(); i++) {
                                 if (testRoom.getDoor().openDoorKey(inv.ItemsList.get(i).getName())) {
@@ -237,20 +235,17 @@ public void move(String direction) {
         if (currentRoom.getTalkingInTheRoom() == null) {
             setTime(2);
             zoneTexte.setText("There is no one to talk to here, you think about talking to yourself and loose 5 minutes of your precious time \n");
-        } 
-        else if (currentRoom.getFollowerInTheRoom() != null) {
+        } else if (currentRoom.getFollowerInTheRoom() != null) {
             setTime(2);
-            zoneTexte.setText(currentRoom.getFollowerInTheRoom().getspeach() + "\n"); 
+            zoneTexte.setText(currentRoom.getFollowerInTheRoom().getspeach() + "\n");
             note.addText(currentRoom.getFollowerInTheRoom().getName() + " : " + currentRoom.getFollowerInTheRoom().getspeach() + "\n");
-        }
-        else 
-        {
+        } else {
             //setTime(5);
             setTime(2);
             zoneTexte.setText(currentRoom.getTalkingInTheRoom().talk(persuasionBar) + "\n");
             note.addText(currentRoom.getTalkingInTheRoom().getName() + " : " + currentRoom.getTalkingInTheRoom().talk(persuasionBar) + "\n");
-        } 
- 
+        }
+
     }
 
     public int getPersuasion() {
@@ -315,20 +310,20 @@ public void move(String direction) {
     void setLabel(String newText) {
         label.setText(newText);
     }
-    
+
     /**
-     * Print a message to  say a door is close
+     * Print a message to say a door is close
      */
-    public void putMessageDoor(){
+    public void putMessageDoor() {
         JOptionPane.showMessageDialog(frame,
                 "Sorry, but this door is close\n and you don't have the key or the code",
                 "Door",
                 JOptionPane.INFORMATION_MESSAGE);
     }
-        
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     private String dialogCodeInput() {
         //System.out.println("Test");
@@ -344,8 +339,7 @@ public void move(String direction) {
         //If a string was returned, say so.
         if ((s != null) && (s.length() > 0)) {
             return s;
-        }
-        else{
+        } else {
             System.out.println("Enter your code please");
             return "";
         }

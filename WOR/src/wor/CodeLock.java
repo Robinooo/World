@@ -13,8 +13,8 @@ public class CodeLock extends Lock {
     private String name; // The name of the CodeLock
 
     /**
-     * Constructor for objects of class CodeLock. When a code is created, it is 
-     * defined by a name and a password 
+     * Constructor for objects of class CodeLock. When a code is created, it is
+     * defined by a name and a password
      *
      * @param name, the name of the CodeLock
      * @param code, the password
