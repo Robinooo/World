@@ -48,8 +48,8 @@ public class PersuasionBar {
      * persuasion points pass threshold of 59 persuasion points. 
      */
     public void colorBar(){
-        if (bar.getValue() >59 ){
-            bar.setForeground(Color.red);
+        if (bar.getValue() >45 ){
+            bar.setForeground(Color.orange);
         }else{
             bar.setForeground(Color.blue);
         }
