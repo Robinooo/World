@@ -17,6 +17,7 @@ public class World extends JFrame {
     private final JButton btUp, btDown, btLeft, btRight, btExplore, btTake, btJournal, btInventory, btHelp, btAccuse; //btSPeak
     private final JPanel bBar, rActions;
     private JLabel cPicture, lMap;
+    private Sounds s;
 
     JTextArea zoneTexte = new JTextArea(7, 52);
 
@@ -254,6 +255,7 @@ public class World extends JFrame {
             if ("barn 2".equals(player1.getCurrentRoom().getRoomName())) {
                 if (player1.getCurrentRoom().getNoir()) {
                     boolean survival = false;
+                    s.playSoundSingle("music/combat.wav");
                     JOptionPane.showMessageDialog(null, "You hear something approaching. It attacks you!",
                             "Ambush", JOptionPane.INFORMATION_MESSAGE);
                     if (!player1.getInventory().ItemsList.isEmpty()) {
@@ -324,6 +326,23 @@ public class World extends JFrame {
                     "Black room", JOptionPane.INFORMATION_MESSAGE);
             btExplore.setEnabled(false);
         }
+        
+        if ("kiosk".equals(player1.getCurrentRoom().getRoomName())
+                ||"garden".equals(player1.getCurrentRoom().getRoomName())
+                ||"veranda".equals(player1.getCurrentRoom().getRoomName())
+                ||"corridor1".equals(player1.getCurrentRoom().getRoomName())
+                ||"corridor2".equals(player1.getCurrentRoom().getRoomName())
+                ||"corridor3".equals(player1.getCurrentRoom().getRoomName()) 
+                ||"corridor8".equals(player1.getCurrentRoom().getRoomName())
+                ||"corridor11".equals(player1.getCurrentRoom().getRoomName())
+                ||"corridor12".equals(player1.getCurrentRoom().getRoomName())
+                ||"corridor17".equals(player1.getCurrentRoom().getRoomName())) 
+        {s.playSoundSingle("music/birds.wav");}
+        
+        if ("fountain".equals(player1.getCurrentRoom().getRoomName())) {
+            s.playSoundSingle("music/source.wav");}
+
+            
         co.removeAll();
         co.setIcon(player1.getCurrentRoom().getImage());
         co.setLayout(new BorderLayout());
