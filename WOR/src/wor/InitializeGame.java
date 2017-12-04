@@ -569,7 +569,6 @@ public class InitializeGame {
         }
 
         World w = new World(player1, notebook, playerClass, listRoom, btTest2);
-
     }
 
     public Player getPlayer() {

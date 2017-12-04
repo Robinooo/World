@@ -45,68 +45,6 @@ public class Player extends Character {
         return this.inv;
     }
 
-//    /**
-//     * This method allows the user to get the persuasion points of the player
-//     *
-//     * @return the player's persuasion points
-//     */
-//    public int getPersuasion2() {
-//        return this.persuasion;
-//    }
-//
-//    /**
-//     * This method allows the user to get the player's points of life
-//     *
-//     * @return the player's points of life
-//     */
-//    public int getPointsOfLife() {
-//        return this.pointsoflife;
-//    }
-//
-//    /**
-//     * This method allows the user to get the time that remains to the player
-//     *
-//     * @return the player's time remaining (number of minutes)
-//     */
-//    public int getTime() {
-//        return this.timeBar;
-//    }
-//
-//    /**
-//     * This method allows the game to add some persuasion points to the player
-//     *
-//     * @param ppersua : an integer representing the number of persuasion points
-//     * to add to the player
-//     */
-//    public void setPersuasion2(Integer ppersua) {
-//        this.persuasion = this.persuasion + ppersua;
-//    }
-//
-//    /**
-//     * This method allows the game to add some points of life to the player
-//     *
-//     * @param ppoints : an integer representing the number of points of life to
-//     * add to the player. This integer can be positive or negative.
-//     */
-//    public void setPointsOfLife(Integer ppoints) {
-//        this.pointsoflife = this.pointsoflife + ppoints;
-//        if (this.pointsoflife <= 0) {
-//            //mort
-//        }
-//    }
-//
-//    /**
-//     * This method allows the game to add some points of time to the player
-//     *
-//     * @param ptime : an integer representing the number of minutes to add to
-//     * the player. This integer can be positive or negative.
-//     */
-//    public void setTime(Integer ptime){
-//        this.time = this.time - ptime;
-//        if (this.time <= 0) {
-//            //perdu
-//        }
-//    }
     /**
      * This method allows the player to take an item that is present in a room,
      * add it to his inventory and update his number of persuasion points by
@@ -201,23 +139,28 @@ public class Player extends Character {
         currentRoom = nextRoom;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public Room getCurrentRoom() {
         return currentRoom;
     }
 
+    /**
+     * 
+     * @param zoneTexte 
+     */
     public void explore(JTextArea zoneTexte) {
-
         if (currentRoom.listItem.size() > 0) {
             zoneTexte.setText(currentRoom.listItem.size() + " items in the room.");
             for (int i = 0; i < currentRoom.listItem.size(); i++) {
                 if (currentRoom.listItem.get(i).getHidden()) {
                     //setTime(10);
                     setTime(4);
-
                 } else {
                     //setTime(5);
                     setTime(2);
-
                 }
             }
         } else {
@@ -228,7 +171,6 @@ public class Player extends Character {
         }
         // on perd 5 minutes de temps des qu'on explore si il y pas d'item ou si un item n'est pas caché 
         // on perds 10 minutes si un item est caché
-
     }
 
     public void speak(JTextArea zoneTexte) {
@@ -245,13 +187,20 @@ public class Player extends Character {
             zoneTexte.setText(currentRoom.getTalkingInTheRoom().talk(persuasionBar) + "\n");
             note.addText(currentRoom.getTalkingInTheRoom().getName() + " : " + currentRoom.getTalkingInTheRoom().talk(persuasionBar) + "\n");
         }
-
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPersuasion() {
         return persuasionBar;
     }
 
+    /**
+     *
+     * @param ppersua
+     */
     public void setPersuasion(Integer ppersua) {
         persuasionBar = persuasionBar + ppersua;
     }
@@ -278,28 +227,34 @@ public class Player extends Character {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public int getLife() {
         return lifeBar;
     }
 
+    /**
+     *
+     * @param plife
+     */
     public void setLife(Integer plife) {
         lifeBar = lifeBar - plife;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getTime() {
         return timeBar;
     }
 
     /**
-     * setter for the Persuasion attribute
      *
-     * @param k Persuasion value between 0 and 100
+     * @param ptime
      */
-//    public void setPersuasion(int k){
-//        if(k <= 100 && k >= 0){
-//        PersuasionBar=k;
-//        }
-//    }
     public void setTime(int ptime) {
         timeBar = timeBar - ptime;
     }
