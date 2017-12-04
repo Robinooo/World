@@ -233,10 +233,10 @@ public class World extends JFrame {
         frame.setLocationRelativeTo(null);
 
         JOptionPane.showMessageDialog(this,
-                "Miss Pervenche has been killed in the manor\n"
+                "Miss Pervenche has been killed in the manor.\n"
                 + "You have to find the killer ! \n "
                 + "You are " + player1.getName() + " the detective !\n"
-                + "Speak to everyone and found the clues. They help you to found the killer \n ",
+                + "Speak to everyone and found the clues. They help you to found the killer.",
                 "Manor's investigation!",
                 JOptionPane.INFORMATION_MESSAGE);
 
