@@ -6,7 +6,7 @@ import java.util.HashMap;
 import javax.swing.*;
 
 /**
- * A "Room" represents one location in the scenery of the game. It is 
+ * The Room class represents one location in the scenery of the game. It is 
  * connected to other rooms. 
  *
  * @author GR2
@@ -15,59 +15,59 @@ import javax.swing.*;
 public class Room
 {
     // instance variables - replace the example below with your own
-    private String roomName;
-    private Character chara;
-    private Talking talking;
-    private Killer killer;
-    private Follower follower;
-    protected ArrayList<Item> listItem;
-    private Door door;
-    private String description; 
-    private Icon  imgplan;
-    private Icon img;
-    private JButton bou;
+    private String roomName; // the name of the room
+    private Character chara; // the character present in the room
+    private Talking talking; // the talking character present in the room
+    private Killer killer; // the killer present in the room
+    private Follower follower; // the follower present in the room
+    protected ArrayList<Item> listItem; // the list of item of the player
+    private Door door; // the door of the room
+    private String description; // the description of the room
+    private Icon  imgplan; // the image of the map
+    private Icon img; // the image associated to the room
+    private JButton bou; // button
     private JPanel panel;
     
-    private boolean noir;
-    private boolean gaz;
-    private boolean director;
-    private HashMap<String,Room> myHashRoom;
+    private boolean noir; // if the room is dark
+    private boolean gaz; // if the room is full of gaz
+    private boolean director; // if the director is in the room
+    private HashMap<String,Room> myHashRoom; // the HashMap representing the map
+    
     /**
-     * Create a room
-     *
+     * The constructor of the room. A room is represented by the a name, a description, 
+     * a door, an image and the image of the plan
      * @param proomName The room's name.
      * @param pdescription The room's description.
      * @param pdoor The door of the room
      * @param pimg The name of the image
      */
-
-    
     public Room(String proomName, String pdescription, Door pdoor,Icon pimg, Icon pimgplan)
     {
         roomName = proomName;
         description = pdescription;
-        chara = null;
+        chara = null; // at the beginning, there is no character in the room
         door = pdoor;
         img = pimg;
         imgplan =pimgplan;
-        //exitRooms = new ArrayList<Exit>();
         listItem= new ArrayList<Item>();
-        gaz = false;
-        noir = false;
-        director = false;
+        gaz = false; // at the beginning,there is no gas in the room
+        noir = false; // at the beginning, the room is not dark
+        director = false; // at the beginning, the director is not in the room
         myHashRoom = new HashMap<String,Room>();
         bou = null;
         panel = null;
     }
 
     /**
-     * @return the roomName
+     * The getRoomName method gets the name of the room
+     * @return roomName, the name of the room
      */
     public String getRoomName() {
         return roomName;
     }
 
     /**
+     * The getDescription method gets the description of the room
      * @return The description of the room.
      */
     public String getDescription() {
@@ -75,29 +75,32 @@ public class Room
     }
 
     /**
-     * @return The image of the room
+     * The getImage method get the image associated to the room
+     * @return img, the image of the room
      */
     public Icon getImage() {
         return img;
     }
-    
-    
+     
     /**
-     * @return The image of the room
+     * The getButton method, gets the buttons 
+     * @return bou, the buttons specific to the room
      */
     public JButton getButton() {
         return bou;
     }
     
     /**
-     * @return The location of the player in the room
+     * The getImagePlan method gets the player location in the map
+     * @return imgPlan
      */
        public Icon getImagePlan() {
         return imgplan;
     }
 
     /**
-     * @return if the room is in the black
+     * The getNoir method gets the boolean, to know if the room is dark or not
+     * @return noir, True if the room is dark
      */
     public boolean getNoir()
     {
@@ -106,7 +109,8 @@ public class Room
 
          
     /**
-     * @return boolean if there is gaz in the room
+     * The getGaz method gets the boolean to know if the room is full of gas or not 
+     * @return gaz, true if the room is full of gas
      */
     public boolean getGaz()
     {
@@ -114,15 +118,16 @@ public class Room
     }
 
     /**
-     * @return boolean if there is the director in the room
+     * The getDirector method gets the boolean telling if the director is in the room or not
+     * @return director, true if the director is in the room
      */
-      
     public boolean getDirector()
     {
         return director;
     }
 
     /**
+     * The getDoor method gets the doors of the room
      * @return the door of the room.
      */
     public Door getDoor() {
@@ -130,48 +135,36 @@ public class Room
     }
 
     /**
-     * Returns the list of items situated in the current room.
-     * @return  ArrayList<Item> getItems    
+     * The getItemsInTheRoom returns the list of items situated in the current room.
+     * @return listItem
      */
     public ArrayList<Item> getItemsInTheRoom(){
         return listItem;
     }
 
-    
     /**
-     * Returns the list of items situated in the current room.
-     * @return  ArrayList<Item> getItems    
+     * Returns the talking character present in the room
+     * @return talking
      */
-    public Character getCharaInTheRoom(){
-        return  chara;
-    }
-    
-        public Talking getTalkingInTheRoom(){
+    public Talking getTalkingInTheRoom(){
         return talking ;
     }
         
-         public Follower getFollowerInTheRoom(){
+    /**
+     * Returns the follower present in the room
+     * @return follower
+     */
+    public Follower getFollowerInTheRoom(){
         return follower ;
     }
         
-        public JPanel getPanel(){
-        return panel;}
-    
-    // /**
-    // * @return the exitRoom
-    // */
-    // public ArrayList<Exit> getExitRoom() {
-    // return exitRooms;
-    // }
-
-    // /**
-    // * Adds an exit to the room
-    // */
-    // public void addExitRoom(Exit pexitRoom) {
-    // exitRooms.add(pexitRoom);
-    // }
-        
-        
+    /**
+     * Returns the panel
+     * @return panel
+     */
+    public JPanel getPanel(){
+        return panel;
+    }
     
     /**
      * Adds an item to the item list of the current room.
@@ -182,28 +175,16 @@ public class Room
         listItem.add(pitem);
     }
 
-    
-    
-    // /**
-    // * @param exitRoom the exitRoom to set
-    // */
-    // public void setExitRoom(ArrayList<Exit> pExitRoom) {
-    // exitRooms =pExitRoom;
-           
-    // }
-    
-    
     /**
      * Set the exit into the HashMap "myHashRoom"
      * @param direction The direction given by the user
-     * @param proom The curent room of the user
+     * @param proom The current room of the user
      */
       public void setExit(String direction, Room proom) 
     {
         myHashRoom.put(direction,proom);
     }
-
-    
+ 
     /**
      * A method to know if the direction given by the user
      * is present into the HashMap "myHashRoom"
@@ -216,7 +197,6 @@ public class Room
         return  myHashRoom.containsKey(direction);
     }
 
-    
     /**
      * A method to get the name of the room thanks to the direction.
      * @param key The direction given by the user
@@ -227,8 +207,6 @@ public class Room
         return myHashRoom.get(key);
     }
 
-    
-    
     /**
      * Set the name of the Room
      * @param proomName the roomName to set
@@ -236,33 +214,29 @@ public class Room
     public void setRoomName(String proomName) {
         roomName = proomName;
     }
+    
     /**
      * Set the type of the room, the room is a black room
      * @param pNoir if the boolean is true -> black , false : not black
      *
      */
-
-    public void setNoir(boolean pNoir)
-    {
+    public void setNoir(boolean pNoir) {
         noir = pNoir;
-
     }
 
     /**
-     * Set the type of the room, the room is gaz room
-     * @param pnoir if the boolean is true -> black , false : not black
+     * Set the type of the room, the room is gas room
+     * @param pGaz true if the room is full of gas
      */
-    public void setGaz(boolean pGaz)
-    {
+    public void setGaz(boolean pGaz) {
         gaz = pGaz;
     }
 
     /**
      * Set the type of the room, the room is the room of the director
-       * @param pDirector if the boolean is true -> there is the director, false : not the director;
+     * @param pDirector if the boolean is true -> there is the director, false : not the director;
      */
-         public void setDirector(boolean pDirector)
-        {
+    public void setDirector(boolean pDirector) {
         director = pDirector;
     }
 
@@ -270,46 +244,40 @@ public class Room
      * Add a Talking character to the room
      * @param pTalking The character added to the room;
      */
-         public void addCharacter (Talking pTalking) 
-         {
-           talking=pTalking;
+    public void addCharacter (Talking pTalking) {
+        talking=pTalking;
     }
          
     /**
      * Add a Button to the room
-     * @param pboug The boutton added to the room;
+     * @param pbou The boutton added to the room;
      */
-         public void addButton (JButton pbou) 
-         {
-           bou=pbou;
+    public void addButton (JButton pbou) {
+        bou=pbou;
     }     
          
-  /**
+    /**
      * Add a Button to the room
-     * @param pboug The boutton added to the room;
+     * @param panelp The panel;
      */
-         public void addPanel (JPanel panelp) 
-         {
-           panel=panelp;
+    public void addPanel (JPanel panelp) {
+        panel=panelp;
     }     
                  
- 
-             /**
+    /**
      * Add a killer character to the room
      * @param pKiller The character added to the room;
      */
-         public void addKiller (Killer pKiller) 
-         {
-           killer=pKiller;
+    public void addKiller (Killer pKiller) {
+        killer=pKiller;
     }
          
     /**
      * Add a Following character to the room
-     * @param pFollowing The character added to the room;
+     * @param pFollower The follower added to the room;
      */
-         public void addFollower (Follower pFollower) 
-         {
-           follower=pFollower;
+    public void addFollower (Follower pFollower) {
+        follower=pFollower;
     }
 
     /**
@@ -321,10 +289,19 @@ public class Room
         description = s;
     }
     
+    /**
+     * Gets the items present in the room
+     * @param indice
+     * @return the list of item in the room
+     */
     public Item getItem(int indice){
         return listItem.get(indice);
     }
     
+    /**
+     * Sets the image of the room
+     * @param image, the new image of the room
+     */
     public void setImage (Icon image) {
         img = image;
     }

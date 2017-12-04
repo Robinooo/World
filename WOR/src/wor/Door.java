@@ -3,10 +3,9 @@ package wor;
 import java.util.*;
 
 /**
- * The class Door is used to create a door. A door have a name, can have a lock
- * or a code (not both in the same time). A door can also be open or not, if the
- * user have a key or code, or if the door do not have a lock (code or key), or
- * is already unlock.
+ * The class Door is used to create a door. A door has a name, can have a lock
+ * or a code (not both in the same time). A door can be set as open, or closed. 
+ * If it is closed, the door can be opened by a key or a code. 
  *
  * @author Group2
  * @version 11/20/2017
@@ -19,10 +18,10 @@ public class Door {
     private boolean openable; //state is either "is openable" or "not openable"
 
     /**
-     * Constructor for objects of class Door At first, the door is close and
-     * have a specifi name. ifKeyLock is true then, the door have a key lock,
-     * else not. ifCodeLock is true then, the door have a code lock, else not. A
-     * door can not have a code and a key lock
+     * Constructor for objects of class Door At first, the door is closed and
+     * have a specific name. ifKeyLock is true then, the door has a key lock,
+     * else not. ifCodeLock is true then, the door has a code lock, else not. A
+     * door cannot have both a code and a key lock.
      *
      * @param name The name of the door
      */
@@ -32,37 +31,38 @@ public class Door {
     }
 
     /**
-     * modify the boolean openable
+     * The setOpenable method modifies the boolean openable. 
      *
      * @param b The boolean to know if a door is openable or not. When the value
-     * is true -> the door is openable (can be open)
+     * is true -> the door is openable (can be opened)
      */
+    
     public void setOpenable(boolean b) {
         openable = b; // change the value of the boolean openable - true if openable   
     }
 
     /**
-     * Returns the status of the boolean openable
+     * The isOpenable method returns the status of the boolean openable.
      *
-     * @return Returns the status of the boolean openable - true if is openable
+     * @return the status of the boolean openable - true if is openable
      */
     public boolean isOpenable() {
-        return openable; // retrun the value of the boolean.When the value is true -> the door is openable (can be open)
+        return openable; // return the value of the boolean. When the value is true -> the door is openable
     }
 
     /**
-     * Get the identifier/name (String) of a door
+     * The getNameDoor method gets the identifier/name (String) of a door
      *
-     * @return Returns the name of the door
+     * @return name, the name of the door
      */
     public String getNameDoor() {
         return name; // return the name of the door
     }
 
     /**
-     * Return a boolean to know if a door have a keyLock
+     * The getHaveKeyLock method returns a boolean to know if a door have a keyLock
      *
-     * @return Returns A boolean. if a door have a keyLock, return true
+     * @return a boolean. If a door has a keyLock, then return true
      */
     public boolean getHaveKeyLock() {
         if (keyLock == null) {
@@ -73,9 +73,9 @@ public class Door {
     }
 
     /**
-     * Add a code lock to the door
-     *
-     * @param codeLock The lock for the door
+     * The method addCodeLock adds a code lock to the door
+     * 
+     * @param codeLock The code lock for the door
      */
     public void addCodeLock(CodeLock codeLock) {
         this.codeLock = codeLock;
@@ -83,9 +83,9 @@ public class Door {
     }
 
     /**
-     * Add a key lock to the door
-     *
-     * @param keyLock The lock for the door
+     *  The method addKeyLock adds a key lock to the door
+     * 
+     * @param keyLock The key lock for the door
      */
     public void addKeyLock(KeyLock keyLock) {
         this.keyLock = keyLock;
@@ -93,15 +93,15 @@ public class Door {
     }
 
     /**
-     * Return a boolean to know if a door have a CodeLock
+     * The getHaveCodeLock method returns a boolean to know if a door have a CodeLock
      *
-     * @return Returns A boolean. if a door have a CodeLock, return true
+     * @return a boolean. If a door has a CodeLock, then return true
      */
     public boolean getHaveCodeLock() {
         if (codeLock == null) {
-            return false;
+            return false; // the door does not have a code lock
         } else {
-            return true;
+            return true; // the door has a code lock
         }
     }
 
@@ -124,44 +124,45 @@ public class Door {
     }
 
     /**
-     * Open the door using a key
+     * The openDoorKey method opens the door using a key
      *
-     * @return Returns true if the door is unlock
+     * @return Returns true if the door is unlocked
      */
     public boolean openDoorKey(String keyName) {
 
         if (keyLock.getNameKey().equals(keyName)) {
-            return true;
+            return true; // the door is unlocked
         } else {
-            return false;
+            return false; // the door is locked
         }
     }
 
     /**
-     * Open the door using a passcode The method call returns 'true' if this map
-     * maps one or more keys to the specified value.
+     * The openDoorPass method opens the door using a passcode. If the password
+     * given by the player matches with the password of the door, the door is open (return true). 
+     * If not, the door remains closed (return false).
      *
      * @return Returns true if the door is unlock
      */
     public boolean openDoorPass(String password) {
         if (codeLock.getPasswd().equals(password)) {
-            return true;
+            return true; // passwords are matching : the door is open
         } else {
-            return false;
+            return false; // passwords are not matching : the door is still closed
         }
     }
 
     /**
-     * Open the door if it unlock or do not have a lock (key or code lock)
+     * The method openDoor opens the door if it is unlocked or do not have a lock (key or code lock)
      *
      * @return Returns false when a door can't be open. The door still lock. And
      * return true when the door can be passed.
      */
     public boolean openDoor() {
         if (isOpenable()) {
-            return true;
+            return true; // the door can be passed
         } else {
-            return false;
+            return false; // the door is closed
         }
     }
 }

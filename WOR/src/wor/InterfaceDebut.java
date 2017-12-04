@@ -52,7 +52,7 @@ import java.awt.*;
    ///////////////////
    private String playerClass;
    private String playerName;
-   
+   private Sounds s;
 
    
 ///////////////////////////////////////////////////////////////
@@ -62,7 +62,9 @@ import java.awt.*;
    
    */
   public InterfaceDebut(){
-       
+            
+      
+      s.playSoundInfinite("music/long.wav");
        this.setTitle("CLUEDO");// Titre
        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        //-----------------------------------------------------------------------
@@ -288,8 +290,8 @@ import java.awt.*;
       {   
           playerName = fieldName.getText();
           if (!fieldName.getText().isEmpty()) {
-          InitializeGame g = new InitializeGame(playerClass,playerName);
-          this.dispose();}
+          InitializeGame g = new InitializeGame(playerClass,playerName.toUpperCase());
+          this.dispose();} else {JOptionPane.showMessageDialog(null,"Please insert a name.","Name",JOptionPane.INFORMATION_MESSAGE);}
           
           
       }

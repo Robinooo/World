@@ -9,20 +9,12 @@ package wor;
  */
 public class Killer extends Character {
 
-    private int time = 200; // The time to solve the enigma
-
     /**
-     * Constructor for objects of class Killer
+     * Constructor for objects of class Killer. The killer is represented by a name.
+     * @param name, the name of the killer
      */
-    // public Killer()
-    // {
-    // super("Killer");
-    // isKiller = true;
-    // }
     public Killer(String n) {
         name = n.toUpperCase();
-        // currentRoom=cR;
-        isLier = false;
     }
 
     /**
@@ -31,12 +23,5 @@ public class Killer extends Character {
      * 0, the playre dies in the process...
      */
     public void kill() {
-    }
-
-    /**
-     * Get how much time left there is for the player to solve the enigma.
-     */
-    public int getTime() {
-        return 200;//time;
     }
 }
