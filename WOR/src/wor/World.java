@@ -17,6 +17,7 @@ public class World extends JFrame {
     private final JButton btUp, btDown, btLeft, btRight, btExplore, btTake, btJournal, btInventory, btHelp, btAccuse; //btSPeak
     private final JPanel bBar, rActions;
     private JLabel cPicture, lMap;
+    private Sounds s;
 
     JTextArea zoneTexte = new JTextArea(7, 52);
 
@@ -246,6 +247,7 @@ public class World extends JFrame {
             if ("barn 2".equals(player1.getCurrentRoom().getRoomName())) {
                 if (player1.getCurrentRoom().getNoir()) {
                     boolean survival = false;
+                    s.playSoundSingle("music/combat.wav");
                     JOptionPane.showMessageDialog(null, "You hear something approaching. It attacks you!",
                             "Ambush", JOptionPane.INFORMATION_MESSAGE);
                     if (!player1.getInventory().ItemsList.isEmpty()) {
@@ -268,6 +270,7 @@ public class World extends JFrame {
                                 + "The blow touched a vital point. "
                                 + "You will not get away this time ...",
                                 "Ambush", JOptionPane.INFORMATION_MESSAGE);
+                        s.playSoundInfinite("music/gadget.wav");
                         InterfaceGameOver theEnd = new InterfaceGameOver();
                         btUp.setEnabled(false);
                         btDown.setEnabled(false);

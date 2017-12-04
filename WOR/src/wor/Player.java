@@ -22,6 +22,7 @@ public class Player extends Character {
     private JFrame frame; // The frame for the code dialog box
     private JLabel label;
     private Icon icon;
+    private Sounds s;
 
     /**
      * Constructor for objects of class Player
@@ -146,6 +147,7 @@ public class Player extends Character {
             testRoom = currentRoom.getRoom(direction);
             if (testRoom.getDoor() != null) {
                 if (testRoom.getDoor().isOpenable() == true) { //if isOpenable -> true if is openable
+                    s.playSoundSingle("music/porte_verrou.wav"); 
                     nextRoom = currentRoom.getRoom(direction);
                 } else {
                     if (testRoom.getDoor().getHaveCodeLock()) { // Door have a code lock

@@ -11,10 +11,14 @@ import java.awt.Color;
  * @author Diane
  */
 public class InterfaceWin {
+    private Sounds s;
+    
    private Icon YouWin;
    // private JLabel myLabelGO ;
 
     public InterfaceWin(){
+       //s.stop();
+       s.playSoundInfinite("music/gadget.wav"); 
        YouWin = new ImageIcon(getClass().getResource("/pictures2/youwin.png"));
         JLabel myLabelGO = new JLabel();
         myLabelGO.setIcon(YouWin);

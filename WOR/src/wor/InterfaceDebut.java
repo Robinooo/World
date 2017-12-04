@@ -52,7 +52,7 @@ import java.awt.*;
    ///////////////////
    private String playerClass;
    private String playerName;
-   
+   private Sounds s;
 
    
 ///////////////////////////////////////////////////////////////
@@ -62,7 +62,9 @@ import java.awt.*;
    
    */
   public InterfaceDebut(){
-       
+            
+      
+      s.playSoundInfinite("music/long.wav");
        this.setTitle("CLUEDO");// Titre
        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        //-----------------------------------------------------------------------

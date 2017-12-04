@@ -8,15 +8,17 @@ package wor;
 
 /**
  *
- * @author Sylvia
+ * @author Group2
  */
 public class WorldMain {
     
-    //private World w;
-    
+    //private World w; 
+        
     public static void main(String[] args) {
         //World w = new World();
-        InterfaceDebut game = new InterfaceDebut(); 
+        
+        InterfaceDebut game = new InterfaceDebut();
+        
     }
  
 }
