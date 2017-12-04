@@ -37,6 +37,7 @@ public class Item {
         this.use = true;
         this.hidden = false; 
         this.imgItem = pitem;
+        this.persupoints = persupoints;
     }
 
     /**
@@ -95,6 +96,16 @@ public class Item {
     public int getPersupoints() {
         return persupoints;
     }      
+        /**
+     * Set if a boolean is useful (false is not useful)
+     *
+     * @param b will be the wanted value for useful (true or false)
+     */
+    public void setPersuasion2(int b) {
+        persupoints = persupoints+b;
+    }
+    
+    
     
     /**
      * The getImageItem method gets the image associated to the item.

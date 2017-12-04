@@ -65,7 +65,7 @@ public class Talking extends Character {
      * if the player's persuasion rate is high
      */
     public String talk(int persuasion) {
-        if (persuasion > 16){
+        if (persuasion < 45){
             return getspeach1(); // Depending of the persuasion points
         } else {
             return getspeach2(); // Depending of the persuasion points

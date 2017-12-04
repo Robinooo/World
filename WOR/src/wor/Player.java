@@ -119,7 +119,7 @@ public class Player extends Character {
             for (int i = 0; i < currentRoom.listItem.size(); i++) {
                 inv.addItems(currentRoom.getItem(i));
                 setPersuasion(currentRoom.getItem(i).getPersupoints()); // add the persuasion points associated with the item to the player
-
+                //setPersuasion(5);
                 zoneTexte.append(currentRoom.getItem(i).getDescription() + "\n ");
                 note.addText(currentRoom.getItem(i).getDescription() + "\n");
                 currentRoom.listItem.remove(i);
@@ -136,7 +136,7 @@ public class Player extends Character {
      * @param direction : north, east... Represents the direction of the
      * movement of the player
      */
-    public void move(String direction) {
+public void move(String direction) {
 
         Room nextRoom = null;
         Room testRoom = null; // Room to try the door of a room 
@@ -161,9 +161,11 @@ public class Player extends Character {
                                         break;
                                     } else {
                                         nextRoom = currentRoom;
+                                        putMessageDoor();
                                     }
                                 } else {
                                     nextRoom = currentRoom;
+                                    putMessageDoor();
                                 }
                             }
                         } else {
@@ -181,6 +183,7 @@ public class Player extends Character {
                                     break;
                                 } else {
                                     nextRoom = currentRoom;
+                                    putMessageDoor();
                                 }
                             }
                         } else {
@@ -195,6 +198,7 @@ public class Player extends Character {
             }
         } else {
             nextRoom = currentRoom;
+            putMessageDoor();
         }
         currentRoom = nextRoom;
     }
@@ -301,8 +305,7 @@ public class Player extends Character {
 //        PersuasionBar=k;
 //        }
 //    }
-    public void setTime(Integer ptime) {
-        
+    public void setTime(int ptime) {
         timeBar = timeBar - ptime;
     }
 

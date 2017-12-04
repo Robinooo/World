@@ -17,7 +17,7 @@ public class TimeBar {
      */
     public TimeBar(){
         bar = new JProgressBar();
-        bar.setMaximum(100);
+        bar.setMaximum(200);
         bar.setMinimum(0);
         bar.setStringPainted(true);
         bar.setValue(50);
