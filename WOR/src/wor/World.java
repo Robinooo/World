@@ -270,7 +270,6 @@ public class World extends JFrame {
                                 + "The blow touched a vital point. "
                                 + "You will not get away this time ...",
                                 "Ambush", JOptionPane.INFORMATION_MESSAGE);
-                        s.playSoundInfinite("music/gadget.wav");
                         InterfaceGameOver theEnd = new InterfaceGameOver();
                         btUp.setEnabled(false);
                         btDown.setEnabled(false);
@@ -319,6 +318,23 @@ public class World extends JFrame {
                     "Black room", JOptionPane.INFORMATION_MESSAGE);
             btExplore.setEnabled(false);
         }
+        
+        if ("kiosk".equals(player1.getCurrentRoom().getRoomName())
+                ||"garden".equals(player1.getCurrentRoom().getRoomName())
+                ||"veranda".equals(player1.getCurrentRoom().getRoomName())
+                ||"corridor1".equals(player1.getCurrentRoom().getRoomName())
+                ||"corridor2".equals(player1.getCurrentRoom().getRoomName())
+                ||"corridor3".equals(player1.getCurrentRoom().getRoomName()) 
+                ||"corridor8".equals(player1.getCurrentRoom().getRoomName())
+                ||"corridor11".equals(player1.getCurrentRoom().getRoomName())
+                ||"corridor12".equals(player1.getCurrentRoom().getRoomName())
+                ||"corridor17".equals(player1.getCurrentRoom().getRoomName())) 
+        {s.playSoundSingle("music/birds.wav");}
+        
+        if ("fountain".equals(player1.getCurrentRoom().getRoomName())) {
+            s.playSoundSingle("music/source.wav");}
+
+            
         co.removeAll();
         co.setIcon(player1.getCurrentRoom().getImage());
         co.setLayout(new BorderLayout());

@@ -5,6 +5,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Color; 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 /**
  *
@@ -12,12 +14,14 @@ import java.awt.Color;
  */
 public class InterfaceWin {
     private Sounds s;
+    private static Clip clip;
+    private Icon YouWin;
     
-   private Icon YouWin;
-   // private JLabel myLabelGO ;
-
     public InterfaceWin(){
-       //s.stop();
+       //AudioSystem.getClip("music/long.wav");
+       //clip.stop("music/long.wav");
+      //s.stop();
+       
        s.playSoundInfinite("music/gadget.wav"); 
        YouWin = new ImageIcon(getClass().getResource("/pictures2/youwin.png"));
         JLabel myLabelGO = new JLabel();

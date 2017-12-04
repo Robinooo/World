@@ -17,9 +17,11 @@ import java.awt.Color;
  */
 public class InterfaceGameOver {
     private Icon testGameOver;
+    private Sounds s;
    // private JLabel myLabelGO ;
 
     public InterfaceGameOver(){
+        s.playSoundInfinite("music/gadget.wav"); 
        testGameOver = new ImageIcon(getClass().getResource("/pictures2/gameover.png"));
         JLabel myLabelGO = new JLabel();
         myLabelGO.setIcon(testGameOver);
