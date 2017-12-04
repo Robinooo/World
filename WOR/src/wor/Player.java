@@ -161,9 +161,11 @@ public class Player extends Character {
                                         break;
                                     } else {
                                         nextRoom = currentRoom;
+                                        putMessageDoor();
                                     }
                                 } else {
                                     nextRoom = currentRoom;
+                                    putMessageDoor();
                                 }
                             }
                         } else {
@@ -181,6 +183,7 @@ public class Player extends Character {
                                     break;
                                 } else {
                                     nextRoom = currentRoom;
+                                    putMessageDoor();
                                 }
                             }
                         } else {
@@ -195,6 +198,7 @@ public class Player extends Character {
             }
         } else {
             nextRoom = currentRoom;
+            putMessageDoor();
         }
         currentRoom = nextRoom;
     }
