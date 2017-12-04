@@ -106,7 +106,7 @@ public class Room
 
          
     /**
-     * @return boolean if there is gaz in the room
+     * @return boolean if there is gas in the room
      */
     public boolean getGaz()
     {

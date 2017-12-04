@@ -36,8 +36,8 @@ public class PersuasionBar {
     }
     
     public void colorBar(){
-        if (bar.getValue() >59 ){
-            bar.setForeground(Color.red);
+        if (bar.getValue() >45 ){
+            bar.setForeground(Color.orange);
         }else{
             bar.setForeground(Color.blue);
         }

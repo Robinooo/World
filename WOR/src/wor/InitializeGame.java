@@ -475,23 +475,23 @@ public class InitializeGame {
         hall.addCharacter(inspecteur);
 
         //Creation of weapons
-        rope = new Item("rope","You found a rope on a stool. This is clearly not the murder weapon. However, someone might have thought about suicide, remorse maybe …",2, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
+        rope = new Item("rope","You found a rope on a stool. This is clearly not the murder weapon. However, someone might have thought about suicide, remorse maybe …",6, new ImageIcon(getClass().getResource("/picturesitems/rope.png")));
         rope.setUse(false); // this item is not usable by the player
-        dagger = new Item("dagger","You found a nicely decorated dagger. You question yourself on its presence inside the veranda. But you remind that there were no cutoff marks on the victim. There may be other crimes to come...",2, new ImageIcon(getClass().getResource("/picturesitems/dagger.png")));
+        dagger = new Item("dagger","You found a nicely decorated dagger. You question yourself on its presence inside the veranda. But you remind that there were no cutoff marks on the victim. There may be other crimes to come...",6, new ImageIcon(getClass().getResource("/picturesitems/dagger.png")));
         dagger.setUse(false);
         dagger.setHidden(true);
-        ironBar = new Item("ironBar","You found a quite impressive iron bare. Exactly the kind of thing that can knock out someone. Or worst. ",2, new ImageIcon(getClass().getResource("/picturesitems/ironbar.png")));
+        ironBar = new Item("ironBar","You found a quite impressive iron bare. Exactly the kind of thing that can knock out someone. Or worst. ",6, new ImageIcon(getClass().getResource("/picturesitems/ironbar.png")));
         ironBar.setUse(false);
-        revolver = new Item("revolver","Hidden into a desk drawer, you found a Revolver with only one bullet in the chamber. Maybe the one that you will keep for Ms Pervenche murderer.",2, new ImageIcon(getClass().getResource("/picturesitems/revolver.png")));
+        revolver = new Item("revolver","Hidden into a desk drawer, you found a Revolver with only one bullet in the chamber. Maybe the one that you will keep for Ms Pervenche murderer.",6, new ImageIcon(getClass().getResource("/picturesitems/revolver.png")));
         revolver.setHidden(true); // the revovler is hidden in the room
         revolver.setUse(false);
-        candlestick = new Item("candlestick","You found a dusty candlestick. Perfect for a candlelit dinner with Miss Prunelle once this case solved. The duty before everything !",2, new ImageIcon(getClass().getResource("/picturesitems/candelstick.png")));
+        candlestick = new Item("candlestick","You found a dusty candlestick. Perfect for a candlelit dinner with Miss Prunelle once this case solved. The duty before everything !",6, new ImageIcon(getClass().getResource("/picturesitems/candelstick.png")));
         candlestick.setUse(false);
-        wrench = new Item("wrench","You found a wrench. Its implication into the murder seems unlikely. However, you have a sink that has a leakage back home, this might help you to fix it.",2, new ImageIcon(getClass().getResource("/picturesitems/wrench.png")));
+        wrench = new Item("wrench","You found a wrench. Its implication into the murder seems unlikely. However, you have a sink that has a leakage back home, this might help you to fix it.",6, new ImageIcon(getClass().getResource("/picturesitems/wrench.png")));
         wrench.setUse(false);
-        poison = new Item("poison","You found an half empty flask that contains a suspicious liquid. POISON ! This might be the murder weapon, but who would be perfidious enough to use it …",5, new ImageIcon(getClass().getResource("/picturesitems/poison.png")));
+        poison = new Item("poison","You found an half empty flask that contains a suspicious liquid. POISON ! This might be the murder weapon, but who would be perfidious enough to use it …",15, new ImageIcon(getClass().getResource("/picturesitems/poison.png")));
         poison.setUse(false);
-        axe = new Item("axe","You found an axe. It reminds you your childhood with your father, who was a lumberjack. You focus and notice that there is no blood on it. On one hand, it would be very barbaric to kill someone with an axe...",2, new ImageIcon(getClass().getResource("/picturesitems/axe.png")));
+        axe = new Item("axe","You found an axe. It reminds you your childhood with your father, who was a lumberjack. You focus and notice that there is no blood on it. On one hand, it would be very barbaric to kill someone with an axe...",6, new ImageIcon(getClass().getResource("/picturesitems/axe.png")));
         axe.setUse(false);
         shield = new Item("Shield","You find a shield. The murderer is still in the mansion, it is better to take something to protect himself.",0, new ImageIcon(getClass().getResource("/picturesitems/shield.jpg")));
         shield.setUse(false);
@@ -506,7 +506,7 @@ public class InitializeGame {
         keyDiningRoom = new Item ("Keydining","You found the dining room’s key. Stroke of luck, the dining room and the living room are communicating rooms !",0, new ImageIcon(getClass().getResource("/picturesitems/key4.png")));
         keyDiningRoom.setHidden(true);
         
-        codeOffice = new Item ("Codeoffice","You found a 4 digits code (4 4 4 4). It looks like they does not bother that much about security here.",1, new ImageIcon(getClass().getResource("/picturesitems/code.png")));
+        codeOffice = new Item ("Codeoffice","You found a 4 digits code (4 4 4 4). It looks like they does not bother that much about security here.",0, new ImageIcon(getClass().getResource("/picturesitems/code.png")));
         codeOffice.setHidden(true);
         codeKitchen = new Item ("Codekitchen", "You found a 17 digits code. Yes, that is possible. Good luck to memorise the combination of the kitchen’s door.",0, new ImageIcon(getClass().getResource("/picturesitems/code2.png")));
         codeKitchen.setHidden(true);
@@ -517,10 +517,10 @@ public class InitializeGame {
         gasMask = new Item ("Gas Mask","You found a gas mask from the second world war. Why it is here ? Nevermind, it can be useful at some point.",0, new ImageIcon(getClass().getResource("/picturesitems/gas.png")));
             
         // Creation of clues
-        footPrints = new Item ("Foot prints","You noticed footprints on the ground, from two people. It seems that they were walking towards the garden...",1, new ImageIcon(getClass().getResource("/picturesitems/foot.png")));
-        scarf = new Item ("Scarf","A soft cashmere scarf, color periwinkle, does not fool anyone on the identity of its owner. How did Ms Pervenche lose it ...?",1, new ImageIcon(getClass().getResource("/picturesitems/scarf.png")));
-        clothSoaked = new Item ("Soaked cloth","You found a cloth soaked in red wine. This reminds you arguing with your wife on Valentine’s Day…",5, new ImageIcon(getClass().getResource("/picturesitems/wine.png")));
-        hippocraticOath = new Item("Hippocatric Oath","You found a piece of the Hippocratic Oath. That is strange...",5, new ImageIcon(getClass().getResource("/picturesitems/Hippocrate.png")));
+        footPrints = new Item ("Foot prints","You noticed footprints on the ground, from two people. It seems that they were walking towards the garden...",3, new ImageIcon(getClass().getResource("/picturesitems/foot.png")));
+        scarf = new Item ("Scarf","A soft cashmere scarf, color periwinkle, does not fool anyone on the identity of its owner. How did Ms Pervenche lose it ...?",3, new ImageIcon(getClass().getResource("/picturesitems/scarf.png")));
+        clothSoaked = new Item ("Soaked cloth","You found a cloth soaked in red wine. This reminds you arguing with your wife on Valentine’s Day…",15, new ImageIcon(getClass().getResource("/picturesitems/wine.png")));
+        hippocraticOath = new Item("Hippocatric Oath","You found a piece of the Hippocratic Oath. That is strange...",15, new ImageIcon(getClass().getResource("/picturesitems/Hippocrate.png")));
         hippocraticOath.setHidden(true);
 
         // Add the items into the rooms  
@@ -559,11 +559,11 @@ public class InitializeGame {
         inventory.addItems(gasMask);
         
         if (playerClass == "Gadget") {
-            player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 100);
+            player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 200);
         } else if (playerClass == "Colombo") {
-            player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 90);
+            player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 150);
         } else {
-            player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 75);
+            player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 120);
         }
        
        

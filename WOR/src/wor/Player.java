@@ -119,7 +119,7 @@ public class Player extends Character {
             for (int i = 0; i < currentRoom.listItem.size(); i++) {
                 inv.addItems(currentRoom.getItem(i));
                 setPersuasion(currentRoom.getItem(i).getPersupoints()); // add the persuasion points associated with the item to the player
-
+                //setPersuasion(5);
                 zoneTexte.append(currentRoom.getItem(i).getDescription() + "\n ");
                 note.addText(currentRoom.getItem(i).getDescription());
                 currentRoom.listItem.remove(i);
@@ -136,7 +136,7 @@ public class Player extends Character {
      * @param direction : north, east... Represents the direction of the
      * movement of the player
      */
-    public void move(String direction) {
+    public void move(String direction, JTextArea zoneTexte) {
 
         Room nextRoom = null;
         Room testRoom = null; // Room to try the door of a room 
@@ -155,7 +155,7 @@ public class Player extends Character {
                             if (test) { // Try each object from the inventory -> return true if the door is unlock
                                 testRoom.getDoor().setOpenable(true);
                                 nextRoom = currentRoom.getRoom(direction);
-                                setTime(2);
+                                setTime(1);
                             } else {
                                 nextRoom = currentRoom;
                             }
@@ -293,7 +293,7 @@ public class Player extends Character {
 //        PersuasionBar=k;
 //        }
 //    }
-    public void setTime(Integer ptime) {
+    public void setTime(int ptime) {
         timeBar = timeBar - ptime;
     }
 

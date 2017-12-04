@@ -68,9 +68,10 @@ public class Talking extends Character {
 
     /**
      * Display the 2 speaches of the talking
+     * @param persuasion corresponds to the persuasion points that the player has gather during the course of the game. 
      */
     public String talk(int persuasion) {
-        if (persuasion > 16){
+        if (persuasion < 45){
             return getspeach1(); // Depending of the persuasion points
         } else {
             return getspeach2(); // Depending of the persuasion points

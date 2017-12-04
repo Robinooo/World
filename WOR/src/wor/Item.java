@@ -34,6 +34,7 @@ public class Item {
         this.use = true;
         this.hidden = false;
         this.imgItem = pitem;
+        this.persupoints = persupoints;
     }
 
     /**
@@ -74,7 +75,7 @@ public class Item {
     }
 
     /**
-     * Set if a boolean is usefull (false is not usefull)
+     * Set if a boolean is useful (false is not useful)
      *
      * @param b will be the wanted value for useful (true or false)
      */
@@ -89,6 +90,16 @@ public class Item {
     public int getPersupoints() {
         return persupoints;
     }      
+        /**
+     * Set if a boolean is useful (false is not useful)
+     *
+     * @param b will be the wanted value for useful (true or false)
+     */
+    public void setPersuasion2(int b) {
+        persupoints = persupoints+b;
+    }
+    
+    
     public Icon getImageItem() {
         return imgItem;
     }

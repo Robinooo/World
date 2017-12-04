@@ -281,7 +281,7 @@ public class World extends JFrame {
                     btExplore.setEnabled(true);
                 }
             }
-            player1.move("right");
+            player1.move("right", zoneTexte);
             if ("office".equals(player1.getCurrentRoom().getRoomName())) {
                 if (player1.getCurrentRoom().getNoir()) {
                     btExplore.setEnabled(false);
@@ -391,7 +391,7 @@ public class World extends JFrame {
                 btExplore.setEnabled(true);
             }
         }
-        player1.move("left");
+        player1.move("left", zoneTexte);
         if ("hall".equals(player1.getCurrentRoom().getRoomName())) {
             btAccuse.setEnabled(true);
         } else {
@@ -429,7 +429,7 @@ public class World extends JFrame {
     );
     btUp.addActionListener (ae  
         -> {
-            player1.move("up");
+            player1.move("up", zoneTexte);
         if ("hall".equals(player1.getCurrentRoom().getRoomName())) {
             btAccuse.setEnabled(true);
         } else {
@@ -467,7 +467,7 @@ public class World extends JFrame {
     );
     btDown.addActionListener (ae  
         -> {
-            player1.move("down");
+            player1.move("down", zoneTexte);
         if (player1.getCurrentRoom().getGaz()) {
             JOptionPane.showMessageDialog(null, "The room is full of gas. Without protection you will quickly suffocate.",
                     "Gas", JOptionPane.INFORMATION_MESSAGE);
