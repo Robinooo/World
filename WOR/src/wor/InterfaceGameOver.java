@@ -13,22 +13,21 @@ import java.awt.Color;
 
 /**
  *
- * @author Sylvia
+ * @author Diane
  */
 public class InterfaceGameOver {
     private Icon testGameOver;
    // private JLabel myLabelGO ;
 
     public InterfaceGameOver(){
-       testGameOver = new ImageIcon(getClass().getResource("/pictures2/gameover.jpg"));
+       testGameOver = new ImageIcon(getClass().getResource("/pictures2/gameover.png"));
         JLabel myLabelGO = new JLabel();
         myLabelGO.setIcon(testGameOver);
         JFrame frame2 = new JFrame("Game Over");
-        frame2.setSize(865, 575);
-        frame2.add(myLabelGO);
-        //Définition de sa couleur de fond
-        frame2.setBackground(Color.ORANGE);
+        frame2.setSize(900, 900);
         frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame2.setLocationRelativeTo(null);
+        frame2.add(myLabelGO);
         frame2.setVisible(true);      
     }
 

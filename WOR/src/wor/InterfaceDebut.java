@@ -288,8 +288,8 @@ import java.awt.*;
       {   
           playerName = fieldName.getText();
           if (!fieldName.getText().isEmpty()) {
-          InitializeGame g = new InitializeGame(playerClass,playerName);
-          this.dispose();}
+          InitializeGame g = new InitializeGame(playerClass,playerName.toUpperCase());
+          this.dispose();} else {JOptionPane.showMessageDialog(null,"Please insert a name.","Name",JOptionPane.INFORMATION_MESSAGE);}
           
           
       }

@@ -228,13 +228,11 @@ public class Player extends Character {
 
         } else if (currentRoom.getFollowerInTheRoom() != null) {
             setTime(2);
-            setPersuasion(5);
             zoneTexte.setText(currentRoom.getFollowerInTheRoom().follow2(persuasionBar) + "\n"); }
         
         else {
             //setTime(5);
             setTime(2);
-            setPersuasion(5);
             zoneTexte.setText(currentRoom.getTalkingInTheRoom().talk(persuasionBar) + "\n");
         } 
 
