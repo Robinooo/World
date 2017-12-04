@@ -315,7 +315,7 @@ public class InitializeGame {
         kitchen.setExit("up", corridor18);
 
         // Creation of the characters   
-        clnMoutarde = new Talking("Yesterday I went to have dinner early and saw the Dr. Violet with a bottle of wine in his hand ..", "On the one hand, it didn’t shock me: he's a lover of good wine…  Looking back, when I hailed him he looked restless, as if something had happened... ", "Colonel Moutarde");
+        clnMoutarde = new Talking("Yesterday I went to have dinner early and saw the Dr. Violet with a bottle of wine in his hand ..", "Yesterday I went to have dinner early and saw the Dr. Violet with a bottle of wine in his hand .. \n On the one hand, it didn’t shock me: he's a lover of good wine…  Looking back, when I hailed him he looked restless, as if something had happened... ", "Colonel Moutarde");
         missRose = new Talking("I just came here to have a quiet weekend. I never thought that something so dramatic could happened …", "When I think about it, Madam Pervenche seemed to be dating someone in the mansion, I never knew who it was…", "miss Rose");
         prOlive = new Talking("What happened really cut my appetite ... Too bad.. they served lobster this afternoon!", "Mrs. Pervenche? Yes it's true she was cute but unfortunately for her not my style at all..", "Professeur Olive");
         missLeblanc = new Talking("I wasn’t feeling good yesterday after dinner. I went upstairs in my room and I spent the evening and night there. I needed some rest.. and that’s why I’m having a walk in the garden now.", "Mme Pervenche? A good old friend ! I know she wasn’t having a good feeling with Reverend Olive for few days.. too bad he is such a magnificent man...", "miss Leblanc");
