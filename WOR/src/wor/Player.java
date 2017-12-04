@@ -1,7 +1,6 @@
 package wor;
 
 import javax.swing.*;
-import java.awt.*;
 
 /**
  * This class represents the player, who can move, interact with characters and
@@ -169,6 +168,7 @@ public void move(String direction) {
                             }
                         } else {
                             nextRoom = currentRoom;
+                            putMessageDoor();
                         }
                     } 
                     else { // Door have a key Lock
@@ -185,6 +185,7 @@ public void move(String direction) {
                             }
                         } else {
                             nextRoom = currentRoom;
+                            putMessageDoor();
                         }
                     }
                 }
@@ -244,10 +245,7 @@ public void move(String direction) {
             zoneTexte.setText(currentRoom.getTalkingInTheRoom().talk(persuasionBar) + "\n");
             note.addText(currentRoom.getTalkingInTheRoom().getName() + " : " + currentRoom.getTalkingInTheRoom().talk(persuasionBar) + "\n");
         } 
-
-        
-        
-        
+ 
     }
 
     public int getPersuasion() {
@@ -312,7 +310,21 @@ public void move(String direction) {
     void setLabel(String newText) {
         label.setText(newText);
     }
-
+    
+    /**
+     * Print a message to  say a door is close
+     */
+    public void putMessageDoor(){
+        JOptionPane.showMessageDialog(frame,
+                "Sorry, but this door is close\n and you don't have the key or the code",
+                "Door",
+                JOptionPane.INFORMATION_MESSAGE);
+    }
+        
+    /**
+     * 
+     * @return 
+     */
     private String dialogCodeInput() {
         //System.out.println("Test");
         String s = (String) JOptionPane.showInputDialog(
