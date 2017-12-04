@@ -129,7 +129,7 @@ public class World extends JFrame {
         Time.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 15));
         Time.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        JLabel Life = new JLabel("Vie : ");
+        JLabel Life = new JLabel("Life Points : ");
         Life.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 15));
         Life.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
