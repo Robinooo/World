@@ -35,9 +35,7 @@ public class World extends JFrame {
      * @param playerClass
      * @param playerName
      */
-    public World(Player player1, NoteBook notebook, String playerClass, JButton btTest,
-            JButton btTest2, JButton btTest3, JButton btTest4, JButton btTest5, JButton btTest6,
-            JButton btTest7, JButton btTest8, JButton btTest9, JButton btTest10, JButton btTest11) {
+    public World(Player player1, NoteBook notebook, String playerClass, ArrayList <Room> listRoom) {
 
         // Setting the Journal Frame, where all the text from the notebook is displayed
         journalFrame = new JFrame();
@@ -337,6 +335,7 @@ public class World extends JFrame {
         this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
         btTake.setEnabled(false);
         tBar.setValueBar(player1.getTime());
+        lBar.setValueBar(player1.getLife());
         if (player1.getTime() == 0 | player1.getLife() == 0) {
             InterfaceGameOver go = new InterfaceGameOver();
             btUp.setEnabled(false);
@@ -347,7 +346,6 @@ public class World extends JFrame {
             btHelp.setEnabled(false);
             btAccuse.setEnabled(false);
         }
-
     }
 
     );
@@ -416,6 +414,7 @@ public class World extends JFrame {
         this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
         btTake.setEnabled(false);
         tBar.setValueBar(player1.getTime());
+        lBar.setValueBar(player1.getLife());
         if (player1.getTime() <= 0 | player1.getLife() <= 0) {
             InterfaceGameOver go = new InterfaceGameOver();
             btUp.setEnabled(false);
@@ -454,6 +453,7 @@ public class World extends JFrame {
         this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
         btTake.setEnabled(false);
         tBar.setValueBar(player1.getTime());
+        lBar.setValueBar(player1.getLife());
         if (player1.getTime() <= 0 | player1.getLife() <= 0) {
             InterfaceGameOver go = new InterfaceGameOver();
             btUp.setEnabled(false);
@@ -518,7 +518,7 @@ public class World extends JFrame {
         this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
         btTake.setEnabled(false);
         tBar.setValueBar(player1.getTime());
-
+        lBar.setValueBar(player1.getLife());
         if (player1.getTime() <= 0 | player1.getLife() <= 0) {
             InterfaceGameOver go = new InterfaceGameOver();
             btUp.setEnabled(false);
@@ -572,141 +572,23 @@ public class World extends JFrame {
 
     );
 
-    btTest.addActionListener (ae  
-        -> {
+    for(int i = 0; i < listRoom.size(); i++)
+          {
+              if (listRoom.get(i).getButton() != null){
+            listRoom.get(i).getButton().addActionListener(ae -> 
+            {
+
             player1.speak(zoneTexte);
-        player1.getTime();
-        btTake.setEnabled(false);
-        pBar.setValueBar(player1.getPersuasion());
-        tBar.setValueBar(player1.getTime());
-        lBar.setValueBar(player1.getLife());
-
-    }
-
-    );
-
-    btTest2.addActionListener (ae  
-        -> {
-            player1.speak(zoneTexte);
-        player1.getTime();
-        btTake.setEnabled(false);
-        pBar.setValueBar(player1.getPersuasion());
-        tBar.setValueBar(player1.getTime());
-        lBar.setValueBar(player1.getLife());
-    }
-
-    );
-
-    btTest3.addActionListener (ae  
-        -> {
-            player1.speak(zoneTexte);
-        player1.getTime();
-        btTake.setEnabled(false);
-        pBar.setValueBar(player1.getPersuasion());
-        tBar.setValueBar(player1.getTime());
-        lBar.setValueBar(player1.getLife());
-    }
-
-    );
-    btTest4.addActionListener (ae  
-        -> {
-            player1.speak(zoneTexte);
-        player1.getTime();
-        btTake.setEnabled(false);
-        pBar.setValueBar(player1.getPersuasion());
-        tBar.setValueBar(player1.getTime());
-        lBar.setValueBar(player1.getLife());
-
-    }
-
-    );
-
-    btTest5.addActionListener (ae  
-        -> {
-            player1.speak(zoneTexte);
-        player1.getTime();
-        btTake.setEnabled(false);
-        pBar.setValueBar(player1.getPersuasion());
-        tBar.setValueBar(player1.getTime());
-        lBar.setValueBar(player1.getLife());
-    }
-
-    );
-
-    btTest6.addActionListener (ae  
-        -> {
-            player1.speak(zoneTexte);
-        player1.getTime();
-        btTake.setEnabled(false);
-        pBar.setValueBar(player1.getPersuasion());
-        tBar.setValueBar(player1.getTime());
-        lBar.setValueBar(player1.getLife());
-    }
-
-    );
-
-    btTest7.addActionListener (ae  
-        -> {
-            player1.speak(zoneTexte);
-        player1.getTime();
-        btTake.setEnabled(false);
-        pBar.setValueBar(player1.getPersuasion());
-        tBar.setValueBar(player1.getTime());
-        lBar.setValueBar(player1.getLife());
-
-    }
-
-    );
-
-    btTest8.addActionListener (ae  
-        -> {
-            player1.speak(zoneTexte);
-        player1.getTime();
-        btTake.setEnabled(false);
-        pBar.setValueBar(player1.getPersuasion());
-        tBar.setValueBar(player1.getTime());
-        lBar.setValueBar(player1.getLife());
-    }
-
-    );
-
-    btTest9.addActionListener (ae  
-        -> {
-            player1.speak(zoneTexte);
-        player1.getTime();
-        btTake.setEnabled(false);
-        pBar.setValueBar(player1.getPersuasion());
-        tBar.setValueBar(player1.getTime());
-        lBar.setValueBar(player1.getLife());
-    }
-
-    );
-
-    btTest10.addActionListener (ae  
-        -> {
-            player1.speak(zoneTexte);
-        player1.getTime();
-        btTake.setEnabled(false);
-        pBar.setValueBar(player1.getPersuasion());
-        tBar.setValueBar(player1.getTime());
-        lBar.setValueBar(player1.getLife());
-
-    }
-
-    );
-
-    btTest11.addActionListener (ae  
-        -> {
-            player1.speak(zoneTexte);
-        player1.getTime();
-        btTake.setEnabled(false);
-        pBar.setValueBar(player1.getPersuasion());
-        tBar.setValueBar(player1.getTime());
-        lBar.setValueBar(player1.getLife());
-
-    }
-
-    );
+            player1.getTime();
+            btTake.setEnabled(false);
+            pBar.setValueBar(player1.getPersuasion());
+            tBar.setValueBar(player1.getTime());
+            lBar.setValueBar(player1.getLife());
+            }
+            );}
+           
+          }
+    
 
         // Setting the Journal Frame
     btJournal.addActionListener (ae  

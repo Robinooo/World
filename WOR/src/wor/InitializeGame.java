@@ -24,6 +24,8 @@ public class InitializeGame {
             corridor3, corridor4, corridor5, corridor6, corridor7, corridor8, corridor9, corridor10, corridor11,
             corridor12, corridor13, corridor14, corridor15, corridor16, corridor17, corridor18;
 
+    private ArrayList <Room> listRoom;
+    
     private final Door libraryDoor, officeDoor, verandaDoor, barn3Door, smallHallDoor, poolRoomDoor, kitchenDoor, diningRoomDoor, livingRoomDoor;
 
     private final KeyLock libraryKey, verandaKey, livingRoomKey, diningRoomKey;
@@ -193,7 +195,27 @@ public class InitializeGame {
         corridor17 = new Room("corridor 17", "A simple corridor", null, imagecorridor17, mapimagecorridor17);
         corridor18 = new Room("corridor 18", "A simple corridor", null, imagecorridor18, mapimagecorridor18);
 
-      
+        //Create room list
+        
+        ArrayList <Room> listRoom = new ArrayList <Room>() ;
+        
+        listRoom.add(fountain);
+        listRoom.add(library);
+        listRoom.add(poolRoom);
+        listRoom.add(office);
+        listRoom.add(veranda);
+        listRoom.add(barn1);
+        listRoom.add(barn2);
+        listRoom.add(barn2);
+        listRoom.add(barn3);
+        listRoom.add(garden);
+        listRoom.add(hall);
+        listRoom.add(smallHall);
+        listRoom.add(kiosk);
+        listRoom.add(livingRoom);
+        listRoom.add(diningRoom);
+        listRoom.add(kitchen);
+        listRoom.add(corridor11);
         
         
         // Creation of the exits in the rooms
@@ -568,7 +590,7 @@ public class InitializeGame {
        
        
         
-        World w = new World(player1,notebook,playerClass, btTest, btTest2, btTest3,btTest4,btTest5,btTest6,btTest7,btTest8,btTest9,btTest10,btTest11);
+        World w = new World(player1,notebook,playerClass, listRoom);
 
 }
    
