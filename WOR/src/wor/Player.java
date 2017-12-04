@@ -121,7 +121,7 @@ public class Player extends Character {
                 setPersuasion(currentRoom.getItem(i).getPersupoints()); // add the persuasion points associated with the item to the player
 
                 zoneTexte.append(currentRoom.getItem(i).getDescription() + "\n ");
-                note.addText(currentRoom.getItem(i).getDescription());
+                note.addText(currentRoom.getItem(i).getDescription() + "\n");
                 currentRoom.listItem.remove(i);
                 i--;
             }
@@ -233,15 +233,17 @@ public class Player extends Character {
         if (currentRoom.getTalkingInTheRoom() == null) {
             setTime(2);
             zoneTexte.setText("There is no one to talk to here, you think about talking to yourself and loose 5 minutes of your precious time \n");
-
-        } else if (currentRoom.getFollowerInTheRoom() != null) {
+        } 
+        else if (currentRoom.getFollowerInTheRoom() != null) {
             setTime(2);
-            zoneTexte.setText(currentRoom.getFollowerInTheRoom().follow2(persuasionBar) + "\n"); }
-        
+            zoneTexte.setText(currentRoom.getFollowerInTheRoom().follow2(persuasionBar) + "\n"); 
+            note.addText(currentRoom.getFollowerInTheRoom().getName() + " : " + currentRoom.getFollowerInTheRoom().follow2(persuasionBar) + "\n");
+        }
         else {
             //setTime(5);
             setTime(2);
             zoneTexte.setText(currentRoom.getTalkingInTheRoom().talk(persuasionBar) + "\n");
+            note.addText(currentRoom.getTalkingInTheRoom().getName() + " : " + currentRoom.getTalkingInTheRoom().talk(persuasionBar) + "\n");
         } 
  
     }

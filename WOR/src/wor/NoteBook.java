@@ -25,6 +25,7 @@ public class NoteBook {
      * This method allows the user to add text in the notebook. A text is added 
      * after the text that is already present in the notebook, with a line break 
      * between the two.
+     * @param note, the note to add to the notebook
      */
     public void addText(String note) {
             pnote = pnote + note + "\n";

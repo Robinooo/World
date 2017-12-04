@@ -27,6 +27,8 @@ public class World extends JFrame {
 
     private Icon pImg, tImg, lImg, pic1, pic2, pic3;
     private JPanel myPanelBar;
+    
+    private JPanel journalPanel;
 
     // instance variables - replace the example below with your own
     /**
@@ -39,13 +41,20 @@ public class World extends JFrame {
 
         // Setting the Journal Frame, where all the text from the notebook is displayed
         journalFrame = new JFrame();
+        journalPanel = new JPanel();
+        journalPanel.setName("Notebook");
+        journalPanel.setLayout(new BorderLayout());
+        JTextArea textJournal = new JTextArea();
+        journalPanel.add(textJournal);
+        JScrollPane jScrollPane = new JScrollPane(journalPanel);
+        jScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        journalFrame.getContentPane().add(jScrollPane);
+        
         journalFrame.setTitle("Notebook");
         journalFrame.setSize(900, 200);
         journalFrame.setLocationRelativeTo(null);
-        JTextArea textJournal = new JTextArea();
         textJournal.setEditable(false);
         textJournal.setLineWrap(true);
-        journalFrame.add(textJournal);
 
         JLabel co = new JLabel(new ImageIcon(getClass().getResource("/pictures2/hall.png")));
         co.setLayout(new BorderLayout());
@@ -67,7 +76,6 @@ public class World extends JFrame {
 
         rActions = new JPanel();
         rActions.setLayout(new GridLayout(5, 1));
-        //btSpeak = new JButton("Speak");
         btExplore = new JButton("Explore");
         btTake = new JButton("Take");
         btTake.setEnabled(false);
@@ -268,7 +276,6 @@ public class World extends JFrame {
                                 + "The blow touched a vital point. "
                                 + "You will not get away this time ...",
                                 "Ambush", JOptionPane.INFORMATION_MESSAGE);
-                        s.playSoundInfinite("music/gadget.wav");
                         InterfaceGameOver theEnd = new InterfaceGameOver();
                         btUp.setEnabled(false);
                         btDown.setEnabled(false);
@@ -317,6 +324,23 @@ public class World extends JFrame {
                     "Black room", JOptionPane.INFORMATION_MESSAGE);
             btExplore.setEnabled(false);
         }
+        
+        if ("kiosk".equals(player1.getCurrentRoom().getRoomName())
+                ||"garden".equals(player1.getCurrentRoom().getRoomName())
+                ||"veranda".equals(player1.getCurrentRoom().getRoomName())
+                ||"corridor1".equals(player1.getCurrentRoom().getRoomName())
+                ||"corridor2".equals(player1.getCurrentRoom().getRoomName())
+                ||"corridor3".equals(player1.getCurrentRoom().getRoomName()) 
+                ||"corridor8".equals(player1.getCurrentRoom().getRoomName())
+                ||"corridor11".equals(player1.getCurrentRoom().getRoomName())
+                ||"corridor12".equals(player1.getCurrentRoom().getRoomName())
+                ||"corridor17".equals(player1.getCurrentRoom().getRoomName())) 
+        {s.playSoundSingle("music/birds.wav");}
+        
+        if ("fountain".equals(player1.getCurrentRoom().getRoomName())) {
+            s.playSoundSingle("music/source.wav");}
+
+            
         co.removeAll();
         co.setIcon(player1.getCurrentRoom().getImage());
         co.setLayout(new BorderLayout());
@@ -596,6 +620,7 @@ public class World extends JFrame {
             textJournal.setText(notebook.getText());
         journalFrame.setVisible(true);
         journalFrame.setAlwaysOnTop(true);
+        journalPanel.setVisible(true);
         btTake.setEnabled(false);
         tBar.setValueBar(player1.getTime());
 
