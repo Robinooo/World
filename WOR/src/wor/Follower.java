@@ -18,35 +18,25 @@ public class Follower extends Character {
      * @param Speach, the speach of the character 
      * @param n, the name of the character
      */
-    public Follower(String Speach, String n) {
+    public Follower(String sp, String n) {
         name = n;
-        speach = Speach;
+        speach = sp;
     }
 
     /**
      * The follow method allows the user to know if the character is following 
      * the player in the map or not. True if the character is following the player.
+     * @return false if the character does not follow the player
      */
-    public boolean follow() {
-        return false; // the talking character is not following the player
+    public boolean follow(boolean fol) {
+        return fol; // true if the character is following the player
     }
     
     /**
      * The getSpeach1 method gets the speach of the follower. 
      * @return speach, the speach of the character
      */
-    public String getspeach1() {
+    public String getspeach() {
         return speach;
-    }
-    
-    /**
-     * The follow2 method returns the speach of the follower, depending on the 
-     * persuasion points of the player. 
-     * 
-     * @param persuasion
-     * @return getspeach1, the speach of the follower
-     */
-    public String follow2(int persuasion) {
-            return getspeach1(); // Depending of the persuasion points  
     }
 }

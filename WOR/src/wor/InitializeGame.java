@@ -31,7 +31,7 @@ public class InitializeGame {
     private final KeyLock libraryKey, verandaKey, livingRoomKey, diningRoomKey;
     private final CodeLock officeCode, kitchenCode;
 
-    private final Talking clnMoutarde, missRose, prOlive, missLeblanc, generalLegris, misterRouge, countOrange, countnessOrange,inspecteur;
+    private final Talking clnMoutarde, missRose, prOlive, missLeblanc, generalLegris, misterRouge, countOrange, countessOrange,inspecteur;
     private final Killer drViolet;
     private final Follower missPrunelle;
 
@@ -201,7 +201,7 @@ public class InitializeGame {
         
         listRoom.add(fountain);
         listRoom.add(library);
-        listRoom.add(poolRoom);
+//        listRoom.add(poolRoom);
         listRoom.add(office);
         listRoom.add(veranda);
         listRoom.add(barn1);
@@ -344,7 +344,7 @@ public class InitializeGame {
         generalLegris = new Talking("I talked a little bit with Dr. Violet. A great scientist, this man!  Not like that idiot of \"Professor\" Olive …", "I saw someone entering the living room, unfortunately lighting is defective in this room, I could not identify who was coming in. Surely this stupid Professor Olive.", "general Legris");
         misterRouge = new Talking("Mrs. Pervenche was a good friend. We used to have good times together.", "She was supposed to spend the evening with me last night, but she never came ... ", "Mister Rouge");
         countOrange = new Talking("Hello inspector, what do you want?  Yes …  I learned for Mrs. Pervench ... It's very unfortunate. Did you find the murderer ?", "I heard Mrs. Pervenche speak to a man when I was in the living room last night, I think they were in the kiosk at this moment.", "Compte Orange");
-        countnessOrange = new Talking("Me and my husband the Count Orange have been the owner of this hotel for over 20 years and this is the first time such a horrible thing happens! I am taking a deep breath of fresh air in the kiosk to recover from all these emotions.", "Mrs. Pervenche seemed so friendly, resourceful, and early in life! What a pity..", "Comptesse Orange");
+        countessOrange = new Talking("Me and my husband the Count Orange have been the owner of this hotel for over 20 years and this is the first time such a horrible thing happens! I am taking a deep breath of fresh air in the kiosk to recover from all these emotions.", "Mrs. Pervenche seemed so friendly, resourceful, and early in life! What a pity..", "Comptesse Orange");
         inspecteur = new Talking("Blablabla de l'inspecteur","blablabla2","Inspecteur");
 
         drViolet = new Killer("Docteur Violet");
@@ -479,10 +479,7 @@ public class InitializeGame {
        diningRoom.addPanel(panelTest10);
        hall.addButton(btTest11);
        hall.addPanel(panelTest11);
-//        
-        
-        
-        
+      
         // Add the character into rooms
         fountain.addCharacter(missRose);
         library.addCharacter(clnMoutarde);
@@ -491,7 +488,7 @@ public class InitializeGame {
         smallHall.addKiller(drViolet);
         garden.addCharacter(missLeblanc);
         corridor11.addCharacter(countOrange);
-        kiosk.addCharacter(countnessOrange);
+        kiosk.addCharacter(countessOrange);
         livingRoom.addCharacter(prOlive);
         diningRoom.addCharacter(generalLegris);
         hall.addCharacter(inspecteur);
@@ -590,7 +587,7 @@ public class InitializeGame {
        
        
         
-        World w = new World(player1,notebook,playerClass, listRoom);
+        World w = new World(player1,notebook,playerClass, listRoom, btTest2);
 
 }
    

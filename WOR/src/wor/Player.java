@@ -236,10 +236,11 @@ public class Player extends Character {
         } 
         else if (currentRoom.getFollowerInTheRoom() != null) {
             setTime(2);
-            zoneTexte.setText(currentRoom.getFollowerInTheRoom().follow2(persuasionBar) + "\n"); 
-            note.addText(currentRoom.getFollowerInTheRoom().getName() + " : " + currentRoom.getFollowerInTheRoom().follow2(persuasionBar) + "\n");
+            zoneTexte.setText(currentRoom.getFollowerInTheRoom().getspeach() + "\n"); 
+            note.addText(currentRoom.getFollowerInTheRoom().getName() + " : " + currentRoom.getFollowerInTheRoom().getspeach() + "\n");
         }
-        else {
+        else 
+        {
             //setTime(5);
             setTime(2);
             zoneTexte.setText(currentRoom.getTalkingInTheRoom().talk(persuasionBar) + "\n");
@@ -301,6 +302,7 @@ public class Player extends Character {
 //        }
 //    }
     public void setTime(Integer ptime) {
+        
         timeBar = timeBar - ptime;
     }
 

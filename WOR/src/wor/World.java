@@ -37,7 +37,7 @@ public class World extends JFrame {
      * @param playerClass
      * @param playerName
      */
-    public World(Player player1, NoteBook notebook, String playerClass, ArrayList <Room> listRoom) {
+    public World(Player player1, NoteBook notebook, String playerClass, ArrayList <Room> listRoom, JButton btTest2) {
 
         // Setting the Journal Frame, where all the text from the notebook is displayed
         journalFrame = new JFrame();
@@ -601,7 +601,6 @@ public class World extends JFrame {
               if (listRoom.get(i).getButton() != null){
             listRoom.get(i).getButton().addActionListener(ae -> 
             {
-
             player1.speak(zoneTexte);
             player1.getTime();
             btTake.setEnabled(false);
@@ -610,14 +609,26 @@ public class World extends JFrame {
             lBar.setValueBar(player1.getLife());
             }
             );}
-           
           }
+    
+    btTest2.addActionListener (ae -> {
+        player1.setTime(2);
+        zoneTexte.setText(player1.getCurrentRoom().getFollowerInTheRoom().getspeach() + "\n"); 
+        notebook.addText(player1.getCurrentRoom().getFollowerInTheRoom().getName() + " : " + player1.getCurrentRoom().getFollowerInTheRoom().getspeach() + "\n");
+        player1.getTime();
+        btTake.setEnabled(false);
+        pBar.setValueBar(player1.getPersuasion());
+        tBar.setValueBar(player1.getTime());
+        lBar.setValueBar(player1.getLife());
+        player1.getCurrentRoom().getFollowerInTheRoom().follow(true);
+    });
     
 
         // Setting the Journal Frame
     btJournal.addActionListener (ae  
         -> {
-            textJournal.setText(notebook.getText());
+        notebook.addText(player1.getCurrentRoom().getFollowerInTheRoom().getName() + " \n ");
+            textJournal.setText(notebook.getText() + " \n ");
         journalFrame.setVisible(true);
         journalFrame.setAlwaysOnTop(true);
         journalPanel.setVisible(true);

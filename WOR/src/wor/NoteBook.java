@@ -36,6 +36,6 @@ public class NoteBook {
      * @return pnote
      */
     public String getText() {
-        return ("NoteBook : \n" + pnote);
+        return ("NoteBook : \n" + pnote + " \n" );
     }
 }

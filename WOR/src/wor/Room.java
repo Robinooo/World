@@ -1,6 +1,6 @@
 package wor;
 
-import java.awt.Container;
+
 import java.util.*;
 import java.util.HashMap;
 import javax.swing.*;
@@ -157,7 +157,7 @@ public class Room
     public Follower getFollowerInTheRoom(){
         return follower ;
     }
-        
+            
     /**
      * Returns the panel
      * @return panel
