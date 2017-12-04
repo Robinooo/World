@@ -3,7 +3,8 @@ package wor;
 import java.util.ArrayList;
 
 /**
- * The class Inventory allows to manage the player's inventory.
+ * The class Inventory allows to manage the player's inventory. The inventory 
+ * contains all the items of the player, that he found in the different rooms.
  *
  * @author Group 2 - DEGUISE Martin FRICOT Robin DOUMENGE Diane LIEVRE Clémence
  * DUBUISSON Guillaume ROUJOU Lucas
@@ -12,68 +13,61 @@ import java.util.ArrayList;
  */
 public class Inventory {
 
-    /**
-     * Declaration : ArrayList<Item> ItemsList; Inventory inv;
-     */
-    public ArrayList<Item> ItemsList;
-    //public Inventory inv;
+    public ArrayList<Item> ItemsList; // The array containing all the items of the player
 
     /**
-     * Constructor for objects of class Inventory : created a Inventory
-     *
+     * Constructor for objects of class Inventory. An inventory in nothing more than 
+     * an array, containing all the items the player found in the room he visited.
      */
     public Inventory() {
         ItemsList = new ArrayList<Item>();
     }
 
     /**
-     * add a Items in the inventory
-     *
-     * @param Item Item to add to inventory.
-     *
+     * The addItems method adds a new item in the inventory. 
+     * @param Item, the item to add to inventory.
      */
     public void addItems(Item newItem) {
-        ItemsList.add(newItem);
+        ItemsList.add(newItem); // add an Item into the inventory (ArrayList)
     }
 
     /**
-     * display Items present in the inventory
+     * The displayItems method displays the items contained in the inventory
      *
-     * @param : ArrayList <Item> ItemsList : the list of items
-     * @return : boolean false is the list of items is empty, true if the item
+     * @param ItemsList : the list of items
+     * @return boolean false is the list of items is empty, true if the item
      * is in the list
      */
     public boolean displayItems(ArrayList<Item> ItemsList) {
         if (ItemsList.isEmpty()) {
-            return false;
+            return false; // the inventory is empty (nothing on the list)
         } else {
-            for (int i = 0; i < ItemsList.size(); i++) {
-            }
-            return true;
-
+            return true; // there is items in the inventory
         }
     }
     
-    
+    /** 
+     * The displayItemsImg method allows the user to display the images associated 
+     * to the items. 
+     * @param ItemsList
+     * @return true si la liste contient des items
+     */
     public boolean displayItemsImg(ArrayList<Item> ItemsList) {
         if (ItemsList.isEmpty()) {
-            return false;
+            return false; // la liste des items est vide
         } else {
             for (int i = 0; i < ItemsList.size(); i++) {
-                ItemsList.get(i).getImageItem();
-                
+                ItemsList.get(i).getImageItem(); // affiche les images associées aux items
             }
-            return true;
-
+            return true; // la liste des items n'est pas vide
         }
     }
 
     /**
-     * remove an Items from the inventory
-     *
-     * @param Item Item to remove to inventory.
+     * The removeItems method removes an item from the inventory. 
+     * @param usedItem, the item to remove from inventory.
      */
     public void removeItems(Item usedItem) {
-        ItemsList.remove(usedItem);
+        ItemsList.remove(usedItem); // remove the item from the ArrayList
     }
 }

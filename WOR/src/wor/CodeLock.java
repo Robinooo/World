@@ -13,9 +13,11 @@ public class CodeLock extends Lock {
     private String name; // The name of the CodeLock
 
     /**
-     * Constructor for objects of class CodeLock
+     * Constructor for objects of class CodeLock. When a code is created, it is 
+     * defined by a name and a password 
      *
-     * @param newCode The password of the code
+     * @param name, the name of the CodeLock
+     * @param code, the password
      */
     public CodeLock(String name, String code) {
         this.name = name;
@@ -30,12 +32,13 @@ public class CodeLock extends Lock {
     public String getPasswd() {
         return code;
     }
-    
+
     /**
      * Retur the name of the code lock
-     * @return The name of the code lock 
+     *
+     * @return The name of the code lock
      */
-    public String getName(){
+    public String getName() {
         return name;
     }
 }
