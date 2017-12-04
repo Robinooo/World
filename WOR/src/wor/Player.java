@@ -156,17 +156,13 @@ public class Player extends Character {
             zoneTexte.setText(currentRoom.listItem.size() + " items in the room.");
             for (int i = 0; i < currentRoom.listItem.size(); i++) {
                 if (currentRoom.listItem.get(i).getHidden()) {
-                    //setTime(10);
                     setTime(4);
                 } else {
-                    //setTime(5);
                     setTime(2);
                 }
             }
         } else {
-            //setTime(5);
             setTime(2);
-
             zoneTexte.setText("There is no items here, you have lost precious time exploring for nothing \n");
         }
         // on perd 5 minutes de temps des qu'on explore si il y pas d'item ou si un item n'est pas caché 
@@ -182,7 +178,6 @@ public class Player extends Character {
             zoneTexte.setText(currentRoom.getFollowerInTheRoom().getspeach() + "\n");
             note.addText(currentRoom.getFollowerInTheRoom().getName() + " : " + currentRoom.getFollowerInTheRoom().getspeach() + "\n");
         } else {
-            //setTime(5);
             setTime(2);
             zoneTexte.setText(currentRoom.getTalkingInTheRoom().talk(persuasionBar) + "\n");
             note.addText(currentRoom.getTalkingInTheRoom().getName() + " : " + currentRoom.getTalkingInTheRoom().talk(persuasionBar) + "\n");
