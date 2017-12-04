@@ -32,12 +32,13 @@ public class CodeLock extends Lock {
     public String getPasswd() {
         return code;
     }
-    
+
     /**
      * Retur the name of the code lock
-     * @return The name of the code lock 
+     *
+     * @return The name of the code lock
      */
-    public String getName(){
+    public String getName() {
         return name;
     }
 }

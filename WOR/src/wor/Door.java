@@ -77,21 +77,21 @@ public class Door {
      * 
      * @param codeLock The code lock for the door
      */
-    public void addCodeLock(CodeLock codeLock){
+    public void addCodeLock(CodeLock codeLock) {
         this.codeLock = codeLock;
         openable = false; // door is close
     }
-    
+
     /**
      *  The method addKeyLock adds a key lock to the door
      * 
      * @param keyLock The key lock for the door
      */
-    public void addKeyLock(KeyLock keyLock){
+    public void addKeyLock(KeyLock keyLock) {
         this.keyLock = keyLock;
         openable = false; // door is close
     }
-    
+
     /**
      * The getHaveCodeLock method returns a boolean to know if a door have a CodeLock
      *
@@ -103,6 +103,24 @@ public class Door {
         } else {
             return true; // the door has a code lock
         }
+    }
+
+    /**
+     * Return the code lock
+     *
+     * @return CodeLock object
+     */
+    public CodeLock getCodeLock() {
+        return codeLock;
+    }
+
+    /**
+     * Return the key lock
+     *
+     * @return KeyLock object
+     */
+    public KeyLock getKeyLock() {
+        return keyLock;
     }
 
     /**
@@ -127,7 +145,6 @@ public class Door {
      * @return Returns true if the door is unlock
      */
     public boolean openDoorPass(String password) {
-
         if (codeLock.getPasswd().equals(password)) {
             return true; // passwords are matching : the door is open
         } else {
