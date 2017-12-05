@@ -609,6 +609,7 @@ public class World extends JFrame {
         }
 
         btTest2.addActionListener(ae -> {
+            player1.getCurrentRoom().getFollowerInTheRoom().Follow();
             player1.setTime(2);
             zoneTexte.setText(player1.getCurrentRoom().getFollowerInTheRoom().getspeach() + "\n");
             notebook.addText(player1.getCurrentRoom().getFollowerInTheRoom().getName() + " : " + player1.getCurrentRoom().getFollowerInTheRoom().getspeach() + "\n");
@@ -617,13 +618,13 @@ public class World extends JFrame {
             pBar.setValueBar(player1.getPersuasion());
             tBar.setValueBar(player1.getTime());
             lBar.setValueBar(player1.getLife());
-            player1.getCurrentRoom().getFollowerInTheRoom().follow(true);
+            zoneTexte.setText("Miss Prunelle joined you in your investigation ! This may help you gaining some time !");
+            notebook.addText("Miss Prunelle joined you in your investigation ! This may help you gaining some time !");
         });
 
         // Setting the Journal Frame
         btJournal.addActionListener(ae
                 -> {
-            notebook.addText(player1.getCurrentRoom().getFollowerInTheRoom().getName() + " \n ");
             textJournal.setText(notebook.getText() + " \n ");
             journalFrame.setVisible(true);
             journalFrame.setAlwaysOnTop(true);

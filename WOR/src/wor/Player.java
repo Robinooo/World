@@ -244,7 +244,12 @@ public class Player extends Character {
      * @param ptime
      */
     public void setTime(int ptime) {
-        timeBar = timeBar - ptime;
+        if (getCurrentRoom().getFollowerInTheRoom().getfollow() == true) {
+            timeBar = timeBar - (ptime/2);            
+        }
+        else {
+            timeBar = timeBar - ptime;
+        }
     }
 
     /**
