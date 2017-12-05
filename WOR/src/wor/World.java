@@ -291,7 +291,7 @@ public class World extends JFrame {
 
         this.zoneTexte.setText(player1.getCurrentRoom().getDescription());
         zoneTexte.setLineWrap(true);
-        
+
         btRight.addActionListener(ae -> {
             Killer k = new Killer("test");
             int v = -1;
@@ -305,8 +305,6 @@ public class World extends JFrame {
                 removeAllBt();
             };
 
-            
-            
             player1.move("right");
             if ("office".equals(player1.getCurrentRoom().getRoomName())) {
                 if (player1.getCurrentRoom().getNoir()) {
@@ -354,7 +352,7 @@ public class World extends JFrame {
             if ("fountain".equals(player1.getCurrentRoom().getRoomName())) {
                 s.playSoundSingle("music/source.wav");
             }
-            
+
             co.removeAll();
             co.setIcon(player1.getCurrentRoom().getImage());
             co.setLayout(new BorderLayout());
@@ -462,7 +460,7 @@ public class World extends JFrame {
                 btHelp.setEnabled(false);
                 btAccuse.setEnabled(false);
             }
-            
+
             if ("kiosk".equals(player1.getCurrentRoom().getRoomName())
                     || "garden".equals(player1.getCurrentRoom().getRoomName())
                     || "veranda".equals(player1.getCurrentRoom().getRoomName())) {
@@ -694,9 +692,9 @@ public class World extends JFrame {
             JLabel label1list = new JLabel("Who is the killer");
             JLabel label2list = new JLabel("the weapon");
             JLabel label3list = new JLabel("Room");
-            String[] nom = {" ", "Countesse Orange", "Count Orange", "Mr. Rouge", "Gen. Legris","Dr. Violet", "Mrs. Leblanc", "Pr. Olive", "Ms. Rose", "Col. Moutarde"};
+            String[] nom = {" ", "Countesse Orange", "Count Orange", "Mr. Rouge", "Gen. Legris", "Dr. Violet", "Mrs. Leblanc", "Pr. Olive", "Ms. Rose", "Col. Moutarde"};
             String[] arme = {" ", "Rope", "Dagger", "Iron bar", "Revolver", "Candlestick", "Wrench", "Poison", "Axe"};
-            String[] room = {" ", "Fountain", "Library", "Poolroom", "Office", "Veranda", "Barn first", "Barn second", "Barn fird","Garden", "Hall", "Small hall", "Kiosk", "Living room", "Dining room", "Kitchen"};
+            String[] room = {" ", "Fountain", "Library", "Poolroom", "Office", "Veranda", "Barn first", "Barn second", "Barn fird", "Garden", "Hall", "Small hall", "Kiosk", "Living room", "Dining room", "Kitchen"};
             JComboBox comboKill = new JComboBox(nom);
             JComboBox comboWeap = new JComboBox(arme);
             JComboBox comboRoom = new JComboBox(room);
@@ -758,7 +756,8 @@ public class World extends JFrame {
                         player1.setTime(10);
                     }
                 }
-            });});
+            });
+        });
 
         // Setting the Inventory Frame
         btInventory.addActionListener(ae
@@ -856,17 +855,15 @@ public class World extends JFrame {
     private void printWelcome() {
 
     }
-    
-    
+
     public void removeAllBt() {
         btUp.setEnabled(false);
-                    btDown.setEnabled(false);
-                    btLeft.setEnabled(false);
-                    btRight.setEnabled(false);
-                    btExplore.setEnabled(false);
-                    btHelp.setEnabled(false);
-                    btAccuse.setEnabled(false);
+        btDown.setEnabled(false);
+        btLeft.setEnabled(false);
+        btRight.setEnabled(false);
+        btExplore.setEnabled(false);
+        btHelp.setEnabled(false);
+        btAccuse.setEnabled(false);
     }
-
 
 }
