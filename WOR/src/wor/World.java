@@ -18,6 +18,7 @@ public class World extends JFrame {
     private final JPanel bBar, rActions;
     private JLabel cPicture, lMap;
     private Sounds s;
+    private final int u = 100;
 
     JTextArea zoneTexte = new JTextArea(7, 52);
 
@@ -29,7 +30,7 @@ public class World extends JFrame {
     private JPanel myPanelBar;
 
     private JPanel journalPanel;
-
+    private ArrayList<JButton> InventoryList;
     // instance variables - replace the example below with your own
     /**
      * Constructor for objects of class World
@@ -75,12 +76,53 @@ public class World extends JFrame {
         lMap.setIcon(player1.getCurrentRoom().getImagePlan());
 
         rActions = new JPanel();
-        rActions.setLayout(new GridLayout(5, 1));
-        btExplore = new JButton("Explore");
+        rActions.setLayout(new GridLayout(6, 1));
+        //btExplore = new JButton(new ImageIcon(getClass().getResource("/pictures2/boutton_game2.png")));;
+        btExplore = new JButton();
+        btExplore.setPreferredSize(new Dimension(240,75));
+        btExplore.setIcon(new ImageIcon(getClass().getResource("/pictures2/boutton_game2.png")));
+        btExplore.setText("Explore");
+        btExplore.setForeground(Color.red);
+        btExplore.setDisabledIcon(new ImageIcon(getClass().getResource("/pictures2/boutton_game2.png")));
+        btExplore.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 25));
+        btExplore.setVerticalTextPosition(SwingConstants.CENTER);
+        btExplore.setHorizontalTextPosition(SwingConstants.CENTER);
+        
+        
         btTake = new JButton("Take");
         btTake.setEnabled(false);
+        btTake.setPreferredSize(new Dimension(240,75));
+        btTake.setIcon(new ImageIcon(getClass().getResource("/pictures2/boutton_game2.png")));
+        btTake.setText("Take");
+        btTake.setForeground(Color.red);
+        btTake.setDisabledIcon(new ImageIcon(getClass().getResource("/pictures2/boutton_game2.png")));
+        btTake.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 25));
+        btTake.setVerticalTextPosition(SwingConstants.CENTER);
+        btTake.setHorizontalTextPosition(SwingConstants.CENTER);
+        
         btHelp = new JButton("Help");
+        btHelp.setPreferredSize(new Dimension(240,75));
+        btHelp.setIcon(new ImageIcon(getClass().getResource("/pictures2/boutton_game2.png")));
+        btHelp.setText("Help");
+        btHelp.setForeground(Color.red);
+        btHelp.setDisabledIcon(new ImageIcon(getClass().getResource("/pictures2/boutton_game2.png")));
+        btHelp.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 25));
+        btHelp.setVerticalTextPosition(SwingConstants.CENTER);
+        btHelp.setHorizontalTextPosition(SwingConstants.CENTER);
+        
+        
         btAccuse = new JButton("Accuse");
+        btAccuse.setPreferredSize(new Dimension(240,75));
+        btAccuse.setIcon(new ImageIcon(getClass().getResource("/pictures2/boutton_game2.png")));
+        btAccuse.setText("Accuse");
+        btAccuse.setForeground(Color.red);
+        btAccuse.setDisabledIcon(new ImageIcon(getClass().getResource("/pictures2/boutton_game2.png")));
+        btAccuse.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 25));
+        btAccuse.setVerticalTextPosition(SwingConstants.CENTER);
+        btAccuse.setHorizontalTextPosition(SwingConstants.CENTER);
+        
+        
+        
         rActions.add(btExplore);
         rActions.add(btTake);
         rActions.add(btHelp);
@@ -724,24 +766,90 @@ public class World extends JFrame {
             JFrame inventoryFrame = new JFrame();
             ArrayList<JButton> InventoryList = new ArrayList<JButton>();
             inventoryFrame.setTitle("Inventory");
-            inventoryFrame.setSize(500, 500);
-            inventoryFrame.setLayout(new GridLayout(5, 5));
+            inventoryFrame.setSize(700, 370);
+            
+            JPanel panelinv = new JPanel();
+            //inventoryFrame.setLayout(new GridLayout(5, 5));
+            panelinv.setLayout(new GridLayout(3, 7));
             tBar.setValueBar(player1.getTime());
 
-            for (int i = 0; i < player1.getInventory().ItemsList.size(); i++) {
-                InventoryList.add(new JButton("", player1.getInventory().ItemsList.get(i).getImageItem()));
-                InventoryList.get(i).setPreferredSize(new Dimension(100, 100));
-                inventoryFrame.add(InventoryList.get(i));
+//            for (int i = 0; i < player1.getInventory().ItemsList.size(); i++) {
+//               // InventoryList.add(new JButton("", player1.getInventory().ItemsList.get(i).getImageItem()));
+//                InventoryList.add(new JButton(player1.getInventory().ItemsList.get(i).getDescription(), player1.getInventory().ItemsList.get(i).getImageItem()));
+//                InventoryList.get(i).setPreferredSize(new Dimension(100, 100));
+//                inventoryFrame.add(InventoryList.get(i));
+//            };
+            for (int i = 0; i < player1.getInventory2().ItemsList.size(); i++) {
+               InventoryList.add(new JButton("", player1.getInventory2().ItemsList.get(i).getImageItem()));
+                //InventoryList.add(new JButton(player1.getInventory2().ItemsList.get(i).getDescription(), player1.getInventory2().ItemsList.get(i).getImageItem()));
+                InventoryList.get(i).setEnabled(false);
+                //InventoryList.get(i).setPreferredSize(new Dimension(1000, 700));
+                panelinv.setPreferredSize(new Dimension(1000, 1000));
+                panelinv.add(InventoryList.get(i));
+                
+                for (int k = 0; k < player1.getInventory().ItemsList.size(); k++) {
+//               // InventoryList.add(new JButton("", player1.getInventory().ItemsList.get(i).getImageItem()));
+//                InventoryList.add(new JButton(player1.getInventory().ItemsList.get(i).getDescription(), player1.getInventory().ItemsList.get(i).getImageItem()));
+//                InventoryList.get(i).setPreferredSize(new Dimension(100, 100));
+//                inventoryFrame.add(InventoryList.get(i));
+                  if (player1.getInventory2().ItemsList.get(i) == player1.getInventory().ItemsList.get(k) )
+                  InventoryList.get(i).setEnabled(true); }
+                  
             };
+            
+                 
+         
+             
+             JLabel litem = new JLabel();
+             litem.setLayout(new BorderLayout());
+             litem.add(panelinv);
 
-            JLabel litem = new JLabel();
 
+             for (int i = 0; i < player1.getInventory2().ItemsList.size(); i++) {
+                 int u = i;
+                 InventoryList.get(i).addActionListener(aeb -> {
+                   
+                   System.out.println(player1.getInventory2().ItemsList.get(u).getDescription());
+                   
+
+                }
+                );
+            }
+           
+             
+            JLabel test = new JLabel(player1.getInventory2().ItemsList.get(1).getDescription());
+            test.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 20));
+            test.setForeground(Color.red);
+            litem.add(test,BorderLayout.SOUTH);
+            
+       
+            inventoryFrame.add(litem);
             inventoryFrame.setEnabled(true);
             inventoryFrame.setVisible(true);
             inventoryFrame.setAlwaysOnTop(true);
+            
 
+            
+//             for (int i = 0; i < player1.getInventory2().ItemsList.size(); i++) {
+//                 int u = i;
+//                 InventoryList.get(i).addActionListener(aeb -> {
+//                   
+//                   System.out.println(player1.getInventory2().ItemsList.get(u).getDescription());
+//                   
+//                }
+//                );
+//            }
+//        
+            
+            
+            
+            
+            
         }
         );
+        
+       
+        
 
     }
 

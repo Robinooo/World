@@ -26,6 +26,7 @@ public class InitializeGame {
             corridor12, corridor13, corridor14, corridor15, corridor16, corridor17, corridor18;
 
     private ArrayList<Room> listRoom;
+    //private ArrayList<Item> itemsInventory;
 
     private final Door libraryDoor, officeDoor, verandaDoor, barn3Door, smallHallDoor, poolRoomDoor, kitchenDoor, diningRoomDoor, livingRoomDoor;
 
@@ -37,7 +38,7 @@ public class InitializeGame {
     private final Follower missPrunelle;
 
     private final Item hippocraticOath, clothSoaked, scarf, footPrints, rope, dagger, ironBar, revolver, candlestick, wrench, poison, axe, keyLibrary, keyVeranda, keyLivingRoom, keyDiningRoom, codeOffice, codeKitchen, irGlasses, gasMask, shield;
-    private final Inventory inventory;
+    private final Inventory inventory,itemsInventory;
     private Player player1;
     private NoteBook notebook;
 
@@ -512,7 +513,7 @@ public class InitializeGame {
         keyLivingRoom.setHidden(true);
         keyDiningRoom = new Item("Keydining", "You found the dining room’s key. Stroke of luck, the dining room and the living room are communicating rooms !", 0, new ImageIcon(getClass().getResource("/picturesitems/key4.png")));
         keyDiningRoom.setHidden(true);
-
+        
         codeOffice = new Item("Codeoffice", "You found a 4 digits code (4 4 4 4). It looks like they does not bother that much about security here.", 0, new ImageIcon(getClass().getResource("/picturesitems/code.png")));
         codeOffice.setHidden(true);
         codeKitchen = new Item("Codekitchen", "You found a 17 digits code. Yes, that is possible. Good luck to memorise the combination of the kitchen’s door.", 0, new ImageIcon(getClass().getResource("/picturesitems/code2.png")));
@@ -530,6 +531,35 @@ public class InitializeGame {
         hippocraticOath = new Item("Hippocatric Oath", "You found a piece of the Hippocratic Oath. That is strange...", 15, new ImageIcon(getClass().getResource("/picturesitems/Hippocrate.png")));
         hippocraticOath.setHidden(true);
 
+        itemsInventory = new Inventory();
+        //ArrayList<Item> itemsInventory = new ArrayList<Item>();
+        
+        itemsInventory.addItems(rope);
+        itemsInventory.addItems(dagger);
+        itemsInventory.addItems(ironBar);
+        itemsInventory.addItems(revolver);
+        itemsInventory.addItems(candlestick);
+        itemsInventory.addItems(wrench);
+        itemsInventory.addItems(poison);
+        itemsInventory.addItems(axe);
+        itemsInventory.addItems(shield);
+        itemsInventory.addItems(keyLibrary);
+        itemsInventory.addItems(keyVeranda);
+        itemsInventory.addItems(keyLivingRoom);
+        itemsInventory.addItems(keyDiningRoom);
+        itemsInventory.addItems(codeOffice);
+        itemsInventory.addItems(codeKitchen);
+        itemsInventory.addItems(irGlasses);
+        itemsInventory.addItems(gasMask);
+        itemsInventory.addItems(footPrints);
+        itemsInventory.addItems(scarf);
+        itemsInventory.addItems(clothSoaked);
+        itemsInventory.addItems(hippocraticOath);
+        
+        
+        
+        
+        
         // Add the items into the rooms  
         barn3.addItem(rope);
         barn3.addItem(keyVeranda);
@@ -559,13 +589,14 @@ public class InitializeGame {
         notebook = new NoteBook();
         inventory = new Inventory();
         inventory.addItems(gasMask);
+        inventory.addItems(rope);
 
         if (playerClass == "Gadget") {
-            player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 200);
+            player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 200, itemsInventory);
         } else if (playerClass == "Colombo") {
-            player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 150);
+            player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 150,itemsInventory);
         } else {
-            player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 120);
+            player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 120,itemsInventory);
         }
 
         World w = new World(player1, notebook, playerClass, listRoom, btTest2);

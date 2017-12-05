@@ -15,6 +15,7 @@ public class Player extends Character {
     private NoteBook note; // the player's notebook
     private Room currentRoom; // the room where the player is currently
     private Inventory inv; // the player's inventory
+    private Inventory inv2; // the player's inventory
     private int persuasionBar; // the number of persuasion points of the player
     private int lifeBar; // the player's number of points of life
     private int timeBar; // the player's remaining time (a number of minutes)
@@ -26,7 +27,7 @@ public class Player extends Character {
     /**
      * Constructor for objects of class Player
      */
-    public Player(String pname, Room pcurrentRoom, NoteBook pnote, Inventory pinv, int pper, int ppoints, int ptime) {
+    public Player(String pname, Room pcurrentRoom, NoteBook pnote, Inventory pinv, int pper, int ppoints, int ptime, Inventory pinv2) {
         name = pname;
         note = pnote;
         currentRoom = pcurrentRoom;
@@ -34,6 +35,7 @@ public class Player extends Character {
         persuasionBar = pper;
         lifeBar = ppoints;
         timeBar = ptime;
+        inv2 = pinv2;
     }
 
     /**
@@ -44,7 +46,9 @@ public class Player extends Character {
     public Inventory getInventory() {
         return this.inv;
     }
-
+    public Inventory getInventory2() {
+        return this.inv2;
+    }
     /**
      * This method allows the player to take an item that is present in a room,
      * add it to his inventory and update his number of persuasion points by
@@ -244,12 +248,15 @@ public class Player extends Character {
      * @param ptime
      */
     public void setTime(int ptime) {
-        if (getCurrentRoom().getFollowerInTheRoom().getfollow() == true) {
-            timeBar = timeBar - (ptime/2);            
-        }
-        else {
+//        System.out.println("test");
+//        System.out.println(getCurrentRoom().getFollowerInTheRoom().getfollow());
+//        System.out.println("test");
+//        if (getCurrentRoom().getFollowerInTheRoom().getfollow() == true) {
+//            timeBar = timeBar - (ptime/2);            
+//        }
+//        else {
             timeBar = timeBar - ptime;
-        }
+    //    }
     }
 
     /**
