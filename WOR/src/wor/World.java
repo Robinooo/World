@@ -683,12 +683,12 @@ public class World extends JFrame {
                         myFrame.dispose();
                     } else {
                         myFrame.dispose();
-                        if (nom.equals("Dr Violet")) {
-                            if (arme.equals("Poison")) {
+                        if (comboKill.getSelectedItem().equals("Dr Violet")) {
+                            if (comboWeap.getSelectedItem().equals("Poison")) {
                                 JOptionPane.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector.\n"
                                         + "The murder did not happen in the " + comboRoom.getSelectedItem(), "Results", JOptionPane.INFORMATION_MESSAGE);
                             } else {
-                                if (room.equals("Small hall")) {
+                                if (comboRoom.getSelectedItem().equals("Small hall")) {
                                     JOptionPane.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
                                             + "The murder was not committed with the " + comboWeap.getSelectedItem(), "Results", JOptionPane.INFORMATION_MESSAGE);
                                 } else {
@@ -698,8 +698,8 @@ public class World extends JFrame {
                                 }
                             }
                         } else {
-                            if (arme.equals("Poison")) {
-                                if (room.equals("Small hall")) {
+                            if (comboWeap.getSelectedItem().equals("Poison")) {
+                                if (comboRoom.getSelectedItem().equals("Small hall")) {
                                     JOptionPane.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
                                             + "It was not " + comboKill.getSelectedItem() + " who killed her.\n", "Results", JOptionPane.INFORMATION_MESSAGE);
                                 } else {
