@@ -1,5 +1,8 @@
 package wor;
 
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /**
  * This class is used to create a killer character, the killer can try to kill
  * the player if they meet during the game.
@@ -8,6 +11,7 @@ package wor;
  * @version 11/20/17
  */
 public class Killer extends Character {
+    public Sounds s;
 
     /**
      * Constructor for objects of class Killer. The killer is represented by a
@@ -24,6 +28,46 @@ public class Killer extends Character {
      * The player will lose time and life points, if time or life points goes to
      * 0, the playre dies in the process...
      */
-    public void kill() {
+
+public void kill(Player player1, int bt) {
+        if ("barn 2".equals(player1.getCurrentRoom().getRoomName())) {
+            if (player1.getCurrentRoom().getNoir()) {
+
+                boolean survival = false;
+                s.playSoundSingle("music/combat.wav");
+                JOptionPane.showMessageDialog(null, "You hear something approaching. It attacks you!",
+                        "Ambush", JOptionPane.INFORMATION_MESSAGE);
+
+                if (!player1.getInventory().ItemsList.isEmpty()) {
+
+                    for (int i = 0; i < player1.getInventory().ItemsList.size(); i++) {
+
+                        if (player1.getInventory().ItemsList.get(i).getName().equals("Shield")) {
+
+                            JOptionPane.showMessageDialog(null, "You take out your shield in haste.\n "
+                                    + "The weapon hits your shield and your attacker runs away.\n "
+                                    + "You turn on the light, there is no one in the room.",
+                                    "Ambush", JOptionPane.INFORMATION_MESSAGE);
+                            survival = true;
+                            player1.getCurrentRoom().setImage(new ImageIcon(getClass().getResource("/pictures2/grange2.jpg")));
+                            player1.getCurrentRoom().setNoir(false);
+                            bt=1;
+                            break;
+                        }
+                    }
+                }
+                if (!survival) {
+                    JOptionPane.showMessageDialog(null, "You had nothing to deflect the blade that hit you. "
+                            + "The blow touched a vital point. "
+                            + "You will not get away this time ...",
+                            "Ambush", JOptionPane.INFORMATION_MESSAGE);
+                    InterfaceGameOver theEnd = new InterfaceGameOver();
+                    bt=0;
+                }
+            } else {
+                bt=1;
+            }
+        }
+
     }
 }

@@ -249,46 +249,22 @@ public class World extends JFrame {
 
         this.zoneTexte.setText(player1.getCurrentRoom().getDescription());
         zoneTexte.setLineWrap(true);
+        
         btRight.addActionListener(ae -> {
-            if ("barn 2".equals(player1.getCurrentRoom().getRoomName())) {
-                if (player1.getCurrentRoom().getNoir()) {
-                    boolean survival = false;
-                    s.playSoundSingle("music/combat.wav");
-                    JOptionPane.showMessageDialog(null, "You hear something approaching. It attacks you!",
-                            "Ambush", JOptionPane.INFORMATION_MESSAGE);
-                    if (!player1.getInventory().ItemsList.isEmpty()) {
-                        for (int i = 0; i < player1.getInventory().ItemsList.size(); i++) {
-                            if (player1.getInventory().ItemsList.get(i).getName().equals("Shield")) {
-                                JOptionPane.showMessageDialog(null, "You take out your shield in haste.\n "
-                                        + "The weapon hits your shield and your attacker runs away.\n "
-                                        + "You turn on the light, there is no one in the room.",
-                                        "Ambush", JOptionPane.INFORMATION_MESSAGE);
-                                survival = true;
-                                player1.getCurrentRoom().setImage(new ImageIcon(getClass().getResource("/pictures2/grange2.jpg")));
-                                player1.getCurrentRoom().setNoir(false);
-                                btExplore.setEnabled(true);
-                                break;
-                            }
-                        }
-                    }
-                    if (!survival) {
-                        JOptionPane.showMessageDialog(null, "You had nothing to deflect the blade that hit you. "
-                                + "The blow touched a vital point. "
-                                + "You will not get away this time ...",
-                                "Ambush", JOptionPane.INFORMATION_MESSAGE);
-                        InterfaceGameOver theEnd = new InterfaceGameOver();
-                        btUp.setEnabled(false);
-                        btDown.setEnabled(false);
-                        btLeft.setEnabled(false);
-                        btRight.setEnabled(false);
-                        btExplore.setEnabled(false);
-                        btHelp.setEnabled(false);
-                        btAccuse.setEnabled(false);
-                    }
-                } else {
-                    btExplore.setEnabled(true);
-                }
-            }
+            Killer k = new Killer("test");
+            int v = -1;
+            k.kill(player1, v);
+
+            if (v == 1) {
+                btExplore.setEnabled(true);
+            };
+
+            if (v == 0) {
+                removeAllBt();
+            };
+
+            
+            
             player1.move("right");
             if ("office".equals(player1.getCurrentRoom().getRoomName())) {
                 if (player1.getCurrentRoom().getNoir()) {
@@ -329,21 +305,14 @@ public class World extends JFrame {
 
             if ("kiosk".equals(player1.getCurrentRoom().getRoomName())
                     || "garden".equals(player1.getCurrentRoom().getRoomName())
-                    || "veranda".equals(player1.getCurrentRoom().getRoomName())
-                    || "corridor1".equals(player1.getCurrentRoom().getRoomName())
-                    || "corridor2".equals(player1.getCurrentRoom().getRoomName())
-                    || "corridor3".equals(player1.getCurrentRoom().getRoomName())
-                    || "corridor8".equals(player1.getCurrentRoom().getRoomName())
-                    || "corridor11".equals(player1.getCurrentRoom().getRoomName())
-                    || "corridor12".equals(player1.getCurrentRoom().getRoomName())
-                    || "corridor17".equals(player1.getCurrentRoom().getRoomName())) {
+                    || "veranda".equals(player1.getCurrentRoom().getRoomName())) {
                 s.playSoundSingle("music/birds.wav");
             }
 
             if ("fountain".equals(player1.getCurrentRoom().getRoomName())) {
                 s.playSoundSingle("music/source.wav");
             }
-
+            
             co.removeAll();
             co.setIcon(player1.getCurrentRoom().getImage());
             co.setLayout(new BorderLayout());
@@ -451,6 +420,16 @@ public class World extends JFrame {
                 btHelp.setEnabled(false);
                 btAccuse.setEnabled(false);
             }
+            
+            if ("kiosk".equals(player1.getCurrentRoom().getRoomName())
+                    || "garden".equals(player1.getCurrentRoom().getRoomName())
+                    || "veranda".equals(player1.getCurrentRoom().getRoomName())) {
+                s.playSoundSingle("music/birds.wav");
+            }
+
+            if ("fountain".equals(player1.getCurrentRoom().getRoomName())) {
+                s.playSoundSingle("music/source.wav");
+            }
 
         }
         );
@@ -490,6 +469,15 @@ public class World extends JFrame {
                 btAccuse.setEnabled(false);
             }
 
+            if ("kiosk".equals(player1.getCurrentRoom().getRoomName())
+                    || "garden".equals(player1.getCurrentRoom().getRoomName())
+                    || "veranda".equals(player1.getCurrentRoom().getRoomName())) {
+                s.playSoundSingle("music/birds.wav");
+            }
+
+            if ("fountain".equals(player1.getCurrentRoom().getRoomName())) {
+                s.playSoundSingle("music/source.wav");
+            }
         }
         );
         btDown.addActionListener(ae
@@ -554,6 +542,15 @@ public class World extends JFrame {
                 btAccuse.setEnabled(false);
             }
 
+            if ("kiosk".equals(player1.getCurrentRoom().getRoomName())
+                    || "garden".equals(player1.getCurrentRoom().getRoomName())
+                    || "veranda".equals(player1.getCurrentRoom().getRoomName())) {
+                s.playSoundSingle("music/birds.wav");
+            }
+
+            if ("fountain".equals(player1.getCurrentRoom().getRoomName())) {
+                s.playSoundSingle("music/source.wav");
+            }
         }
         );
 
@@ -687,12 +684,12 @@ public class World extends JFrame {
                         myFrame.dispose();
                     } else {
                         myFrame.dispose();
-                        if (nom.equals("Dr Violet")) {
-                            if (arme.equals("Poison")) {
+                        if (comboKill.getSelectedItem().equals("Dr Violet")) {
+                            if (comboWeap.getSelectedItem().equals("Poison")) {
                                 JOptionPane.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector.\n"
                                         + "The murder did not happen in the " + comboRoom.getSelectedItem(), "Results", JOptionPane.INFORMATION_MESSAGE);
                             } else {
-                                if (room.equals("Small hall")) {
+                                if (comboRoom.getSelectedItem().equals("Small hall")) {
                                     JOptionPane.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
                                             + "The murder was not committed with the " + comboWeap.getSelectedItem(), "Results", JOptionPane.INFORMATION_MESSAGE);
                                 } else {
@@ -702,8 +699,8 @@ public class World extends JFrame {
                                 }
                             }
                         } else {
-                            if (arme.equals("Poison")) {
-                                if (room.equals("Small hall")) {
+                            if (comboWeap.getSelectedItem().equals("Poison")) {
+                                if (comboRoom.getSelectedItem().equals("Small hall")) {
                                     JOptionPane.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
                                             + "It was not " + comboKill.getSelectedItem() + " who killed her.\n", "Results", JOptionPane.INFORMATION_MESSAGE);
                                 } else {
@@ -751,5 +748,17 @@ public class World extends JFrame {
     private void printWelcome() {
 
     }
+    
+    
+    public void removeAllBt() {
+        btUp.setEnabled(false);
+                    btDown.setEnabled(false);
+                    btLeft.setEnabled(false);
+                    btRight.setEnabled(false);
+                    btExplore.setEnabled(false);
+                    btHelp.setEnabled(false);
+                    btAccuse.setEnabled(false);
+    }
+
 
 }
