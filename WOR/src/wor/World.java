@@ -651,54 +651,74 @@ public class World extends JFrame {
         // Setting the Accuse Frame
         btAccuse.addActionListener(ae
                 -> {
-            JOptionPane jop = new JOptionPane(), jop2 = new JOptionPane();
-            String nom = jop.showInputDialog(null, "Who is the killer, inspector?", JOptionPane.QUESTION_MESSAGE);
-            String arme = jop.showInputDialog(null, "Which weapon was used?", JOptionPane.QUESTION_MESSAGE);
-            String room = jop.showInputDialog(null, "In which room was Mrs. Pervenche killed?", JOptionPane.QUESTION_MESSAGE);
-
-            jop2.showMessageDialog(null, "You have said the killer is : " + nom + "\n"
-                    + "And the weapon is : " + arme + "\n"
-                    + "And the room is : " + room, "Did you find the killer?", JOptionPane.INFORMATION_MESSAGE);
-
-            if (nom.equals("Violet") | nom.equals("Pr Violet") | nom.equals("Professor Violet") | nom.equals("violet") && arme.equals("Poison") | arme.equals("poison") && room.equals("small hall") | room.equals("Small hall")) {
-                InterfaceWin go = new InterfaceWin();
-            } else {
-                if (nom.equals("Violet") | nom.equals("Pr Violet") | nom.equals("Professor Violet") | nom.equals("violet")) {
-                    if (arme.equals("Poison") | arme.equals("poison")) {
-                        jop2.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector.\n"
-                                + "The murder did not happen in the " + room, "Results", JOptionPane.INFORMATION_MESSAGE);
+            JLabel label1list = new JLabel("Who is the killer");
+            JLabel label2list = new JLabel("the weapon");
+            JLabel label3list = new JLabel("Room");
+            String[] nom = {" ", "Countesse Orange", "Count Orange", "Mr. Rouge", "Gen. Legris","Dr. Violet", "Mrs. Leblanc", "Pr. Olive", "Ms. Rose", "Col. Moutarde"};
+            String[] arme = {" ", "Rope", "Dagger", "Iron bar", "Revolver", "Candlestick", "Wrench", "Poison", "Axe"};
+            String[] room = {" ", "Fountain", "Library", "Poolroom", "Office", "Veranda", "Barn first", "Barn second", "Barn fird","Garden", "Hall", "Small hall", "Kiosk", "Living room", "Dining room", "Kitchen"};
+            JComboBox comboKill = new JComboBox(nom);
+            JComboBox comboWeap = new JComboBox(arme);
+            JComboBox comboRoom = new JComboBox(room);
+            JButton btOk = new JButton("Valid");
+            JPanel myPanelList = new JPanel();
+            myPanelList.setLayout(new GridLayout(7, 1));
+            myPanelList.add(label1list);
+            myPanelList.add(comboKill);
+            myPanelList.add(label2list);
+            myPanelList.add(comboWeap);
+            myPanelList.add(label3list);
+            myPanelList.add(comboRoom);
+            myPanelList.add(btOk);
+            JFrame myFrame = new JFrame("FlowLayout");
+            myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            myFrame.setLayout(new FlowLayout());
+            myFrame.add(myPanelList);
+            myFrame.pack();
+            myFrame.setSize(300, 300);
+            myFrame.setVisible(true);
+            btOk.addActionListener(ee -> {
+                if (!" ".equals(comboKill.getSelectedItem())
+                        && !" ".equals(comboWeap.getSelectedItem())
+                        && !" ".equals(comboRoom.getSelectedItem())) {
+                    if (comboKill.getSelectedItem().equals("Dr. Violet") && comboWeap.getSelectedItem().equals("Poison") && comboRoom.getSelectedItem().equals("Small hall")) {
+                        InterfaceWin go = new InterfaceWin();
+                        myFrame.dispose();
                     } else {
-                        if (room.equals("Small hall") | room.equals("small hall")) {
-                            jop2.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
-                                    + "The murder was not committed with the " + arme, "Results", JOptionPane.INFORMATION_MESSAGE);
+                        myFrame.dispose();
+                        if (nom.equals("Dr Violet")) {
+                            if (arme.equals("Poison")) {
+                                JOptionPane.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector.\n"
+                                        + "The murder did not happen in the " + comboRoom.getSelectedItem(), "Results", JOptionPane.INFORMATION_MESSAGE);
+                            } else {
+                                if (room.equals("Small hall")) {
+                                    JOptionPane.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
+                                            + "The murder was not committed with the " + comboWeap.getSelectedItem(), "Results", JOptionPane.INFORMATION_MESSAGE);
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
+                                            + "The murder did not happen in the " + comboRoom.getSelectedItem() + "\n"
+                                            + "And was not committed with the " + comboWeap.getSelectedItem() + "\n", "Results", JOptionPane.INFORMATION_MESSAGE);
+                                }
+                            }
                         } else {
-                            jop2.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
-                                    + "The murder did not happen in the " + room + "\n"
-                                    + "And was not committed with the " + arme + "\n", "Results", JOptionPane.INFORMATION_MESSAGE);
+                            if (arme.equals("Poison")) {
+                                if (room.equals("Small hall")) {
+                                    JOptionPane.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
+                                            + "It was not " + comboKill.getSelectedItem() + " who killed her.\n", "Results", JOptionPane.INFORMATION_MESSAGE);
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
+                                            + "It was not " + comboKill.getSelectedItem() + " who killed her.\n"
+                                            + "The murder did not happen in the " + comboRoom.getSelectedItem() + "\n", "Results", JOptionPane.INFORMATION_MESSAGE);
+                                }
+                            } else {
+                                JOptionPane.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
+                                        + "None of your suggestions is good.\n", "Results", JOptionPane.INFORMATION_MESSAGE);
+                            }
                         }
-                    }
-                } else {
-                    if (arme.equals("Poison") | arme.equals("poison")) {
-                        if (room.equals("Small hall") | room.equals("small hall")) {
-                            jop2.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
-                                    + "It was not " + nom + " who killed her.\n", "Results", JOptionPane.INFORMATION_MESSAGE);
-                        } else {
-                            jop2.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
-                                    + "It was not " + nom + " who killed her.\n"
-                                    + "The murder did not happen in the " + room + "\n", "Results", JOptionPane.INFORMATION_MESSAGE);
-                        }
-                    } else {
-                        jop2.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
-                                + "None of your suggestions is good.\n", "Results", JOptionPane.INFORMATION_MESSAGE);
+                        player1.setTime(10);
                     }
                 }
-                player1.setTime(10);
-            }
-
-            tBar.setValueBar(player1.getTime());
-
-        }
-        );
+            });});
 
         // Setting the Inventory Frame
         btInventory.addActionListener(ae
