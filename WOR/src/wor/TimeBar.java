@@ -15,7 +15,7 @@ public class TimeBar {
     private JProgressBar bar; // the bar displayed
 
     /**
-     * The constructor of the TimeBar class. Initialization of the time bar.
+     * The constructor of the TimeBar class. Initialisation of the time bar.
      */
     public TimeBar() {
         bar = new JProgressBar();

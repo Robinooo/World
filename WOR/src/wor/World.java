@@ -656,7 +656,7 @@ public class World extends JFrame {
             pBar.setValueBar(player1.getPersuasion());
             tBar.setValueBar(player1.getTime());
             lBar.setValueBar(player1.getLife());
-            zoneTexte.setText("Miss Prunelle joined you in your investigation ! This may help you gaining some time !");
+            zoneTexte.append("Miss Prunelle joined you in your investigation ! This may help you gaining some time !");
             notebook.addText("Miss Prunelle joined you in your investigation ! This may help you gaining some time !");
         });
 
