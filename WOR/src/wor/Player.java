@@ -131,7 +131,6 @@ public class Player extends Character {
             }
         } else {
             nextRoom = currentRoom;
-            putMessageDoor();
         }
         currentRoom = nextRoom;
     }
