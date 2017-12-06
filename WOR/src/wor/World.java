@@ -163,10 +163,10 @@ public class World extends JFrame {
         pBar.setValueBar(player1.getPersuasion());
 
         tBar = new TimeBar();
-        tBar.setValueBar(player1.getTime());
+        tBar.setValueBar(Math.round(player1.getTime()));
 
         lBar = new LifeBar();
-        lBar.setValueBar(player1.getLife());
+        lBar.setValueBar(Math.round(player1.getLife()));
 
         JLabel Persuasion = new JLabel("Persuasion : ");
         Persuasion.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 15));
@@ -357,7 +357,7 @@ public class World extends JFrame {
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
-            tBar.setValueBar(player1.getTime());
+            tBar.setValueBar(Math.round(player1.getTime()));
             lBar.setValueBar(player1.getLife());
             if (player1.getTime() == 0 | player1.getLife() == 0) {
                 InterfaceGameOver go = new InterfaceGameOver();
@@ -428,7 +428,7 @@ public class World extends JFrame {
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
-            tBar.setValueBar(player1.getTime());
+            tBar.setValueBar(Math.round(player1.getTime()));
             lBar.setValueBar(player1.getLife());
             if (player1.getTime() <= 0 | player1.getLife() <= 0) {
                 InterfaceGameOver go = new InterfaceGameOver();
@@ -476,7 +476,7 @@ public class World extends JFrame {
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
-            tBar.setValueBar(player1.getTime());
+            tBar.setValueBar(Math.round(player1.getTime()));
             lBar.setValueBar(player1.getLife());
             if (player1.getTime() <= 0 | player1.getLife() <= 0) {
                 InterfaceGameOver go = new InterfaceGameOver();
@@ -545,7 +545,7 @@ public class World extends JFrame {
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
-            tBar.setValueBar(player1.getTime());
+            tBar.setValueBar(Math.round(player1.getTime()));
             lBar.setValueBar(player1.getLife());
             if (player1.getTime() <= 0 | player1.getLife() <= 0) {
                 InterfaceGameOver go = new InterfaceGameOver();
@@ -579,7 +579,7 @@ public class World extends JFrame {
 
             }
             pBar.setValueBar(player1.getPersuasion());
-            tBar.setValueBar(player1.getTime());
+            tBar.setValueBar(Math.round(player1.getTime()));
             lBar.setValueBar(player1.getLife());
 
             if (player1.getTime() <= 0 | player1.getLife() <= 0) {
@@ -601,7 +601,7 @@ public class World extends JFrame {
             player1.getTime();
             btTake.setEnabled(false);
             pBar.setValueBar(player1.getPersuasion());
-            tBar.setValueBar(player1.getTime());
+            tBar.setValueBar(Math.round(player1.getTime()));
             lBar.setValueBar(player1.getLife());
         }
         );
@@ -614,7 +614,7 @@ public class World extends JFrame {
                     player1.getTime();
                     btTake.setEnabled(false);
                     pBar.setValueBar(player1.getPersuasion());
-                    tBar.setValueBar(player1.getTime());
+                    tBar.setValueBar(Math.round(player1.getTime()));
                     lBar.setValueBar(player1.getLife());
                 }
                 );
@@ -622,14 +622,15 @@ public class World extends JFrame {
         }
 
         btTest2.addActionListener(ae -> {
-            player1.getCurrentRoom().getFollowerInTheRoom().Follow();
+            player1.getCurrentRoom().getFollowerInTheRoom().follow();
+            player1.setFollow(true);
             player1.setTime(2);
             zoneTexte.setText(player1.getCurrentRoom().getFollowerInTheRoom().getspeach() + "\n");
             notebook.addText(player1.getCurrentRoom().getFollowerInTheRoom().getName() + " : " + player1.getCurrentRoom().getFollowerInTheRoom().getspeach() + "\n");
             player1.getTime();
             btTake.setEnabled(false);
             pBar.setValueBar(player1.getPersuasion());
-            tBar.setValueBar(player1.getTime());
+            tBar.setValueBar(Math.round(player1.getTime()));
             lBar.setValueBar(player1.getLife());
             zoneTexte.append("Miss Prunelle joined you in your investigation ! This may help you gaining some time !");
             notebook.addText("Miss Prunelle joined you in your investigation ! This may help you gaining some time !");
@@ -643,7 +644,7 @@ public class World extends JFrame {
             journalFrame.setAlwaysOnTop(true);
             journalPanel.setVisible(true);
             btTake.setEnabled(false);
-            tBar.setValueBar(player1.getTime());
+            tBar.setValueBar(Math.round(player1.getTime()));
 
         }
         );
@@ -738,7 +739,7 @@ public class World extends JFrame {
             JPanel panelinv = new JPanel();
             //inventoryFrame.setLayout(new GridLayout(5, 5));
             panelinv.setLayout(new GridLayout(3, 7));
-            tBar.setValueBar(player1.getTime());
+            tBar.setValueBar(Math.round(player1.getTime()));
 
             for (int i = 0; i < player1.getInventory2().ItemsList.size(); i++) {
                 InventoryList.add(new JButton("", player1.getInventory2().ItemsList.get(i).getImageItem()));

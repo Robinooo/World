@@ -41,7 +41,7 @@ public class Follower extends Character {
     /**
      * Modifies the status of the follower. True if the character is following the player.
      */
-    public void Follow() {
+    public void follow() {
         fol = true;
     }
 

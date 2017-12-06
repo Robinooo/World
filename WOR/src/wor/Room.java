@@ -327,5 +327,4 @@ public class Room {
     public void setImage(Icon image) {
         img = image;
     }
-
 }

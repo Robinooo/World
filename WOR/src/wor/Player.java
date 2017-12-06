@@ -18,9 +18,9 @@ public class Player extends Character {
     private Inventory inv2; // the player's inventory
     private int persuasionBar; // the number of persuasion points of the player
     private int lifeBar; // the player's number of points of life
-    private int timeBar; // the player's remaining time (a number of minutes)
+    private float timeBar; // the player's remaining time (a number of minutes)
+    private boolean follow = false; // A boolean to know if the Follower charcacter follow us. true if she is followinf us
     private JFrame frame; // The frame for the code dialog box
-    private JLabel label;
     private Icon icon;
     private Sounds s;
 
@@ -159,6 +159,22 @@ public class Player extends Character {
     }
 
     /**
+     * Method to chnge the value of the boolean follow
+     * @param bool Boolean to say if the player is follow or not (true -> player follow)
+     */
+    public void setFollow(boolean bool){
+        follow = bool;
+    }
+    
+    /**
+     * A getter method to know if the player is follow or not (true -> player follow)
+     * @return The Boolean that say if the player is follow or not (true -> player follow)
+     */
+    public boolean getFollow(){
+        return follow;
+    }
+    
+    /**
      *
      * @param zoneTexte
      */
@@ -253,7 +269,7 @@ public class Player extends Character {
      *
      * @return
      */
-    public int getTime() {
+    public float getTime() {
         return timeBar;
     }
 
@@ -262,12 +278,14 @@ public class Player extends Character {
      * @param ptime
      */
     public void setTime(int ptime) {
-//        if (getCurrentRoom().getFollowerInTheRoom().getfollow() == true) {
-//        timeBar = timeBar - (ptime/2);     
-//        }
-//        else {
-            timeBar = timeBar - ptime;
-//        }
+        float temp = ptime;
+        if (follow == true) {
+            timeBar = timeBar - (temp/2);
+        }
+        else {
+            timeBar = timeBar - temp;
+        }
+        System.out.println(timeBar);
     }
 
     /**
