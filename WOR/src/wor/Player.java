@@ -121,7 +121,7 @@ public class Player extends Character {
                 }
             }
         }
-        putMessageDoor();
+        putMessage("Sorry, but this door is close\n and you don't have the key or the code", "Door");
         return currentRoom;
     }
 
@@ -146,7 +146,7 @@ public class Player extends Character {
                 }
             }
         }
-        putMessageDoor();
+        putMessage("Sorry, but this door is close\n and you don't have the key or the code", "Door");
         return currentRoom;
     }
 
@@ -262,32 +262,12 @@ public class Player extends Character {
      * @param ptime
      */
     public void setTime(int ptime) {
-//        System.out.println("test");
-//        System.out.println(getCurrentRoom().getFollowerInTheRoom().getfollow());
-//        System.out.println("test");
-//        if (getCurrentRoom().getFollowerInTheRoom().getfollow() == true) {
-//            timeBar = timeBar - (ptime/2);            
-//        }
-//        else {
-        timeBar = timeBar - ptime;
-        //    }
-    }
-
-    /**
-     * Sets the text displayed at the bottom of the frame.
-     */
-    void setLabel(String newText) {
-        label.setText(newText);
-    }
-
-    /**
-     * Print a message to say a door is close
-     */
-    public void putMessageDoor() {
-        JOptionPane.showMessageDialog(frame,
-                "Sorry, but this door is close\n and you don't have the key or the code",
-                "Door",
-                JOptionPane.INFORMATION_MESSAGE);
+        if (getCurrentRoom().getFollowerInTheRoom().getfollow() == true) {
+        timeBar = timeBar - (ptime/2);     
+        }
+        else {
+            timeBar = timeBar - ptime;
+        }
     }
 
     /**
