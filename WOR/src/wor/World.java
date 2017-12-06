@@ -31,6 +31,7 @@ public class World extends JFrame {
 
     private JPanel journalPanel;
     private ArrayList<JButton> InventoryList;
+
     // instance variables - replace the example below with your own
     /**
      * Constructor for objects of class World
@@ -79,7 +80,7 @@ public class World extends JFrame {
         rActions.setLayout(new GridLayout(6, 1));
         //btExplore = new JButton(new ImageIcon(getClass().getResource("/pictures2/boutton_game2.png")));;
         btExplore = new JButton();
-        btExplore.setPreferredSize(new Dimension(240,75));
+        btExplore.setPreferredSize(new Dimension(240, 75));
         btExplore.setIcon(new ImageIcon(getClass().getResource("/pictures2/boutton_game2.png")));
         btExplore.setText("Explore");
         btExplore.setForeground(Color.red);
@@ -87,11 +88,10 @@ public class World extends JFrame {
         btExplore.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 25));
         btExplore.setVerticalTextPosition(SwingConstants.CENTER);
         btExplore.setHorizontalTextPosition(SwingConstants.CENTER);
-        
-        
+
         btTake = new JButton("Take");
         btTake.setEnabled(false);
-        btTake.setPreferredSize(new Dimension(240,75));
+        btTake.setPreferredSize(new Dimension(240, 75));
         btTake.setIcon(new ImageIcon(getClass().getResource("/pictures2/boutton_game2.png")));
         btTake.setText("Take");
         btTake.setForeground(Color.red);
@@ -99,9 +99,9 @@ public class World extends JFrame {
         btTake.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 25));
         btTake.setVerticalTextPosition(SwingConstants.CENTER);
         btTake.setHorizontalTextPosition(SwingConstants.CENTER);
-        
+
         btHelp = new JButton("Help");
-        btHelp.setPreferredSize(new Dimension(240,75));
+        btHelp.setPreferredSize(new Dimension(240, 75));
         btHelp.setIcon(new ImageIcon(getClass().getResource("/pictures2/boutton_game2.png")));
         btHelp.setText("Help");
         btHelp.setForeground(Color.red);
@@ -109,10 +109,9 @@ public class World extends JFrame {
         btHelp.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 25));
         btHelp.setVerticalTextPosition(SwingConstants.CENTER);
         btHelp.setHorizontalTextPosition(SwingConstants.CENTER);
-        
-        
+
         btAccuse = new JButton("Accuse");
-        btAccuse.setPreferredSize(new Dimension(240,75));
+        btAccuse.setPreferredSize(new Dimension(240, 75));
         btAccuse.setIcon(new ImageIcon(getClass().getResource("/pictures2/boutton_game2.png")));
         btAccuse.setText("Accuse");
         btAccuse.setForeground(Color.red);
@@ -120,9 +119,7 @@ public class World extends JFrame {
         btAccuse.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 25));
         btAccuse.setVerticalTextPosition(SwingConstants.CENTER);
         btAccuse.setHorizontalTextPosition(SwingConstants.CENTER);
-        
-        
-        
+
         rActions.add(btExplore);
         rActions.add(btTake);
         rActions.add(btHelp);
@@ -281,13 +278,7 @@ public class World extends JFrame {
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
 
-        JOptionPane.showMessageDialog(this,
-                "Miss Pervenche has been killed in the manor.\n"
-                + "You have to find the killer ! \n "
-                + "You are " + player1.getName() + " the detective !\n"
-                + "Speak to everyone and found the clues. They help you to found the killer.",
-                "Manor's investigation!",
-                JOptionPane.INFORMATION_MESSAGE);
+        putMessage("Miss Pervenche has been killed in the manor.\nYou have to find the killer ! \n You are " + player1.getName() + " the detective !\nSpeak to everyone and found the clues. They help you to found the killer.", "Manor's investigation!");
 
         this.zoneTexte.setText(player1.getCurrentRoom().getDescription());
         zoneTexte.setLineWrap(true);
@@ -315,18 +306,14 @@ public class World extends JFrame {
                             if ("Glasses Infrared".equals(player1.getInventory().ItemsList.get(i).getName())) {
                                 player1.getCurrentRoom().setImage(new ImageIcon(getClass().getResource("/pictures2/office.jpeg")));
                                 player1.getCurrentRoom().setNoir(false);
-                                JOptionPane.showMessageDialog(null, "Your night vision goggles allow you to see what's in this room.",
-                                        "Ambush", JOptionPane.INFORMATION_MESSAGE);
+                                putMessage("Your night vision goggles allow you to see what's in this room.", "Ambush");
                                 btExplore.setEnabled(true);
                                 find = true;
                                 break;
                             }
                         }
                         if (!find) {
-                            JOptionPane.showMessageDialog(null, "This room is plunged into darkness.\n"
-                                    + "You would need something that lets you see in the dark like cat's eyes\n"
-                                    + "... or night vision goggles",
-                                    "Ambush", JOptionPane.INFORMATION_MESSAGE);
+                            putMessage("This room is plunged into darkness.\nYou would need something that lets you see in the dark like cat's eyes\n... or night vision goggles", "Ambush");
                         }
                     }
                 }
@@ -338,8 +325,7 @@ public class World extends JFrame {
                 btAccuse.setEnabled(false);
             }
             if ("barn 2".equals(player1.getCurrentRoom().getRoomName()) && player1.getCurrentRoom().getNoir()) {
-                JOptionPane.showMessageDialog(null, "The light goes out suddenly.",
-                        "Black room", JOptionPane.INFORMATION_MESSAGE);
+                putMessage("The light goes out suddenly.", "Black room");
                 btExplore.setEnabled(false);
             }
 
@@ -392,15 +378,11 @@ public class World extends JFrame {
             if ("barn 2".equals(player1.getCurrentRoom().getRoomName())) {
                 if (player1.getCurrentRoom().getNoir()) {
                     boolean survival = false;
-                    JOptionPane.showMessageDialog(null, "You hear something approaching. It attacks you!",
-                            "Ambush", JOptionPane.INFORMATION_MESSAGE);
+                    putMessage("You hear something approaching. It attacks you!", "Ambush");
                     if (!player1.getInventory().ItemsList.isEmpty()) {
                         for (int i = 0; i < player1.getInventory().ItemsList.size(); i++) {
                             if (player1.getInventory().ItemsList.get(i).getName().equals("Shield")) {
-                                JOptionPane.showMessageDialog(null, "You take out your shield in haste.\n "
-                                        + "The weapon hits your shield and your attacker runs away.\n "
-                                        + "You turn on the light, there is no one in the room.",
-                                        "Ambush", JOptionPane.INFORMATION_MESSAGE);
+                                putMessage("You take out your shield in haste.\nThe weapon hits your shield and your attacker runs away.\nYou turn on the light, there is no one in the room.", "Ambush");
                                 survival = true;
                                 player1.getCurrentRoom().setImage(new ImageIcon(getClass().getResource("/pictures2/grange2.jpg")));
                                 player1.getCurrentRoom().setNoir(false);
@@ -410,10 +392,7 @@ public class World extends JFrame {
                         }
                     }
                     if (!survival) {
-                        JOptionPane.showMessageDialog(null, "You had nothing to deflect the blade that hit you. "
-                                + "The blow touched a vital point. "
-                                + "You will not get away this time ...",
-                                "Ambush", JOptionPane.INFORMATION_MESSAGE);
+                        putMessage("You had nothing to deflect the blade that hit you.\nThe blow touched a vital point.\nYou will not get away this time ...", "Ambush");
                         InterfaceGameOver theEnd = new InterfaceGameOver();
                         btUp.setEnabled(false);
                         btDown.setEnabled(false);
@@ -524,16 +503,13 @@ public class World extends JFrame {
                 -> {
             player1.move("down");
             if (player1.getCurrentRoom().getGaz()) {
-                JOptionPane.showMessageDialog(null, "The room is full of gas. Without protection you will quickly suffocate.",
-                        "Gas", JOptionPane.INFORMATION_MESSAGE);
+                putMessage("The room is full of gas. Without protection you will quickly suffocate.", "Gas");
                 btExplore.setEnabled(false);
                 boolean survival = false;
                 if (!player1.getInventory().ItemsList.isEmpty()) {
                     for (int i = 0; i < player1.getInventory().ItemsList.size(); i++) {
                         if (player1.getInventory().ItemsList.get(i).getName().equals("Gas Mask")) {
-                            JOptionPane.showMessageDialog(null, "With your gas mask you can breathe. \n"
-                                    + "You can explore the room quietly.",
-                                    "Gas", JOptionPane.INFORMATION_MESSAGE);
+                            putMessage("With your gas mask you can breathe. \nYou can explore the room quietly.", "Gas");
                             survival = true;
                             player1.getCurrentRoom().setImage(new ImageIcon(getClass().getResource("/pictures2/cuisine.jpg")));
                             player1.getCurrentRoom().setGaz(false);
@@ -543,8 +519,7 @@ public class World extends JFrame {
                     }
                 }
                 if (!survival) {
-                    JOptionPane.showMessageDialog(null, "As you enter, you feel your lungs burn. Get out before dying of asphyxiation.",
-                            "Gas", JOptionPane.INFORMATION_MESSAGE);
+                    putMessage("As you enter, you feel your lungs burn. Get out before dying of asphyxiation.", "Gas");
                     player1.setLife(15);
                 }
             }
@@ -726,31 +701,24 @@ public class World extends JFrame {
                         myFrame.dispose();
                         if (comboKill.getSelectedItem().equals("Dr Violet")) {
                             if (comboWeap.getSelectedItem().equals("Poison")) {
-                                JOptionPane.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector.\n"
-                                        + "The murder did not happen in the " + comboRoom.getSelectedItem(), "Results", JOptionPane.INFORMATION_MESSAGE);
-                            } else {
+                                putMessage("I'm sorry to tell you that you are wrong inspector.\nThe murder did not happen in the " + comboRoom.getSelectedItem(), "Results");
                                 if (comboRoom.getSelectedItem().equals("Small hall")) {
-                                    JOptionPane.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
-                                            + "The murder was not committed with the " + comboWeap.getSelectedItem(), "Results", JOptionPane.INFORMATION_MESSAGE);
+                                    putMessage("I'm sorry to tell you that you are wrong inspector..\nThe murder was not committed with the " + comboWeap.getSelectedItem(), "Results");
                                 } else {
-                                    JOptionPane.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
-                                            + "The murder did not happen in the " + comboRoom.getSelectedItem() + "\n"
-                                            + "And was not committed with the " + comboWeap.getSelectedItem() + "\n", "Results", JOptionPane.INFORMATION_MESSAGE);
+                                    putMessage("I'm sorry to tell you that you are wrong inspector..\nThe murder did not happen in the " + comboRoom.getSelectedItem() + "\nAnd was not committed with the " + comboWeap.getSelectedItem() + "\n", "Results");
                                 }
                             }
                         } else {
                             if (comboWeap.getSelectedItem().equals("Poison")) {
                                 if (comboRoom.getSelectedItem().equals("Small hall")) {
-                                    JOptionPane.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
-                                            + "It was not " + comboKill.getSelectedItem() + " who killed her.\n", "Results", JOptionPane.INFORMATION_MESSAGE);
+                                    putMessage("I'm sorry to tell you that you are wrong inspector..\nIt was not " + comboKill.getSelectedItem() + " who killed her.\n", "Results");
                                 } else {
-                                    JOptionPane.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
-                                            + "It was not " + comboKill.getSelectedItem() + " who killed her.\n"
-                                            + "The murder did not happen in the " + comboRoom.getSelectedItem() + "\n", "Results", JOptionPane.INFORMATION_MESSAGE);
+                                    putMessage("I'm sorry to tell you that you are wrong inspector..\nIt was not " + comboKill.getSelectedItem() + " who killed her.\n"
+                                            + "The murder did not happen in the " + comboRoom.getSelectedItem() + "\n", "Results");
                                 }
                             } else {
-                                JOptionPane.showMessageDialog(null, "I'm sorry to tell you that you are wrong inspector..\n"
-                                        + "None of your suggestions is good.\n", "Results", JOptionPane.INFORMATION_MESSAGE);
+                                putMessage("I'm sorry to tell you that you are wrong inspector..\n"
+                                        + "None of your suggestions is good.\n", "Results");
                             }
                         }
                         player1.setTime(10);
@@ -760,102 +728,59 @@ public class World extends JFrame {
         });
 
         // Setting the Inventory Frame
-        btInventory.addActionListener(ae
-                -> {
+        btInventory.addActionListener(ae -> {
             JFrame inventoryFrame = new JFrame();
             ArrayList<JButton> InventoryList = new ArrayList<JButton>();
             inventoryFrame.setTitle("Inventory");
             inventoryFrame.setSize(700, 370);
-            
+
             JPanel panelinv = new JPanel();
             //inventoryFrame.setLayout(new GridLayout(5, 5));
             panelinv.setLayout(new GridLayout(3, 7));
             tBar.setValueBar(player1.getTime());
 
-//            for (int i = 0; i < player1.getInventory().ItemsList.size(); i++) {
-//               // InventoryList.add(new JButton("", player1.getInventory().ItemsList.get(i).getImageItem()));
-//                InventoryList.add(new JButton(player1.getInventory().ItemsList.get(i).getDescription(), player1.getInventory().ItemsList.get(i).getImageItem()));
-//                InventoryList.get(i).setPreferredSize(new Dimension(100, 100));
-//                inventoryFrame.add(InventoryList.get(i));
-//            };
             for (int i = 0; i < player1.getInventory2().ItemsList.size(); i++) {
-               InventoryList.add(new JButton("", player1.getInventory2().ItemsList.get(i).getImageItem()));
-                //InventoryList.add(new JButton(player1.getInventory2().ItemsList.get(i).getDescription(), player1.getInventory2().ItemsList.get(i).getImageItem()));
+                InventoryList.add(new JButton("", player1.getInventory2().ItemsList.get(i).getImageItem()));
                 InventoryList.get(i).setEnabled(false);
-                //InventoryList.get(i).setPreferredSize(new Dimension(1000, 700));
                 panelinv.setPreferredSize(new Dimension(1000, 1000));
                 panelinv.add(InventoryList.get(i));
-                
+
                 for (int k = 0; k < player1.getInventory().ItemsList.size(); k++) {
-//               // InventoryList.add(new JButton("", player1.getInventory().ItemsList.get(i).getImageItem()));
-//                InventoryList.add(new JButton(player1.getInventory().ItemsList.get(i).getDescription(), player1.getInventory().ItemsList.get(i).getImageItem()));
-//                InventoryList.get(i).setPreferredSize(new Dimension(100, 100));
-//                inventoryFrame.add(InventoryList.get(i));
-                  if (player1.getInventory2().ItemsList.get(i) == player1.getInventory().ItemsList.get(k) )
-                  InventoryList.get(i).setEnabled(true); }
-                  
+                    if (player1.getInventory2().ItemsList.get(i) == player1.getInventory().ItemsList.get(k)) {
+                        InventoryList.get(i).setEnabled(true);
+                    }
+                }
             };
-            
-                 
-         
-             
-             JLabel litem = new JLabel();
-             litem.setLayout(new BorderLayout());
-             litem.add(panelinv);
 
+            JLabel litem = new JLabel();
+            litem.setLayout(new BorderLayout());
+            litem.add(panelinv);
 
-             for (int i = 0; i < player1.getInventory2().ItemsList.size(); i++) {
-                 int u = i;
-                 InventoryList.get(i).addActionListener(aeb -> {
-                   
-                   System.out.println(player1.getInventory2().ItemsList.get(u).getDescription());
-                   
-
+            for (int i = 0; i < player1.getInventory2().ItemsList.size(); i++) {
+                int u = i;
+                InventoryList.get(i).addActionListener(aeb -> {
+                    System.out.println(player1.getInventory2().ItemsList.get(u).getDescription());
                 }
                 );
             }
-           
-             
+
             JLabel test = new JLabel(player1.getInventory2().ItemsList.get(1).getDescription());
             test.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 20));
             test.setForeground(Color.red);
-            litem.add(test,BorderLayout.SOUTH);
-            
-       
+            litem.add(test, BorderLayout.SOUTH);
+
             inventoryFrame.add(litem);
             inventoryFrame.setEnabled(true);
             inventoryFrame.setVisible(true);
             inventoryFrame.setAlwaysOnTop(true);
-            
-
-            
-//             for (int i = 0; i < player1.getInventory2().ItemsList.size(); i++) {
-//                 int u = i;
-//                 InventoryList.get(i).addActionListener(aeb -> {
-//                   
-//                   System.out.println(player1.getInventory2().ItemsList.get(u).getDescription());
-//                   
-//                }
-//                );
-//            }
-//        
-            
-            
-            
-            
-            
         }
         );
-        
-       
-        
 
     }
 
-    private void printWelcome() {
-
-    }
-
+    /**
+     * A method to remove all the buttons from the window
+     */
     public void removeAllBt() {
         btUp.setEnabled(false);
         btDown.setEnabled(false);
@@ -866,4 +791,16 @@ public class World extends JFrame {
         btAccuse.setEnabled(false);
     }
 
+    /**
+     * A method to print a message
+     *
+     * @param message1 The message you want to print
+     * @param message2 The name of the pop-up (or window)
+     */
+    private void putMessage(String message1, String message2) {
+        JOptionPane.showMessageDialog(null,
+                message1,
+                message2,
+                JOptionPane.INFORMATION_MESSAGE);
+    }
 }

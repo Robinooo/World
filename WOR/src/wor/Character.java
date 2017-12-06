@@ -1,6 +1,7 @@
 package wor;
 
 import java.util.*;
+import javax.swing.JOptionPane;
 
 /**
  * The class Character represent a character , with a strng, and his current
@@ -55,5 +56,17 @@ public abstract class Character {
      */
     public void setCurrentRoom(Room pcurrentRoom) {
         currentRoom = pcurrentRoom;
+    }
+    
+     /**
+     * A method to print a message
+     * @param message1 The message you want to print
+     * @param message2 The name of the pop-up (or window)
+     */
+    protected void putMessage(String message1, String message2) {
+        JOptionPane.showMessageDialog(null,
+                message1,
+                message2,
+                JOptionPane.INFORMATION_MESSAGE);
     }
 }
