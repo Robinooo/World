@@ -46,9 +46,11 @@ public class Player extends Character {
     public Inventory getInventory() {
         return this.inv;
     }
+
     public Inventory getInventory2() {
         return this.inv2;
     }
+
     /**
      * This method allows the player to take an item that is present in a room,
      * add it to his inventory and update his number of persuasion points by
@@ -78,62 +80,74 @@ public class Player extends Character {
      * movement of the player
      */
     public void move(String direction) {
-
         Room nextRoom = null;
-        Room testRoom = null; // Room to try the door of a room 
-
         setTime(1);
-        if (currentRoom.containsDirection(direction)) {
-            testRoom = currentRoom.getRoom(direction);
-            boolean haveKey = false;
-            if (testRoom.getDoor() != null) {
-                if (testRoom.getDoor().isOpenable() == true) { //if isOpenable -> true if is openable
+        if (currentRoom.containsDirection(direction)) { // If the direction exist
+            if (currentRoom.getRoom(direction).getDoor() != null) { // There is a door 
+                if (currentRoom.getRoom(direction).getDoor().isOpenable() == true) { //if isOpenable -> true if is openable
                     s.playSoundSingle("music/porte_verrou.wav");
                     nextRoom = currentRoom.getRoom(direction);
-                    haveKey = true;
                 } else {
-                    if (testRoom.getDoor().getHaveCodeLock()) { // Door have a code lock
-                        if (!inv.ItemsList.isEmpty()) {
-                            for (int i = 0; i < inv.ItemsList.size(); i++) {
-                                if (testRoom.getDoor().getCodeLock().getName().equals(inv.ItemsList.get(i).getName())) {
-                                    String testCodeDoor = dialogCodeInput();
-                                    if (testRoom.getDoor().openDoorPass(testCodeDoor)) { // Try the code in the room -> return true if the door is unlock
-                                        testRoom.getDoor().setOpenable(true);
-                                        nextRoom = currentRoom.getRoom(direction);
-                                        haveKey = true;
-                                        setTime(2);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
+                    if (currentRoom.getRoom(direction).getDoor().getHaveCodeLock()) { // Door have a code lock
+                        nextRoom = tryToOpenDoorPass(currentRoom.getRoom(direction), direction);
                     } else { // Door have a key Lock
-                        if (!inv.ItemsList.isEmpty()) {
-                            for (int i = 0; i < inv.ItemsList.size(); i++) {
-                                if (testRoom.getDoor().openDoorKey(inv.ItemsList.get(i).getName())) {
-                                    testRoom.getDoor().setOpenable(true);
-                                    nextRoom = currentRoom.getRoom(direction);
-                                    setTime(2);
-                                    haveKey = true;
-                                    break;
-                                }
-                            }
-                        }
+                        nextRoom = tryToOpenDoorLock(currentRoom.getRoom(direction), direction);
                     }
                 }
-                if (!haveKey) {
-                    nextRoom = currentRoom;
-                    putMessageDoor();
-                }
-            } else // there is no door
-            {
+            } else { // there is no door
                 nextRoom = currentRoom.getRoom(direction);
             }
         } else {
             nextRoom = currentRoom;
-            putMessageDoor();
         }
         currentRoom = nextRoom;
+    }
+
+    /**
+     * A methode that return the new room if you have the rigth key for the
+     * right door
+     *
+     * @param testRoom A parameter to try the room
+     * @param direction The direction that want to go the user
+     * @return Return the new room of the user
+     */
+    private Room tryToOpenDoorLock(Room testRoom, String direction) {
+        if (!inv.ItemsList.isEmpty()) {
+            for (int i = 0; i < inv.ItemsList.size(); i++) {
+                if (testRoom.getDoor().openDoorKey(inv.ItemsList.get(i).getName())) {
+                    testRoom.getDoor().setOpenable(true);
+                    setTime(2);
+                    return currentRoom.getRoom(direction);
+                }
+            }
+        }
+        putMessageDoor();
+        return currentRoom;
+    }
+
+    /**
+     * A methode that return the new room if you have the rigth password for the
+     * right door
+     *
+     * @param testRoom A parameter to try the room
+     * @param direction The direction that want to go the user
+     * @return Return the new room of the user
+     */
+    private Room tryToOpenDoorPass(Room testRoom, String direction) {
+        if (!inv.ItemsList.isEmpty()) {
+            for (int i = 0; i < inv.ItemsList.size(); i++) {
+                if (testRoom.getDoor().getCodeLock().getName().equals(inv.ItemsList.get(i).getName())) {
+                    String testCodeDoor = dialogCodeInput();
+                    if (testRoom.getDoor().openDoorPass(testCodeDoor)) { // Try the code in the room -> return true if the door is unlock
+                        testRoom.getDoor().setOpenable(true);
+                        setTime(2);
+                        return currentRoom.getRoom(direction);
+                    }
+                }
+            }
+        }
+        putMessageDoor();
+        return currentRoom;
     }
 
     /**
@@ -255,8 +269,8 @@ public class Player extends Character {
 //            timeBar = timeBar - (ptime/2);            
 //        }
 //        else {
-            timeBar = timeBar - ptime;
-    //    }
+        timeBar = timeBar - ptime;
+        //    }
     }
 
     /**

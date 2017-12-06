@@ -511,7 +511,7 @@ public class InitializeGame {
         keyVeranda.setHidden(true);
         keyLivingRoom = new Item("Keyliving", "You found the key of the living room. This is the right occasion to interrogate new suspects. ", 0, new ImageIcon(getClass().getResource("/picturesitems/key3.png")));
         keyLivingRoom.setHidden(true);
-        keyDiningRoom = new Item("Keydining", "You found the dining room’s key. Stroke of luck, the dining room and the living room are communicating rooms !", 0, new ImageIcon(getClass().getResource("/picturesitems/key4.png")));
+        keyDiningRoom = new Item("Keydining", "You found the dining room’s key", 0, new ImageIcon(getClass().getResource("/picturesitems/key4.png")));
         keyDiningRoom.setHidden(true);
         
         codeOffice = new Item("Codeoffice", "You found a 4 digits code (4 4 4 4). It looks like they does not bother that much about security here.", 0, new ImageIcon(getClass().getResource("/picturesitems/code.png")));
