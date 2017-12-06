@@ -17,6 +17,7 @@ public class World extends JFrame {
     private final JButton btUp, btDown, btLeft, btRight, btExplore, btTake, btJournal, btInventory, btHelp, btAccuse; //btSPeak
     private final JPanel bBar, rActions;
     private JLabel cPicture, lMap;
+   // private JLabel test;
     private Sounds s;
     private final int u = 100;
 
@@ -630,7 +631,7 @@ public class World extends JFrame {
             pBar.setValueBar(player1.getPersuasion());
             tBar.setValueBar(player1.getTime());
             lBar.setValueBar(player1.getLife());
-            zoneTexte.setText("Miss Prunelle joined you in your investigation ! This may help you gaining some time !");
+            zoneTexte.append("Miss Prunelle joined you in your investigation ! This may help you gaining some time !");
             notebook.addText("Miss Prunelle joined you in your investigation ! This may help you gaining some time !");
         });
 
@@ -756,23 +757,23 @@ public class World extends JFrame {
             litem.setLayout(new BorderLayout());
             litem.add(panelinv);
 
-            for (int i = 0; i < player1.getInventory2().ItemsList.size(); i++) {
-                int u = i;
-                InventoryList.get(i).addActionListener(aeb -> {
-                    System.out.println(player1.getInventory2().ItemsList.get(u).getDescription());
-                }
-                );
+            JLabel test = new JLabel();
+            for (int i = 0; i < player1.getInventory2().ItemsList.size(); i++) 
+            {
+                 int u = i;
+                 InventoryList.get(i).addActionListener(aeb -> {
+                 test.setText(player1.getInventory2().ItemsList.get(u).getDescription());
+                 });
             }
-
-            JLabel test = new JLabel(player1.getInventory2().ItemsList.get(1).getDescription());
             test.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 20));
             test.setForeground(Color.red);
-            litem.add(test, BorderLayout.SOUTH);
-
+            litem.add(test,BorderLayout.SOUTH);
+         
             inventoryFrame.add(litem);
             inventoryFrame.setEnabled(true);
             inventoryFrame.setVisible(true);
             inventoryFrame.setAlwaysOnTop(true);
+  
         }
         );
 
