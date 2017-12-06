@@ -17,6 +17,7 @@ public class World extends JFrame {
     private final JButton btUp, btDown, btLeft, btRight, btExplore, btTake, btJournal, btInventory, btHelp, btAccuse; //btSPeak
     private final JPanel bBar, rActions;
     private JLabel cPicture, lMap;
+   // private JLabel test;
     private Sounds s;
     private final int u = 100;
 
@@ -772,83 +773,46 @@ public class World extends JFrame {
             panelinv.setLayout(new GridLayout(3, 7));
             tBar.setValueBar(player1.getTime());
 
-//            for (int i = 0; i < player1.getInventory().ItemsList.size(); i++) {
-//               // InventoryList.add(new JButton("", player1.getInventory().ItemsList.get(i).getImageItem()));
-//                InventoryList.add(new JButton(player1.getInventory().ItemsList.get(i).getDescription(), player1.getInventory().ItemsList.get(i).getImageItem()));
-//                InventoryList.get(i).setPreferredSize(new Dimension(100, 100));
-//                inventoryFrame.add(InventoryList.get(i));
-//            };
-            for (int i = 0; i < player1.getInventory2().ItemsList.size(); i++) {
-               InventoryList.add(new JButton("", player1.getInventory2().ItemsList.get(i).getImageItem()));
+
+            for (int i = 0; i < player1.getInventory2().ItemsList.size(); i++) 
+            {
+                InventoryList.add(new JButton("", player1.getInventory2().ItemsList.get(i).getImageItem()));
                 //InventoryList.add(new JButton(player1.getInventory2().ItemsList.get(i).getDescription(), player1.getInventory2().ItemsList.get(i).getImageItem()));
                 InventoryList.get(i).setEnabled(false);
                 //InventoryList.get(i).setPreferredSize(new Dimension(1000, 700));
                 panelinv.setPreferredSize(new Dimension(1000, 1000));
                 panelinv.add(InventoryList.get(i));
                 
-                for (int k = 0; k < player1.getInventory().ItemsList.size(); k++) {
-//               // InventoryList.add(new JButton("", player1.getInventory().ItemsList.get(i).getImageItem()));
-//                InventoryList.add(new JButton(player1.getInventory().ItemsList.get(i).getDescription(), player1.getInventory().ItemsList.get(i).getImageItem()));
-//                InventoryList.get(i).setPreferredSize(new Dimension(100, 100));
-//                inventoryFrame.add(InventoryList.get(i));
-                  if (player1.getInventory2().ItemsList.get(i) == player1.getInventory().ItemsList.get(k) )
-                  InventoryList.get(i).setEnabled(true); }
-                  
+                for (int k = 0; k < player1.getInventory().ItemsList.size(); k++) 
+                {
+                  if (player1.getInventory2().ItemsList.get(i) == player1.getInventory().ItemsList.get(k))
+                  InventoryList.get(i).setEnabled(true); 
+                }     
             };
-            
-                 
-         
-             
-             JLabel litem = new JLabel();
-             litem.setLayout(new BorderLayout());
-             litem.add(panelinv);
 
+            JLabel litem = new JLabel();
+            litem.setLayout(new BorderLayout());
+            litem.add(panelinv);
 
-             for (int i = 0; i < player1.getInventory2().ItemsList.size(); i++) {
+            JLabel test = new JLabel();
+            for (int i = 0; i < player1.getInventory2().ItemsList.size(); i++) 
+            {
                  int u = i;
                  InventoryList.get(i).addActionListener(aeb -> {
-                   
-                   System.out.println(player1.getInventory2().ItemsList.get(u).getDescription());
-                   
-
-                }
-                );
+                 test.setText(player1.getInventory2().ItemsList.get(u).getDescription());
+                 });
             }
-           
-             
-            JLabel test = new JLabel(player1.getInventory2().ItemsList.get(1).getDescription());
             test.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 20));
             test.setForeground(Color.red);
             litem.add(test,BorderLayout.SOUTH);
-            
-       
+         
             inventoryFrame.add(litem);
             inventoryFrame.setEnabled(true);
             inventoryFrame.setVisible(true);
             inventoryFrame.setAlwaysOnTop(true);
-            
-
-            
-//             for (int i = 0; i < player1.getInventory2().ItemsList.size(); i++) {
-//                 int u = i;
-//                 InventoryList.get(i).addActionListener(aeb -> {
-//                   
-//                   System.out.println(player1.getInventory2().ItemsList.get(u).getDescription());
-//                   
-//                }
-//                );
-//            }
-//        
-            
-            
-            
-            
-            
+  
         }
         );
-        
-       
-        
 
     }
 

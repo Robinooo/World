@@ -590,6 +590,7 @@ public class InitializeGame {
         inventory = new Inventory();
         inventory.addItems(gasMask);
         inventory.addItems(rope);
+        inventory.addItems(shield);
 
         if (playerClass == "Gadget") {
             player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 200, itemsInventory);
