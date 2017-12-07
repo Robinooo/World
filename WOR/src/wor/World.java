@@ -17,7 +17,7 @@ public class World extends JFrame {
     private final JButton btUp, btDown, btLeft, btRight, btExplore, btTake, btJournal, btInventory, btHelp, btAccuse; //btSPeak
     private final JPanel bBar, rActions;
     private JLabel cPicture, lMap;
-   // private JLabel test;
+    // private JLabel test;
     private Sounds s;
     private final int u = 100;
 
@@ -140,7 +140,7 @@ public class World extends JFrame {
         btJournal.setBorderPainted(false);
         rActions.add(btInventory);
 
-        btRight = new JButton("",new ImageIcon(getClass().getResource("/pictures2/flèche_droite.png")));
+        btRight = new JButton("", new ImageIcon(getClass().getResource("/pictures2/flèche_droite.png")));
         btRight.setOpaque(false);
         btRight.setContentAreaFilled(false);
         btRight.setBorderPainted(false);
@@ -156,8 +156,7 @@ public class World extends JFrame {
         btDown.setOpaque(false);
         btDown.setContentAreaFilled(false);
         btDown.setBorderPainted(false);
-        
-        
+
         moveBt.add(btRight, BorderLayout.EAST);
         moveBt.add(btLeft, BorderLayout.WEST);
         moveBt.add(btUp, BorderLayout.NORTH);
@@ -343,14 +342,14 @@ public class World extends JFrame {
             if ("barn 2".equals(player1.getCurrentRoom().getRoomName()) && player1.getCurrentRoom().getNoir()) {
                 putMessage("The light goes out suddenly.", "Black room");
                 btExplore.setEnabled(false);
-            } else {btExplore.setEnabled(true);}
-
+            } else {
+                btExplore.setEnabled(true);
+            }
             if ("kiosk".equals(player1.getCurrentRoom().getRoomName())
                     || "garden".equals(player1.getCurrentRoom().getRoomName())
                     || "veranda".equals(player1.getCurrentRoom().getRoomName())) {
                 s.playSoundSingle("music/birds.wav");
             }
-
             if ("fountain".equals(player1.getCurrentRoom().getRoomName())) {
                 s.playSoundSingle("music/source.wav");
             }
@@ -368,13 +367,15 @@ public class World extends JFrame {
                 player1.getCurrentRoom().getPanel().add(player1.getCurrentRoom().getButton());
                 co.add(player1.getCurrentRoom().getPanel(), BorderLayout.SOUTH);
             }
-
+                            
             lMap.setIcon(player1.getCurrentRoom().getImagePlan());
             this.zoneTexte.setText(player1.getCurrentRoom().getDescription() + "\n");
             btTake.setEnabled(false);
             tBar.setValueBar(Math.round(player1.getTime()));
             lBar.setValueBar(player1.getLife());
             if (player1.getTime() == 0 | player1.getLife() == 0) {
+                frame.setVisible(false); 
+                frame.dispose();
                 InterfaceGameOver go = new InterfaceGameOver();
                 btUp.setEnabled(false);
                 btDown.setEnabled(false);
@@ -386,6 +387,7 @@ public class World extends JFrame {
             }
         }
         );
+
         btLeft.addActionListener(ae
                 -> {
             if ("office".equals(player1.getCurrentRoom().getRoomName())) {
@@ -409,6 +411,8 @@ public class World extends JFrame {
                     }
                     if (!survival) {
                         putMessage("You had nothing to deflect the blade that hit you.\nThe blow touched a vital point.\nYou will not get away this time ...", "Ambush");
+                        frame.setVisible(false); 
+                        frame.dispose();
                         InterfaceGameOver theEnd = new InterfaceGameOver();
                         btUp.setEnabled(false);
                         btDown.setEnabled(false);
@@ -446,6 +450,8 @@ public class World extends JFrame {
             tBar.setValueBar(Math.round(player1.getTime()));
             lBar.setValueBar(player1.getLife());
             if (player1.getTime() <= 0 | player1.getLife() <= 0) {
+                frame.setVisible(false); 
+                frame.dispose();
                 InterfaceGameOver go = new InterfaceGameOver();
                 btUp.setEnabled(false);
                 btDown.setEnabled(false);
@@ -455,17 +461,14 @@ public class World extends JFrame {
                 btHelp.setEnabled(false);
                 btAccuse.setEnabled(false);
             }
-
             if ("kiosk".equals(player1.getCurrentRoom().getRoomName())
                     || "garden".equals(player1.getCurrentRoom().getRoomName())
                     || "veranda".equals(player1.getCurrentRoom().getRoomName())) {
                 s.playSoundSingle("music/birds.wav");
             }
-
             if ("fountain".equals(player1.getCurrentRoom().getRoomName())) {
                 s.playSoundSingle("music/source.wav");
             }
-
         }
         );
         btUp.addActionListener(ae
@@ -494,6 +497,8 @@ public class World extends JFrame {
             tBar.setValueBar(Math.round(player1.getTime()));
             lBar.setValueBar(player1.getLife());
             if (player1.getTime() <= 0 | player1.getLife() <= 0) {
+                frame.setVisible(false); 
+                frame.dispose();
                 InterfaceGameOver go = new InterfaceGameOver();
                 btUp.setEnabled(false);
                 btDown.setEnabled(false);
@@ -503,13 +508,11 @@ public class World extends JFrame {
                 btHelp.setEnabled(false);
                 btAccuse.setEnabled(false);
             }
-
             if ("kiosk".equals(player1.getCurrentRoom().getRoomName())
                     || "garden".equals(player1.getCurrentRoom().getRoomName())
                     || "veranda".equals(player1.getCurrentRoom().getRoomName())) {
                 s.playSoundSingle("music/birds.wav");
             }
-
             if ("fountain".equals(player1.getCurrentRoom().getRoomName())) {
                 s.playSoundSingle("music/source.wav");
             }
@@ -563,6 +566,8 @@ public class World extends JFrame {
             tBar.setValueBar(Math.round(player1.getTime()));
             lBar.setValueBar(player1.getLife());
             if (player1.getTime() <= 0 | player1.getLife() <= 0) {
+                frame.setVisible(false); 
+                frame.dispose();
                 InterfaceGameOver go = new InterfaceGameOver();
                 btUp.setEnabled(false);
                 btDown.setEnabled(false);
@@ -572,13 +577,11 @@ public class World extends JFrame {
                 btHelp.setEnabled(false);
                 btAccuse.setEnabled(false);
             }
-
             if ("kiosk".equals(player1.getCurrentRoom().getRoomName())
                     || "garden".equals(player1.getCurrentRoom().getRoomName())
                     || "veranda".equals(player1.getCurrentRoom().getRoomName())) {
                 s.playSoundSingle("music/birds.wav");
             }
-
             if ("fountain".equals(player1.getCurrentRoom().getRoomName())) {
                 s.playSoundSingle("music/source.wav");
             }
@@ -598,6 +601,8 @@ public class World extends JFrame {
             lBar.setValueBar(player1.getLife());
 
             if (player1.getTime() <= 0 | player1.getLife() <= 0) {
+                frame.setVisible(false); 
+                frame.dispose();
                 InterfaceGameOver go = new InterfaceGameOver();
                 btUp.setEnabled(false);
                 btDown.setEnabled(false);
@@ -618,6 +623,7 @@ public class World extends JFrame {
             pBar.setValueBar(player1.getPersuasion());
             tBar.setValueBar(Math.round(player1.getTime()));
             lBar.setValueBar(player1.getLife());
+            s.playSoundSingle("music/take.wav");
         }
         );
 
@@ -707,11 +713,14 @@ public class World extends JFrame {
             myFrame.pack();
             myFrame.setSize(300, 300);
             myFrame.setVisible(true);
+            myFrame.setLocationRelativeTo(null);
             btOk.addActionListener(ee -> {
                 if (!" ".equals(comboKill.getSelectedItem())
                         && !" ".equals(comboWeap.getSelectedItem())
                         && !" ".equals(comboRoom.getSelectedItem())) {
                     if (comboKill.getSelectedItem().equals("Dr. Violet") && comboWeap.getSelectedItem().equals("Poison") && comboRoom.getSelectedItem().equals("Small hall")) {
+                        frame.setVisible(false); 
+                        frame.dispose();
                         InterfaceWin go = new InterfaceWin();
                         myFrame.dispose();
                     } else {
@@ -747,9 +756,9 @@ public class World extends JFrame {
                                             + "The murder did not happen in the " + comboRoom.getSelectedItem() + "\n", "Results");
                                 } else {
                                     putMessage("I'm sorry to tell you that you are wrong inspector..\n"
-                                        + "None of your suggestions is good.\n", "Results");
+                                            + "None of your suggestions is good.\n", "Results");
                                 }
-                                
+
                             }
                         }
                         player1.setTime(10);
@@ -764,13 +773,13 @@ public class World extends JFrame {
             ArrayList<JButton> InventoryList = new ArrayList<JButton>();
             inventoryFrame.setTitle("Inventory");
             inventoryFrame.setSize(700, 370);
-            inventoryFrame.setLocationRelativeTo(null);
-
+            
             JPanel panelinv = new JPanel();
             //inventoryFrame.setLayout(new GridLayout(5, 5));
             panelinv.setLayout(new GridLayout(3, 7));
             tBar.setValueBar(Math.round(player1.getTime()));
-
+            s.playSoundSingle("music/inventory.wav");
+            
             for (int i = 0; i < player1.getInventory2().ItemsList.size(); i++) {
                 InventoryList.add(new JButton("", player1.getInventory2().ItemsList.get(i).getImageItem()));
                 InventoryList.get(i).setEnabled(false);
@@ -789,24 +798,24 @@ public class World extends JFrame {
             litem.add(panelinv);
 
             JTextArea test = new JTextArea();
-            for (int i = 0; i < player1.getInventory2().ItemsList.size(); i++) 
-            {
-                 int u = i;
-                 InventoryList.get(i).addActionListener(aeb -> {
-                 test.setText(player1.getInventory2().ItemsList.get(u).getDescription());
-                 });
+            for (int i = 0; i < player1.getInventory2().ItemsList.size(); i++) {
+                int u = i;
+                InventoryList.get(i).addActionListener(aeb -> {
+                    test.setText(player1.getInventory2().ItemsList.get(u).getDescription());
+                });
             }
             test.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 20));
             test.setForeground(Color.red);
             test.setWrapStyleWord(true);
             test.setLineWrap(true);
-            litem.add(test,BorderLayout.SOUTH);
-         
+            litem.add(test, BorderLayout.SOUTH);
+
             inventoryFrame.add(litem);
             inventoryFrame.setEnabled(true);
             inventoryFrame.setVisible(true);
+            inventoryFrame.setLocationRelativeTo(null);
             inventoryFrame.setAlwaysOnTop(true);
-  
+
         }
         );
 

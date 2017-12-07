@@ -52,7 +52,7 @@ public class Sounds {
         }).start();
     }
 
-    public void stop() {
+    public void stop(String url) {
         clip.stop();
     }
 }

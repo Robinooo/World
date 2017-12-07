@@ -116,6 +116,7 @@ public class Player extends Character {
             for (int i = 0; i < inv.ItemsList.size(); i++) {
                 if (testRoom.getDoor().openDoorKey(inv.ItemsList.get(i).getName())) {
                     testRoom.getDoor().setOpenable(true);
+                    s.playSoundSingle("music/porte_verrou.wav");
                     setTime(2);
                     return currentRoom.getRoom(direction);
                 }
@@ -140,6 +141,7 @@ public class Player extends Character {
                     String testCodeDoor = dialogCodeInput();
                     if (testRoom.getDoor().openDoorPass(testCodeDoor)) { // Try the code in the room -> return true if the door is unlock
                         testRoom.getDoor().setOpenable(true);
+                        s.playSoundSingle("music/porte_verrou.wav");
                         setTime(2);
                         return currentRoom.getRoom(direction);
                     }

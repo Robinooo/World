@@ -19,9 +19,9 @@ public class InterfaceGameOver {
 
     private Icon testGameOver;
     private Sounds s;
-    // private JLabel myLabelGO ;
-
+    
     public InterfaceGameOver() {
+        //s.stop("music/panthère_rose.wav");
         s.playSoundInfinite("music/gadget.wav");
         testGameOver = new ImageIcon(getClass().getResource("/pictures2/gameover.png"));
         JLabel myLabelGO = new JLabel();
