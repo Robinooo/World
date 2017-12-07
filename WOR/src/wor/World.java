@@ -282,6 +282,7 @@ public class World extends JFrame {
         putMessage("Miss Pervenche has been killed in the manor.\nYou have to find the killer ! \n You are " + player1.getName() + " the detective !\nSpeak to everyone and found the clues. They help you to found the killer.", "Manor's investigation!");
 
         this.zoneTexte.setText(player1.getCurrentRoom().getDescription());
+        zoneTexte.setWrapStyleWord(true);
         zoneTexte.setLineWrap(true);
 
         btRight.addActionListener(ae -> {
@@ -735,6 +736,7 @@ public class World extends JFrame {
             ArrayList<JButton> InventoryList = new ArrayList<JButton>();
             inventoryFrame.setTitle("Inventory");
             inventoryFrame.setSize(700, 370);
+            inventoryFrame.setLocationRelativeTo(null);
 
             JPanel panelinv = new JPanel();
             //inventoryFrame.setLayout(new GridLayout(5, 5));
@@ -758,7 +760,7 @@ public class World extends JFrame {
             litem.setLayout(new BorderLayout());
             litem.add(panelinv);
 
-            JLabel test = new JLabel();
+            JTextArea test = new JTextArea();
             for (int i = 0; i < player1.getInventory2().ItemsList.size(); i++) 
             {
                  int u = i;
@@ -768,6 +770,8 @@ public class World extends JFrame {
             }
             test.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 20));
             test.setForeground(Color.red);
+            test.setWrapStyleWord(true);
+            test.setLineWrap(true);
             litem.add(test,BorderLayout.SOUTH);
          
             inventoryFrame.add(litem);
