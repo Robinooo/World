@@ -343,7 +343,7 @@ public class World extends JFrame {
             if ("barn 2".equals(player1.getCurrentRoom().getRoomName()) && player1.getCurrentRoom().getNoir()) {
                 putMessage("The light goes out suddenly.", "Black room");
                 btExplore.setEnabled(false);
-            }
+            } else {btExplore.setEnabled(true);}
 
             if ("kiosk".equals(player1.getCurrentRoom().getRoomName())
                     || "garden".equals(player1.getCurrentRoom().getRoomName())
@@ -716,26 +716,40 @@ public class World extends JFrame {
                         myFrame.dispose();
                     } else {
                         myFrame.dispose();
-                        if (comboKill.getSelectedItem().equals("Dr Violet")) {
+                        if (comboKill.getSelectedItem().equals("Dr. Violet")) {
                             if (comboWeap.getSelectedItem().equals("Poison")) {
-                                putMessage("I'm sorry to tell you that you are wrong inspector.\nThe murder did not happen in the " + comboRoom.getSelectedItem(), "Results");
+                                putMessage("I'm sorry to tell you that you are wrong inspector..\n"
+                                        + "The murder was not committed with the " + comboWeap.getSelectedItem(), "Results");
+                            } else {
                                 if (comboRoom.getSelectedItem().equals("Small hall")) {
-                                    putMessage("I'm sorry to tell you that you are wrong inspector..\nThe murder was not committed with the " + comboWeap.getSelectedItem(), "Results");
+                                    putMessage("I'm sorry to tell you that you are wrong inspector..\n"
+                                            + "The murder was not committed with the " + comboWeap.getSelectedItem(), "Results");
                                 } else {
-                                    putMessage("I'm sorry to tell you that you are wrong inspector..\nThe murder did not happen in the " + comboRoom.getSelectedItem() + "\nAnd was not committed with the " + comboWeap.getSelectedItem() + "\n", "Results");
+                                    putMessage("I'm sorry to tell you that you are wrong inspector..\n"
+                                            + "The murder was not committed with the " + comboWeap.getSelectedItem() + "\n"
+                                            + "And the murder did not happen in the " + comboRoom.getSelectedItem(), "Results");
                                 }
                             }
                         } else {
                             if (comboWeap.getSelectedItem().equals("Poison")) {
                                 if (comboRoom.getSelectedItem().equals("Small hall")) {
-                                    putMessage("I'm sorry to tell you that you are wrong inspector..\nIt was not " + comboKill.getSelectedItem() + " who killed her.\n", "Results");
+                                    putMessage("I'm sorry to tell you that you are wrong inspector..\n"
+                                            + "It was not " + comboKill.getSelectedItem() + " who killed her.\n", "Results");
                                 } else {
-                                    putMessage("I'm sorry to tell you that you are wrong inspector..\nIt was not " + comboKill.getSelectedItem() + " who killed her.\n"
+                                    putMessage("I'm sorry to tell you that you are wrong inspector..\n"
+                                            + "It was not " + comboKill.getSelectedItem() + " who killed her.\n"
                                             + "The murder did not happen in the " + comboRoom.getSelectedItem() + "\n", "Results");
                                 }
                             } else {
-                                putMessage("I'm sorry to tell you that you are wrong inspector..\n"
+                                if (comboRoom.getSelectedItem().equals("Small hall")) {
+                                    putMessage("I'm sorry to tell you that you are wrong inspector..\n"
+                                            + "It was not " + comboKill.getSelectedItem() + " who killed her.\n"
+                                            + "The murder did not happen in the " + comboRoom.getSelectedItem() + "\n", "Results");
+                                } else {
+                                    putMessage("I'm sorry to tell you that you are wrong inspector..\n"
                                         + "None of your suggestions is good.\n", "Results");
+                                }
+                                
                             }
                         }
                         player1.setTime(10);
