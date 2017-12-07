@@ -21,7 +21,7 @@ public class World extends JFrame {
     private Sounds s;
     private final int u = 100;
 
-    JTextArea zoneTexte = new JTextArea(7, 52);
+    JTextArea zoneTexte = new JTextArea(7, 40);
 
     private PersuasionBar pBar;
     private TimeBar tBar;
@@ -140,10 +140,24 @@ public class World extends JFrame {
         btJournal.setBorderPainted(false);
         rActions.add(btInventory);
 
-        btRight = new JButton("→");
-        btLeft = new JButton("←");
-        btUp = new JButton("↑");
-        btDown = new JButton("↓");
+        btRight = new JButton("",new ImageIcon(getClass().getResource("/pictures2/flèche_droite.png")));
+        btRight.setOpaque(false);
+        btRight.setContentAreaFilled(false);
+        btRight.setBorderPainted(false);
+        btLeft = new JButton("", new ImageIcon(getClass().getResource("/pictures2/flèche_gauche.png")));
+        btLeft.setOpaque(false);
+        btLeft.setContentAreaFilled(false);
+        btLeft.setBorderPainted(false);
+        btUp = new JButton("", new ImageIcon(getClass().getResource("/pictures2/flèche_haut.png")));
+        btUp.setOpaque(false);
+        btUp.setContentAreaFilled(false);
+        btUp.setBorderPainted(false);
+        btDown = new JButton("", new ImageIcon(getClass().getResource("/pictures2/flèche_bas.png")));
+        btDown.setOpaque(false);
+        btDown.setContentAreaFilled(false);
+        btDown.setBorderPainted(false);
+        
+        
         moveBt.add(btRight, BorderLayout.EAST);
         moveBt.add(btLeft, BorderLayout.WEST);
         moveBt.add(btUp, BorderLayout.NORTH);
