@@ -68,7 +68,7 @@ public class InterfaceDebut extends JFrame implements ActionListener {
 
         //-----------------------------------------------------------------------
         //1er label de la frame 
-        label = new JLabel("Choose your player and click on start to begin your game!", JLabel.CENTER);
+        label = new JLabel("Choose your Character and player name, then click on start to begin your game!", JLabel.CENTER);
         label.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 25));
         label.setForeground(Color.white);
         JLabel label2 = new JLabel(" ");

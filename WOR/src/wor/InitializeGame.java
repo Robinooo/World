@@ -333,19 +333,19 @@ public class InitializeGame {
         kitchen.setExit("up", corridor18);
 
         // Creation of the characters   
-        clnMoutarde = new Talking("Yesterday I went to have dinner early and saw the Dr. Violet with a bottle of wine in his hand ..", "Yesterday I went to have dinner early and saw the Dr. Violet with a bottle of wine in his hand .. \n On the one hand, it didn’t shock me: he's a lover of good wine…  Looking back, when I hailed him he looked restless, as if something had happened... ", "Colonel Moutarde");
-        missRose = new Talking("I just came here to have a quiet weekend. I never thought that something so dramatic could happened …", "When I think about it, Madam Pervenche seemed to be dating someone in the mansion, I never knew who it was…", "miss Rose");
-        prOlive = new Talking("What happened really cut my appetite ... Too bad.. they served lobster this afternoon!", "Mrs. Pervenche? Yes it's true she was cute but unfortunately for her not my style at all..", "Professeur Olive");
-        missLeblanc = new Talking("I wasn’t feeling good yesterday after dinner. I went upstairs in my room and I spent the evening and night there. I needed some rest.. and that’s why I’m having a walk in the garden now.", "Mme Pervenche? A good old friend ! I know she wasn’t having a good feeling with Reverend Olive for few days.. too bad he is such a magnificent man...", "miss Leblanc");
-        generalLegris = new Talking("I talked a little bit with Dr. Violet. A great scientist, this man!  Not like that idiot of \"Professor\" Olive …", "I saw someone entering the living room, unfortunately lighting is defective in this room, I could not identify who was coming in. Surely this stupid Professor Olive.", "general Legris");
-        misterRouge = new Talking("Mrs. Pervenche was a good friend. We used to have good times together.", "She was supposed to spend the evening with me last night, but she never came ... ", "Mister Rouge");
-        countOrange = new Talking("Hello inspector, what do you want?  Yes …  I learned for Mrs. Pervench ... It's very unfortunate. Did you find the murderer ?", "I heard Mrs. Pervenche speak to a man when I was in the living room last night, I think they were in the kiosk at this moment.", "Compte Orange");
-        countessOrange = new Talking("Me and my husband the Count Orange have been the owner of this hotel for over 20 years and this is the first time such a horrible thing happens! I am taking a deep breath of fresh air in the kiosk to recover from all these emotions.", "Mrs. Pervenche seemed so friendly, resourceful, and early in life! What a pity..", "Comptesse Orange");
-        inspecteur = new Talking("Hi, welcome, a murder took place here last night, Mrs. Pervenche was murdered and we are looking for the culprit!", "Where was Madame Pervenche murdered? Good question.. The body was found in the small hall very early this morning.", "Inspecteur");
+        clnMoutarde = new Talking("COLONEL MOUTARDE : Yesterday I went to have dinner early and saw the Dr. Violet with a bottle of wine in his hand ..", "COLONEL MOUTARDE : Yesterday I went to have dinner early and saw the Dr. Violet with a bottle of wine in his hand .. \n First, it didn’t shock me: he's a lover of good wine…  Looking back, when I hailed him he looked restless, as if something had happened... ", "Colonel Moutarde");
+        missRose = new Talking("MISS ROSE : I just came here to have a quiet weekend. I never thought that something so dramatic could happened …", "MISS ROSE :  When I think about it, Madam Pervenche seemed to be dating someone in the mansion, I never knew who it was…", "miss Rose");
+        prOlive = new Talking("PR. OLIVE : What happened really cut my appetite ... Too bad.. they served lobster this afternoon!", "PR. OLIVE : Mrs. Pervenche? Yes it's true she was cute but unfortunately for her not my style at all..", "Professeur Olive");
+        missLeblanc = new Talking("MISS LEBLANC : I wasn’t feeling good yesterday after dinner. I went upstairs in my room and I spent the evening and night there. I needed some rest.. and that’s why I’m having a walk in the garden now.", "MISS LEBLANC : Mme Pervenche? A good old friend ! I know she wasn’t having a good feeling with Reverend Olive for few days.. too bad he is such a magnificent man...", "miss Leblanc");
+        generalLegris = new Talking("GENERAL LEGRIS : I talked a little bit with Dr. Violet. A great scientist, this man!  Not like that idiot of \"Professor\" Olive …", "GENERAL LEGRIS : I saw someone entering the living room, unfortunately lighting is defective in this room, I could not identify who was coming in. Surely this stupid Professor Olive.", "general Legris");
+        misterRouge = new Talking("MR. ROUGE : Mrs. Pervenche was a good friend. We used to have good times together.", "MR. ROUGE : She was supposed to spend the evening with me last night, but she never came ... ", "Mister Rouge");
+        countOrange = new Talking("COUNT ORANGE : Hello inspector, what do you want?  Yes …  I learned for Mrs. Pervench ... It's very unfortunate. Did you find the murderer ?", "COUNT ORANGE : I heard Mrs. Pervenche speak to a man when I was in the living room last night, I think they were in the kiosk at this moment.", "Compte Orange");
+        countessOrange = new Talking("COUNTESS ORANGE : Me and my husband the Count Orange have been the owner of this hotel for over 20 years and this is the first time such a horrible thing happens! I am taking a deep breath of fresh air in the kiosk to recover from all these emotions.", "COUNTESS ORANGE : Mrs. Pervenche seemed so friendly, resourceful, and early in life! What a pity..", "Comptesse Orange");
+        inspecteur = new Talking("INSPECTOR : Hi, welcome, a murder took place here last night, Mrs. Pervenche was murdered and we are looking for the culprit!", "INSPECTOR : Where was Madame Pervenche murdered? Good question.. The body was found in the small hall very early this morning.", "Inspecteur");
 
         drViolet = new Killer("Docteur Violet");
 
-        missPrunelle = new Follower("I am only the cleaning lady, but I can help you another way in your investigation.", "miss Prunelle");
+        missPrunelle = new Follower("MISS PRUNELLE : I am only the cleaning lady, but I can help you another way in your investigation.", "miss Prunelle");
 
         btTest = new JButton("", new ImageIcon(getClass().getResource("/Personnage/ComptesseOrange.png")));
         btTest.setOpaque(false);
@@ -501,7 +501,7 @@ public class InitializeGame {
         poison.setUse(false);
         axe = new Item("axe", "You found an axe. It reminds you your childhood with your father, who was a lumberjack. You focus and notice that there is no blood on it. On one hand, it would be very barbaric to kill someone with an axe...", 6, new ImageIcon(getClass().getResource("/picturesitems/axe.png")));
         axe.setUse(false);
-        shield = new Item("Shield", "You find a shield. The murderer is still in the mansion, it is better to take something to protect himself.", 0, new ImageIcon(getClass().getResource("/picturesitems/shield.jpg")));
+        shield = new Item("Shield", "You find a shield. The murderer is still in the mansion, it is better to take something to protect yourself.", 0, new ImageIcon(getClass().getResource("/picturesitems/shield.jpg")));
         shield.setUse(false);
 
         // Creation of key - code

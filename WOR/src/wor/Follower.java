@@ -10,20 +10,20 @@ package wor;
  */
 public class Follower extends Character {
 
-    private String speach;
+    private String speech;
     private boolean fol;
 
     /**
      * Constructor for objects of class Follower. A follower is represented by a
-     * speach which is specific to this follower and a name (the name of this
+     * speech which is specific to this follower and a name (the name of this
      * character).
      *
-     * @param sp, the speach of the character
+     * @param sp, the speech of the character
      * @param n, the name of the character
      */
     public Follower(String sp, String n) {
         name = n;
-        speach = sp;
+        speech = sp;
         fol = false;
     }
 
@@ -46,11 +46,11 @@ public class Follower extends Character {
     }
 
     /**
-     * The getSpeach1 method gets the speach of the follower.
+     * The getSpeach1 method gets the speech of the follower.
      *
-     * @return speach, the speach of the character
+     * @return speech, the speech of the character
      */
-    public String getspeach() {
-        return speach;
+    public String getspeech() {
+        return speech;
     }
 }

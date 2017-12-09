@@ -161,7 +161,7 @@ public class Player extends Character {
     }
 
     /**
-     * Method to chnge the value of the boolean follow
+     * Method to change the value of the boolean follow
      * @param bool Boolean to say if the player is follow or not (true -> player follow)
      */
     public void setFollow(boolean bool){
@@ -204,8 +204,8 @@ public class Player extends Character {
             zoneTexte.setText("There is no one to talk to here, you think about talking to yourself and loose 5 minutes of your precious time \n");
         } else if (currentRoom.getFollowerInTheRoom() != null) {
             setTime(2);
-            zoneTexte.setText(currentRoom.getFollowerInTheRoom().getspeach() + "\n");
-            note.addText(currentRoom.getFollowerInTheRoom().getName() + " : " + currentRoom.getFollowerInTheRoom().getspeach() + "\n");
+            zoneTexte.setText(currentRoom.getFollowerInTheRoom().getspeech() + "\n");
+            note.addText(currentRoom.getFollowerInTheRoom().getName() + " : " + currentRoom.getFollowerInTheRoom().getspeech() + "\n");
         } else {
             setTime(2);
             zoneTexte.setText(currentRoom.getTalkingInTheRoom().talk(persuasionBar) + "\n");

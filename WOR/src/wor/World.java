@@ -646,8 +646,8 @@ public class World extends JFrame {
             player1.getCurrentRoom().getFollowerInTheRoom().follow();
             player1.setFollow(true);
             player1.setTime(2);
-            zoneTexte.setText(player1.getCurrentRoom().getFollowerInTheRoom().getspeach() + "\n");
-            notebook.addText(player1.getCurrentRoom().getFollowerInTheRoom().getName() + " : " + player1.getCurrentRoom().getFollowerInTheRoom().getspeach() + "\n");
+            zoneTexte.setText(player1.getCurrentRoom().getFollowerInTheRoom().getspeech() + "\n");
+            notebook.addText(player1.getCurrentRoom().getFollowerInTheRoom().getName() + " : " + player1.getCurrentRoom().getFollowerInTheRoom().getspeech() + "\n");
             player1.getTime();
             btTake.setEnabled(false);
             pBar.setValueBar(player1.getPersuasion());
@@ -761,7 +761,7 @@ public class World extends JFrame {
 
                             }
                         }
-                        player1.setTime(10);
+                        player1.setTime(50);
                     }
                 }
             });
