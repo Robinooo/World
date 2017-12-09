@@ -2,7 +2,7 @@ package wor;
 
 /**
  * Talking is a subclass of Character. A talking character is a character that
- * speak to the player. It has two different speaches, depending on the
+ * speak to the player. It has two different speeches, depending on the
  * persuasion points of the player.
  *
  * @author G2

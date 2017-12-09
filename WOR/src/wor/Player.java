@@ -162,20 +162,25 @@ public class Player extends Character {
 
     /**
      * Method to change the value of the boolean follow
-     * @param bool Boolean to say if the player is follow or not (true -> player follow)
+     *
+     * @param bool Boolean to say if the player is follow or not (true -> player
+     * follow)
      */
-    public void setFollow(boolean bool){
+    public void setFollow(boolean bool) {
         follow = bool;
     }
-    
+
     /**
-     * A getter method to know if the player is follow or not (true -> player follow)
-     * @return The Boolean that say if the player is follow or not (true -> player follow)
+     * A getter method to know if the player is follow or not (true -> player
+     * follow)
+     *
+     * @return The Boolean that say if the player is follow or not (true ->
+     * player follow)
      */
-    public boolean getFollow(){
+    public boolean getFollow() {
         return follow;
     }
-    
+
     /**
      *
      * @param zoneTexte
@@ -206,6 +211,10 @@ public class Player extends Character {
             setTime(2);
             zoneTexte.setText(currentRoom.getFollowerInTheRoom().getspeech() + "\n");
             note.addText(currentRoom.getFollowerInTheRoom().getName() + " : " + currentRoom.getFollowerInTheRoom().getspeech() + "\n");
+        } else if (currentRoom.getKillerInTheRoom() != null) {
+            setTime(2);
+            zoneTexte.setText(currentRoom.getKillerInTheRoom().getspeech() + "\n");
+            note.addText(currentRoom.getKillerInTheRoom().getName() + " : " + currentRoom.getKillerInTheRoom().getspeech() + "\n");
         } else {
             setTime(2);
             zoneTexte.setText(currentRoom.getTalkingInTheRoom().talk(persuasionBar) + "\n");
@@ -282,9 +291,8 @@ public class Player extends Character {
     public void setTime(int ptime) {
         float temp = ptime;
         if (follow == true) {
-            timeBar = timeBar - (temp/2);
-        }
-        else {
+            timeBar = timeBar - (temp / 2);
+        } else {
             timeBar = timeBar - temp;
         }
         System.out.println(timeBar);

@@ -1,7 +1,6 @@
 package wor;
 
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 /**
  * This class is used to create a killer character, the killer can try to kill
@@ -13,6 +12,7 @@ import javax.swing.JOptionPane;
 public class Killer extends Character {
 
     public Sounds s;
+    private String speech;
 
     /**
      * Constructor for objects of class Killer. The killer is represented by a
@@ -20,10 +20,21 @@ public class Killer extends Character {
      *
      * @param name, the name of the killer
      */
-    public Killer(String n) {
+    public Killer(String n, String s) {
         name = n.toUpperCase();
+        speech = s;
     }
 
+    
+        /**
+     * A getter to know the speech of the killer
+     *
+     * @return the speech of the killer
+     */
+    public String getspeech() {
+        return speech;
+    }
+    
     /**
      * If the player meet the killer, the killer will try to kill him as well.
      * The player will lose time and life points, if time or life points goes to

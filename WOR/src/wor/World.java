@@ -299,7 +299,7 @@ public class World extends JFrame {
         zoneTexte.setLineWrap(true);
 
         btRight.addActionListener(ae -> {
-            Killer k = new Killer("test");
+            Killer k = new Killer("test", "");
             int v = -1;
             k.kill(player1, v);
 

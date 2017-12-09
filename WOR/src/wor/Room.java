@@ -168,6 +168,15 @@ public class Room {
         return follower;
     }
 
+        /**
+     * Returns the killer present in the room
+     *
+     * @return killer
+     */
+    public Killer getKillerInTheRoom() {
+        return killer;
+    }
+    
     /**
      * Returns the panel
      *
@@ -267,7 +276,7 @@ public class Room {
     /**
      * Add a Button to the room
      *
-     * @param pbou The boutton added to the room;
+     * @param pbou The button added to the room;
      */
     public void addButton(JButton pbou) {
         bou = pbou;

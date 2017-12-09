@@ -343,7 +343,7 @@ public class InitializeGame {
         countessOrange = new Talking("COUNTESS ORANGE : Me and my husband the Count Orange have been the owner of this hotel for over 20 years and this is the first time such a horrible thing happens! I am taking a deep breath of fresh air in the kiosk to recover from all these emotions.", "COUNTESS ORANGE : Mrs. Pervenche seemed so friendly, resourceful, and early in life! What a pity..", "Comptesse Orange");
         inspecteur = new Talking("INSPECTOR : Hi, welcome, a murder took place here last night, Mrs. Pervenche was murdered and we are looking for the culprit!", "INSPECTOR : Where was Madame Pervenche murdered? Good question.. The body was found in the small hall very early this morning.", "Inspecteur");
 
-        drViolet = new Killer("Docteur Violet");
+        drViolet = new Killer("Docteur Violet", "bouh");
 
         missPrunelle = new Follower("MISS PRUNELLE : I am only the cleaning lady, but I can help you another way in your investigation.", "miss Prunelle");
 
