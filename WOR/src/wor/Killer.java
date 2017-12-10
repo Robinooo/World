@@ -13,6 +13,7 @@ public class Killer extends Character {
 
     public Sounds s;
     private String speech;
+    private String name;
 
     /**
      * Constructor for objects of class Killer. The killer is represented by a
@@ -33,6 +34,15 @@ public class Killer extends Character {
      */
     public String getspeech() {
         return speech;
+    }
+    
+            /**
+     * A getter to know the name of the killer
+     *
+     * @return the name of the killer
+     */
+    public String getName() {
+        return name;
     }
     
     /**
