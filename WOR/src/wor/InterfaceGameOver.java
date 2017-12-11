@@ -1,7 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This class is used to create the interface of the window game over
+ *
+ * @author (Group2)
+ * @version (11/12/17)
  */
 package wor;
 
@@ -17,9 +18,12 @@ import java.awt.Color;
  */
 public class InterfaceGameOver {
 
-    private Icon testGameOver;
-    private Sounds s;
+    private Icon testGameOver; //Ion for the window containing  our image of GameOver
+    private Sounds s; // The sound of the window game over
     
+    /**
+     * Constructor of the interface game over
+     */
     public InterfaceGameOver() {
         //s.stop("music/panthère_rose.wav");
         s.playSoundInfinite("music/gadget.wav");
@@ -33,5 +37,4 @@ public class InterfaceGameOver {
         frame2.add(myLabelGO);
         frame2.setVisible(true);
     }
-
 }
