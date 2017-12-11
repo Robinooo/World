@@ -47,6 +47,10 @@ public class Player extends Character {
         return this.inv;
     }
 
+    /**
+     * Method to return the inventory of the player
+     * @return The inventory
+     */
     public Inventory getInventory2() {
         return this.inv2;
     }
@@ -153,8 +157,8 @@ public class Player extends Character {
     }
 
     /**
-     *
-     * @return
+     * A method to return the current room of the player
+     * @return Current room of the player
      */
     public Room getCurrentRoom() {
         return currentRoom;
@@ -203,6 +207,10 @@ public class Player extends Character {
         // on perds 10 minutes si un item est caché
     }
 
+    /**
+     * A method to speak with a character 
+     * @param zoneTexte The specif area of click by the user of the game
+     */
     public void speak(JTextArea zoneTexte) {
         if (currentRoom.getTalkingInTheRoom() != null) {
             setTime(2);
@@ -223,15 +231,15 @@ public class Player extends Character {
     }
 
     /**
-     *
-     * @return
+     * A method to return the persuasion of the player
+     * @return the persuasion of the player
      */
     public int getPersuasion() {
         return persuasionBar;
     }
 
     /**
-     *
+     * Modifer for the persiasion of the player
      * @param ppersua
      */
     public void setPersuasion(Integer ppersua) {
@@ -261,15 +269,15 @@ public class Player extends Character {
     }
 
     /**
-     *
-     * @return
+     * A method to return the life point of the player
+     * @return the life point of the player
      */
     public int getLife() {
         return lifeBar;
     }
 
     /**
-     *
+     * Modifier of the life point of the player
      * @param plife
      */
     public void setLife(Integer plife) {
@@ -277,7 +285,7 @@ public class Player extends Character {
     }
 
     /**
-     *
+     * A method to return the time of the player
      * @return
      */
     public float getTime() {
@@ -285,7 +293,7 @@ public class Player extends Character {
     }
 
     /**
-     *
+     * A modifier of the time of the player
      * @param ptime
      */
     public void setTime(int ptime) {
@@ -299,8 +307,9 @@ public class Player extends Character {
     }
 
     /**
-     *
-     * @return
+     * A method to put a specifi message when the user of the game want to open
+     * a door closed by a password.
+     * @return A message
      */
     private String dialogCodeInput() {
         String s = (String) JOptionPane.showInputDialog(
