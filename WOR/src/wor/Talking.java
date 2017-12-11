@@ -24,7 +24,7 @@ public class Talking extends Character {
      * @param n The name of the talking character
      */
     public Talking(String s1, String s2, String n) {
-        name = n;
+        name = n.toUpperCase();
         speech1 = s1;
         speech2 = s2;
     }

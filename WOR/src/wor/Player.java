@@ -206,15 +206,15 @@ public class Player extends Character {
     public void speak(JTextArea zoneTexte) {
         if (currentRoom.getTalkingInTheRoom() != null) {
             setTime(2);
-            zoneTexte.setText(currentRoom.getTalkingInTheRoom().talk(persuasionBar) + "\n");
+            zoneTexte.setText(currentRoom.getTalkingInTheRoom().getName() + " : " + currentRoom.getTalkingInTheRoom().talk(persuasionBar) + "\n");
             note.addText(currentRoom.getTalkingInTheRoom().getName() + " : " + currentRoom.getTalkingInTheRoom().talk(persuasionBar) + "\n");
         } else if (currentRoom.getFollowerInTheRoom() != null) {
             setTime(2);
-            zoneTexte.setText(currentRoom.getFollowerInTheRoom().getspeech() + "\n");
+            zoneTexte.setText(currentRoom.getFollowerInTheRoom().getName() + " : " +currentRoom.getFollowerInTheRoom().getspeech() + "\n");
             note.addText(currentRoom.getFollowerInTheRoom().getName() + " : " + currentRoom.getFollowerInTheRoom().getspeech() + "\n");
         } else if (currentRoom.getKillerInTheRoom() != null) {
             setTime(2);
-            zoneTexte.setText(currentRoom.getKillerInTheRoom().getspeech() + "\n");
+            zoneTexte.setText(currentRoom.getKillerInTheRoom().getName() + " : " + currentRoom.getKillerInTheRoom().getspeech() + "\n");
             note.addText(currentRoom.getKillerInTheRoom().getName() + " : " + currentRoom.getKillerInTheRoom().getspeech() + "\n");
         } else {
             setTime(2);
