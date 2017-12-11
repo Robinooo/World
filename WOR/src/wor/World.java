@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * The World of the game. With all the rooms, characteres, items ...
  *
  * @author (Group2)
- * @version (11/23/17)
+ * @version (11/20/17)
  */
 public class World extends JFrame {
 
