@@ -1,5 +1,5 @@
 /**
- * This class is used to initialize the Game. For the creation of characters, 
+ * This class is used to initialise the Game. For the creation of characters, 
  * rooms, items ... 
  *
  * @author (Group2)
@@ -583,9 +583,9 @@ public class InitializeGame {
 
         notebook = new NoteBook();
         inventory = new Inventory();
-        inventory.addItems(gasMask);
-        inventory.addItems(rope);
-        inventory.addItems(shield);
+//        inventory.addItems(gasMask);
+//        inventory.addItems(rope);
+//        inventory.addItems(shield);
 
         if (playerClass == "Gadget") {
             player1 = new Player(playerName, hall, notebook, inventory, 0, 100, 200, itemsInventory);

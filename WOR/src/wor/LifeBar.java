@@ -5,7 +5,7 @@ import java.awt.*;
 
 /**
  * The LifeBar class represents the life bar of the player in the graphical
- * interface. This life bar allows the player to visualize the life points
+ * interface. This life bar allows the player to visualise the life points
  * remaining.
  *
  * @author G2
@@ -16,7 +16,7 @@ public class LifeBar {
     private JProgressBar bar; // the life bar
 
     /**
-     * Constructor of the LifeBar class. Initialization of the lifebar.
+     * Constructor of the LifeBar class. Initialisation of the lifebar.
      */
     public LifeBar() {
         bar = new JProgressBar();
@@ -45,5 +45,17 @@ public class LifeBar {
      */
     public void setValueBar(int val) {
         bar.setValue(val);
+        colorBar();
+    }
+        /**
+     * Change the color of the bar when there are only 30 lifepoints
+     * remaining.
+     */
+    public void colorBar() {
+        if (bar.getValue() < 30) {
+            bar.setForeground(Color.red);
+        } else {
+            bar.setForeground(Color.green);
+        }
     }
 }
