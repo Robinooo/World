@@ -6,10 +6,10 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 /**
- * Write a description of class World here.
+ * The World of the game. With all the rooms, characteres, items ...
  *
  * @author (Group2)
- * @version (11/23/17)
+ * @version (11/20/17)
  */
 public class World extends JFrame {
 
@@ -33,12 +33,14 @@ public class World extends JFrame {
     private JPanel journalPanel;
     private ArrayList<JButton> InventoryList;
 
-    // instance variables - replace the example below with your own
     /**
      * Constructor for objects of class World
-     *
-     * @param playerClass
-     * @param playerName
+     * 
+     * @param player1 The player of the game
+     * @param notebook The notebook of the player
+     * @param playerClass The level of the game
+     * @param listRoom List of the rooms prensent in the game
+     * @param btTest2 The button of the follow to know if the foolower follow the player or not
      */
     public World(Player player1, NoteBook notebook, String playerClass, ArrayList<Room> listRoom, JButton btTest2) {
 
