@@ -99,6 +99,7 @@ public class Player extends Character {
             }
         } else {
             nextRoom = currentRoom;
+            putMessage("Sorry,you can't go in this direction", "Impossible way");
         }
         currentRoom = nextRoom;
     }

@@ -52,7 +52,7 @@ public class TimeBar {
      * remaining.
      */
     public void colorBar() {
-        if (bar.getValue() < 30) {
+        if (bar.getValue() < 60) {
             bar.setForeground(Color.red);
         } else {
             bar.setForeground(Color.blue);
