@@ -1,3 +1,9 @@
+/**
+ * This class is used to create the window when the palyer win 
+ *
+ * @author (Group2)
+ * @version (11/12/17)
+ */
 package wor;
 
 import javax.swing.Icon;
@@ -18,6 +24,9 @@ public class InterfaceWin {
     private static Clip clip;
     private Icon YouWin;
 
+    /**
+     * Constructor of the win interface
+     */
     public InterfaceWin() {
         //AudioSystem.getClip("music/long.wav");
         //clip.stop("music/long.wav");

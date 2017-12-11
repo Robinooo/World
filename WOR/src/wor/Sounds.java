@@ -1,7 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * The sounds class allows us to put music during the game
+ *
+ * @author GR2
+ * @version 11/12/17
  */
 package wor;
 
@@ -16,6 +17,10 @@ public class Sounds {
 
     private static Clip clip;
 
+    /**
+     * The constructor of the class Sounds
+     * @param url The path of the music
+     */
     public static synchronized void playSoundInfinite(final String url) {
         File f = new File(url);
         new Thread(new Runnable() {
@@ -34,6 +39,10 @@ public class Sounds {
         }).start();
     }
 
+    /**
+     * A method to start the music during the game
+     * @param url The path of the music
+     */
     public static synchronized void playSoundSingle(final String url) {
         File f = new File(url);
         new Thread(new Runnable() {
@@ -52,6 +61,10 @@ public class Sounds {
         }).start();
     }
 
+    /**
+     * A method to stop the music during the game
+     * @param url The path of the music
+     */
     public void stop(String url) {
         clip.stop();
     }

@@ -1,3 +1,9 @@
+/**
+ * This class is used to create the interface for the first window of the game
+ *
+ * @author (Group2)
+ * @version (11/12/17)
+ */
 package wor;
 
 import java.awt.*;
@@ -51,7 +57,6 @@ public class InterfaceDebut extends JFrame implements ActionListener {
     private String playerName;
     private Sounds s;
 
-///////////////////////////////////////////////////////////////
     /*
    The constructor of the class game is composed of button, panel for each herol and label.
    

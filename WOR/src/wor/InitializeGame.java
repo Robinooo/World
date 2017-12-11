@@ -1,7 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This class is used to initialize the Game. For the creation of characters, 
+ * rooms, items ... 
+ *
+ * @author (Group2)
+ * @version (11/12/17)
  */
 package wor;
 
@@ -26,7 +28,6 @@ public class InitializeGame {
             corridor12, corridor13, corridor14, corridor15, corridor16, corridor17, corridor18;
 
     private ArrayList<Room> listRoom;
-    //private ArrayList<Item> itemsInventory;
 
     private final Door libraryDoor, officeDoor, verandaDoor, barn3Door, smallHallDoor, poolRoomDoor, kitchenDoor, diningRoomDoor, livingRoomDoor;
 
@@ -198,7 +199,6 @@ public class InitializeGame {
 
         listRoom.add(fountain);
         listRoom.add(library);
-//        listRoom.add(poolRoom);
         listRoom.add(office);
         listRoom.add(veranda);
         listRoom.add(barn1);
@@ -217,7 +217,7 @@ public class InitializeGame {
         // Creation of the exits in the rooms
         fountain.setExit("down", corridor1);
         fountain.setExit("left", corridor2);
-
+        
         corridor1.setExit("up", fountain);
         corridor1.setExit("left", corridor3);
 
@@ -532,7 +532,6 @@ public class InitializeGame {
         hippocraticOath.setHidden(true);
 
         itemsInventory = new Inventory();
-        //ArrayList<Item> itemsInventory = new ArrayList<Item>();
         
         itemsInventory.addItems(rope);
         itemsInventory.addItems(dagger);
@@ -555,11 +554,7 @@ public class InitializeGame {
         itemsInventory.addItems(scarf);
         itemsInventory.addItems(clothSoaked);
         itemsInventory.addItems(hippocraticOath);
-        
-        
-        
-        
-        
+
         // Add the items into the rooms  
         barn3.addItem(rope);
         barn3.addItem(keyVeranda);
@@ -603,6 +598,10 @@ public class InitializeGame {
         World w = new World(player1, notebook, playerClass, listRoom, btTest2);
     }
 
+    /**
+     * Method to grab the player object
+     * @return The player of the game
+     */
     public Player getPlayer() {
         return player1;
     }
