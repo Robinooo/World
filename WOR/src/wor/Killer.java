@@ -46,10 +46,12 @@ public class Killer extends Character {
     }
     
     /**
-     * If the player meet the killer, the killer will try to kill him as well.
+    * If the player meet the killer, the killer will try to kill him as well.
      * The player will lose time and life points, if time or life points goes to
      * 0, the player dies in the process...
-     */
+    * @param player1 The player of the game
+    * @param bt The counter toknow if the player is in the barn
+    */
     public void kill(Player player1, int bt) {
         if ("barn 2".equals(player1.getCurrentRoom().getRoomName())) {
             if (player1.getCurrentRoom().getNoir()) {
