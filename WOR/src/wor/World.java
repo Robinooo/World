@@ -331,6 +331,8 @@ public class World extends JFrame {
                         }
                         if (!find) {
                             putMessage("This room is plunged into darkness.\nYou would need something that lets you see in the dark like cat's eyes\n... or night vision goggles", "Ambush");
+                            btExplore.setEnabled(false);
+                            player1.setLife(85);
                         }
                     }
                 }
@@ -541,7 +543,7 @@ public class World extends JFrame {
                 }
                 if (!survival) {
                     putMessage("As you enter, you feel your lungs burn. Get out before dying of asphyxiation.", "Gas");
-                    player1.setLife(15);
+                    player1.setLife(85);
                 }
             }
             if ("hall".equals(player1.getCurrentRoom().getRoomName())) {

@@ -40,6 +40,8 @@ public class Room {
      * @param pdescription The room's description.
      * @param pdoor The door of the room
      * @param pimg The name of the image
+     * @param pimgplan The image of the room
+
      */
     public Room(String proomName, String pdescription, Door pdoor, Icon pimg, Icon pimgplan) {
         roomName = proomName;
@@ -238,7 +240,7 @@ public class Room {
     /**
      * Set the type of the room, the room is a black room
      *
-     * @param pNoir if the boolean is true -> black , false : not black
+     * @param pNoir if the boolean is true : black , false : not black
      *
      */
     public void setNoir(boolean pNoir) {
@@ -257,7 +259,7 @@ public class Room {
     /**
      * Set the type of the room, the room is the room of the director
      *
-     * @param pDirector if the boolean is true -> there is the director, false :
+     * @param pDirector if the boolean is true : there is the director, false :
      * not the director;
      */
     public void setDirector(boolean pDirector) {
@@ -321,7 +323,7 @@ public class Room {
     /**
      * Gets the items present in the room
      *
-     * @param indice
+     * @param indice the number of the item in the list
      * @return the list of item in the room
      */
     public Item getItem(int indice) {

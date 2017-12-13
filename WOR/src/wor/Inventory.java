@@ -27,7 +27,7 @@ public class Inventory {
     /**
      * The addItems method adds a new item in the inventory.
      *
-     * @param Item, the item to add to inventory.
+     * @param newItem the item to add to inventory.
      */
     public void addItems(Item newItem) {
         ItemsList.add(newItem); // add an Item into the inventory (ArrayList)
@@ -52,7 +52,7 @@ public class Inventory {
      * The displayItemsImg method allows the user to display the images
      * associated to the items.
      *
-     * @param ItemsList
+     * @param ItemsList The list of items who si display
      * @return true si la liste contient des items
      */
     public boolean displayItemsImg(ArrayList<Item> ItemsList) {
