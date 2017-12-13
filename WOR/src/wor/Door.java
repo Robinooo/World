@@ -34,7 +34,7 @@ public class Door {
      * The setOpenable method modifies the boolean openable.
      *
      * @param b The boolean to know if a door is openable or not. When the value
-     * is true -> the door is openable (can be opened)
+     * is true : the door is openable (can be opened)
      */
     public void setOpenable(boolean b) {
         openable = b; // change the value of the boolean openable - true if openable   
@@ -127,6 +127,7 @@ public class Door {
     /**
      * The openDoorKey method opens the door using a key
      *
+     * @param keyName The name of the key who open the door
      * @return Returns true if the door is unlocked
      */
     public boolean openDoorKey(String keyName) {
@@ -143,6 +144,7 @@ public class Door {
      * given by the player matches with the password of the door, the door is
      * open (return true). If not, the door remains closed (return false).
      *
+     * @param password The password who open the door
      * @return Returns true if the door is unlock
      */
     public boolean openDoorPass(String password) {

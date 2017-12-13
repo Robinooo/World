@@ -63,7 +63,7 @@ public class InterfaceDebut extends JFrame implements ActionListener {
      */
     public InterfaceDebut() {
 
-        s.playSoundInfinite("music/panthère_rose.wav"); //long.wav
+        s.playSoundInfinite("music/long.wav"); //long.wav
         this.setTitle("CLUEDO");// Titre
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //-----------------------------------------------------------------------

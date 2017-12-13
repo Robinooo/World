@@ -26,6 +26,14 @@ public class Player extends Character {
 
     /**
      * Constructor for objects of class Player
+     * @param pname the name of the player
+     * @param pcurrentRoom the current room of the player
+     * @param pnote the notebook of the player
+     * @param pinv the inventory of the player
+     * @param pper the point of persuasion of the player
+     * @param ppoints the point of life of the player
+     * @param ptime the point of time of the player
+     * @param pinv2 a second inventory with all the items
      */
     public Player(String pname, Room pcurrentRoom, NoteBook pnote, Inventory pinv, int pper, int ppoints, int ptime, Inventory pinv2) {
         name = pname;
@@ -59,6 +67,9 @@ public class Player extends Character {
      * This method allows the player to take an item that is present in a room,
      * add it to his inventory and update his number of persuasion points by
      * adding the points associated to the item he is picking up
+     * 
+     * 
+     * @param zoneTexte the text area where the text is display 
      */
     public void takeItem(JTextArea zoneTexte) {
         zoneTexte.setText("");
@@ -103,6 +114,7 @@ public class Player extends Character {
             }
         } else {
             nextRoom = currentRoom;
+            putMessage("Sorry,you can't go in this direction", "Impossible way");
         }
         currentRoom = nextRoom;
     }
@@ -167,7 +179,7 @@ public class Player extends Character {
     /**
      * Method to change the value of the boolean follow
      *
-     * @param bool Boolean to say if the player is follow or not (true -> player
+     * @param bool Boolean to say if the player is follow or not (true : player
      * follow)
      */
     public void setFollow(boolean bool) {
@@ -175,10 +187,10 @@ public class Player extends Character {
     }
 
     /**
-     * A getter method to know if the player is follow or not (true -> player
+     * A getter method to know if the player is follow or not (true : player
      * follow)
      *
-     * @return The Boolean that say if the player is follow or not (true ->
+     * @return The Boolean that say if the player is follow or not (true :
      * player follow)
      */
     public boolean getFollow() {
@@ -187,7 +199,7 @@ public class Player extends Character {
 
     /**
      *
-     * @param zoneTexte
+     * @param zoneTexte The area text where the text is displayed
      */
     public void explore(JTextArea zoneTexte) {
         if (currentRoom.listItem.size() > 0) {
@@ -240,7 +252,7 @@ public class Player extends Character {
 
     /**
      * Modifer for the persiasion of the player
-     * @param ppersua
+     * @param ppersua point of persuasion of the player
      */
     public void setPersuasion(Integer ppersua) {
         persuasionBar = persuasionBar + ppersua;
@@ -278,7 +290,7 @@ public class Player extends Character {
 
     /**
      * Modifier of the life point of the player
-     * @param plife
+     * @param plife point of life who are modified
      */
     public void setLife(Integer plife) {
         lifeBar = lifeBar - plife;
@@ -286,7 +298,7 @@ public class Player extends Character {
 
     /**
      * A method to return the time of the player
-     * @return
+     * @return the time of the player
      */
     public float getTime() {
         return timeBar;
@@ -294,7 +306,7 @@ public class Player extends Character {
 
     /**
      * A modifier of the time of the player
-     * @param ptime
+     * @param ptime modified the time of the player
      */
     public void setTime(int ptime) {
         float temp = ptime;
