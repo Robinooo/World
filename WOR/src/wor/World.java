@@ -679,7 +679,7 @@ public class World extends JFrame {
                 -> {
             // Supposed to redirect the player to a PDF page (user manual)
             try {
-                Desktop.getDesktop().open(new File("CLUEDO.pdf"));
+                Desktop.getDesktop().open(new File("HELP.pdf"));
             } catch (IOException f) {
 
                 f.printStackTrace();
